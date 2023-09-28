@@ -2,13 +2,15 @@
 import React, {useEffect, useState} from 'react';
 import {MaterialReactTable} from 'material-react-table';
 import {Box, Button, IconButton} from '@mui/material';
-import {Delete, Edit} from '@mui/icons-material';
+import {Delete, Edit, Info} from '@mui/icons-material';
 
 const Table = props => {
     const {
         action, // insert, update, delete
         columnKey,
+        columnPinning = {left: [], right: []},
         columns = [],
+        customToolbarAction = [],
         enableDensityToggle = false,
         enableFilter = false,
         enableFullScreenToggle = false,
@@ -21,8 +23,8 @@ const Table = props => {
         onChangePage,
         onDelete,
         onFilter,
-        onSelect,
         onSearch,
+        onSelect,
         onSort,
         onUpdate,
         pageCount = 0,
@@ -38,25 +40,51 @@ const Table = props => {
     const [sorting, setSorting] = useState([]);
     const [rowSelection, setRowSelection] = useState({});
 
-    const actionColumn = () => {
+    const initialState = () => {
+        return {
+            density: 'compact',
+            pagination: pagination,
+            columnPinning: columnPinning,
+        };
+    };
+
+    const muiTableContainerProps = () => {
+        return {sx: {maxHeight: '500px'}};
+    };
+
+    const muiTablePaginationProps = () => {
+        return {rowsPerPageOptions: [10]};
+    };
+
+    const displayColumnDefOptions = () => {
         if (!action.length && !action.filter(item => item !== 'insert').length)
             return false;
         return {
             'mrt-row-actions': {
-                muiTableHeadCellProps: {
-                    align: 'center',
-                },
                 size: 120,
             },
         };
     };
 
-    const insertButton = () => {
-        if (!action.length && !action.find(item => item === 'insert')) return;
+    const toolbarAction = () => {
+        if (!action.length || !action.find(item => item === 'insert')) return;
         return (
-            <Button color="primary" onClick={onAdd} variant="contained">
-                Create New Data
-            </Button>
+            <Box
+                sx={{
+                    display: 'flex',
+                    gap: '1rem',
+                    p: '0.5rem',
+                    flexWrap: 'wrap',
+                }}>
+                <Button
+                    color="primary"
+                    onClick={onAdd}
+                    variant="contained"
+                    size="small">
+                    Create New Data
+                </Button>
+                {customToolbarAction.map(action => action)}
+            </Box>
         );
     };
 
@@ -67,23 +95,31 @@ const Table = props => {
     const actionButton = row => {
         return (
             <Box sx={{display: 'flex', alignItems: 'center'}}>
-                {action.length && action.find(item => item === 'update') && (
-                    <IconButton onClick={() => onUpdate(row.original)}>
-                        <Edit />
-                    </IconButton>
-                )}
-                {action.length && action.find(item => item === 'delete') && (
-                    <IconButton onClick={() => onDelete(row.original)}>
-                        <Delete />
-                    </IconButton>
-                )}
+                {isSupportAction() &&
+                    action.find(item => item === 'update') && (
+                        <IconButton onClick={() => onUpdate(row.original)}>
+                            <Edit />
+                        </IconButton>
+                    )}
+                {isSupportAction() &&
+                    action.find(item => item === 'delete') && (
+                        <IconButton onClick={() => onDelete(row.original)}>
+                            <Delete />
+                        </IconButton>
+                    )}
+                {isSupportAction() &&
+                    action.find(item => item === 'detail') && (
+                        <IconButton onClick={() => onDelete(row.original)}>
+                            <Info />
+                        </IconButton>
+                    )}
             </Box>
         );
     };
 
     useEffect(() => {
         if (enablePagination) onChangePage(pagination.pageIndex);
-    }, [pagination]);
+    }, [pagination.pageIndex, pagination.pageSize]);
 
     useEffect(() => {
         if (enableFilter) onFilter(columnFilters);
@@ -101,9 +137,10 @@ const Table = props => {
         <MaterialReactTable
             columns={columns}
             data={rows}
-            displayColumnDefOptions={actionColumn}
+            displayColumnDefOptions={displayColumnDefOptions()}
             enableColumnActions={false}
             enableColumnFilters={enableFilter}
+            enableColumnResizing={true}
             enableDensityToggle={enableDensityToggle}
             enableEditing={isSupportAction}
             enableFilterMatchHighlighting={false}
@@ -111,13 +148,17 @@ const Table = props => {
             enableGlobalFilter={enableSearch}
             enableHiding={enableHiding}
             enablePagination={enablePagination}
+            enablePinning={true}
             enableRowSelection={enableRowSelection}
             enableSorting={enableSorting}
+            enableStickyHeader={true}
             getRowId={row => row[columnKey]}
+            initialState={initialState()}
             manualFiltering
             manualPagination
             manualSorting
-            muiTablePaginationProps={{rowsPerPageOptions: [10]}}
+            muiTableContainerProps={muiTableContainerProps()}
+            muiTablePaginationProps={muiTablePaginationProps()}
             onColumnFiltersChange={setColumnFilters}
             onGlobalFilterChange={onSearch}
             onPaginationChange={setPagination}
@@ -126,7 +167,7 @@ const Table = props => {
             pageCount={pageCount}
             positionActionsColumn="last"
             renderRowActions={({row}) => actionButton(row)}
-            renderTopToolbarCustomActions={insertButton}
+            renderTopToolbarCustomActions={toolbarAction}
             rowCount={rowCount}
             state={{pagination, columnFilters, sorting, rowSelection}}
         />

@@ -1,27 +1,44 @@
 [
     {
+        "accessorKey": "id",
+        "header": "ID",
+        "size": 100,
+        "minSize": 100,
+        "maxSize": 200
+    },
+    {
         "accessorKey": "name",
         "header": "Name",
-        "size": 150
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
     },
     {
         "accessorKey": "description",
         "header": "Description",
-        "size": 250
+        "size": 250,
+        "minSize": 250,
+        "maxSize": 500
     },
     {
         "accessorKey": "created_by",
         "header": "Created By",
-        "size": 150
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
     },
     {
         "accessorKey": "created_date",
         "header": "Created Date",
-        "size": 150
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
     },
     {
         "accessorKey": "updated_date",
         "header": "Updated Date",
-        "size": 150
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
     }
 ]
