@@ -8,6 +8,7 @@
         "key-spacing": "warn",
         "no-unused-vars": "warn",
         "object-curly-spacing": "warn",
+        "react-hooks/exhaustive-deps": "off",
         "semi": "warn"
     }
 }

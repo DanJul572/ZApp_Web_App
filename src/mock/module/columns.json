@@ -1,0 +1,27 @@
+[
+    {
+        "accessorKey": "name",
+        "header": "Name",
+        "size": 150
+    },
+    {
+        "accessorKey": "description",
+        "header": "Description",
+        "size": 250
+    },
+    {
+        "accessorKey": "created_by",
+        "header": "Created By",
+        "size": 150
+    },
+    {
+        "accessorKey": "created_date",
+        "header": "Created Date",
+        "size": 150
+    },
+    {
+        "accessorKey": "updated_date",
+        "header": "Updated Date",
+        "size": 150
+    }
+]
