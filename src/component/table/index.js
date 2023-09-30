@@ -18,7 +18,8 @@ import {
     Tooltip,
 } from '@mui/material';
 import {Delete, Download, Edit, Info} from '@mui/icons-material';
-import {action_type} from '@/constant';
+import {action_type, export_type, extention_type, input_type} from '@/constant';
+import {Dropdown} from '@/component/input';
 
 const Table = props => {
     const {
@@ -41,6 +42,7 @@ const Table = props => {
         onAdd,
         onChangePage,
         onDelete,
+        onDownload,
         onFilter,
         onSearch,
         onSelect,
@@ -58,8 +60,16 @@ const Table = props => {
     });
     const [columnFilters, setColumnFilters] = useState([]);
     const [sorting, setSorting] = useState([]);
-    const [rowSelection, setRowSelection] = useState({});
+    const [rowSelection, setRowSelection] = useState([]);
     const [openExportDialog, setOpenExportDialog] = useState(false);
+    const [exportSelectionType, setExportSelectionType] = useState({
+        value: null,
+        label: null,
+    });
+    const [exportExtentionType, setExportExtentionType] = useState({
+        value: null,
+        label: null,
+    });
 
     const initialState = {
         density: 'compact',
@@ -68,6 +78,19 @@ const Table = props => {
     };
     const muiTableContainerProps = {sx: {maxHeight: '500px'}};
     const muiTablePaginationProps = {rowsPerPageOptions: [10]};
+    const export_row_type = [
+        {value: export_type.selected.value, label: export_type.selected.label},
+        {value: export_type.current.value, label: export_type.current.label},
+        {value: export_type.all.value, label: export_type.all.label},
+    ];
+    const export_row_extention = [
+        {
+            value: extention_type.excel.value,
+            label: extention_type.excel.label,
+        },
+        {value: extention_type.pdf.value, label: extention_type.pdf.label},
+        {value: extention_type.text.value, label: extention_type.text.label},
+    ];
 
     const displayColumnDefOptions = () => {
         if (
@@ -156,8 +179,32 @@ const Table = props => {
     const exportDialog = () => {
         return (
             <Dialog open={openExportDialog}>
-                <DialogContent></DialogContent>
-                <DialogActions sx={{padding: '1.5rem'}}>
+                <DialogContent
+                    style={{
+                        width: '20rem',
+                        padding: '1.5rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1rem',
+                    }}>
+                    <Dropdown
+                        id="export_selection"
+                        type={input_type.dropdown.value}
+                        label="Selection"
+                        options={export_row_type}
+                        onChange={setExportSelectionType}
+                        value={exportSelectionType}
+                    />
+                    <Dropdown
+                        id="export_extention"
+                        type={input_type.dropdown.value}
+                        label="Extention"
+                        options={export_row_extention}
+                        onChange={setExportExtentionType}
+                        value={exportExtentionType}
+                    />
+                </DialogContent>
+                <DialogActions>
                     <Button
                         size="small"
                         onClick={() => setOpenExportDialog(false)}>
@@ -166,7 +213,12 @@ const Table = props => {
                     <Button
                         size="small"
                         color="primary"
-                        onClick={() => {}}
+                        onClick={() =>
+                            onDownload({
+                                selection: exportSelectionType.value,
+                                extention: exportExtentionType.value,
+                            })
+                        }
                         variant="contained">
                         Download
                     </Button>

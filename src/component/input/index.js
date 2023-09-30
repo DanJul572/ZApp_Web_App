@@ -1,4 +1,3 @@
-import {input_type} from '@/constant';
-const Input = () => {};
+import Dropdown from './Dropdown';
 
-export default Input;
+export {Dropdown};
