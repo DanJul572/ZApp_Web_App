@@ -1,24 +1,43 @@
 'use client';
 import React, {useEffect, useState} from 'react';
-import {MaterialReactTable} from 'material-react-table';
-import {Box, Button, IconButton} from '@mui/material';
-import {Delete, Edit, Info} from '@mui/icons-material';
+import {
+    MaterialReactTable,
+    MRT_ToggleFiltersButton,
+    MRT_ToggleGlobalFilterButton,
+    MRT_ShowHideColumnsButton,
+    MRT_ToggleDensePaddingButton,
+    MRT_FullScreenToggleButton,
+} from 'material-react-table';
+import {
+    Box,
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    IconButton,
+    Tooltip,
+} from '@mui/material';
+import {Delete, Download, Edit, Info} from '@mui/icons-material';
+import {action_type} from '@/constant';
 
 const Table = props => {
     const {
-        action, // insert, update, delete
+        action = [],
         columnKey,
-        columnPinning = {left: [], right: []},
+        columnPinning = {},
         columns = [],
         customToolbarAction = [],
+        enableColumnResizing = false,
         enableDensityToggle = false,
         enableFilter = false,
         enableFullScreenToggle = false,
         enableHiding = false,
         enablePagination = false,
+        enablePinning = false,
         enableRowSelection = false,
         enableSearch = false,
         enableSorting = false,
+        enableStickyHeader = false,
         onAdd,
         onChangePage,
         onDelete,
@@ -28,36 +47,34 @@ const Table = props => {
         onSort,
         onUpdate,
         pageCount = 0,
+        pageIndex = 1,
         rowCount = 0,
         rows = [],
     } = props;
 
     const [pagination, setPagination] = useState({
-        pageIndex: 1,
+        pageIndex: pageIndex,
         pageSize: pageCount,
     });
     const [columnFilters, setColumnFilters] = useState([]);
     const [sorting, setSorting] = useState([]);
     const [rowSelection, setRowSelection] = useState({});
+    const [openExportDialog, setOpenExportDialog] = useState(false);
 
-    const initialState = () => {
-        return {
-            density: 'compact',
-            pagination: pagination,
-            columnPinning: columnPinning,
-        };
+    const initialState = {
+        density: 'compact',
+        pagination: pagination,
+        columnPinning: columnPinning,
     };
-
-    const muiTableContainerProps = () => {
-        return {sx: {maxHeight: '500px'}};
-    };
-
-    const muiTablePaginationProps = () => {
-        return {rowsPerPageOptions: [10]};
-    };
+    const muiTableContainerProps = {sx: {maxHeight: '500px'}};
+    const muiTablePaginationProps = {rowsPerPageOptions: [10]};
 
     const displayColumnDefOptions = () => {
-        if (!action.length && !action.filter(item => item !== 'insert').length)
+        if (
+            !action.length &&
+            !action.filter(item => item.type !== action_type.insert.value)
+                .length
+        )
             return false;
         return {
             'mrt-row-actions': {
@@ -67,7 +84,11 @@ const Table = props => {
     };
 
     const toolbarAction = () => {
-        if (!action.length || !action.find(item => item === 'insert')) return;
+        if (
+            !action.length ||
+            !action.find(item => item.type === action_type.insert.value)
+        )
+            return;
         return (
             <Box
                 sx={{
@@ -89,30 +110,94 @@ const Table = props => {
     };
 
     const isSupportAction = () => {
-        return action.filter(item => item !== 'insert').length ? true : false;
+        return action.filter(item => item.type !== action_type.insert.value)
+            .length
+            ? true
+            : false;
     };
 
     const actionButton = row => {
         return (
             <Box sx={{display: 'flex', alignItems: 'center'}}>
                 {isSupportAction() &&
-                    action.find(item => item === 'update') && (
-                        <IconButton onClick={() => onUpdate(row.original)}>
-                            <Edit />
+                    action.find(
+                        item => item.type === action_type.insert.value,
+                    ) && (
+                        <IconButton
+                            onClick={() => onUpdate(row.original)}
+                            size="small">
+                            <Edit fontSize="11" />
                         </IconButton>
                     )}
                 {isSupportAction() &&
-                    action.find(item => item === 'delete') && (
-                        <IconButton onClick={() => onDelete(row.original)}>
-                            <Delete />
+                    action.find(
+                        item => item.type === action_type.insert.value,
+                    ) && (
+                        <IconButton
+                            onClick={() => onDelete(row.original)}
+                            size="small">
+                            <Delete fontSize="11" />
                         </IconButton>
                     )}
                 {isSupportAction() &&
-                    action.find(item => item === 'detail') && (
-                        <IconButton onClick={() => onDelete(row.original)}>
-                            <Info />
+                    action.find(
+                        item => item.type === action_type.detail.value,
+                    ) && (
+                        <IconButton
+                            onClick={() => onDelete(row.original)}
+                            size="small">
+                            <Info fontSize="11" />
                         </IconButton>
                     )}
+            </Box>
+        );
+    };
+
+    const exportDialog = () => {
+        return (
+            <Dialog open={openExportDialog}>
+                <DialogContent></DialogContent>
+                <DialogActions sx={{padding: '1.5rem'}}>
+                    <Button
+                        size="small"
+                        onClick={() => setOpenExportDialog(false)}>
+                        Cancel
+                    </Button>
+                    <Button
+                        size="small"
+                        color="primary"
+                        onClick={() => {}}
+                        variant="contained">
+                        Download
+                    </Button>
+                </DialogActions>
+            </Dialog>
+        );
+    };
+
+    const exportButton = () => {
+        return (
+            <Tooltip arrow title="Download">
+                <IconButton onClick={() => setOpenExportDialog(true)}>
+                    <Download />
+                </IconButton>
+            </Tooltip>
+        );
+    };
+
+    const toolbarComponent = table => {
+        return (
+            <Box>
+                {enableSearch && <MRT_ToggleGlobalFilterButton table={table} />}
+                {enableFilter && <MRT_ToggleFiltersButton table={table} />}
+                {enableHiding && <MRT_ShowHideColumnsButton table={table} />}
+                {enableDensityToggle && (
+                    <MRT_ToggleDensePaddingButton table={table} />
+                )}
+                {enableFullScreenToggle && (
+                    <MRT_FullScreenToggleButton table={table} />
+                )}
+                {exportButton()}
             </Box>
         );
     };
@@ -134,43 +219,50 @@ const Table = props => {
     }, [rowSelection]);
 
     return (
-        <MaterialReactTable
-            columns={columns}
-            data={rows}
-            displayColumnDefOptions={displayColumnDefOptions()}
-            enableColumnActions={false}
-            enableColumnFilters={enableFilter}
-            enableColumnResizing={true}
-            enableDensityToggle={enableDensityToggle}
-            enableEditing={isSupportAction}
-            enableFilterMatchHighlighting={false}
-            enableFullScreenToggle={enableFullScreenToggle}
-            enableGlobalFilter={enableSearch}
-            enableHiding={enableHiding}
-            enablePagination={enablePagination}
-            enablePinning={true}
-            enableRowSelection={enableRowSelection}
-            enableSorting={enableSorting}
-            enableStickyHeader={true}
-            getRowId={row => row[columnKey]}
-            initialState={initialState()}
-            manualFiltering
-            manualPagination
-            manualSorting
-            muiTableContainerProps={muiTableContainerProps()}
-            muiTablePaginationProps={muiTablePaginationProps()}
-            onColumnFiltersChange={setColumnFilters}
-            onGlobalFilterChange={onSearch}
-            onPaginationChange={setPagination}
-            onRowSelectionChange={setRowSelection}
-            onSortingChange={setSorting}
-            pageCount={pageCount}
-            positionActionsColumn="last"
-            renderRowActions={({row}) => actionButton(row)}
-            renderTopToolbarCustomActions={toolbarAction}
-            rowCount={rowCount}
-            state={{pagination, columnFilters, sorting, rowSelection}}
-        />
+        <>
+            <MaterialReactTable
+                columns={columns}
+                data={rows}
+                displayColumnDefOptions={displayColumnDefOptions()}
+                enableColumnActions={false}
+                enableColumnFilters={enableFilter}
+                enableColumnResizing={enableColumnResizing}
+                enableDensityToggle={enableDensityToggle}
+                enableEditing={isSupportAction}
+                enableFilterMatchHighlighting={false}
+                enableFullScreenToggle={enableFullScreenToggle}
+                enableGlobalFilter={enableSearch}
+                enableHiding={enableHiding}
+                enablePagination={enablePagination}
+                enablePinning={enablePinning}
+                enableRowSelection={enableRowSelection}
+                enableSorting={enableSorting}
+                enableStickyHeader={enableStickyHeader}
+                getRowId={row => row[columnKey]}
+                initialState={initialState}
+                manualFiltering
+                manualPagination
+                manualSorting
+                muiTableContainerProps={muiTableContainerProps}
+                muiTablePaginationProps={muiTablePaginationProps}
+                onColumnFiltersChange={setColumnFilters}
+                onGlobalFilterChange={onSearch}
+                onPaginationChange={setPagination}
+                onRowSelectionChange={setRowSelection}
+                onSortingChange={setSorting}
+                pageCount={pageCount}
+                positionActionsColumn="last"
+                positionToolbarAlertBanner="none"
+                renderRowActions={({row}) => actionButton(row)}
+                renderTopToolbarCustomActions={toolbarAction}
+                renderToolbarInternalActions={({table}) =>
+                    toolbarComponent(table)
+                }
+                rowCount={rowCount}
+                state={{pagination, columnFilters, sorting, rowSelection}}
+            />
+            {exportDialog()}
+        </>
     );
 };
 

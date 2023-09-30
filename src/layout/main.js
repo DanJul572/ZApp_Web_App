@@ -15,7 +15,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import menu_list from '@/constant/menu';
+import {menu_list} from '@/constant';
 import Link from 'next/link';
 import {grey} from '@mui/material/colors';
 
@@ -80,7 +80,7 @@ export default function Main({children, window}) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                        ZApp
                     </Typography>
                 </Toolbar>
             </AppBar>
