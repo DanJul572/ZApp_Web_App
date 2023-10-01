@@ -17,17 +17,21 @@ import {
     IconButton,
     Tooltip,
 } from '@mui/material';
-import {Delete, Download, Edit, Info} from '@mui/icons-material';
+import {Delete, Download, Edit, Info, Storage} from '@mui/icons-material';
 import {action_type, export_type, extention_type, input_type} from '@/constant';
 import {Dropdown} from '@/component/input';
+import AdvanceFilter from './advance_filter';
+import query_format_type from '@/constant/query_format_type';
 
 const Table = props => {
     const {
         action = [],
+        advanceFilterFormat = query_format_type.sql.value,
         columnKey,
         columnPinning = {},
         columns = [],
         customToolbarAction = [],
+        enableAdvanceFilter = false,
         enableColumnResizing = false,
         enableDensityToggle = false,
         enableFilter = false,
@@ -40,6 +44,7 @@ const Table = props => {
         enableSorting = false,
         enableStickyHeader = false,
         onAdd,
+        onAdvanceFilter,
         onChangePage,
         onDelete,
         onDownload,
@@ -62,14 +67,9 @@ const Table = props => {
     const [sorting, setSorting] = useState([]);
     const [rowSelection, setRowSelection] = useState([]);
     const [openExportDialog, setOpenExportDialog] = useState(false);
-    const [exportSelectionType, setExportSelectionType] = useState({
-        value: null,
-        label: null,
-    });
-    const [exportExtentionType, setExportExtentionType] = useState({
-        value: null,
-        label: null,
-    });
+    const [openAdvanceFilterDialog, setOpenAdvanceFilterDialog] = useState(false);
+    const [exportSelectionType, setExportSelectionType] = useState(null);
+    const [exportExtentionType, setExportExtentionType] = useState(null);
 
     const initialState = {
         density: 'compact',
@@ -92,12 +92,69 @@ const Table = props => {
         {value: extention_type.text.value, label: extention_type.text.label},
     ];
 
+    const exportButton = (
+        <Tooltip arrow title="Download">
+            <IconButton onClick={() => setOpenExportDialog(true)}>
+                <Download />
+            </IconButton>
+        </Tooltip>
+    );
+
+    const advanceFilterButton = (
+        <Tooltip arrow title="Advance Filter">
+            <IconButton onClick={() => setOpenAdvanceFilterDialog(true)}>
+                <Storage />
+            </IconButton>
+        </Tooltip>
+    );
+
+    const exportDialog = (
+        <Dialog open={openExportDialog}>
+            <DialogContent
+                style={{
+                    width: '20rem',
+                    padding: '1.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1rem',
+                }}>
+                <Dropdown
+                    type={input_type.dropdown.value}
+                    label="Selection"
+                    options={export_row_type}
+                    onChange={setExportSelectionType}
+                    value={exportSelectionType}
+                />
+                <Dropdown
+                    type={input_type.dropdown.value}
+                    label="Extention"
+                    options={export_row_extention}
+                    onChange={setExportExtentionType}
+                    value={exportExtentionType}
+                />
+            </DialogContent>
+            <DialogActions>
+                <Button size="small" onClick={() => setOpenExportDialog(false)}>
+                    Cancel
+                </Button>
+                <Button
+                    size="small"
+                    color="primary"
+                    onClick={() =>
+                        onDownload({
+                            selection: exportSelectionType.value,
+                            extention: exportExtentionType.value,
+                        })
+                    }
+                    variant="contained">
+                    Download
+                </Button>
+            </DialogActions>
+        </Dialog>
+    );
+
     const displayColumnDefOptions = () => {
-        if (
-            !action.length &&
-            !action.filter(item => item.type !== action_type.insert.value)
-                .length
-        )
+        if (!action.length && !action.filter(item => item.type !== action_type.insert.value).length)
             return false;
         return {
             'mrt-row-actions': {
@@ -107,11 +164,7 @@ const Table = props => {
     };
 
     const toolbarAction = () => {
-        if (
-            !action.length ||
-            !action.find(item => item.type === action_type.insert.value)
-        )
-            return;
+        if (!action.length || !action.find(item => item.type === action_type.insert.value)) return;
         return (
             <Box
                 sx={{
@@ -120,11 +173,7 @@ const Table = props => {
                     p: '0.5rem',
                     flexWrap: 'wrap',
                 }}>
-                <Button
-                    color="primary"
-                    onClick={onAdd}
-                    variant="contained"
-                    size="small">
+                <Button color="primary" onClick={onAdd} variant="contained" size="small">
                     Create New Data
                 </Button>
                 {customToolbarAction.map(action => action)}
@@ -133,107 +182,31 @@ const Table = props => {
     };
 
     const isSupportAction = () => {
-        return action.filter(item => item.type !== action_type.insert.value)
-            .length
-            ? true
-            : false;
+        return action.filter(item => item.type !== action_type.insert.value).length ? true : false;
     };
 
     const actionButton = row => {
         return (
             <Box sx={{display: 'flex', alignItems: 'center'}}>
                 {isSupportAction() &&
-                    action.find(
-                        item => item.type === action_type.insert.value,
-                    ) && (
-                        <IconButton
-                            onClick={() => onUpdate(row.original)}
-                            size="small">
+                    action.find(item => item.type === action_type.insert.value) && (
+                        <IconButton onClick={() => onUpdate(row.original)} size="small">
                             <Edit fontSize="11" />
                         </IconButton>
                     )}
                 {isSupportAction() &&
-                    action.find(
-                        item => item.type === action_type.insert.value,
-                    ) && (
-                        <IconButton
-                            onClick={() => onDelete(row.original)}
-                            size="small">
+                    action.find(item => item.type === action_type.insert.value) && (
+                        <IconButton onClick={() => onDelete(row.original)} size="small">
                             <Delete fontSize="11" />
                         </IconButton>
                     )}
                 {isSupportAction() &&
-                    action.find(
-                        item => item.type === action_type.detail.value,
-                    ) && (
-                        <IconButton
-                            onClick={() => onDelete(row.original)}
-                            size="small">
+                    action.find(item => item.type === action_type.detail.value) && (
+                        <IconButton onClick={() => onDelete(row.original)} size="small">
                             <Info fontSize="11" />
                         </IconButton>
                     )}
             </Box>
-        );
-    };
-
-    const exportDialog = () => {
-        return (
-            <Dialog open={openExportDialog}>
-                <DialogContent
-                    style={{
-                        width: '20rem',
-                        padding: '1.5rem',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '1rem',
-                    }}>
-                    <Dropdown
-                        id="export_selection"
-                        type={input_type.dropdown.value}
-                        label="Selection"
-                        options={export_row_type}
-                        onChange={setExportSelectionType}
-                        value={exportSelectionType}
-                    />
-                    <Dropdown
-                        id="export_extention"
-                        type={input_type.dropdown.value}
-                        label="Extention"
-                        options={export_row_extention}
-                        onChange={setExportExtentionType}
-                        value={exportExtentionType}
-                    />
-                </DialogContent>
-                <DialogActions>
-                    <Button
-                        size="small"
-                        onClick={() => setOpenExportDialog(false)}>
-                        Cancel
-                    </Button>
-                    <Button
-                        size="small"
-                        color="primary"
-                        onClick={() =>
-                            onDownload({
-                                selection: exportSelectionType.value,
-                                extention: exportExtentionType.value,
-                            })
-                        }
-                        variant="contained">
-                        Download
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        );
-    };
-
-    const exportButton = () => {
-        return (
-            <Tooltip arrow title="Download">
-                <IconButton onClick={() => setOpenExportDialog(true)}>
-                    <Download />
-                </IconButton>
-            </Tooltip>
         );
     };
 
@@ -242,14 +215,11 @@ const Table = props => {
             <Box>
                 {enableSearch && <MRT_ToggleGlobalFilterButton table={table} />}
                 {enableFilter && <MRT_ToggleFiltersButton table={table} />}
+                {enableAdvanceFilter && advanceFilterButton}
                 {enableHiding && <MRT_ShowHideColumnsButton table={table} />}
-                {enableDensityToggle && (
-                    <MRT_ToggleDensePaddingButton table={table} />
-                )}
-                {enableFullScreenToggle && (
-                    <MRT_FullScreenToggleButton table={table} />
-                )}
-                {exportButton()}
+                {enableDensityToggle && <MRT_ToggleDensePaddingButton table={table} />}
+                {enableFullScreenToggle && <MRT_FullScreenToggleButton table={table} />}
+                {exportButton}
             </Box>
         );
     };
@@ -307,13 +277,21 @@ const Table = props => {
                 positionToolbarAlertBanner="none"
                 renderRowActions={({row}) => actionButton(row)}
                 renderTopToolbarCustomActions={toolbarAction}
-                renderToolbarInternalActions={({table}) =>
-                    toolbarComponent(table)
-                }
+                renderToolbarInternalActions={({table}) => toolbarComponent(table)}
                 rowCount={rowCount}
                 state={{pagination, columnFilters, sorting, rowSelection}}
             />
-            {exportDialog()}
+            {exportDialog}
+            {enableAdvanceFilter && (
+                <AdvanceFilter
+                    columns={columns}
+                    enableAdvanceFilter={enableAdvanceFilter}
+                    format={advanceFilterFormat}
+                    onAdvanceFilter={onAdvanceFilter}
+                    openAdvanceFilterDialog={openAdvanceFilterDialog}
+                    setOpenAdvanceFilterDialog={setOpenAdvanceFilterDialog}
+                />
+            )}
         </>
     );
 };
