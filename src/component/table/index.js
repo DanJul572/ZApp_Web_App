@@ -1,7 +1,7 @@
 'use client';
 import React, {useEffect, useState} from 'react';
 import {MaterialReactTable} from 'material-react-table';
-import {action_type} from '@/constant';
+import {actionType} from '@/constant';
 import AdvanceFilter from './advance_filter';
 import ExportDialog from './export_dialog';
 import ToolBarComponent from './toolbar_component';
@@ -28,15 +28,15 @@ const Table = props => {
         enableSearch = false,
         enableSorting = false,
         enableStickyHeader = false,
-        onAdd,
         onAdvanceFilter,
         onChangePage,
+        onClickRowAction,
+        onClickToolbarAction,
         onDownload,
         onFilter,
         onSearch,
         onSelect,
         onSort,
-        onClickRowAction,
         pageCount = 0,
         pageIndex = 1,
         rowCount = 0,
@@ -62,11 +62,11 @@ const Table = props => {
     const muiTablePaginationProps = {rowsPerPageOptions: [10]};
 
     const isSupportAction = () => {
-        return action.filter(item => item.type !== action_type.insert.value).length ? true : false;
+        return action.filter(item => item.type !== actionType.insert.value).length ? true : false;
     };
 
     const displayColumnDefOptions = () => {
-        if (!action.length && !action.filter(item => item.type !== action_type.insert.value).length)
+        if (!action.length && !action.filter(item => item.type !== actionType.insert.value).length)
             return false;
         return {
             'mrt-row-actions': {
@@ -76,8 +76,8 @@ const Table = props => {
     };
 
     const toolbarAction = () => {
-        if (!action.length || !action.find(item => item.type === action_type.insert.value)) return;
-        return <ToolbarAction onAdd={onAdd} />;
+        if (!action.length || !action.find(item => item.type === actionType.insert.value)) return;
+        return <ToolbarAction onClickToolbarAction={onClickToolbarAction} />;
     };
 
     const toolbarComponent = table => {

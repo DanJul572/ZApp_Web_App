@@ -2,7 +2,7 @@ import ListIcon from '@mui/icons-material/List';
 import ViewColumnIcon from '@mui/icons-material/ViewColumn';
 import PreviewIcon from '@mui/icons-material/Preview';
 
-const menu_list = [
+const menuList = [
     [
         {
             name: 'Module',
@@ -22,4 +22,4 @@ const menu_list = [
     ],
 ];
 
-export default menu_list;
+export default menuList;

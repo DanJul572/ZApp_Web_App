@@ -1,5 +1,5 @@
-import action_type from './action_type';
-import input_type from './input_type';
-import menu_list from './menu_list';
+import actionType from './action_type';
+import inputType from './input_type';
+import menuList from './menu_list';
 
-export {action_type, input_type, menu_list};
+export {actionType, inputType, menuList};

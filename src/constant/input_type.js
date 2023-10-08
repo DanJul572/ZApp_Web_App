@@ -1,4 +1,4 @@
-const input_type = {
+const inputType = {
     text: {
         value: 1,
         label: 'Text',
@@ -29,4 +29,4 @@ const input_type = {
     },
 };
 
-export default input_type;
+export default inputType;

@@ -1,25 +1,25 @@
 'use client';
 import {Table} from '@/component';
-import mock_columns from '@/mock/module/columns';
-import mock_rows from '@/mock/module/rows';
-import action_type from '@/constant/action_type';
+import mockColumns from '@/mock/module/columns';
+import mockRows from '@/mock/module/rows';
+import actionType from '@/constant/action_type';
 
 export default function Module() {
     const actionList = [
         {
-            type: action_type.insert.value,
+            type: actionType.insert.value,
             path: '/',
         },
         {
-            type: action_type.update.value,
+            type: actionType.update.value,
             path: '/',
         },
         {
-            type: action_type.delete.value,
+            type: actionType.delete.value,
             path: '/',
         },
         {
-            type: action_type.detail.value,
+            type: actionType.detail.value,
             path: '/',
         },
     ];
@@ -29,7 +29,7 @@ export default function Module() {
             <Table
                 action={actionList}
                 columnKey={'id'}
-                columns={mock_columns}
+                columns={mockColumns}
                 enableExport={true}
                 enableHiding={true}
                 enablePagination={true}
@@ -45,7 +45,7 @@ export default function Module() {
                 pageCount={1}
                 pageIndex={1}
                 rowCount={1}
-                rows={mock_rows}
+                rows={mockRows}
             />
         </div>
     );

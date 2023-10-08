@@ -1,4 +1,4 @@
-import {action_type} from '@/constant';
+import {actionType} from '@/constant';
 import {Delete, Edit, Info, MoreVert} from '@mui/icons-material';
 import {Box, IconButton} from '@mui/material';
 
@@ -7,11 +7,11 @@ const RowAction = props => {
 
     return (
         <Box sx={{display: 'flex', alignItems: 'center'}}>
-            {isSupportAction() && action.find(item => item.type === action_type.insert.value) && (
+            {isSupportAction() && action.find(item => item.type === actionType.insert.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            type: action_type.insert.value,
+                            action: actionType.insert,
                             key: row.original[columnKey],
                         })
                     }
@@ -19,11 +19,11 @@ const RowAction = props => {
                     <Edit fontSize="11" />
                 </IconButton>
             )}
-            {isSupportAction() && action.find(item => item.type === action_type.delete.value) && (
+            {isSupportAction() && action.find(item => item.type === actionType.delete.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            type: action_type.delete.value,
+                            action: actionType.delete,
                             key: row.original[columnKey],
                         })
                     }
@@ -31,11 +31,11 @@ const RowAction = props => {
                     <Delete fontSize="11" />
                 </IconButton>
             )}
-            {isSupportAction() && action.find(item => item.type === action_type.detail.value) && (
+            {isSupportAction() && action.find(item => item.type === actionType.detail.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            type: action_type.detail.value,
+                            action: actionType.detail,
                             key: row.original[columnKey],
                         })
                     }

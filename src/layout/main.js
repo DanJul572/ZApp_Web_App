@@ -15,7 +15,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {menu_list} from '@/constant';
+import {menuList} from '@/constant';
 import Link from 'next/link';
 import {grey} from '@mui/material/colors';
 
@@ -30,8 +30,8 @@ export default function Main({children, window}) {
 
     const drawer = (
         <div>
-            {menu_list.map((section, section_index) => (
-                <div key={section_index}>
+            {menuList.map((section, index) => (
+                <div key={index}>
                     <List>
                         {section.map((child, index) => (
                             <Link
@@ -43,9 +43,7 @@ export default function Main({children, window}) {
                                 }}>
                                 <ListItem disablePadding>
                                     <ListItemButton>
-                                        <ListItemIcon>
-                                            {child.icon}
-                                        </ListItemIcon>
+                                        <ListItemIcon>{child.icon}</ListItemIcon>
                                         <ListItemText primary={child.name} />
                                     </ListItemButton>
                                 </ListItem>
@@ -58,8 +56,7 @@ export default function Main({children, window}) {
         </div>
     );
 
-    const container =
-        window !== undefined ? () => window().document.body : undefined;
+    const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
         <Box sx={{display: 'flex'}}>

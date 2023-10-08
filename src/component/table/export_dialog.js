@@ -1,17 +1,17 @@
 import {useState} from 'react';
 import {Dialog, DialogContent, DialogActions, Button} from '@mui/material';
 import {Dropdown} from '../input';
-import {input_type} from '@/constant';
+import {inputType} from '@/constant';
 
 const ExportDialog = props => {
     const {openExportDialog, setOpenExportDialog, onDownload} = props;
 
-    const export_row_type = [
+    const exportRowType = [
         {key: 1, value: 'selected', label: 'Selected'},
         {key: 2, value: 'current', label: 'Current'},
         {key: 3, value: 'all', label: 'All'},
     ];
-    const export_row_extention = [
+    const exportRowSelection = [
         {value: '.xlsx', label: 'Excel'},
         {value: '.txt', label: 'Text'},
         {value: '.pdf', label: 'PDF'},
@@ -31,20 +31,22 @@ const ExportDialog = props => {
                     gap: '1rem',
                 }}>
                 <Dropdown
-                    type={input_type.dropdown.value}
+                    type={inputType.dropdown.value}
                     label="Selection"
-                    options={export_row_type}
+                    options={exportRowType}
                     onChange={setExportSelectionType}
                     value={exportSelectionType}
                     isOptionEqualToValue={(option, value) => option.value === value.value}
+                    size="small"
                 />
                 <Dropdown
-                    type={input_type.dropdown.value}
+                    type={inputType.dropdown.value}
                     label="Extention"
-                    options={export_row_extention}
+                    options={exportRowSelection}
                     onChange={setExportExtentionType}
                     value={exportExtentionType}
                     isOptionEqualToValue={(option, value) => option.value === value.value}
+                    size="small"
                 />
             </DialogContent>
             <DialogActions>
