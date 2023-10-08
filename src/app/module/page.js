@@ -30,18 +30,18 @@ export default function Module() {
                 action={actionList}
                 columnKey={'id'}
                 columns={mock_columns}
+                enableExport={true}
                 enableHiding={true}
                 enablePagination={true}
                 enableRowSelection={true}
                 enableSearch={true}
                 enableSorting={true}
-                onAdd={() => {}}
                 onChangePage={() => {}}
+                onClickRowAction={() => {}}
                 onDelete={() => {}}
                 onSearch={() => {}}
                 onSelect={() => {}}
                 onSort={() => {}}
-                onUpdate={() => {}}
                 pageCount={1}
                 pageIndex={1}
                 rowCount={1}

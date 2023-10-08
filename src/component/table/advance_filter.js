@@ -2,16 +2,10 @@ import {useEffect, useState} from 'react';
 import {Button, Dialog, DialogActions, DialogContent} from '@mui/material';
 import {QueryBuilder, formatQuery} from 'react-querybuilder';
 import 'react-querybuilder/dist/query-builder.css';
-import query_format_type from '@/constant/query_format_type';
 
 const AdvanceFilter = props => {
-    const {
-        columns = [],
-        format = query_format_type.sql.value,
-        onAdvanceFilter,
-        openAdvanceFilterDialog = false,
-        setOpenAdvanceFilterDialog,
-    } = props;
+    const {columns, format, onAdvanceFilter, openAdvanceFilterDialog, setOpenAdvanceFilterDialog} =
+        props;
 
     const [fields, setFields] = useState([]);
     const [query, setQuery] = useState(null);
