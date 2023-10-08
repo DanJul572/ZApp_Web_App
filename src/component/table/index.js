@@ -8,6 +8,7 @@ import ToolBarComponent from './toolbar_component';
 import RowAction from './row_action';
 import ToolbarAction from './toolbar_action';
 import RowCustomActionDialog from './custom_action_dialog';
+import {Box, Stack} from '@mui/material';
 
 const Table = props => {
     const {
@@ -28,8 +29,8 @@ const Table = props => {
         enableRowSelection = false,
         enableSearch = false,
         enableSorting = false,
-        enableStickyHeader = false,
         onAdvanceFilter,
+        isLoading = false,
         onChangePage,
         onClickRowAction,
         onClickToolbarAction,
@@ -65,6 +66,21 @@ const Table = props => {
     };
     const muiTableContainerProps = {sx: {maxHeight: '500px'}};
     const muiTablePaginationProps = {rowsPerPageOptions: [10]};
+
+    const newColumns = columns.map(column => {
+        if (column.footer) {
+            return {
+                ...column,
+                Footer: () => (
+                    <Stack>
+                        {column.footer.label} :<Box color="warning.main">{column.footer.value}</Box>
+                    </Stack>
+                ),
+            };
+        } else {
+            return column;
+        }
+    });
 
     const isSupportAction = () => {
         return action.filter(item => item.type !== actionType.insert.value).length ? true : false;
@@ -141,7 +157,7 @@ const Table = props => {
     return (
         <>
             <MaterialReactTable
-                columns={columns}
+                columns={newColumns}
                 data={rows}
                 displayColumnDefOptions={displayColumnDefOptions()}
                 enableColumnActions={false}
@@ -157,7 +173,8 @@ const Table = props => {
                 enablePinning={enablePinning}
                 enableRowSelection={enableRowSelection}
                 enableSorting={enableSorting}
-                enableStickyHeader={enableStickyHeader}
+                enableStickyFooter
+                enableStickyHeader
                 getRowId={row => row[columnKey]}
                 initialState={initialState}
                 manualFiltering
@@ -177,7 +194,7 @@ const Table = props => {
                 renderTopToolbarCustomActions={toolbarAction}
                 renderToolbarInternalActions={({table}) => toolbarComponent(table)}
                 rowCount={rowCount}
-                state={{pagination, columnFilters, sorting, rowSelection}}
+                state={{pagination, columnFilters, sorting, rowSelection, isLoading}}
             />
             {enableAdvanceFilter && (
                 <AdvanceFilter
