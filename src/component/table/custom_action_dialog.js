@@ -1,24 +1,37 @@
 import {Dialog, DialogContent, List, ListItem, ListItemButton, ListItemText} from '@mui/material';
 
-const CustomActionDialog = () => {
+const RowCustomActionDialog = props => {
+    const {
+        openRowCustomActionDialog,
+        rowCustomAction,
+        rowClicked,
+        onClickRowAction,
+        setOpenRowCustomActionDialog,
+    } = props;
+
+    const onCLickAction = action => {
+        onClickRowAction({
+            action: action,
+            row: rowClicked,
+        });
+        setOpenRowCustomActionDialog(false);
+    };
+
     return (
-        <Dialog open={true}>
+        <Dialog open={openRowCustomActionDialog}>
             <DialogContent style={{width: '20rem', padding: 0}}>
                 <List>
-                    <ListItem disablePadding>
-                        <ListItemButton onClick={() => {}}>
-                            <ListItemText primary="Trash" />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemText primary="Spam" />
-                        </ListItemButton>
-                    </ListItem>
+                    {rowCustomAction.map((action, index) => (
+                        <ListItem key={index} disablePadding>
+                            <ListItemButton onClick={() => onCLickAction(action)}>
+                                <ListItemText primary={action.label} />
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
                 </List>
             </DialogContent>
         </Dialog>
     );
 };
 
-export default CustomActionDialog;
+export default RowCustomActionDialog;

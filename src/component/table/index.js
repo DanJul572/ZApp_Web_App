@@ -7,6 +7,7 @@ import ExportDialog from './export_dialog';
 import ToolBarComponent from './toolbar_component';
 import RowAction from './row_action';
 import ToolbarAction from './toolbar_action';
+import RowCustomActionDialog from './custom_action_dialog';
 
 const Table = props => {
     const {
@@ -39,8 +40,10 @@ const Table = props => {
         onSort,
         pageCount = 0,
         pageIndex = 1,
+        rowCustomAction = [],
         rowCount = 0,
         rows = [],
+        toolbarCustomAction = [],
     } = props;
 
     const [pagination, setPagination] = useState({
@@ -52,6 +55,8 @@ const Table = props => {
     const [rowSelection, setRowSelection] = useState([]);
     const [openExportDialog, setOpenExportDialog] = useState(false);
     const [openAdvanceFilterDialog, setOpenAdvanceFilterDialog] = useState(false);
+    const [openRowCustomActionDialog, setOpenRowCustomActionDialog] = useState(false);
+    const [rowClicked, setRowClicked] = useState(null);
 
     const initialState = {
         density: 'compact',
@@ -77,7 +82,12 @@ const Table = props => {
 
     const toolbarAction = () => {
         if (!action.length || !action.find(item => item.type === actionType.insert.value)) return;
-        return <ToolbarAction onClickToolbarAction={onClickToolbarAction} />;
+        return (
+            <ToolbarAction
+                onClickToolbarAction={onClickToolbarAction}
+                toolbarCustomAction={toolbarCustomAction}
+            />
+        );
     };
 
     const toolbarComponent = table => {
@@ -105,6 +115,9 @@ const Table = props => {
                 row={row}
                 isSupportAction={isSupportAction}
                 columnKey={columnKey}
+                rowCustomAction={rowCustomAction}
+                setOpenRowCustomActionDialog={setOpenRowCustomActionDialog}
+                setRowClicked={setRowClicked}
             />
         );
     };
@@ -181,6 +194,15 @@ const Table = props => {
                     openExportDialog={openExportDialog}
                     setOpenExportDialog={setOpenExportDialog}
                     onDownload={onDownload}
+                />
+            )}
+            {rowCustomAction.length > 0 && (
+                <RowCustomActionDialog
+                    openRowCustomActionDialog={openRowCustomActionDialog}
+                    setOpenRowCustomActionDialog={setOpenRowCustomActionDialog}
+                    rowCustomAction={rowCustomAction}
+                    rowClicked={rowClicked}
+                    onClickRowAction={onClickRowAction}
                 />
             )}
         </>

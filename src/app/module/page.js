@@ -38,6 +38,7 @@ export default function Module() {
                 enableSorting={true}
                 onChangePage={() => {}}
                 onClickRowAction={() => {}}
+                onClickToolbarAction={() => {}}
                 onDelete={() => {}}
                 onSearch={() => {}}
                 onSelect={() => {}}

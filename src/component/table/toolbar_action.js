@@ -2,7 +2,7 @@ import {actionType} from '@/constant';
 import {Box, Button} from '@mui/material';
 
 const ToolbarAction = props => {
-    const {onClickToolbarAction} = props;
+    const {onClickToolbarAction, toolbarCustomAction} = props;
     return (
         <Box
             sx={{
@@ -18,6 +18,16 @@ const ToolbarAction = props => {
                 size="small">
                 Create New Data
             </Button>
+            {toolbarCustomAction.map((action, index) => (
+                <Button
+                    key={index}
+                    color="primary"
+                    onClick={() => onClickToolbarAction(action)}
+                    variant="contained"
+                    size="small">
+                    {action.label}
+                </Button>
+            ))}
         </Box>
     );
 };

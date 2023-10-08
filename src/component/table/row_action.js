@@ -1,18 +1,31 @@
 import {actionType} from '@/constant';
-import {Delete, Edit, Info, MoreVert} from '@mui/icons-material';
+import {Delete, Description, Edit, Info} from '@mui/icons-material';
 import {Box, IconButton} from '@mui/material';
 
 const RowAction = props => {
-    const {onClickRowAction, action, row, isSupportAction, columnKey} = props;
+    const {
+        onClickRowAction,
+        action,
+        row,
+        isSupportAction,
+        rowCustomAction,
+        setOpenRowCustomActionDialog,
+        setRowClicked,
+    } = props;
+
+    const onClickCustomAction = () => {
+        setOpenRowCustomActionDialog(true);
+        setRowClicked(row.original);
+    };
 
     return (
         <Box sx={{display: 'flex', alignItems: 'center'}}>
-            {isSupportAction() && action.find(item => item.type === actionType.insert.value) && (
+            {isSupportAction() && action.find(item => item.type === actionType.update.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            action: actionType.insert,
-                            key: row.original[columnKey],
+                            action: actionType.update,
+                            row: row.original,
                         })
                     }
                     size="small">
@@ -24,7 +37,7 @@ const RowAction = props => {
                     onClick={() =>
                         onClickRowAction({
                             action: actionType.delete,
-                            key: row.original[columnKey],
+                            row: row.original,
                         })
                     }
                     size="small">
@@ -36,16 +49,18 @@ const RowAction = props => {
                     onClick={() =>
                         onClickRowAction({
                             action: actionType.detail,
-                            key: row.original[columnKey],
+                            row: row.original,
                         })
                     }
                     size="small">
                     <Info fontSize="11" />
                 </IconButton>
             )}
-            <IconButton onClick={() => {}} size="small">
-                <MoreVert fontSize="11" />
-            </IconButton>
+            {rowCustomAction.length > 0 && (
+                <IconButton onClick={onClickCustomAction} size="small">
+                    <Description fontSize="11" />
+                </IconButton>
+            )}
         </Box>
     );
 };
