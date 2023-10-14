@@ -13,7 +13,7 @@ const ShortText = props => {
                 variant="outlined"
                 size="small"
                 fullWidth
-                value={value}
+                value={value || ''}
                 error={error.status}
                 helperText={error.message}
                 onChange={e => onChange(e.target.value)}

@@ -15,7 +15,7 @@ const LongText = props => {
                 fullWidth
                 multiline
                 rows={rows}
-                value={value}
+                value={value || ''}
                 error={error.status}
                 helperText={error.message}
                 onChange={e => onChange(e.target.value)}

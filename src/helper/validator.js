@@ -8,7 +8,7 @@ const Validator = (rules, value) => {
     };
 
     const required = () => {
-        return !value.trim() ? true : false;
+        return !value ? true : false;
     };
 
     const specialCharacter = () => {

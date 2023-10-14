@@ -2,16 +2,22 @@ import {useState} from 'react';
 import {Table} from '@/component';
 import mockColumns from '@/mock/field/column';
 import {Box, Button, Drawer, colors} from '@mui/material';
-import {Dropdown, Number, ShortText} from '@/component/input';
+import {Dropdown, Number, ShortText, Toggle} from '@/component/input';
 import {inputType} from '@/constant';
+import dataType from '@/constant/data_type';
 
 const FieldForm = () => {
     const [openFieldForm, setOpenFieldForm] = useState(false);
     const [fieldName, setFieldName] = useState('');
     const [fieldLabel, setFieldLabel] = useState('');
-    const [fieldType, setFieldType] = useState(null);
+    const [controlType, setControlType] = useState(null);
     const [fieldSettings, setFieldSettings] = useState({
         size: null,
+        dataType: null,
+        tableRef: null,
+        tableRefKey: null,
+        tableRefName: null,
+        isPrimary: false,
     });
 
     const openFieldFormActionType = 6;
@@ -21,14 +27,52 @@ const FieldForm = () => {
             label: 'Add New Field',
         },
     ];
-    const typeOptions = Object.values(inputType);
+    const controlTypeOptions = Object.values(inputType);
+
+    const dataTypeOptions = () => {
+        if (controlType.value === inputType.number.value)
+            return Object.values(dataType).filter(
+                type =>
+                    type.value === dataType.autoIncrement.value ||
+                    type.value === dataType.int.value,
+            );
+
+        if (controlType.value === inputType.shortText.value)
+            return Object.values(dataType).filter(type => type.value === dataType.varchar.value);
+
+        if (controlType.value === inputType.longText.value)
+            return Object.values(dataType).filter(
+                type => type.value === dataType.text.value || type.value === dataType.varchar.value,
+            );
+    };
+
+    const changeSettingValue = (key, value) => {
+        setFieldSettings(prevState => ({...prevState, [key]: value}));
+    };
+
+    const onClickToolbarAction = action => {
+        if (action.type === openFieldFormActionType) setOpenFieldForm(true);
+    };
+
+    const onChangeControlType = value => {
+        setFieldSettings({
+            size: null,
+            dataType: null,
+            tableRef: null,
+            tableRefKey: null,
+            tableRefName: null,
+            isPrimary: false,
+        });
+        setControlType(value);
+    };
 
     const sizeSettings = () => {
         if (
-            fieldType.value !== inputType.text.value &&
-            fieldType.value !== inputType.long_text.value
+            controlType.value !== inputType.shortText.value &&
+            controlType.value !== inputType.longText.value
         )
             return false;
+
         return (
             <Box>
                 <Number
@@ -41,12 +85,72 @@ const FieldForm = () => {
         );
     };
 
-    const changeSettingValue = (key, value) => {
-        setFieldSettings(prevState => ({...prevState, [key]: value}));
+    const dataTypeSettings = () => {
+        if (
+            controlType.value !== inputType.shortText.value &&
+            controlType.value !== inputType.longText.value &&
+            controlType.value !== inputType.number.value
+        )
+            return false;
+
+        return (
+            <Dropdown
+                label="Data Type"
+                options={dataTypeOptions()}
+                value={fieldSettings.dataType}
+                onChange={value => changeSettingValue('dataType', value)}
+                rules="required"
+            />
+        );
     };
 
-    const onClickToolbarAction = action => {
-        if (action.type === openFieldFormActionType) setOpenFieldForm(true);
+    const refTableSettings = () => {
+        if (
+            controlType.value !== inputType.dropdown.value &&
+            controlType.value !== inputType.checkbox.value
+        )
+            return false;
+        return (
+            <Box display="flex" flexDirection="column" gap={2}>
+                <ShortText
+                    label="Table Reference"
+                    value={fieldSettings.tableRef}
+                    onChange={value => changeSettingValue('tableRef', value)}
+                    rules="required"
+                />
+                <ShortText
+                    label="Table Reference Key"
+                    value={fieldSettings.tableRefKey}
+                    onChange={value => changeSettingValue('tableRefKey', value)}
+                    rules="required"
+                />
+                <ShortText
+                    label="Table Reference Name"
+                    value={fieldSettings.tableRefName}
+                    onChange={value => changeSettingValue('tableRefName', value)}
+                    rules="required"
+                />
+            </Box>
+        );
+    };
+
+    const isPrimarySetting = () => {
+        if (
+            controlType.value !== inputType.number.value &&
+            controlType.value !== inputType.shortText.value &&
+            controlType.value !== inputType.longText.value
+        )
+            return false;
+
+        return (
+            <Box marginTop={1}>
+                <Toggle
+                    label="Is Primary Key"
+                    value={fieldSettings.isPrimary}
+                    onChange={value => changeSettingValue('isPrimary', value)}
+                />
+            </Box>
+        );
     };
 
     return (
@@ -87,20 +191,26 @@ const FieldForm = () => {
                         />
                         <Dropdown
                             label="Control Type"
-                            options={typeOptions}
-                            value={fieldType}
-                            onChange={setFieldType}
+                            options={controlTypeOptions}
+                            value={controlType}
+                            onChange={onChangeControlType}
                             rules="required"
                         />
                     </Box>
-                    {fieldType && (
+                    {controlType && (
                         <Box
                             marginY={2}
                             border={1}
                             padding={2}
                             borderRadius={1}
-                            borderColor={colors.grey[300]}>
+                            borderColor={colors.grey[300]}
+                            display="flex"
+                            flexDirection="column"
+                            gap={2}>
+                            {dataTypeSettings()}
                             {sizeSettings()}
+                            {refTableSettings()}
+                            {isPrimarySetting()}
                         </Box>
                     )}
                 </Box>

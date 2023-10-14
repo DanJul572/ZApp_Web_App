@@ -27,7 +27,7 @@ const Dropdown = props => {
         <Box>
             <Autocomplete
                 onChange={(e, value) => onChange(value)}
-                options={options}
+                options={options.length ? options : []}
                 renderInput={params => renderInput(params)}
                 size="small"
                 value={value}

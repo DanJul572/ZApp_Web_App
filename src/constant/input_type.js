@@ -1,9 +1,9 @@
 const inputType = {
-    text: {
+    shortText: {
         value: 1,
         label: 'Short Text',
     },
-    long_text: {
+    longText: {
         value: 2,
         label: 'Long Text',
     },
