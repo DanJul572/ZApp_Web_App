@@ -1,27 +1,25 @@
 import Validator from '@/helper/validator';
-import {TextField, Typography} from '@mui/material';
+import {Box, TextField, Typography} from '@mui/material';
 
-const LongText = props => {
-    const {label, onChange, size, value, rows, rules} = props;
+const ShortText = props => {
+    const {label, onChange, value, rules} = props;
 
     const error = Validator(rules, value);
 
     return (
-        <>
+        <Box>
             <Typography fontSize={12}>{label}</Typography>
             <TextField
                 variant="outlined"
-                size={size}
+                size="small"
                 fullWidth
-                multiline
-                rows={rows}
                 value={value}
                 error={error.status}
                 helperText={error.message}
                 onChange={e => onChange(e.target.value)}
             />
-        </>
+        </Box>
     );
 };
 
-export default LongText;
+export default ShortText;

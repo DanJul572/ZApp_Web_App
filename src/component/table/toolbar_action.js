@@ -2,8 +2,8 @@ import {actionType} from '@/constant';
 import {Box, Button} from '@mui/material';
 
 const ToolbarAction = props => {
-    const {onClickToolbarAction, toolbarCustomAction} = props;
-    
+    const {onClickToolbarAction, toolbarCustomAction, isSupportAddAction} = props;
+
     return (
         <Box
             sx={{
@@ -12,13 +12,15 @@ const ToolbarAction = props => {
                 p: '0.5rem',
                 flexWrap: 'wrap',
             }}>
-            <Button
-                color="primary"
-                onClick={() => onClickToolbarAction(actionType.insert)}
-                variant="contained"
-                size="small">
-                Create New Data
-            </Button>
+            {isSupportAddAction && (
+                <Button
+                    color="primary"
+                    onClick={() => onClickToolbarAction(actionType.insert)}
+                    variant="contained"
+                    size="small">
+                    Create New Data
+                </Button>
+            )}
             {toolbarCustomAction.map((action, index) => (
                 <Button
                     key={index}

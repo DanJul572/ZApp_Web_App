@@ -1,0 +1,44 @@
+[
+    {
+        "accessorKey": "id",
+        "header": "ID",
+        "size": 100,
+        "minSize": 100,
+        "maxSize": 200
+    },
+    {
+        "accessorKey": "field_name",
+        "header": "Name",
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
+    },
+    {
+        "accessorKey": "field_label",
+        "header": "Label",
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
+    },
+    {
+        "accessorKey": "field_type",
+        "header": "Type",
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
+    },
+    {
+        "accessorKey": "field_size",
+        "header": "Size",
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
+    },
+    {
+        "accessorKey": "is_primary_key",
+        "header": "Is Primary Key",
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
+    }
+]

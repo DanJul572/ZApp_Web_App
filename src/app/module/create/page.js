@@ -1,8 +1,10 @@
 'use client';
-import {LongText, ShortText} from '@/component/input';
-import {Box, Button, Grid} from '@mui/material';
+import {Box, Button} from '@mui/material';
 import {useRouter} from 'next/navigation';
 import {useState} from 'react';
+
+import ModuleForm from './module_form';
+import FieldForm from './field_form';
 
 const CreateModule = () => {
     const {back} = useRouter();
@@ -25,39 +27,15 @@ const CreateModule = () => {
                     Cancel
                 </Button>
             </Box>
-            <Box marginTop={2}>
-                <Grid container spacing={2}>
-                    <Grid item display="flex" flexDirection="column" gap={2} xs={6}>
-                        <Box>
-                            <ShortText
-                                label="Module Name"
-                                size="small"
-                                onChange={setModuleName}
-                                value={moduleName}
-                                rules="required|special_character|start_numeric"
-                            />
-                        </Box>
-                        <Box>
-                            <ShortText
-                                label="Module Label"
-                                size="small"
-                                onChange={setModuleLabel}
-                                value={moduleLabel}
-                                rules="required|start_numeric"
-                            />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <LongText
-                            label="Module Description"
-                            size="small"
-                            onChange={setModuleDescription}
-                            value={moduleDescription}
-                            rows={4}
-                        />
-                    </Grid>
-                </Grid>
-            </Box>
+            <ModuleForm
+                moduleName={moduleName}
+                setModuleName={setModuleName}
+                moduleLabel={moduleLabel}
+                setModuleLabel={setModuleLabel}
+                moduleDescription={moduleDescription}
+                setModuleDescription={setModuleDescription}
+            />
+            <FieldForm />
         </>
     );
 };

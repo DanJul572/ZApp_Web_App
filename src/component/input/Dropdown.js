@@ -1,10 +1,10 @@
 import Validator from '@/helper/validator';
-import {Autocomplete, List, TextField, Typography} from '@mui/material';
+import {Autocomplete, Box, List, TextField, Typography} from '@mui/material';
 
 const Dropdown = props => {
-    const {label, onChange, options, size, value, rules} = props;
+    const {label, onChange, options, value, rules} = props;
 
-    const error = Validator(rules, value ? value.value : '');
+    const error = Validator(rules, value ? value.value.toString() : '');
 
     const renderInput = params => {
         return (
@@ -24,16 +24,17 @@ const Dropdown = props => {
     };
 
     return (
-        <>
+        <Box>
             <Autocomplete
                 onChange={(e, value) => onChange(value)}
                 options={options}
                 renderInput={params => renderInput(params)}
-                size={size}
+                size="small"
                 value={value}
                 renderOption={(props, option) => renderOptions(props, option)}
+                isOptionEqualToValue={(option, value) => option.value === value.value}
             />
-        </>
+        </Box>
     );
 };
 

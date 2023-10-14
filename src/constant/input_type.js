@@ -1,31 +1,23 @@
 const inputType = {
     text: {
         value: 1,
-        label: 'Text',
+        label: 'Short Text',
     },
-    number: {
+    long_text: {
         value: 2,
-        label: 'Number',
+        label: 'Long Text',
     },
     dropdown: {
         value: 3,
         label: 'Dropdown',
     },
-    radio: {
-        value: 4,
-        label: 'Radio',
-    },
     checkbox: {
-        value: 5,
+        value: 4,
         label: 'Checkbox',
     },
-    file: {
-        value: 6,
-        label: 'File',
-    },
-    toggle: {
-        value: 7,
-        label: 'Toogle',
+    number: {
+        value: 5,
+        label: 'Number',
     },
 };
 

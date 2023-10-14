@@ -82,6 +82,10 @@ const Table = props => {
         return action.filter(item => item.type !== actionType.insert.value).length ? true : false;
     };
 
+    const isSupportAddAction = () => {
+        return action.find(item => item.type === actionType.insert.value) ? true : false;
+    };
+
     const displayColumnDefOptions = () => {
         if (!isSupportRowAction()) return false;
         return {
@@ -92,11 +96,12 @@ const Table = props => {
     };
 
     const toolbarAction = () => {
-        if (!action.length || !action.find(item => item.type === actionType.insert.value)) return;
+        if (!toolbarCustomAction.length && !isSupportAddAction()) return;
         return (
             <ToolbarAction
                 onClickToolbarAction={onClickToolbarAction}
                 toolbarCustomAction={toolbarCustomAction}
+                isSupportAddAction={isSupportAddAction()}
             />
         );
     };
