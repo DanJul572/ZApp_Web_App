@@ -3,8 +3,11 @@ import {Table} from '@/component';
 import mockColumns from '@/mock/module/columns';
 import mockRows from '@/mock/module/rows';
 import actionType from '@/constant/action_type';
+import {useRouter} from 'next/navigation';
 
 export default function Module() {
+    const {push} = useRouter();
+
     const actionList = [
         {
             type: actionType.insert.value,
@@ -24,6 +27,10 @@ export default function Module() {
         },
     ];
 
+    const onCLickToolbarAction = (action) => {
+        if (action.value === actionType.insert.value) push('/module/create');
+    };
+
     return (
         <div>
             <Table
@@ -38,7 +45,7 @@ export default function Module() {
                 enableSorting={true}
                 onChangePage={() => {}}
                 onClickRowAction={() => {}}
-                onClickToolbarAction={() => {}}
+                onClickToolbarAction={onCLickToolbarAction}
                 onDelete={() => {}}
                 onSearch={() => {}}
                 onSelect={() => {}}

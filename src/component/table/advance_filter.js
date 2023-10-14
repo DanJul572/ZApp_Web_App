@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {Button, Dialog, DialogActions, DialogContent} from '@mui/material';
 import {QueryBuilder, formatQuery} from 'react-querybuilder';
 import 'react-querybuilder/dist/query-builder.css';
@@ -7,13 +7,9 @@ const AdvanceFilter = props => {
     const {columns, format, onAdvanceFilter, openAdvanceFilterDialog, setOpenAdvanceFilterDialog} =
         props;
 
-    const [fields, setFields] = useState([]);
     const [query, setQuery] = useState(null);
 
-    useEffect(() => {
-        let newField = columns.map(column => ({name: column.accessorKey, label: column.header}));
-        setFields(newField);
-    }, [columns]);
+    const fields = columns.map(column => ({name: column.accessorKey, label: column.header}));
 
     return (
         <Dialog open={openAdvanceFilterDialog}>

@@ -1,4 +1,3 @@
-'use client';
 import React, {useEffect, useState} from 'react';
 import {MaterialReactTable} from 'material-react-table';
 import {actionType} from '@/constant';
@@ -68,27 +67,23 @@ const Table = props => {
     const muiTablePaginationProps = {rowsPerPageOptions: [10]};
 
     const newColumns = columns.map(column => {
-        if (column.footer) {
-            return {
-                ...column,
-                Footer: () => (
-                    <Stack>
-                        {column.footer.label} :<Box color="warning.main">{column.footer.value}</Box>
-                    </Stack>
-                ),
-            };
-        } else {
-            return column;
-        }
+        if (!column.footer) return column;
+        return {
+            ...column,
+            Footer: () => (
+                <Stack>
+                    {column.footer.label} :<Box color="warning.main">{column.footer.value}</Box>
+                </Stack>
+            ),
+        };
     });
 
-    const isSupportAction = () => {
+    const isSupportRowAction = () => {
         return action.filter(item => item.type !== actionType.insert.value).length ? true : false;
     };
 
     const displayColumnDefOptions = () => {
-        if (!action.length && !action.filter(item => item.type !== actionType.insert.value).length)
-            return false;
+        if (!isSupportRowAction()) return false;
         return {
             'mrt-row-actions': {
                 size: 120,
@@ -129,7 +124,7 @@ const Table = props => {
                 onClickRowAction={onClickRowAction}
                 action={action}
                 row={row}
-                isSupportAction={isSupportAction}
+                isSupportRowAction={isSupportRowAction}
                 columnKey={columnKey}
                 rowCustomAction={rowCustomAction}
                 setOpenRowCustomActionDialog={setOpenRowCustomActionDialog}
@@ -164,7 +159,7 @@ const Table = props => {
                 enableColumnFilters={enableFilter}
                 enableColumnResizing={enableColumnResizing}
                 enableDensityToggle={enableDensityToggle}
-                enableEditing={isSupportAction}
+                enableEditing={isSupportRowAction}
                 enableFilterMatchHighlighting={false}
                 enableFullScreenToggle={enableFullScreenToggle}
                 enableGlobalFilter={enableSearch}

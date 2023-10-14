@@ -38,6 +38,7 @@ const ExportDialog = props => {
                     value={exportSelectionType}
                     isOptionEqualToValue={(option, value) => option.value === value.value}
                     size="small"
+                    rules="required"
                 />
                 <Dropdown
                     type={inputType.dropdown.value}
@@ -47,6 +48,7 @@ const ExportDialog = props => {
                     value={exportExtentionType}
                     isOptionEqualToValue={(option, value) => option.value === value.value}
                     size="small"
+                    rules="required"
                 />
             </DialogContent>
             <DialogActions>

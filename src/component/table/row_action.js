@@ -7,7 +7,7 @@ const RowAction = props => {
         onClickRowAction,
         action,
         row,
-        isSupportAction,
+        isSupportRowAction,
         rowCustomAction,
         setOpenRowCustomActionDialog,
         setRowClicked,
@@ -20,7 +20,7 @@ const RowAction = props => {
 
     return (
         <Box sx={{display: 'flex', alignItems: 'center'}}>
-            {isSupportAction() && action.find(item => item.type === actionType.update.value) && (
+            {isSupportRowAction() && action.find(item => item.type === actionType.update.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
@@ -32,7 +32,7 @@ const RowAction = props => {
                     <Edit fontSize="11" />
                 </IconButton>
             )}
-            {isSupportAction() && action.find(item => item.type === actionType.delete.value) && (
+            {isSupportRowAction() && action.find(item => item.type === actionType.delete.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
@@ -44,7 +44,7 @@ const RowAction = props => {
                     <Delete fontSize="11" />
                 </IconButton>
             )}
-            {isSupportAction() && action.find(item => item.type === actionType.detail.value) && (
+            {isSupportRowAction() && action.find(item => item.type === actionType.detail.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({

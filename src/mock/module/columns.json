@@ -4,11 +4,7 @@
         "header": "ID",
         "size": 100,
         "minSize": 100,
-        "maxSize": 200,
-        "footer": {
-            "label": "SUM ID",
-            "value": 112
-        }
+        "maxSize": 200
     },
     {
         "accessorKey": "name",
