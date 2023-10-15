@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {Table} from '@/component';
 import mockColumns from '@/mock/field/column';
 import {Box, Button, Drawer, colors} from '@mui/material';
