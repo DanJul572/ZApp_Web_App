@@ -5,6 +5,7 @@ import {Box, Button, Drawer, colors} from '@mui/material';
 import {Dropdown, ShortText, Toggle} from '@/component/input';
 import {actionType} from '@/constant';
 import dataType from '@/constant/data_type';
+import {Confirm} from '@/component/dialog';
 
 const FieldForm = props => {
     const {fieldRows, setFieldRows} = props;
@@ -23,6 +24,8 @@ const FieldForm = props => {
         multiSelect: false,
     });
     const [primaryExist, setPrimaryExist] = useState(false);
+    const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
+    const [rowSelected, setRowSelected] = useState(false);
 
     const openFieldFormActionType = 6;
     const toolbarCustomAction = [
@@ -60,11 +63,16 @@ const FieldForm = props => {
         });
     };
 
-    const deleteField = row => {
-        if (row.primaryKey) setPrimaryExist(false);
+    const deleteField = () => {
+        if (rowSelected.primaryKey) setPrimaryExist(false);
 
-        const newFieldrows = fieldRows.filter(field => field.id !== row.id);
+        const newFieldrows = fieldRows.filter(field => field.id !== rowSelected.id);
         setFieldRows(newFieldrows);
+    };
+
+    const deleteConfirmation = confirm => {
+        if (confirm) deleteField();
+        setOpenConfirmDialog(false);
     };
 
     const onClickToolbarAction = action => {
@@ -78,7 +86,10 @@ const FieldForm = props => {
     };
 
     const onClickRowAction = data => {
-        if (data.action.value === actionType.delete.value) deleteField(data.row);
+        if (data.action.value === actionType.delete.value) {
+            setOpenConfirmDialog(true);
+            setRowSelected(data.row);
+        }
     };
 
     const onChangeFieldType = value => {
@@ -246,6 +257,14 @@ const FieldForm = props => {
                     {fieldSettingsComponent()}
                 </Box>
             </Drawer>
+            <Confirm
+                open={openConfirmDialog}
+                title="Delete Field"
+                text="Are you sure you want to delete this field ?"
+                confirmButton="Delete"
+                cancelButton="Cancel"
+                onConfirm={deleteConfirmation}
+            />
         </>
     );
 };
