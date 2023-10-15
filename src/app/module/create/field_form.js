@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Table} from '@/component';
 import mockColumns from '@/mock/field/column';
 import {Box, Button, Drawer, colors} from '@mui/material';
-import {Dropdown, Number, ShortText, Toggle} from '@/component/input';
+import {Dropdown, ShortText, Toggle} from '@/component/input';
 import {actionType} from '@/constant';
 import dataType from '@/constant/data_type';
 
@@ -14,7 +14,6 @@ const FieldForm = props => {
     const [fieldLabel, setFieldLabel] = useState(null);
     const [fieldType, setFieldType] = useState(null);
     const [fieldSettings, setFieldSettings] = useState({
-        size: null,
         tableRef: null,
         tableRefKey: null,
         tableRefName: null,
@@ -23,6 +22,7 @@ const FieldForm = props => {
         updateCascade: false,
         multiSelect: false,
     });
+    const [primaryExist, setPrimaryExist] = useState(false);
 
     const openFieldFormActionType = 6;
     const toolbarCustomAction = [
@@ -50,7 +50,6 @@ const FieldForm = props => {
 
     const clearFieldSettings = () => {
         setFieldSettings({
-            size: null,
             tableRef: null,
             tableRefKey: null,
             tableRefName: null,
@@ -61,8 +60,10 @@ const FieldForm = props => {
         });
     };
 
-    const deleteField = id => {
-        const newFieldrows = fieldRows.filter(field => field.id !== id);
+    const deleteField = row => {
+        if (row.primaryKey) setPrimaryExist(false);
+
+        const newFieldrows = fieldRows.filter(field => field.id !== row.id);
         setFieldRows(newFieldrows);
     };
 
@@ -77,7 +78,7 @@ const FieldForm = props => {
     };
 
     const onClickRowAction = data => {
-        if (data.action.value === actionType.delete.value) deleteField(data.row.id);
+        if (data.action.value === actionType.delete.value) deleteField(data.row);
     };
 
     const onChangeFieldType = value => {
@@ -86,6 +87,8 @@ const FieldForm = props => {
     };
 
     const onSave = () => {
+        if (fieldSettings.primaryKey) setPrimaryExist(true);
+
         const newId = fieldRows.reduce((max, item) => (item.id > max ? item.id : max), 0) + 1;
         const newRows = {
             id: newId,
@@ -98,26 +101,10 @@ const FieldForm = props => {
             deleteCascade: fieldSettings.deleteCascade,
             updateCascade: fieldSettings.updateCascade,
             multiSelect: fieldSettings.multiSelect,
-            size: fieldSettings.size,
             primaryKey: fieldSettings.primaryKey,
         };
         setFieldRows([...fieldRows, newRows]);
         setOpenFieldForm(false);
-    };
-
-    const sizeSettings = () => {
-        if (fieldType.value !== dataType.varchar.value) return false;
-
-        return (
-            <Box>
-                <Number
-                    label="Size"
-                    value={fieldSettings.size}
-                    rules="required"
-                    onChange={value => changeSettingValue('size', value)}
-                />
-            </Box>
-        );
     };
 
     const refTableSettings = () => {
@@ -167,7 +154,8 @@ const FieldForm = props => {
     const primaryKeySetting = () => {
         if (
             fieldType.value !== dataType.autoIncrement.value &&
-            fieldType.value !== dataType.integer.value
+            fieldType.value !== dataType.integer.value &&
+            fieldType.value !== dataType.varchar.value
         )
             return false;
 
@@ -176,8 +164,36 @@ const FieldForm = props => {
                 <Toggle
                     label="Is Primary Key"
                     value={fieldSettings.primaryKey}
+                    disabled={primaryExist}
                     onChange={value => changeSettingValue('primaryKey', value)}
                 />
+            </Box>
+        );
+    };
+
+    const fieldSettingsComponent = () => {
+        if (!fieldType) return false;
+
+        if (
+            fieldType.value !== dataType.autoIncrement.value &&
+            fieldType.value !== dataType.integer.value &&
+            fieldType.value !== dataType.varchar.value &&
+            fieldType.value !== dataType.foreignKey.value
+        )
+            return false;
+
+        return (
+            <Box
+                marginY={2}
+                border={1}
+                padding={2}
+                borderRadius={1}
+                borderColor={colors.grey[300]}
+                display="flex"
+                flexDirection="column"
+                gap={2}>
+                {refTableSettings()}
+                {primaryKeySetting()}
             </Box>
         );
     };
@@ -227,21 +243,7 @@ const FieldForm = props => {
                             rules="required"
                         />
                     </Box>
-                    {fieldType && (
-                        <Box
-                            marginY={2}
-                            border={1}
-                            padding={2}
-                            borderRadius={1}
-                            borderColor={colors.grey[300]}
-                            display="flex"
-                            flexDirection="column"
-                            gap={2}>
-                            {sizeSettings()}
-                            {refTableSettings()}
-                            {primaryKeySetting()}
-                        </Box>
-                    )}
+                    {fieldSettingsComponent()}
                 </Box>
             </Drawer>
         </>

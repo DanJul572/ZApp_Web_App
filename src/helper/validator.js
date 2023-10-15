@@ -46,7 +46,7 @@ const Validator = (rules, value) => {
 
         if (rule === 'field_name' && fieldName()) {
             error.status = true;
-            error.message = 'Field name is invalid';
+            error.message = 'Name is invalid';
             break;
         }
     }

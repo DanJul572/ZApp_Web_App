@@ -64,14 +64,6 @@
         "maxSize": 300
     },
     {
-        "accessorKey": "size",
-        "header": "Size",
-        "type": 4,
-        "size": 50,
-        "minSize": 50,
-        "maxSize": 100
-    },
-    {
         "accessorKey": "primaryKey",
         "header": "Primary Key",
         "type": 5,

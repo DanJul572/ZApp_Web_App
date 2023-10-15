@@ -1,12 +1,20 @@
 import {Box, Switch, Typography} from '@mui/material';
 
 const Toggle = props => {
-    const {label, onChange, value} = props;
+    const {label, onChange, value, disabled} = props;
 
     return (
         <Box>
-            <Typography fontSize={12}>{label}</Typography>
-            <Switch checked={value} value={value} onChange={() => onChange(!value)} size="small" />
+            <Typography fontSize={12} style={{opacity: disabled ? 0.5 : 1}}>
+                {label}
+            </Typography>
+            <Switch
+                checked={value}
+                value={value}
+                onChange={() => onChange(!value)}
+                disabled={disabled}
+                size="small"
+            />
         </Box>
     );
 };
