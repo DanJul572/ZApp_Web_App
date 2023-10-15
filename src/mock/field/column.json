@@ -2,41 +2,79 @@
     {
         "accessorKey": "id",
         "header": "ID",
+        "type": 1,
         "size": 100,
         "minSize": 100,
         "maxSize": 200
     },
     {
-        "accessorKey": "field_name",
+        "accessorKey": "name",
         "header": "Name",
+        "type": 2,
         "size": 150,
         "minSize": 150,
         "maxSize": 300
     },
     {
-        "accessorKey": "field_label",
+        "accessorKey": "label",
         "header": "Label",
+        "type": 2,
         "size": 150,
         "minSize": 150,
         "maxSize": 300
     },
     {
-        "accessorKey": "field_type",
-        "header": "Type",
+        "accessorKey": "dataType",
+        "header": "Data Type",
+        "type": 6,
         "size": 150,
         "minSize": 150,
         "maxSize": 300
     },
     {
-        "accessorKey": "field_size",
+        "accessorKey": "tableRef",
+        "header": "Table Reference",
+        "type": 2,
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
+    },
+    {
+        "accessorKey": "multiSelect",
+        "header": "Multi Select",
+        "type": 5,
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
+    },
+    {
+        "accessorKey": "deleteCascade",
+        "header": "Delete Cascade",
+        "type": 5,
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
+    },
+    {
+        "accessorKey": "updateCascade",
+        "header": "Updated Cascade",
+        "type": 5,
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300
+    },
+    {
+        "accessorKey": "size",
         "header": "Size",
-        "size": 150,
-        "minSize": 150,
-        "maxSize": 300
+        "type": 4,
+        "size": 50,
+        "minSize": 50,
+        "maxSize": 100
     },
     {
-        "accessorKey": "is_primary_key",
-        "header": "Is Primary Key",
+        "accessorKey": "primaryKey",
+        "header": "Primary Key",
+        "type": 5,
         "size": 150,
         "minSize": 150,
         "maxSize": 300

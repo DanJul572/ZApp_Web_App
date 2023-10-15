@@ -19,6 +19,10 @@ const Validator = (rules, value) => {
         return value.match(/^[0-9]/) ? true : false;
     };
 
+    const fieldName = () => {
+        return !value.match(/^[a-zA-Z][a-zA-Z0-9_]*$/) ? true : false;
+    };
+
     for (let index = 0; index < rules.length; index++) {
         const rule = rules[index];
 
@@ -37,6 +41,12 @@ const Validator = (rules, value) => {
         if (rule === 'start_numeric' && startNumeric()) {
             error.status = true;
             error.message = 'Must not start with a number';
+            break;
+        }
+
+        if (rule === 'field_name' && fieldName()) {
+            error.status = true;
+            error.message = 'Field name is invalid';
             break;
         }
     }

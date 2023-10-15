@@ -11,9 +11,17 @@ const dataType = {
         value: 3,
         label: 'Text',
     },
-    int: {
+    integer: {
         value: 4,
         label: 'Integer',
+    },
+    boolean: {
+        value: 5,
+        label: 'Boolean',
+    },
+    foreignKey: {
+        value: 6,
+        label: 'Foreign Key',
     },
 };
 

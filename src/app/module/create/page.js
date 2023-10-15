@@ -9,9 +9,10 @@ import FieldForm from './field_form';
 const CreateModule = () => {
     const {back} = useRouter();
 
-    const [moduleName, setModuleName] = useState('');
-    const [moduleLabel, setModuleLabel] = useState('');
-    const [moduleDescription, setModuleDescription] = useState('');
+    const [moduleName, setModuleName] = useState(null);
+    const [moduleLabel, setModuleLabel] = useState(null);
+    const [moduleDescription, setModuleDescription] = useState(null);
+    const [fieldRows, setFieldRows] = useState([]);
 
     const onCancel = () => {
         back();
@@ -35,7 +36,7 @@ const CreateModule = () => {
                 moduleDescription={moduleDescription}
                 setModuleDescription={setModuleDescription}
             />
-            <FieldForm />
+            <FieldForm fieldRows={fieldRows} setFieldRows={setFieldRows} />
         </>
     );
 };

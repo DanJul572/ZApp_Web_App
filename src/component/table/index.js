@@ -8,6 +8,8 @@ import RowAction from './row_action';
 import ToolbarAction from './toolbar_action';
 import RowCustomActionDialog from './custom_action_dialog';
 import {Box, Stack} from '@mui/material';
+import {boolean, numeric, tableReference} from '@/helper/data_display';
+import dataType from '@/constant/data_type';
 
 const Table = props => {
     const {
@@ -67,16 +69,35 @@ const Table = props => {
     const muiTablePaginationProps = {rowsPerPageOptions: [10]};
 
     const newColumns = columns.map(column => {
-        if (!column.footer) return column;
-        return {
-            ...column,
-            Footer: () => (
-                <Stack>
-                    {column.footer.label} :<Box color="warning.main">{column.footer.value}</Box>
-                </Stack>
-            ),
-        };
+        column.Cell = ({cell}) => rowDisplay(cell, column.type);
+
+        if (column.footer) column.Footer = () => columnFooter(column.footer);
+
+        return column;
     });
+
+    const rowDisplay = (cell, type) => {
+        const value = cell.getValue();
+
+        if (type === dataType.foreignKey.value) return tableReference(value);
+
+        if (type === dataType.boolean.value) return boolean(value);
+
+        if (type === dataType.autoIncrement.value || type === dataType.integer.value)
+            return numeric(value);
+
+        return value;
+    };
+
+    const columnFooter = footer => {
+        if (!footer) return false;
+
+        return (
+            <Stack>
+                {footer.label} :<Box color="warning.main">{footer.value}</Box>
+            </Stack>
+        );
+    };
 
     const isSupportRowAction = () => {
         return action.filter(item => item.type !== actionType.insert.value).length ? true : false;

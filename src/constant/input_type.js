@@ -11,13 +11,13 @@ const inputType = {
         value: 3,
         label: 'Dropdown',
     },
-    checkbox: {
-        value: 4,
-        label: 'Checkbox',
-    },
     number: {
-        value: 5,
+        value: 4,
         label: 'Number',
+    },
+    toggle: {
+        value: 6,
+        label: 'Toggle',
     },
 };
 
