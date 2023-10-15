@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Table} from '@/component';
 import mockColumns from '@/mock/field/column';
 import {Box, Button, Drawer, colors} from '@mui/material';
@@ -6,6 +6,7 @@ import {Dropdown, ShortText, Toggle} from '@/component/input';
 import {actionType} from '@/constant';
 import dataType from '@/constant/data_type';
 import {Confirm} from '@/component/dialog';
+import {generateValidation} from '@/helper/validator';
 
 const FieldForm = props => {
     const {fieldRows, setFieldRows} = props;
@@ -26,6 +27,7 @@ const FieldForm = props => {
     const [primaryExist, setPrimaryExist] = useState(false);
     const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
     const [rowSelected, setRowSelected] = useState(false);
+    const [fieldNameRule, setFieldNameRule] = useState('required|field_name');
 
     const openFieldFormActionType = 6;
     const toolbarCustomAction = [
@@ -68,6 +70,7 @@ const FieldForm = props => {
 
         const newFieldrows = fieldRows.filter(field => field.id !== rowSelected.id);
         setFieldRows(newFieldrows);
+        changeFieldNameRule(actionType.delete.value, rowSelected.name);
     };
 
     const deleteConfirmation = confirm => {
@@ -97,6 +100,15 @@ const FieldForm = props => {
         setFieldType(value);
     };
 
+    const changeFieldNameRule = (action, name) => {
+        const newRule = generateValidation(action, 'same', name, fieldNameRule);
+        setFieldNameRule(newRule);
+    };
+
+    useEffect(() => {
+        console.log(fieldNameRule);
+    }, [fieldNameRule]);
+
     const onSave = () => {
         if (fieldSettings.primaryKey) setPrimaryExist(true);
 
@@ -114,6 +126,7 @@ const FieldForm = props => {
             multiSelect: fieldSettings.multiSelect,
             primaryKey: fieldSettings.primaryKey,
         };
+        changeFieldNameRule(actionType.insert.value, fieldName);
         setFieldRows([...fieldRows, newRows]);
         setOpenFieldForm(false);
     };
@@ -238,7 +251,7 @@ const FieldForm = props => {
                             label="Name"
                             value={fieldName}
                             onChange={setFieldName}
-                            rules="required|field_name"
+                            rules={fieldNameRule}
                         />
                         <ShortText
                             label="Label"

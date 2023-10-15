@@ -1,10 +1,10 @@
-import Validator from '@/helper/validator';
+import {validator} from '@/helper/validator';
 import {Box, TextField, Typography} from '@mui/material';
 
 const ShortText = props => {
     const {label, onChange, value, rules} = props;
 
-    const error = Validator(rules, value);
+    const error = validator(rules, value);
 
     return (
         <Box>

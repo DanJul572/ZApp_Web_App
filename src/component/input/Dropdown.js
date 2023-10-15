@@ -1,10 +1,10 @@
-import Validator from '@/helper/validator';
+import {validator} from '@/helper/validator';
 import {Autocomplete, Box, List, TextField, Typography} from '@mui/material';
 
 const Dropdown = props => {
     const {label, onChange, options, value, rules} = props;
 
-    const error = Validator(rules, value ? value.value.toString() : '');
+    const error = validator(rules, value ? value.value.toString() : '');
 
     const renderInput = params => {
         return (
