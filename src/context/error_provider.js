@@ -29,7 +29,7 @@ export function ErrorProvider({children}) {
         });
     };
 
-    const groupStatus = groups => {
+    const groupError = groups => {
         for (let index = 0; index < groups.length; index++) {
             const group = groups[index];
 
@@ -38,7 +38,7 @@ export function ErrorProvider({children}) {
     };
 
     return (
-        <ErrorContext.Provider value={{errors, setError, clearError, groupStatus}}>
+        <ErrorContext.Provider value={{errors, setError, clearError, groupError}}>
             {children}
         </ErrorContext.Provider>
     );

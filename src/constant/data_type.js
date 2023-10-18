@@ -19,9 +19,9 @@ const dataType = {
         value: 5,
         label: 'Boolean',
     },
-    foreignKey: {
+    select: {
         value: 6,
-        label: 'Foreign Key',
+        label: 'Select',
     },
 };
 

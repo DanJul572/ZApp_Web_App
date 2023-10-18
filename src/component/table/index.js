@@ -79,7 +79,7 @@ const Table = props => {
     const rowDisplay = (cell, type) => {
         const value = cell.getValue();
 
-        if (type === dataType.foreignKey.value) return tableReference(value);
+        if (type === dataType.select.value) return tableReference(value);
 
         if (type === dataType.boolean.value) return boolean(value);
 

@@ -14,8 +14,8 @@ const CreateModule = () => {
     const [moduleDescription, setModuleDescription] = useState(null);
     const [fieldRows, setFieldRows] = useState([]);
 
-    const {errors, groupStatus} = useContext(ErrorContext);
-    const disabledSaveButton = groupStatus(['moduleForm'], errors);
+    const {errors, groupError} = useContext(ErrorContext);
+    const disabledSaveButton = groupError(['moduleForm'], errors);
 
     const onCancel = () => {
         back();

@@ -48,22 +48,6 @@
         "maxSize": 300
     },
     {
-        "accessorKey": "deleteCascade",
-        "header": "Delete Cascade",
-        "type": 5,
-        "size": 150,
-        "minSize": 150,
-        "maxSize": 300
-    },
-    {
-        "accessorKey": "updateCascade",
-        "header": "Updated Cascade",
-        "type": 5,
-        "size": 150,
-        "minSize": 150,
-        "maxSize": 300
-    },
-    {
         "accessorKey": "primaryKey",
         "header": "Primary Key",
         "type": 5,

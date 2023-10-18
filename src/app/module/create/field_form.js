@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react';
+import {useContext, useState} from 'react';
 import {Table} from '@/component';
 import mockColumns from '@/mock/field/column';
 import {Box, Button, Drawer, colors} from '@mui/material';
@@ -15,8 +15,8 @@ const FieldForm = props => {
     const formGroupName = 'fieldForm';
     const fieldTypeOptions = Object.values(dataType);
 
-    const {errors, clearError, groupStatus} = useContext(ErrorContext);
-    const disabledSaveButton = groupStatus([formGroupName], errors);
+    const {errors, clearError, groupError} = useContext(ErrorContext);
+    const disabledSaveButton = groupError([formGroupName], errors);
 
     const [openFieldForm, setOpenFieldForm] = useState(false);
     const [fieldName, setFieldName] = useState(null);
@@ -27,8 +27,6 @@ const FieldForm = props => {
         tableRefKey: null,
         tableRefName: null,
         primaryKey: false,
-        deleteCascade: false,
-        updateCascade: false,
         multiSelect: false,
     });
     const [primaryExist, setPrimaryExist] = useState(false);
@@ -64,8 +62,6 @@ const FieldForm = props => {
             tableRefKey: null,
             tableRefName: null,
             primaryKey: false,
-            deleteCascade: false,
-            updateCascade: false,
             multiSelect: false,
         });
     };
@@ -119,10 +115,6 @@ const FieldForm = props => {
         setFieldNameRule(newRule);
     };
 
-    useEffect(() => {
-        console.log(fieldNameRule);
-    }, [fieldNameRule]);
-
     const onSave = () => {
         if (fieldSettings.primaryKey) setPrimaryExist(true);
 
@@ -135,8 +127,6 @@ const FieldForm = props => {
             tableRef: fieldSettings.tableRef,
             tableRefKey: fieldSettings.tableRefKey,
             tableRefName: fieldSettings.tableRefName,
-            deleteCascade: fieldSettings.deleteCascade,
-            updateCascade: fieldSettings.updateCascade,
             multiSelect: fieldSettings.multiSelect,
             primaryKey: fieldSettings.primaryKey,
         };
@@ -146,7 +136,7 @@ const FieldForm = props => {
     };
 
     const refTableSettings = () => {
-        if (fieldType.value !== dataType.foreignKey.value) return false;
+        if (fieldType.value !== dataType.select.value) return false;
 
         return (
             <Box display="flex" flexDirection="column" gap={2}>
@@ -175,16 +165,6 @@ const FieldForm = props => {
                     rules="required"
                 />
                 <Box display="flex" gap={2}>
-                    <Toggle
-                        label="Delete Cascade"
-                        value={fieldSettings.deleteCascade}
-                        onChange={value => changeSettingValue('deleteCascade', value)}
-                    />
-                    <Toggle
-                        label="Update Cascade"
-                        value={fieldSettings.updateCascade}
-                        onChange={value => changeSettingValue('updateCascade', value)}
-                    />
                     <Toggle
                         label="Multi Select"
                         value={fieldSettings.multiSelect}
@@ -222,7 +202,7 @@ const FieldForm = props => {
             fieldType.value !== dataType.autoIncrement.value &&
             fieldType.value !== dataType.integer.value &&
             fieldType.value !== dataType.varchar.value &&
-            fieldType.value !== dataType.foreignKey.value
+            fieldType.value !== dataType.select.value
         )
             return false;
 
