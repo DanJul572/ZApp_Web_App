@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {Table} from '@/component';
 import mockColumns from '@/mock/field/column';
 import {Box, Button, Drawer, colors} from '@mui/material';
@@ -7,9 +7,16 @@ import {actionType} from '@/constant';
 import dataType from '@/constant/data_type';
 import {Confirm} from '@/component/dialog';
 import {generateValidation} from '@/helper/validator';
+import {ErrorContext} from '@/context/error_provider';
 
 const FieldForm = props => {
     const {fieldRows, setFieldRows} = props;
+
+    const formGroupName = 'fieldForm';
+    const fieldTypeOptions = Object.values(dataType);
+
+    const {errors, clearError, groupStatus} = useContext(ErrorContext);
+    const disabledSaveButton = groupStatus([formGroupName], errors);
 
     const [openFieldForm, setOpenFieldForm] = useState(false);
     const [fieldName, setFieldName] = useState(null);
@@ -47,8 +54,6 @@ const FieldForm = props => {
         },
     ];
 
-    const fieldTypeOptions = Object.values(dataType);
-
     const changeSettingValue = (key, value) => {
         setFieldSettings(prevState => ({...prevState, [key]: value}));
     };
@@ -63,6 +68,14 @@ const FieldForm = props => {
             updateCascade: false,
             multiSelect: false,
         });
+    };
+
+    const clearErrorGroup = () => {
+        const names = ['tableRef', 'tableRefName', 'tableRefKey'];
+        for (let index = 0; index < names.length; index++) {
+            const name = names[index];
+            clearError(formGroupName, name);
+        }
     };
 
     const deleteField = () => {
@@ -97,6 +110,7 @@ const FieldForm = props => {
 
     const onChangeFieldType = value => {
         clearFieldSettings();
+        clearErrorGroup();
         setFieldType(value);
     };
 
@@ -138,18 +152,24 @@ const FieldForm = props => {
             <Box display="flex" flexDirection="column" gap={2}>
                 <ShortText
                     label="Table Reference"
+                    name="tableRef"
+                    group={formGroupName}
                     value={fieldSettings.tableRef}
                     onChange={value => changeSettingValue('tableRef', value)}
                     rules="required"
                 />
                 <ShortText
                     label="Table Reference Key"
+                    name="tableRefKey"
+                    group={formGroupName}
                     value={fieldSettings.tableRefKey}
                     onChange={value => changeSettingValue('tableRefKey', value)}
                     rules="required"
                 />
                 <ShortText
                     label="Table Reference Name"
+                    name="tableRefName"
+                    group={formGroupName}
                     value={fieldSettings.tableRefName}
                     onChange={value => changeSettingValue('tableRefName', value)}
                     rules="required"
@@ -236,7 +256,11 @@ const FieldForm = props => {
             <Drawer anchor="right" open={openFieldForm} onClose={() => setOpenFieldForm(false)}>
                 <Box padding={2}>
                     <Box display="flex" justifyContent="flex-end" gap={2} marginBottom={2}>
-                        <Button variant="contained" size="small" onClick={onSave}>
+                        <Button
+                            variant="contained"
+                            size="small"
+                            onClick={onSave}
+                            disabled={disabledSaveButton}>
                             Add
                         </Button>
                         <Button
@@ -249,18 +273,24 @@ const FieldForm = props => {
                     <Box width={500} display="flex" flexDirection="column" gap={2}>
                         <ShortText
                             label="Name"
+                            name="name"
+                            group="fieldForm"
                             value={fieldName}
                             onChange={setFieldName}
                             rules={fieldNameRule}
                         />
                         <ShortText
                             label="Label"
+                            name="label"
+                            group="fieldForm"
                             value={fieldLabel}
                             onChange={setFieldLabel}
                             rules="required"
                         />
                         <Dropdown
                             label="Data Type"
+                            name="dataType"
+                            group="fieldForm"
                             options={fieldTypeOptions}
                             value={fieldType}
                             onChange={onChangeFieldType}

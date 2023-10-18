@@ -24,9 +24,7 @@ const generateValidation = (action, key, value, rule) => {
     const regex = new RegExp(`${key}:\\(([^)]*)\\)`);
     const matchValue = rule.match(regex);
 
-    if (action === 1 && !matchValue) {
-        return `${rule}|${key}:(${value})`;
-    }
+    if (action === 1 && !matchValue) return `${rule}|${key}:(${value})`;
 
     let newRule = '';
     let values = (matchValue && matchValue[1].split(',').map(value => value.trim())) || [];
@@ -34,12 +32,12 @@ const generateValidation = (action, key, value, rule) => {
     if (action === actionType.insert.value) {
         values.push(value);
         newRule = `${key}:(${values.join(',')})`;
-        return rule.replace(regex, newRule);
     }
 
     if (action === actionType.delete.value) {
         newRule = '';
         let indexToRemove = values.indexOf(value);
+
         if (indexToRemove !== -1) values.splice(indexToRemove, 1);
 
         if (values.length === 1) {
@@ -49,9 +47,8 @@ const generateValidation = (action, key, value, rule) => {
         } else {
             newRule = '';
         }
-
-        return rule.replace(regex, newRule);
     }
+    return rule.replace(regex, newRule);
 };
 
 const validator = (rules, value) => {

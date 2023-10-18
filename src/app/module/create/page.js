@@ -1,10 +1,10 @@
 'use client';
 import {Box, Button} from '@mui/material';
 import {useRouter} from 'next/navigation';
-import {useState} from 'react';
-
+import {useContext, useState} from 'react';
 import ModuleForm from './module_form';
 import FieldForm from './field_form';
+import {ErrorContext} from '@/context/error_provider';
 
 const CreateModule = () => {
     const {back} = useRouter();
@@ -14,6 +14,9 @@ const CreateModule = () => {
     const [moduleDescription, setModuleDescription] = useState(null);
     const [fieldRows, setFieldRows] = useState([]);
 
+    const {errors, groupStatus} = useContext(ErrorContext);
+    const disabledSaveButton = groupStatus(['moduleForm'], errors);
+
     const onCancel = () => {
         back();
     };
@@ -21,7 +24,7 @@ const CreateModule = () => {
     return (
         <>
             <Box display="flex" justifyContent="flex-end" gap={2}>
-                <Button variant="contained" size="small">
+                <Button variant="contained" size="small" disabled={disabledSaveButton}>
                     Save
                 </Button>
                 <Button variant="outlined" size="small" onClick={onCancel}>
