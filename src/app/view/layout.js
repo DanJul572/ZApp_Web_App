@@ -1,5 +1,5 @@
-import Main from '@/layout/main';
+import {Box} from '@mui/material';
 
 export default function ViewLayout({children}) {
-    return <Main>{children}</Main>;
+    return <Box>{children}</Box>;
 }
