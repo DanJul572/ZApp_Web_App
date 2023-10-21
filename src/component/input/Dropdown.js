@@ -4,7 +4,7 @@ import {Autocomplete, Box, List, TextField, Typography} from '@mui/material';
 import {useContext, useEffect} from 'react';
 
 const Dropdown = props => {
-    const {label, onChange, options, value, rules, group, name} = props;
+    const {label, onChange, options, value, rules, group, name, disabled} = props;
 
     const {setError, clearError} = useContext(ErrorContext);
 
@@ -13,6 +13,7 @@ const Dropdown = props => {
     useEffect(() => {
         if (!group && !name) return;
         if (!error.status) return clearError(group, name);
+
         setError(group, name, error.message);
     }, [value]);
 
@@ -36,6 +37,7 @@ const Dropdown = props => {
     return (
         <Box>
             <Autocomplete
+                disabled={disabled}
                 onChange={(e, value) => onChange(value)}
                 options={options.length ? options : []}
                 renderInput={params => renderInput(params)}

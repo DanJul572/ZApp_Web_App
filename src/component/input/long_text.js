@@ -4,7 +4,7 @@ import {Box, TextField, Typography} from '@mui/material';
 import {useContext, useEffect} from 'react';
 
 const LongText = props => {
-    const {label, onChange, value, rows, rules, name, group} = props;
+    const {label, onChange, value, rows, rules, name, group, disabled} = props;
 
     const {setError, clearError} = useContext(ErrorContext);
 
@@ -29,6 +29,7 @@ const LongText = props => {
                 error={error.status}
                 helperText={error.message}
                 onChange={e => onChange(e.target.value)}
+                disabled={disabled}
             />
         </Box>
     );

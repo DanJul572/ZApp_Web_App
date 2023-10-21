@@ -4,7 +4,7 @@ import {Box, TextField, Typography} from '@mui/material';
 import {useContext} from 'react';
 
 const Number = props => {
-    const {label, onChange, value, rows, rules, name, group} = props;
+    const {label, onChange, value, rows, rules, name, group, disabled} = props;
 
     const {setError, clearError} = useContext(ErrorContext);
 
@@ -28,6 +28,7 @@ const Number = props => {
                 error={error.status}
                 helperText={error.message}
                 onChange={e => onChange(e.target.value.replace(/[^0-9]/g, ''))}
+                disabled={disabled}
             />
         </Box>
     );

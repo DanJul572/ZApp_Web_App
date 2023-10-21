@@ -4,7 +4,7 @@ import {Box, TextField, Typography} from '@mui/material';
 import {useContext, useEffect} from 'react';
 
 const ShortText = props => {
-    const {label, onChange, value, rules, group, name} = props;
+    const {label, onChange, value, rules, group, name, disabled} = props;
 
     const {setError, clearError} = useContext(ErrorContext);
 
@@ -20,6 +20,7 @@ const ShortText = props => {
         <Box>
             <Typography fontSize={12}>{label}</Typography>
             <TextField
+                disabled={disabled}
                 variant="outlined"
                 size="small"
                 fullWidth
