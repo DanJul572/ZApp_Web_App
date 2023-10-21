@@ -36,9 +36,11 @@ const Component = props => {
         if (!group && !type) return;
 
         let component = {group, type};
+
         component.id = uuidv4();
         component.properties = {};
-        component.section = [];
+
+        if (group.value === componentGroupType.container.value) component.section = [];
 
         setContent([...content, component]);
     };
