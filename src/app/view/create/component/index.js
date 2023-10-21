@@ -4,20 +4,11 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import {Box, Typography} from '@mui/material';
-import containerType from '@/constant/container_type';
-import visualElementType from '@/constant/visual_element_type';
-import dataDisplayType from '@/constant/data_display_type';
+import {Grid, Typography, colors} from '@mui/material';
+import {inputType, containerType, dataDisplayType, visualElementType} from '@/constant';
 
 const Component = () => {
     const [open, setOpen] = useState({});
-
-    const handleClick = group => {
-        setOpen(prevState => ({
-            ...prevState,
-            [group]: !prevState[group],
-        }));
-    };
 
     const container = Object.keys(containerType).map(key => containerType[key]);
     const input = Object.keys(inputType).map(key => inputType[key]);
@@ -25,32 +16,39 @@ const Component = () => {
     const visualElement = Object.keys(visualElementType).map(key => visualElementType[key]);
 
     const groups = [
-        {id: 'container', label: 'Container', components: container},
-        {id: 'fieldControl', label: 'Field Control', components: input},
-        {id: 'dataDisplay', label: 'Data Display', components: dataDisplay},
-        {id: 'visualElement', label: 'Visual Element', components: visualElement},
+        {name: 'container', label: 'Container', components: container},
+        {name: 'fieldControl', label: 'Field Control', components: input},
+        {name: 'dataDisplay', label: 'Data Display', components: dataDisplay},
+        {name: 'visualElement', label: 'Visual Element', components: visualElement},
     ];
 
+    const handleCollapse = group => {
+        setOpen(prevState => ({
+            ...prevState,
+            [group]: !prevState[group],
+        }));
+    };
+
     const collapseGroup = () => {
+        if (!groups.length) return;
+
         let groupCollapse = {};
         groups.forEach(group => {
-            groupCollapse[group.id] = true;
+            groupCollapse[group.name] = true;
         });
         setOpen(groupCollapse);
     };
 
     useEffect(() => {
-        if (!groups.length) return;
-
         collapseGroup();
     }, []);
 
     return (
-        <Box>
+        <Grid item xs={2} border={1} borderRight={0} borderColor={colors.grey[400]}>
             {groups.map((group, index) => (
-                <List key={index}>
+                <List key={index} disablePadding>
                     <ListItemButton
-                        onClick={() => handleClick(group.id)}
+                        onClick={() => handleCollapse(group.name)}
                         style={{
                             display: 'flex',
                             justifyContent: 'space-between',
@@ -58,13 +56,13 @@ const Component = () => {
                         <Typography fontSize={11} fontWeight="bold">
                             {group.label}
                         </Typography>
-                        {open[group.id] ? (
+                        {open[group.name] ? (
                             <ExpandLess fontSize="11" />
                         ) : (
                             <ExpandMore fontSize="11" />
                         )}
                     </ListItemButton>
-                    <Collapse in={open[group.id]}>
+                    <Collapse in={open[group.name]}>
                         <List disablePadding>
                             {group.components.map((component, index) => (
                                 <ListItemButton key={index}>
@@ -77,7 +75,7 @@ const Component = () => {
                     </Collapse>
                 </List>
             ))}
-        </Box>
+        </Grid>
     );
 };
 
