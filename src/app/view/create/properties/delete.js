@@ -3,7 +3,7 @@ import {Delete as DeleteIcon} from '@mui/icons-material';
 import {Box, Typography, IconButton, Divider} from '@mui/material';
 
 const Delete = props => {
-    const {selected, content, setContent} = props;
+    const {selected, content, setContent, setSelected} = props;
 
     const deleteSelected = content => {
         for (let i = 0; i < content.length; i++) {
@@ -16,6 +16,11 @@ const Delete = props => {
                     const section = component.section[x];
                     deleteSelected(section);
                 }
+                for (let y = 0; y < component.section.length; y++) {
+                    if (component.section[y].length === 0) {
+                        component.section.splice(y, 1);
+                    }
+                }
             }
         }
         return content;
@@ -24,6 +29,7 @@ const Delete = props => {
     const onDelete = () => {
         let newContent = JSON.parse(JSON.stringify(content));
         setContent(deleteSelected(newContent));
+        setSelected(null);
     };
 
     return selected ? (

@@ -6,7 +6,7 @@ const Card = props => {
     return (
         <Cards variant="outlined">
             <CardContent>
-                <Typography fontSize={15} fontWeight="bold">
+                <Typography fontSize={15} fontWeight="bold" marginBottom={1}>
                     {label}
                 </Typography>
                 <Box>{children}</Box>

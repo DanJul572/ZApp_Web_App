@@ -1,8 +1,8 @@
-import {Box, IconButton, colors, Grid, Tooltip} from '@mui/material';
+import {Box, IconButton, colors, Grid, Tooltip, Divider, Typography} from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {Card} from '@/component/container';
 import {LongText, Toggle, ShortText, Dropdown, Number} from '@/component/input';
-import {componentGroupType, containerType, inputType} from '@/constant';
+import {componentGroupType, containerType, inputType, visualElementType} from '@/constant';
 
 const Content = props => {
     const {content, selected, setSelected} = props;
@@ -44,6 +44,24 @@ const Content = props => {
                                 section.length > 0 &&
                                 section.map(childs => childs.map(child => renderComponent(child)))}
                         </Card>
+                    </Container>
+                );
+            } else if (type === containerType.grid.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Grid container>
+                            <Grid item xs={12}>
+                                <Typography fontSize={15} fontWeight="bold" marginBottom={1}>
+                                    {containerType.grid.label}
+                                </Typography>
+                            </Grid>
+                            {section &&
+                                section.map((childs, index) => (
+                                    <Grid item xs={12 / section.length} key={index}>
+                                        {childs.map(child => renderComponent(child))}
+                                    </Grid>
+                                ))}
+                        </Grid>
                     </Container>
                 );
             }
@@ -92,6 +110,23 @@ const Content = props => {
                             disabled={true}
                             label={properties.label || inputType.dropdown.label}
                         />
+                    </Container>
+                );
+            }
+        } else if (group === componentGroupType.visualElement.value) {
+            if (type === visualElementType.divider.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Divider />
+                    </Container>
+                );
+            } else {
+                return (
+                    <Container key={id} component={component}>
+                        <Typography fontSize={12}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.
+                        </Typography>
                     </Container>
                 );
             }

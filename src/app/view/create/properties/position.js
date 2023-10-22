@@ -23,14 +23,13 @@ const Position = props => {
     const [open, setOpen] = useState(false);
 
     const changePosition = content => {
-        console.log('kesini 1');
         if (!destinationID) {
             content.splice(parseInt(rowIndex), 0, selected);
         } else {
             for (let i = 0; i < content.length; i++) {
                 const component = content[i];
                 if (component.id === destinationID) {
-                    if (component.section.length === 0) {
+                    if (!component.section[sectionIndex]) {
                         component.section.push([selected]);
                     } else {
                         component.section[parseInt(sectionIndex)].splice(
@@ -53,7 +52,6 @@ const Position = props => {
     };
 
     const deleteSelected = content => {
-        console.log('kesini 2');
         for (let i = 0; i < content.length; i++) {
             const component = content[i];
             if (component.id === selected.id) {
@@ -63,6 +61,11 @@ const Position = props => {
                 for (let x = 0; x < component.section.length; x++) {
                     const section = component.section[x];
                     deleteSelected(section);
+                }
+                for (let y = 0; y < component.section.length; y++) {
+                    if (component.section[y].length === 0) {
+                        component.section.splice(y, 1);
+                    }
                 }
             }
         }
