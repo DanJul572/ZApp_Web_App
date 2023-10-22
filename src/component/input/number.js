@@ -1,7 +1,7 @@
 import {ErrorContext} from '@/context/error_provider';
 import {validator} from '@/helper/validator';
 import {Box, TextField, Typography} from '@mui/material';
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 
 const Number = props => {
     const {label, onChange, value, rows, rules, name, group, disabled} = props;

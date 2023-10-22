@@ -1,7 +1,7 @@
-import {Box, IconButton, colors, Grid} from '@mui/material';
+import {Box, IconButton, colors, Grid, Tooltip} from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {Card} from '@/component/container';
-import {LongText, Toggle, ShortText} from '@/component/input';
+import {LongText, Toggle, ShortText, Dropdown, Number} from '@/component/input';
 import {componentGroupType, containerType, inputType} from '@/constant';
 
 const Content = props => {
@@ -13,14 +13,17 @@ const Content = props => {
                 key={component.id}
                 border={selected && component.id === selected.id ? 1 : 0}
                 borderColor={colors.blue[300]}
-                padding={1}>
+                padding={1}
+                borderRadius={1}>
                 {children}
-                <IconButton
-                    onClick={() => setSelected(component)}
-                    size="small"
-                    style={{padding: 0}}>
-                    <MoreHorizIcon fontSize="10" />
-                </IconButton>
+                <Tooltip arrow title={component.type.label} placement="top">
+                    <IconButton
+                        onClick={() => setSelected(component)}
+                        size="small"
+                        style={{padding: 0}}>
+                        <MoreHorizIcon fontSize="10" />
+                    </IconButton>
+                </Tooltip>
             </Box>
         );
     };
@@ -30,13 +33,13 @@ const Content = props => {
         let group = component.group.value;
         let type = component.type.value;
         let section = component.section;
-        // let properties = component.properites;
+        let properties = component.properties;
 
         if (group === componentGroupType.container.value) {
             if (type === containerType.card.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Card>
+                        <Card label={properties.label || containerType.card.label}>
                             {section &&
                                 section.length > 0 &&
                                 section.map(childs => childs.map(child => renderComponent(child)))}
@@ -48,19 +51,47 @@ const Content = props => {
             if (type === inputType.shortText.value) {
                 return (
                     <Container key={id} component={component}>
-                        <ShortText disabled={true} />
+                        <ShortText
+                            disabled={true}
+                            label={properties.label || inputType.shortText.label}
+                        />
                     </Container>
                 );
             } else if (type === inputType.longText.value) {
                 return (
                     <Container key={id} component={component}>
-                        <LongText disabled={true} />
+                        <LongText
+                            disabled={true}
+                            label={properties.label || inputType.longText.label}
+                        />
+                    </Container>
+                );
+            } else if (type === inputType.number.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Number
+                            disabled={true}
+                            label={properties.label || inputType.number.label}
+                        />
                     </Container>
                 );
             } else if (type === inputType.toggle.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Toggle disabled={true} />
+                        <Toggle
+                            disabled={true}
+                            label={properties.label || inputType.toggle.label}
+                        />
+                    </Container>
+                );
+            } else if (type === inputType.dropdown.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Dropdown
+                            options={[]}
+                            disabled={true}
+                            label={properties.label || inputType.dropdown.label}
+                        />
                     </Container>
                 );
             }
@@ -69,7 +100,7 @@ const Content = props => {
 
     return (
         <Grid item xs={8} border={1} borderColor={colors.grey[400]} padding={2}>
-            {content.length > 0 && content.map(component => renderComponent(component))}
+            {content && content.length > 0 && content.map(component => renderComponent(component))}
         </Grid>
     );
 };

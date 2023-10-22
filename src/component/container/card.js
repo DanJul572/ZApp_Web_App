@@ -1,10 +1,16 @@
-import {CardContent} from '@mui/material';
+import {Box, CardContent, Typography} from '@mui/material';
 import {Card as Cards} from '@mui/material';
 
-const Card = ({children}) => {
+const Card = props => {
+    const {children, label} = props;
     return (
         <Cards variant="outlined">
-            <CardContent>{children}</CardContent>
+            <CardContent>
+                <Typography fontSize={15} fontWeight="bold">
+                    {label}
+                </Typography>
+                <Box>{children}</Box>
+            </CardContent>
         </Cards>
     );
 };
