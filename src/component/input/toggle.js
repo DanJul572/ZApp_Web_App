@@ -5,16 +5,8 @@ const Toggle = props => {
 
     return (
         <Box>
-            <Typography fontSize={12} style={{opacity: disabled ? 0.5 : 1}}>
-                {label}
-            </Typography>
-            <Switch
-                checked={value}
-                value={value}
-                onChange={() => onChange(!value)}
-                disabled={disabled}
-                size="small"
-            />
+            <Typography fontSize={12}>{label}</Typography>
+            <Switch checked={value} value={value} onChange={() => onChange(!value)} disabled={disabled} size="small" />
         </Box>
     );
 };

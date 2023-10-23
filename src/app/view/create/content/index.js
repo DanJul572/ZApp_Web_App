@@ -17,10 +17,7 @@ const Content = props => {
                 borderRadius={1}>
                 {children}
                 <Tooltip arrow title={component.type.label} placement="top">
-                    <IconButton
-                        onClick={() => setSelected(component)}
-                        size="small"
-                        style={{padding: 0}}>
+                    <IconButton onClick={() => setSelected(component)} size="small" style={{padding: 0}}>
                         <MoreHorizIcon fontSize="10" />
                     </IconButton>
                 </Tooltip>
@@ -69,47 +66,31 @@ const Content = props => {
             if (type === inputType.shortText.value) {
                 return (
                     <Container key={id} component={component}>
-                        <ShortText
-                            disabled={true}
-                            label={properties.label || inputType.shortText.label}
-                        />
+                        <ShortText disabled={true} label={properties.label || inputType.shortText.label} />
                     </Container>
                 );
             } else if (type === inputType.longText.value) {
                 return (
                     <Container key={id} component={component}>
-                        <LongText
-                            disabled={true}
-                            label={properties.label || inputType.longText.label}
-                        />
+                        <LongText disabled={true} label={properties.label || inputType.longText.label} />
                     </Container>
                 );
             } else if (type === inputType.number.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Number
-                            disabled={true}
-                            label={properties.label || inputType.number.label}
-                        />
+                        <Number disabled={true} label={properties.label || inputType.number.label} />
                     </Container>
                 );
             } else if (type === inputType.toggle.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Toggle
-                            disabled={true}
-                            label={properties.label || inputType.toggle.label}
-                        />
+                        <Toggle disabled={true} label={properties.label || inputType.toggle.label} />
                     </Container>
                 );
             } else if (type === inputType.dropdown.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Dropdown
-                            options={[]}
-                            disabled={true}
-                            label={properties.label || inputType.dropdown.label}
-                        />
+                        <Dropdown options={[]} disabled={true} label={properties.label || inputType.dropdown.label} />
                     </Container>
                 );
             }
@@ -120,12 +101,12 @@ const Content = props => {
                         <Divider />
                     </Container>
                 );
-            } else {
+            } else if (type === visualElementType.text.value) {
                 return (
                     <Container key={id} component={component}>
                         <Typography fontSize={12}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
                         </Typography>
                     </Container>
                 );

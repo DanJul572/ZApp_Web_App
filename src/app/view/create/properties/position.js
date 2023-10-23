@@ -1,6 +1,6 @@
 import {Number, ShortText} from '@/component/input';
 import {componentGroupType} from '@/constant';
-import {Settings} from '@mui/icons-material';
+import {Place} from '@mui/icons-material';
 import {
     Box,
     Button,
@@ -17,32 +17,30 @@ import {useEffect, useState} from 'react';
 const Position = props => {
     const {selected, content, setContent, setSelected} = props;
 
-    const [destinationID, setDestinationID] = useState(null);
-    const [sectionIndex, setSectionIndex] = useState(null);
+    const [containerID, setContainerID] = useState(null);
+    const [columnIndex, setColumnIndex] = useState(null);
     const [rowIndex, setRowIndex] = useState(null);
     const [open, setOpen] = useState(false);
 
     const changePosition = content => {
-        if (!destinationID) {
-            content.splice(parseInt(rowIndex), 0, selected);
+        let rowIndexInt = parseInt(rowIndex);
+        let columnIndexInt = parseInt(columnIndex);
+
+        if (!containerID) {
+            content.splice(rowIndexInt, 0, selected);
         } else {
-            for (let i = 0; i < content.length; i++) {
-                const component = content[i];
-                if (component.id === destinationID) {
-                    if (!component.section[sectionIndex]) {
+            for (let x = 0; x < content.length; x++) {
+                const component = content[x];
+                if (component.id === containerID) {
+                    if (!component.section[columnIndex]) {
                         component.section.push([selected]);
                     } else {
-                        component.section[parseInt(sectionIndex)].splice(
-                            parseInt(rowIndex),
-                            0,
-                            selected,
-                        );
+                        component.section[columnIndexInt].splice(rowIndexInt, 0, selected);
                     }
                 }
-
                 if (component.group.value === componentGroupType.container.value) {
-                    for (let x = 0; x < component.section.length; x++) {
-                        const section = component.section[x];
+                    for (let y = 0; y < component.section.length; y++) {
+                        const section = component.section[y];
                         changePosition(section);
                     }
                 }
@@ -73,8 +71,7 @@ const Position = props => {
     };
 
     const onMove = () => {
-        const newContent = JSON.parse(JSON.stringify(content));
-        const deleted = deleteSelected(newContent);
+        const deleted = deleteSelected(content);
         const changed = changePosition(deleted);
 
         setContent(changed);
@@ -83,8 +80,8 @@ const Position = props => {
     };
 
     useEffect(() => {
-        setDestinationID(null);
-        setSectionIndex(null);
+        setContainerID(null);
+        setColumnIndex(null);
         setRowIndex(null);
     }, [selected]);
 
@@ -95,7 +92,7 @@ const Position = props => {
                     Position
                 </Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <Settings fontSize="12" />
+                    <Place fontSize="12" />
                 </IconButton>
             </Box>
             <Divider />
@@ -103,17 +100,9 @@ const Position = props => {
                 <DialogTitle>Change Component Position</DialogTitle>
                 <DialogContent>
                     <Box display="flex" flexDirection="column" gap={1}>
-                        <ShortText
-                            label="Desination ID"
-                            value={destinationID}
-                            onChange={setDestinationID}
-                        />
+                        <ShortText label="Container ID" value={containerID} onChange={setContainerID} />
                         <Box display="flex" gap={1}>
-                            <Number
-                                label="Section"
-                                value={sectionIndex}
-                                onChange={setSectionIndex}
-                            />
+                            <Number label="Section" value={columnIndex} onChange={setColumnIndex} />
                             <Number label="Row" value={rowIndex} onChange={setRowIndex} />
                         </Box>
                     </Box>

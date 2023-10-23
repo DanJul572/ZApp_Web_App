@@ -27,8 +27,7 @@ const Delete = props => {
     };
 
     const onDelete = () => {
-        let newContent = JSON.parse(JSON.stringify(content));
-        setContent(deleteSelected(newContent));
+        setContent(deleteSelected(content));
         setSelected(null);
     };
 
@@ -36,7 +35,7 @@ const Delete = props => {
         <>
             <Box padding={2} display="flex" justifyContent="space-between">
                 <Typography fontSize={12} fontWeight="bold">
-                    {selected.id}
+                    {selected.type.label}
                 </Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={onDelete}>
                     <DeleteIcon fontSize="12" />

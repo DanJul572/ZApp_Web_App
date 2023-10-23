@@ -1,7 +1,7 @@
 const visualElementType = {
-    label: {
+    text: {
         value: 1,
-        label: 'Label',
+        label: 'Text',
     },
     divider: {
         value: 2,
