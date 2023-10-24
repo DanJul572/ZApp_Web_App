@@ -15,14 +15,9 @@ const ViewCreate = () => {
         <Box>
             <TopBar />
             <Grid container>
-                <Component content={content} setContent={setContent} />
+                <Component content={content} setContent={setContent} setSelected={setSelected} />
                 <Content content={content} selected={selected} setSelected={setSelected} />
-                <Properties
-                    selected={selected}
-                    content={content}
-                    setContent={setContent}
-                    setSelected={setSelected}
-                />
+                <Properties selected={selected} content={content} setContent={setContent} setSelected={setSelected} />
             </Grid>
         </Box>
     );

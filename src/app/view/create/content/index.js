@@ -1,6 +1,5 @@
 import {Box, IconButton, colors, Grid, Tooltip, Divider, Typography, Button} from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import {Card} from '@/component/container';
 import {LongText, Toggle, ShortText, Dropdown, Number} from '@/component/input';
 import {actionType, componentGroupType, containerType, dataDisplayType, inputType, visualElementType} from '@/constant';
 import {Table} from '@/component';
@@ -32,9 +31,10 @@ const Content = props => {
                 border={selected && component.id === selected.id ? 1 : 0}
                 borderColor={colors.blue[300]}
                 padding={1}
+                paddingBottom={0}
                 borderRadius={1}>
                 {children}
-                <Tooltip arrow title={component.type.label} placement="top">
+                <Tooltip arrow title={component.type.label} placement="left">
                     <IconButton onClick={() => setSelected(component)} size="small" style={{padding: 0}}>
                         <MoreHorizIcon fontSize="10" />
                     </IconButton>
@@ -54,17 +54,24 @@ const Content = props => {
             if (type === containerType.card.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Card>
-                            {section &&
-                                section.length > 0 &&
-                                section.map(childs => childs.map(child => renderComponent(child)))}
-                        </Card>
+                        <Box border={1} borderColor={colors.grey[300]} borderRadius={1} padding={1}>
+                            <Box>
+                                {section &&
+                                    section.length > 0 &&
+                                    section.map(childs => childs.map(child => renderComponent(child)))}
+                            </Box>
+                        </Box>
                     </Container>
                 );
             } else if (type === containerType.grid.value) {
                 return (
-                    <Container key={id} component={component}>
+                    <Container key={id} component={component} padding={1}>
                         <Grid container>
+                            <Grid item xs={12}>
+                                <Typography fontSize={10} fontWeight="bold">
+                                    Grid
+                                </Typography>
+                            </Grid>
                             {section &&
                                 section.map((childs, index) => (
                                     <Grid item xs={12 / section.length} key={index}>

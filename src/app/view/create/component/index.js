@@ -10,7 +10,7 @@ import {inputType, containerType, dataDisplayType, visualElementType, componentG
 import buttonType from '@/constant/button_type';
 
 const Component = props => {
-    const {content, setContent} = props;
+    const {content, setContent, setSelected} = props;
 
     const [componentList, setComponentList] = useState([]);
     const [open, setOpen] = useState({});
@@ -38,6 +38,7 @@ const Component = props => {
 
         if (group.value === componentGroupType.container.value) component.section = [];
 
+        setSelected(component);
         setContent([...content, component]);
     };
 
