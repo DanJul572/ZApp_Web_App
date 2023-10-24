@@ -1,14 +1,11 @@
-import {Box, CardContent, Typography} from '@mui/material';
+import {Box, CardContent} from '@mui/material';
 import {Card as Cards} from '@mui/material';
 
 const Card = props => {
-    const {children, label} = props;
+    const {children} = props;
     return (
         <Cards variant="outlined">
             <CardContent>
-                <Typography fontSize={15} fontWeight="bold" marginBottom={1}>
-                    {label}
-                </Typography>
                 <Box>{children}</Box>
             </CardContent>
         </Cards>

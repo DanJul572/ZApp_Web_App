@@ -1,11 +1,29 @@
-import {Box, IconButton, colors, Grid, Tooltip, Divider, Typography} from '@mui/material';
+import {Box, IconButton, colors, Grid, Tooltip, Divider, Typography, Button} from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {Card} from '@/component/container';
 import {LongText, Toggle, ShortText, Dropdown, Number} from '@/component/input';
-import {componentGroupType, containerType, inputType, visualElementType} from '@/constant';
+import {actionType, componentGroupType, containerType, dataDisplayType, inputType, visualElementType} from '@/constant';
+import {Table} from '@/component';
+import mockColumns from '@/mock/table/columns';
+import mockRows from '@/mock/table/rows';
+import buttonType from '@/constant/button_type';
 
 const Content = props => {
     const {content, selected, setSelected} = props;
+    const actions = [
+        {
+            type: actionType.insert.value,
+        },
+        {
+            type: actionType.update.value,
+        },
+        {
+            type: actionType.delete.value,
+        },
+        {
+            type: actionType.detail.value,
+        },
+    ];
 
     const Container = ({children, component}) => {
         return (
@@ -36,7 +54,7 @@ const Content = props => {
             if (type === containerType.card.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Card label={properties.label || containerType.card.label}>
+                        <Card>
                             {section &&
                                 section.length > 0 &&
                                 section.map(childs => childs.map(child => renderComponent(child)))}
@@ -47,11 +65,6 @@ const Content = props => {
                 return (
                     <Container key={id} component={component}>
                         <Grid container>
-                            <Grid item xs={12}>
-                                <Typography fontSize={15} fontWeight="bold" marginBottom={1}>
-                                    {containerType.grid.label}
-                                </Typography>
-                            </Grid>
                             {section &&
                                 section.map((childs, index) => (
                                     <Grid item xs={12 / section.length} key={index}>
@@ -108,6 +121,45 @@ const Content = props => {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua.
                         </Typography>
+                    </Container>
+                );
+            }
+        } else if (group === componentGroupType.dataDisplay.value) {
+            if (type === dataDisplayType.table.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Table
+                            action={actions}
+                            columnKey={'id'}
+                            columns={mockColumns}
+                            enableExport={true}
+                            enableHiding={true}
+                            enablePagination={true}
+                            enableRowSelection={true}
+                            enableSearch={true}
+                            enableSorting={true}
+                            onChangePage={() => {}}
+                            onClickRowAction={() => {}}
+                            // onClickToolbarAction={onCLickToolbarAction}
+                            onDelete={() => {}}
+                            onSearch={() => {}}
+                            onSelect={() => {}}
+                            onSort={() => {}}
+                            pageCount={1}
+                            pageIndex={1}
+                            rowCount={1}
+                            rows={mockRows}
+                        />
+                    </Container>
+                );
+            }
+        } else if (group === componentGroupType.button.value) {
+            if (type === buttonType.button.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Button size="small" variant="contained" disabled={true} style={{display: 'block'}}>
+                            Button
+                        </Button>
                     </Container>
                 );
             }

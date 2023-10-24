@@ -15,6 +15,10 @@ const componentGroupType = {
         value: 4,
         label: 'Visual Element',
     },
+    button: {
+        value: 5,
+        label: 'Button',
+    },
 };
 
 export default componentGroupType;

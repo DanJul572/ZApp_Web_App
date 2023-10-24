@@ -1,6 +1,6 @@
 import {Number, ShortText} from '@/component/input';
 import {componentGroupType} from '@/constant';
-import {Place} from '@mui/icons-material';
+import {Settings} from '@mui/icons-material';
 import {
     Box,
     Button,
@@ -92,7 +92,7 @@ const Position = props => {
                     Position
                 </Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <Place fontSize="12" />
+                    <Settings fontSize="12" />
                 </IconButton>
             </Box>
             <Divider />

@@ -6,13 +6,8 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import {Grid, Typography, colors} from '@mui/material';
-import {
-    inputType,
-    containerType,
-    dataDisplayType,
-    visualElementType,
-    componentGroupType,
-} from '@/constant';
+import {inputType, containerType, dataDisplayType, visualElementType, componentGroupType} from '@/constant';
+import buttonType from '@/constant/button_type';
 
 const Component = props => {
     const {content, setContent} = props;
@@ -24,6 +19,7 @@ const Component = props => {
     const input = Object.keys(inputType).map(key => inputType[key]);
     const dataDisplay = Object.keys(dataDisplayType).map(key => dataDisplayType[key]);
     const visualElement = Object.keys(visualElementType).map(key => visualElementType[key]);
+    const button = Object.keys(buttonType).map(key => buttonType[key]);
 
     const handleCollapse = group => {
         setOpen(prevState => ({
@@ -58,6 +54,7 @@ const Component = props => {
         groupType.fieldControl.components = input;
         groupType.dataDisplay.components = dataDisplay;
         groupType.visualElement.components = visualElement;
+        groupType.button.components = button;
 
         setComponentList(Object.values(groupType));
     };
@@ -91,20 +88,14 @@ const Component = props => {
                             <Typography fontSize={11} fontWeight="bold">
                                 {group.label}
                             </Typography>
-                            {open[group.value] ? (
-                                <ExpandLess fontSize="11" />
-                            ) : (
-                                <ExpandMore fontSize="11" />
-                            )}
+                            {open[group.value] ? <ExpandLess fontSize="11" /> : <ExpandMore fontSize="11" />}
                         </ListItemButton>
                         <Collapse in={open[group.value]}>
                             <List disablePadding>
                                 {group.components.map((component, index) => (
                                     <ListItemButton
                                         key={index}
-                                        onClick={() =>
-                                            handleSelected(groupTypeValue(group), component)
-                                        }>
+                                        onClick={() => handleSelected(groupTypeValue(group), component)}>
                                         <Typography fontSize={11} style={{marginLeft: 10}}>
                                             {component.label}
                                         </Typography>
