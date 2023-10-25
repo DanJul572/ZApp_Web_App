@@ -1,17 +1,16 @@
-import {actionType} from '@/constant';
-import {Delete, Description, Edit, Info} from '@mui/icons-material';
-import {Box, IconButton} from '@mui/material';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+
+import Delete from '@mui/icons-material/Delete';
+import Description from '@mui/icons-material/Description';
+import Edit from '@mui/icons-material/Edit';
+import Info from '@mui/icons-material/Info';
+
+import actionType from '@/constant/action_type';
 
 const RowAction = props => {
-    const {
-        onClickRowAction,
-        action,
-        row,
-        isSupportRowAction,
-        rowCustomAction,
-        setOpenRowCustomActionDialog,
-        setRowClicked,
-    } = props;
+    const {onClickRowAction, action, row, isSupportRowAction, rowCustomAction, setOpenRowCustomActionDialog, setRowClicked} =
+        props;
 
     const onClickCustomAction = () => {
         setOpenRowCustomActionDialog(true);

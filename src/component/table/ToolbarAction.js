@@ -1,5 +1,7 @@
-import {actionType} from '@/constant';
-import {Box, Button} from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+
+import actionType from '@/constant/action_type';
 
 const ToolbarAction = props => {
     const {onClickToolbarAction, toolbarCustomAction, isSupportAddAction} = props;

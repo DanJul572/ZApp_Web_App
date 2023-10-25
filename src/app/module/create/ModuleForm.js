@@ -1,18 +1,15 @@
-import {ShortText, LongText} from '@/component/input';
-import {Box, Grid, colors} from '@mui/material';
+import Box from '@mui/material/Box';
+import grey from '@mui/material/colors/grey';
+import Grid from '@mui/material/Grid';
+
+import LongText from '@/component/input/LongText';
+import ShortText from '@/component/input/ShortText';
 
 const ModuleForm = props => {
-    const {
-        moduleName,
-        setModuleName,
-        moduleLabel,
-        setModuleLabel,
-        moduleDescription,
-        setModuleDescription,
-    } = props;
+    const {moduleName, setModuleName, moduleLabel, setModuleLabel, moduleDescription, setModuleDescription} = props;
 
     return (
-        <Box marginY={2} border={1} padding={2} borderRadius={1} borderColor={colors.grey[300]}>
+        <Box marginY={2} border={1} padding={2} borderRadius={1} borderColor={grey[300]}>
             <Grid container spacing={2}>
                 <Grid item display="flex" flexDirection="column" gap={2} xs={6}>
                     <ShortText

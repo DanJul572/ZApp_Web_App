@@ -1,11 +1,14 @@
 'use client';
 
 import {useState} from 'react';
-import {Box, Grid} from '@mui/material';
+
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
 import Component from './component';
-import TopBar from './topbar';
 import Content from './content';
 import Properties from './properties';
+import TopBar from './topbar';
 
 const ViewCreate = () => {
     const [content, setContent] = useState([]);

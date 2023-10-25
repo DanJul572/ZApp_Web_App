@@ -3,7 +3,7 @@ import {createContext, useState} from 'react';
 
 export const ErrorContext = createContext();
 
-export function ErrorProvider({children}) {
+export default function ErrorProvider({children}) {
     const [errors, setErrors] = useState({});
 
     const setError = (group, name, error) => {
@@ -37,9 +37,5 @@ export function ErrorProvider({children}) {
         }
     };
 
-    return (
-        <ErrorContext.Provider value={{errors, setError, clearError, groupError}}>
-            {children}
-        </ErrorContext.Provider>
-    );
+    return <ErrorContext.Provider value={{errors, setError, clearError, groupError}}>{children}</ErrorContext.Provider>;
 }

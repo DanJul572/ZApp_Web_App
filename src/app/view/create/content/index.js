@@ -1,11 +1,31 @@
-import {Box, IconButton, colors, Grid, Tooltip, Divider, Typography, Button} from '@mui/material';
+import blue from '@mui/material/colors/blue';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import grey from '@mui/material/colors/grey';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import {LongText, Toggle, ShortText, Dropdown, Number} from '@/component/input';
-import {actionType, componentGroupType, containerType, dataDisplayType, inputType, visualElementType} from '@/constant';
-import {Table} from '@/component';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+
+import Dropdown from '@/component/input/Dropdown';
+import LongText from '@/component/input/LongText';
+import Number from '@/component/input/Number';
+import ShortText from '@/component/input/ShortText';
+import Table from '@/component/table';
+import Toggle from '@/component/input/Toggle';
+
+import actionType from '@/constant/action_type';
+import buttonType from '@/constant/button_type';
+import componentGroupType from '@/constant/component_group_type';
+import containerType from '@/constant/container_type';
+import dataDisplayType from '@/constant/data_display_type';
+import inputType from '@/constant/input_type';
+import visualElementType from '@/constant/visual_element_type';
+
 import mockColumns from '@/mock/table/columns';
 import mockRows from '@/mock/table/rows';
-import buttonType from '@/constant/button_type';
 
 const Content = props => {
     const {content, selected, setSelected} = props;
@@ -29,7 +49,7 @@ const Content = props => {
             <Box
                 key={component.id}
                 border={selected && component.id === selected.id ? 1 : 0}
-                borderColor={colors.blue[300]}
+                borderColor={blue[300]}
                 padding={1}
                 paddingBottom={0}
                 borderRadius={1}>
@@ -174,7 +194,7 @@ const Content = props => {
     };
 
     return (
-        <Grid item xs={8} border={1} borderColor={colors.grey[400]} padding={2}>
+        <Grid item xs={8} border={1} borderColor={grey[400]} padding={2}>
             {content && content.length > 0 && content.map(component => renderComponent(component))}
         </Grid>
     );

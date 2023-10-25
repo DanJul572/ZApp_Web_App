@@ -1,13 +1,22 @@
 import {useContext, useState} from 'react';
-import {Table} from '@/component';
-import mockColumns from '@/mock/field/column';
-import {Box, Button, Drawer, colors} from '@mui/material';
-import {Dropdown, ShortText, Toggle} from '@/component/input';
-import {actionType} from '@/constant';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Drawer from '@mui/material/Drawer';
+import grey from '@mui/material/colors/grey';
+
+import actionType from '@/constant/action_type';
 import dataType from '@/constant/data_type';
-import {Confirm} from '@/component/dialog';
+
+import Confirm from '@/component/dialog/Confirm';
+import Dropdown from '@/component/input/Dropdown';
+import ShortText from '@/component/input/ShortText';
+import Table from '@/component/table';
+import Toggle from '@/component/input/Toggle';
+
+import {ErrorContext} from '@/context/ErrorProvider';
 import {generateValidation} from '@/helper/validator';
-import {ErrorContext} from '@/context/error_provider';
+import mockColumns from '@/mock/field/column';
 
 const FieldForm = props => {
     const {fieldRows, setFieldRows} = props;
@@ -212,7 +221,7 @@ const FieldForm = props => {
                 border={1}
                 padding={2}
                 borderRadius={1}
-                borderColor={colors.grey[300]}
+                borderColor={grey[300]}
                 display="flex"
                 flexDirection="column"
                 gap={2}>
@@ -236,17 +245,10 @@ const FieldForm = props => {
             <Drawer anchor="right" open={openFieldForm} onClose={() => setOpenFieldForm(false)}>
                 <Box padding={2}>
                     <Box display="flex" justifyContent="flex-end" gap={2} marginBottom={2}>
-                        <Button
-                            variant="contained"
-                            size="small"
-                            onClick={onSave}
-                            disabled={disabledSaveButton}>
+                        <Button variant="contained" size="small" onClick={onSave} disabled={disabledSaveButton}>
                             Add
                         </Button>
-                        <Button
-                            variant="outlined"
-                            size="small"
-                            onClick={() => setOpenFieldForm(false)}>
+                        <Button variant="outlined" size="small" onClick={() => setOpenFieldForm(false)}>
                             Cancel
                         </Button>
                     </Box>

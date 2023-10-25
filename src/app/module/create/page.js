@@ -1,10 +1,15 @@
 'use client';
-import {Box, Button} from '@mui/material';
-import {useRouter} from 'next/navigation';
+
 import {useContext, useState} from 'react';
-import ModuleForm from './module_form';
-import FieldForm from './field_form';
-import {ErrorContext} from '@/context/error_provider';
+import {useRouter} from 'next/navigation';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+
+import FieldForm from './FieldForm';
+import ModuleForm from './ModuleForm';
+
+import {ErrorContext} from '@/context/ErrorProvider';
 
 const CreateModule = () => {
     const {back} = useRouter();

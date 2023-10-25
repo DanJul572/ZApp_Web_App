@@ -1,18 +1,20 @@
-import {Number, ShortText} from '@/component/input';
-import {componentGroupType} from '@/constant';
-import {Settings} from '@mui/icons-material';
-import {
-    Box,
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-    Divider,
-    IconButton,
-    Typography,
-} from '@mui/material';
 import {useEffect, useState} from 'react';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Settings from '@mui/icons-material/Settings';
+import Typography from '@mui/material/Typography';
+
+import Number from '@/component/input/Number';
+import ShortText from '@/component/input/ShortText';
+
+import componentGroupType from '@/constant/component_group_type';
 
 const Position = props => {
     const {selected, content, setContent, setSelected} = props;

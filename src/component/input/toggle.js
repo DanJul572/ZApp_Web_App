@@ -1,4 +1,6 @@
-import {Box, Switch, Typography} from '@mui/material';
+import Box from '@mui/material/Box';
+import Switch from '@mui/material/Switch';
+import Typography from '@mui/material/Typography';
 
 const Toggle = props => {
     const {label, onChange, value, disabled} = props;

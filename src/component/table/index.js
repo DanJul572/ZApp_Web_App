@@ -1,14 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
+
 import {MaterialReactTable} from 'material-react-table';
-import {actionType} from '@/constant';
-import AdvanceFilter from './advance_filter';
-import ExportDialog from './export_dialog';
-import ToolBarComponent from './toolbar_component';
-import RowAction from './row_action';
-import ToolbarAction from './toolbar_action';
-import RowCustomActionDialog from './custom_action_dialog';
-import {Box, Stack} from '@mui/material';
+
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+
 import {boolean, numeric, tableReference} from '@/helper/data_display';
+
+import AdvanceFilter from './AdvanceFilter';
+import ExportDialog from './ExportDialog';
+import RowAction from './RowAction';
+import RowCustomActionDialog from './CustomActionDialog';
+import ToolbarAction from './ToolbarAction';
+import ToolBarComponent from './ToolbarComponent';
+
+import actionType from '@/constant/action_type';
 import dataType from '@/constant/data_type';
 
 const Table = props => {
@@ -83,8 +89,7 @@ const Table = props => {
 
         if (type === dataType.boolean.value) return boolean(value);
 
-        if (type === dataType.autoIncrement.value || type === dataType.integer.value)
-            return numeric(value);
+        if (type === dataType.autoIncrement.value || type === dataType.integer.value) return numeric(value);
 
         return value;
     };

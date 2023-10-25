@@ -1,4 +1,4 @@
-import Main from '@/layout/main';
+import Main from '@/layout/Main';
 
 export default function ModuleLayout({children}) {
     return <Main>{children}</Main>;

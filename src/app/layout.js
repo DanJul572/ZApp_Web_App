@@ -1,5 +1,5 @@
-import {ErrorProvider} from '@/context/error_provider';
 import {Inter} from 'next/font/google';
+import ErrorProvider from '@/context/ErrorProvider';
 
 const inter = Inter({subsets: ['latin']});
 

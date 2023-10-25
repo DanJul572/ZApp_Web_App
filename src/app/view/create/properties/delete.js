@@ -1,8 +1,12 @@
-import {componentGroupType} from '@/constant';
-import {Delete as DeleteIcon} from '@mui/icons-material';
-import {Box, Typography, IconButton, Divider} from '@mui/material';
+import Delete from '@mui/icons-material/Delete';
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 
-const Delete = props => {
+import componentGroupType from '@/constant/component_group_type';
+
+const DeleteComponent = props => {
     const {selected, content, setContent, setSelected} = props;
 
     const deleteSelected = content => {
@@ -38,7 +42,7 @@ const Delete = props => {
                     {selected.type.label}
                 </Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={onDelete}>
-                    <DeleteIcon fontSize="12" />
+                    <Delete fontSize="12" />
                 </IconButton>
             </Box>
             <Divider />
@@ -48,4 +52,4 @@ const Delete = props => {
     );
 };
 
-export default Delete;
+export default DeleteComponent;

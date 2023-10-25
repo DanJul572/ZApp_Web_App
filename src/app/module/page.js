@@ -1,9 +1,12 @@
 'use client';
-import {Table} from '@/component';
+
+import {useRouter} from 'next/navigation';
+
+import Table from '@/component/table';
+
+import actionType from '@/constant/action_type';
 import mockColumns from '@/mock/module/columns';
 import mockRows from '@/mock/module/rows';
-import actionType from '@/constant/action_type';
-import {useRouter} from 'next/navigation';
 
 export default function Module() {
     const {push} = useRouter();
@@ -27,7 +30,7 @@ export default function Module() {
         },
     ];
 
-    const onCLickToolbarAction = (action) => {
+    const onCLickToolbarAction = action => {
         if (action.value === actionType.insert.value) push('/module/create');
     };
 

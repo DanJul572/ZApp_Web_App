@@ -1,13 +1,12 @@
-import {Dialog, DialogContent, List, ListItem, ListItemButton, ListItemText} from '@mui/material';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 
 const RowCustomActionDialog = props => {
-    const {
-        openRowCustomActionDialog,
-        rowCustomAction,
-        rowClicked,
-        onClickRowAction,
-        setOpenRowCustomActionDialog,
-    } = props;
+    const {openRowCustomActionDialog, rowCustomAction, rowClicked, onClickRowAction, setOpenRowCustomActionDialog} = props;
 
     const onCLickAction = action => {
         onClickRowAction({

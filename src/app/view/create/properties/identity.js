@@ -1,6 +1,10 @@
-import {componentGroupType} from '@/constant';
-import {ContentCopy} from '@mui/icons-material';
-import {Box, Typography, IconButton, Divider} from '@mui/material';
+import Box from '@mui/material/Box';
+import ContentCopy from '@mui/icons-material/ContentCopy';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+
+import componentGroupType from '@/constant/component_group_type';
 
 const Identity = props => {
     const {selected} = props;

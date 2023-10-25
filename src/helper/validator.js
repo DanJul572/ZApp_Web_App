@@ -1,4 +1,4 @@
-import {actionType} from '@/constant';
+import actionType from '@/constant/action_type';
 
 const required = value => {
     return !value ? true : false;

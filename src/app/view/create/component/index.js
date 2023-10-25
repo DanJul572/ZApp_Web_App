@@ -1,12 +1,21 @@
 import {useEffect, useState} from 'react';
 import {v4 as uuidv4} from 'uuid';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
+
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import {Grid, Typography, colors} from '@mui/material';
-import {inputType, containerType, dataDisplayType, visualElementType, componentGroupType} from '@/constant';
+import grey from '@mui/material/colors/grey';
+import Grid from '@mui/material/Grid';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import Typography from '@mui/material/Typography';
+
+import componentGroupType from '@/constant/component_group_type';
+import containerType from '@/constant/container_type';
+import dataDisplayType from '@/constant/data_display_type';
+import inputType from '@/constant/input_type';
+import visualElementType from '@/constant/visual_element_type';
+
 import buttonType from '@/constant/button_type';
 
 const Component = props => {
@@ -76,7 +85,7 @@ const Component = props => {
     }, []);
 
     return (
-        <Grid item xs={2} border={1} borderRight={0} borderColor={colors.grey[400]}>
+        <Grid item xs={2} border={1} borderRight={0} borderColor={grey[400]}>
             {componentList.length > 0 &&
                 componentList.map((group, index) => (
                     <List key={index} disablePadding>

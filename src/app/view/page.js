@@ -1,10 +1,14 @@
 'use client';
-import {Table} from '@/component';
+
+import {useRouter} from 'next/navigation';
+
+import Main from '@/layout/Main';
+import Table from '@/component/table';
+
 import mockColumns from '@/mock/view/columns';
 import mockRows from '@/mock/view/rows';
+
 import actionType from '@/constant/action_type';
-import {useRouter} from 'next/navigation';
-import Main from '@/layout/main';
 
 export default function View() {
     const {push} = useRouter();

@@ -1,28 +1,29 @@
 'use client';
 
-import * as React from 'react';
+import {useState} from 'react';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
+import grey from '@mui/material/colors/grey';
 import IconButton from '@mui/material/IconButton';
+import Link from 'next/link';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
+import menuList from '@/constant/menu_list';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {menuList} from '@/constant';
-import Link from 'next/link';
-import {grey} from '@mui/material/colors';
 
 const drawerWidth = 240;
 
 export default function Main({children, window}) {
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -81,10 +82,7 @@ export default function Main({children, window}) {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Box
-                component="nav"
-                sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}}
-                aria-label="mailbox folders">
+            <Box component="nav" sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}} aria-label="mailbox folders">
                 <Drawer
                     container={container}
                     variant="temporary"
