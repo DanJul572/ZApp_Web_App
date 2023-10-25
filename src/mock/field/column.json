@@ -24,7 +24,7 @@
         "maxSize": 300
     },
     {
-        "accessorKey": "dataType",
+        "accessorKey": "DATA_TYPE",
         "header": "Data Type",
         "type": 6,
         "size": 150,

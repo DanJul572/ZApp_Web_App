@@ -4,7 +4,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import componentGroupType from '@/constant/component_group_type';
+import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
 
 const DeleteComponent = props => {
     const {selected, content, setContent, setSelected} = props;
@@ -15,7 +15,7 @@ const DeleteComponent = props => {
             if (component.id === selected.id) {
                 content.splice(i, 1);
             }
-            if (component.group.value === componentGroupType.container.value) {
+            if (component.group.value === COMPONENT_GROUP_TYPE.container.value) {
                 for (let x = 0; x < component.section.length; x++) {
                     const section = component.section[x];
                     deleteSelected(section);

@@ -10,13 +10,12 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import Typography from '@mui/material/Typography';
 
-import componentGroupType from '@/constant/component_group_type';
-import containerType from '@/constant/container_type';
-import dataDisplayType from '@/constant/data_display_type';
-import inputType from '@/constant/input_type';
-import visualElementType from '@/constant/visual_element_type';
-
-import buttonType from '@/constant/button_type';
+import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
+import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
+import DATA_DISPLAY_TYPE from '@/constant/DATA_DISPLAY';
+import INPUT_TYPE from '@/constant/INPUT_TYPE';
+import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
+import BUTTON_TYPE from '@/constant/BUTTON_TYPE';
 
 const Component = props => {
     const {content, setContent, setSelected} = props;
@@ -24,11 +23,11 @@ const Component = props => {
     const [componentList, setComponentList] = useState([]);
     const [open, setOpen] = useState({});
 
-    const container = Object.keys(containerType).map(key => containerType[key]);
-    const input = Object.keys(inputType).map(key => inputType[key]);
-    const dataDisplay = Object.keys(dataDisplayType).map(key => dataDisplayType[key]);
-    const visualElement = Object.keys(visualElementType).map(key => visualElementType[key]);
-    const button = Object.keys(buttonType).map(key => buttonType[key]);
+    const container = Object.keys(CONTAINER_TYPE).map(key => CONTAINER_TYPE[key]);
+    const input = Object.keys(INPUT_TYPE).map(key => INPUT_TYPE[key]);
+    const dataDisplay = Object.keys(DATA_DISPLAY_TYPE).map(key => DATA_DISPLAY_TYPE[key]);
+    const visualElement = Object.keys(VISUAL_ELEMENT_TYPE).map(key => VISUAL_ELEMENT_TYPE[key]);
+    const button = Object.keys(BUTTON_TYPE).map(key => BUTTON_TYPE[key]);
 
     const handleCollapse = group => {
         setOpen(prevState => ({
@@ -45,7 +44,7 @@ const Component = props => {
         component.id = uuidv4();
         component.properties = {};
 
-        if (group.value === componentGroupType.container.value) component.section = [];
+        if (group.value === COMPONENT_GROUP_TYPE.container.value) component.section = [];
 
         setSelected(component);
         setContent([...content, component]);
@@ -58,7 +57,7 @@ const Component = props => {
     };
 
     const componentListInitiation = () => {
-        let groupType = {...componentGroupType};
+        let groupType = {...COMPONENT_GROUP_TYPE};
 
         groupType.container.components = container;
         groupType.fieldControl.components = input;

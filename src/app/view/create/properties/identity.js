@@ -4,7 +4,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import componentGroupType from '@/constant/component_group_type';
+import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
 
 const Identity = props => {
     const {selected} = props;
@@ -17,7 +17,7 @@ const Identity = props => {
 
     const validComponent = () => {
         if (!selected) return false;
-        if (selected.group.value !== componentGroupType.container.value) return false;
+        if (selected.group.value !== COMPONENT_GROUP_TYPE.container.value) return false;
         return true;
     };
 

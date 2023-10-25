@@ -1,4 +1,4 @@
-const inputType = {
+const INPUT_TYPE = {
     shortText: {
         value: 1,
         label: 'Short Text',
@@ -21,4 +21,4 @@ const inputType = {
     },
 };
 
-export default inputType;
+export default INPUT_TYPE;

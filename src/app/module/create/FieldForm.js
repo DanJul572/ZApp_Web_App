@@ -5,8 +5,8 @@ import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import grey from '@mui/material/colors/grey';
 
-import actionType from '@/constant/action_type';
-import dataType from '@/constant/data_type';
+import ACTION_TYPE from '@/constant/ACTION_TYPE';
+import DATA_TYPE from '@/constant/DATA_TYPE';
 
 import Confirm from '@/component/dialog/Confirm';
 import Dropdown from '@/component/input/Dropdown';
@@ -22,7 +22,7 @@ const FieldForm = props => {
     const {fieldRows, setFieldRows} = props;
 
     const formGroupName = 'fieldForm';
-    const fieldTypeOptions = Object.values(dataType);
+    const fieldTypeOptions = Object.values(DATA_TYPE);
 
     const {errors, clearError, groupError} = useContext(ErrorContext);
     const disabledSaveButton = groupError([formGroupName], errors);
@@ -43,20 +43,20 @@ const FieldForm = props => {
     const [rowSelected, setRowSelected] = useState(false);
     const [fieldNameRule, setFieldNameRule] = useState('required|field_name');
 
-    const openFieldFormActionType = 6;
+    const openFieldFormACTION_TYPE = 6;
     const toolbarCustomAction = [
         {
-            type: openFieldFormActionType,
+            type: openFieldFormACTION_TYPE,
             label: 'Add New Field',
         },
     ];
     const action = [
         {
-            type: actionType.update.value,
+            type: ACTION_TYPE.update.value,
             path: '/',
         },
         {
-            type: actionType.delete.value,
+            type: ACTION_TYPE.delete.value,
             path: '/',
         },
     ];
@@ -88,7 +88,7 @@ const FieldForm = props => {
 
         const newFieldrows = fieldRows.filter(field => field.id !== rowSelected.id);
         setFieldRows(newFieldrows);
-        changeFieldNameRule(actionType.delete.value, rowSelected.name);
+        changeFieldNameRule(ACTION_TYPE.delete.value, rowSelected.name);
     };
 
     const deleteConfirmation = confirm => {
@@ -97,7 +97,7 @@ const FieldForm = props => {
     };
 
     const onClickToolbarAction = action => {
-        if (action.type === openFieldFormActionType) {
+        if (action.type === openFieldFormACTION_TYPE) {
             setFieldName(null);
             setFieldLabel(null);
             setFieldType(null);
@@ -107,7 +107,7 @@ const FieldForm = props => {
     };
 
     const onClickRowAction = data => {
-        if (data.action.value === actionType.delete.value) {
+        if (data.action.value === ACTION_TYPE.delete.value) {
             setOpenConfirmDialog(true);
             setRowSelected(data.row);
         }
@@ -132,20 +132,20 @@ const FieldForm = props => {
             id: newId,
             name: fieldName,
             label: fieldLabel,
-            dataType: fieldType,
+            DATA_TYPE: fieldType,
             tableRef: fieldSettings.tableRef,
             tableRefKey: fieldSettings.tableRefKey,
             tableRefName: fieldSettings.tableRefName,
             multiSelect: fieldSettings.multiSelect,
             primaryKey: fieldSettings.primaryKey,
         };
-        changeFieldNameRule(actionType.insert.value, fieldName);
+        changeFieldNameRule(ACTION_TYPE.insert.value, fieldName);
         setFieldRows([...fieldRows, newRows]);
         setOpenFieldForm(false);
     };
 
     const refTableSettings = () => {
-        if (fieldType.value !== dataType.select.value) return false;
+        if (fieldType.value !== DATA_TYPE.select.value) return false;
 
         return (
             <Box display="flex" flexDirection="column" gap={2}>
@@ -186,9 +186,9 @@ const FieldForm = props => {
 
     const primaryKeySetting = () => {
         if (
-            fieldType.value !== dataType.autoIncrement.value &&
-            fieldType.value !== dataType.integer.value &&
-            fieldType.value !== dataType.varchar.value
+            fieldType.value !== DATA_TYPE.autoIncrement.value &&
+            fieldType.value !== DATA_TYPE.integer.value &&
+            fieldType.value !== DATA_TYPE.varchar.value
         )
             return false;
 
@@ -208,10 +208,10 @@ const FieldForm = props => {
         if (!fieldType) return false;
 
         if (
-            fieldType.value !== dataType.autoIncrement.value &&
-            fieldType.value !== dataType.integer.value &&
-            fieldType.value !== dataType.varchar.value &&
-            fieldType.value !== dataType.select.value
+            fieldType.value !== DATA_TYPE.autoIncrement.value &&
+            fieldType.value !== DATA_TYPE.integer.value &&
+            fieldType.value !== DATA_TYPE.varchar.value &&
+            fieldType.value !== DATA_TYPE.select.value
         )
             return false;
 
@@ -271,7 +271,7 @@ const FieldForm = props => {
                         />
                         <Dropdown
                             label="Data Type"
-                            name="dataType"
+                            name="DATA_TYPE"
                             group="fieldForm"
                             options={fieldTypeOptions}
                             value={fieldType}

@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import Number from '@/component/input/Number';
 import ShortText from '@/component/input/ShortText';
 
-import componentGroupType from '@/constant/component_group_type';
+import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
 
 const Position = props => {
     const {selected, content, setContent, setSelected} = props;
@@ -40,7 +40,7 @@ const Position = props => {
                         component.section[columnIndexInt].splice(rowIndexInt, 0, selected);
                     }
                 }
-                if (component.group.value === componentGroupType.container.value) {
+                if (component.group.value === COMPONENT_GROUP_TYPE.container.value) {
                     for (let y = 0; y < component.section.length; y++) {
                         const section = component.section[y];
                         changePosition(section);
@@ -57,7 +57,7 @@ const Position = props => {
             if (component.id === selected.id) {
                 content.splice(i, 1);
             }
-            if (component.group.value === componentGroupType.container.value) {
+            if (component.group.value === COMPONENT_GROUP_TYPE.container.value) {
                 for (let x = 0; x < component.section.length; x++) {
                     const section = component.section[x];
                     deleteSelected(section);

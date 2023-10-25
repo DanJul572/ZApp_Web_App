@@ -14,8 +14,8 @@ import RowCustomActionDialog from './CustomActionDialog';
 import ToolbarAction from './ToolbarAction';
 import ToolBarComponent from './ToolbarComponent';
 
-import actionType from '@/constant/action_type';
-import dataType from '@/constant/data_type';
+import ACTION_TYPE from '@/constant/ACTION_TYPE';
+import DATA_TYPE from '@/constant/DATA_TYPE';
 
 const Table = props => {
     const {
@@ -85,11 +85,11 @@ const Table = props => {
     const rowDisplay = (cell, type) => {
         const value = cell.getValue();
 
-        if (type === dataType.select.value) return tableReference(value);
+        if (type === DATA_TYPE.select.value) return tableReference(value);
 
-        if (type === dataType.boolean.value) return boolean(value);
+        if (type === DATA_TYPE.boolean.value) return boolean(value);
 
-        if (type === dataType.autoIncrement.value || type === dataType.integer.value) return numeric(value);
+        if (type === DATA_TYPE.autoIncrement.value || type === DATA_TYPE.integer.value) return numeric(value);
 
         return value;
     };
@@ -105,11 +105,11 @@ const Table = props => {
     };
 
     const isSupportRowAction = () => {
-        return action.filter(item => item.type !== actionType.insert.value).length ? true : false;
+        return action.filter(item => item.type !== ACTION_TYPE.insert.value).length ? true : false;
     };
 
     const isSupportAddAction = () => {
-        return action.find(item => item.type === actionType.insert.value) ? true : false;
+        return action.find(item => item.type === ACTION_TYPE.insert.value) ? true : false;
     };
 
     const displayColumnDefOptions = () => {

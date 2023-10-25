@@ -1,4 +1,4 @@
-const actionType = {
+const ACTION_TYPE = {
     insert: {
         value: 1,
         label: 'Insert',
@@ -21,4 +21,4 @@ const actionType = {
     },
 };
 
-export default actionType;
+export default ACTION_TYPE;

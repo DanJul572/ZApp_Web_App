@@ -1,7 +1,7 @@
 import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
 
-import DeleteComponent from './Delete';
+import DeleteComponent from './DeleteComponent';
 import Identity from './Identity';
 import Position from './Position';
 

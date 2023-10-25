@@ -16,13 +16,13 @@ import ShortText from '@/component/input/ShortText';
 import Table from '@/component/table';
 import Toggle from '@/component/input/Toggle';
 
-import actionType from '@/constant/action_type';
-import buttonType from '@/constant/button_type';
-import componentGroupType from '@/constant/component_group_type';
-import containerType from '@/constant/container_type';
-import dataDisplayType from '@/constant/data_display_type';
-import inputType from '@/constant/input_type';
-import visualElementType from '@/constant/visual_element_type';
+import ACTION_TYPE from '@/constant/ACTION_TYPE';
+import BUTTON_TYPE from '@/constant/BUTTON_TYPE';
+import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
+import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
+import DATA_DISPLAY_TYPE from '@/constant/DATA_DISPLAY';
+import INPUT_TYPE from '@/constant/INPUT_TYPE';
+import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
 
 import mockColumns from '@/mock/table/columns';
 import mockRows from '@/mock/table/rows';
@@ -31,16 +31,16 @@ const Content = props => {
     const {content, selected, setSelected} = props;
     const actions = [
         {
-            type: actionType.insert.value,
+            type: ACTION_TYPE.insert.value,
         },
         {
-            type: actionType.update.value,
+            type: ACTION_TYPE.update.value,
         },
         {
-            type: actionType.delete.value,
+            type: ACTION_TYPE.delete.value,
         },
         {
-            type: actionType.detail.value,
+            type: ACTION_TYPE.detail.value,
         },
     ];
 
@@ -70,8 +70,8 @@ const Content = props => {
         let section = component.section;
         let properties = component.properties;
 
-        if (group === componentGroupType.container.value) {
-            if (type === containerType.card.value) {
+        if (group === COMPONENT_GROUP_TYPE.container.value) {
+            if (type === CONTAINER_TYPE.card.value) {
                 return (
                     <Container key={id} component={component}>
                         <Box border={1} borderColor={colors.grey[300]} borderRadius={1} padding={1}>
@@ -83,7 +83,7 @@ const Content = props => {
                         </Box>
                     </Container>
                 );
-            } else if (type === containerType.grid.value) {
+            } else if (type === CONTAINER_TYPE.grid.value) {
                 return (
                     <Container key={id} component={component} padding={1}>
                         <Grid container>
@@ -102,46 +102,46 @@ const Content = props => {
                     </Container>
                 );
             }
-        } else if (group === componentGroupType.fieldControl.value) {
-            if (type === inputType.shortText.value) {
+        } else if (group === COMPONENT_GROUP_TYPE.fieldControl.value) {
+            if (type === INPUT_TYPE.shortText.value) {
                 return (
                     <Container key={id} component={component}>
-                        <ShortText disabled={true} label={properties.label || inputType.shortText.label} />
+                        <ShortText disabled={true} label={properties.label || INPUT_TYPE.shortText.label} />
                     </Container>
                 );
-            } else if (type === inputType.longText.value) {
+            } else if (type === INPUT_TYPE.longText.value) {
                 return (
                     <Container key={id} component={component}>
-                        <LongText disabled={true} label={properties.label || inputType.longText.label} />
+                        <LongText disabled={true} label={properties.label || INPUT_TYPE.longText.label} />
                     </Container>
                 );
-            } else if (type === inputType.number.value) {
+            } else if (type === INPUT_TYPE.number.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Number disabled={true} label={properties.label || inputType.number.label} />
+                        <Number disabled={true} label={properties.label || INPUT_TYPE.number.label} />
                     </Container>
                 );
-            } else if (type === inputType.toggle.value) {
+            } else if (type === INPUT_TYPE.toggle.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Toggle disabled={true} label={properties.label || inputType.toggle.label} />
+                        <Toggle disabled={true} label={properties.label || INPUT_TYPE.toggle.label} />
                     </Container>
                 );
-            } else if (type === inputType.dropdown.value) {
+            } else if (type === INPUT_TYPE.dropdown.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Dropdown options={[]} disabled={true} label={properties.label || inputType.dropdown.label} />
+                        <Dropdown options={[]} disabled={true} label={properties.label || INPUT_TYPE.dropdown.label} />
                     </Container>
                 );
             }
-        } else if (group === componentGroupType.visualElement.value) {
-            if (type === visualElementType.divider.value) {
+        } else if (group === COMPONENT_GROUP_TYPE.visualElement.value) {
+            if (type === VISUAL_ELEMENT_TYPE.divider.value) {
                 return (
                     <Container key={id} component={component}>
                         <Divider />
                     </Container>
                 );
-            } else if (type === visualElementType.text.value) {
+            } else if (type === VISUAL_ELEMENT_TYPE.text.value) {
                 return (
                     <Container key={id} component={component}>
                         <Typography fontSize={12}>
@@ -151,8 +151,8 @@ const Content = props => {
                     </Container>
                 );
             }
-        } else if (group === componentGroupType.dataDisplay.value) {
-            if (type === dataDisplayType.table.value) {
+        } else if (group === COMPONENT_GROUP_TYPE.dataDisplay.value) {
+            if (type === DATA_DISPLAY_TYPE.table.value) {
                 return (
                     <Container key={id} component={component}>
                         <Table
@@ -180,8 +180,8 @@ const Content = props => {
                     </Container>
                 );
             }
-        } else if (group === componentGroupType.button.value) {
-            if (type === buttonType.button.value) {
+        } else if (group === COMPONENT_GROUP_TYPE.button.value) {
+            if (type === BUTTON_TYPE.button.value) {
                 return (
                     <Container key={id} component={component}>
                         <Button size="small" variant="contained" disabled={true} style={{display: 'block'}}>

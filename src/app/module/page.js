@@ -4,7 +4,7 @@ import {useRouter} from 'next/navigation';
 
 import Table from '@/component/table';
 
-import actionType from '@/constant/action_type';
+import ACTION_TYPE from '@/constant/ACTION_TYPE';
 import mockColumns from '@/mock/module/columns';
 import mockRows from '@/mock/module/rows';
 
@@ -13,25 +13,25 @@ export default function Module() {
 
     const actionList = [
         {
-            type: actionType.insert.value,
+            type: ACTION_TYPE.insert.value,
             path: '/',
         },
         {
-            type: actionType.update.value,
+            type: ACTION_TYPE.update.value,
             path: '/',
         },
         {
-            type: actionType.delete.value,
+            type: ACTION_TYPE.delete.value,
             path: '/',
         },
         {
-            type: actionType.detail.value,
+            type: ACTION_TYPE.detail.value,
             path: '/',
         },
     ];
 
     const onCLickToolbarAction = action => {
-        if (action.value === actionType.insert.value) push('/module/create');
+        if (action.value === ACTION_TYPE.insert.value) push('/module/create');
     };
 
     return (

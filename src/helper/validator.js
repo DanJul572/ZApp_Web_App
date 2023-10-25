@@ -1,4 +1,4 @@
-import actionType from '@/constant/action_type';
+import ACTION_TYPE from '@/constant/ACTION_TYPE';
 
 const required = value => {
     return !value ? true : false;
@@ -29,12 +29,12 @@ const generateValidation = (action, key, value, rule) => {
     let newRule = '';
     let values = (matchValue && matchValue[1].split(',').map(value => value.trim())) || [];
 
-    if (action === actionType.insert.value) {
+    if (action === ACTION_TYPE.insert.value) {
         values.push(value);
         newRule = `${key}:(${values.join(',')})`;
     }
 
-    if (action === actionType.delete.value) {
+    if (action === ACTION_TYPE.delete.value) {
         newRule = '';
         let indexToRemove = values.indexOf(value);
 

@@ -16,7 +16,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
-import menuList from '@/constant/menu_list';
+import MENU_LIST from '@/constant/MENU_LIST';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
@@ -31,7 +31,7 @@ export default function Main({children, window}) {
 
     const drawer = (
         <div>
-            {menuList.map((section, index) => (
+            {MENU_LIST.map((section, index) => (
                 <div key={index}>
                     <List>
                         {section.map((child, index) => (

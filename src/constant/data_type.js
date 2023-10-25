@@ -1,4 +1,4 @@
-const dataType = {
+const DATA_TYPE = {
     autoIncrement: {
         value: 1,
         label: 'Auto Increment',
@@ -25,4 +25,4 @@ const dataType = {
     },
 };
 
-export default dataType;
+export default DATA_TYPE;

@@ -6,7 +6,7 @@ import Description from '@mui/icons-material/Description';
 import Edit from '@mui/icons-material/Edit';
 import Info from '@mui/icons-material/Info';
 
-import actionType from '@/constant/action_type';
+import ACTION_TYPE from '@/constant/ACTION_TYPE';
 
 const RowAction = props => {
     const {onClickRowAction, action, row, isSupportRowAction, rowCustomAction, setOpenRowCustomActionDialog, setRowClicked} =
@@ -19,11 +19,11 @@ const RowAction = props => {
 
     return (
         <Box sx={{display: 'flex', alignItems: 'center'}}>
-            {isSupportRowAction() && action.find(item => item.type === actionType.update.value) && (
+            {isSupportRowAction() && action.find(item => item.type === ACTION_TYPE.update.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            action: actionType.update,
+                            action: ACTION_TYPE.update,
                             row: row.original,
                         })
                     }
@@ -31,11 +31,11 @@ const RowAction = props => {
                     <Edit fontSize="11" />
                 </IconButton>
             )}
-            {isSupportRowAction() && action.find(item => item.type === actionType.delete.value) && (
+            {isSupportRowAction() && action.find(item => item.type === ACTION_TYPE.delete.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            action: actionType.delete,
+                            action: ACTION_TYPE.delete,
                             row: row.original,
                         })
                     }
@@ -43,11 +43,11 @@ const RowAction = props => {
                     <Delete fontSize="11" />
                 </IconButton>
             )}
-            {isSupportRowAction() && action.find(item => item.type === actionType.detail.value) && (
+            {isSupportRowAction() && action.find(item => item.type === ACTION_TYPE.detail.value) && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            action: actionType.detail,
+                            action: ACTION_TYPE.detail,
                             row: row.original,
                         })
                     }

@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-import actionType from '@/constant/action_type';
+import ACTION_TYPE from '@/constant/ACTION_TYPE';
 
 const ToolbarAction = props => {
     const {onClickToolbarAction, toolbarCustomAction, isSupportAddAction} = props;
@@ -17,7 +17,7 @@ const ToolbarAction = props => {
             {isSupportAddAction && (
                 <Button
                     color="primary"
-                    onClick={() => onClickToolbarAction(actionType.insert)}
+                    onClick={() => onClickToolbarAction(ACTION_TYPE.insert)}
                     variant="contained"
                     size="small">
                     Create New Data

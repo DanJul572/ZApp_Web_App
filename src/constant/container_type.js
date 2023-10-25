@@ -1,4 +1,4 @@
-const containerType = {
+const CONTAINER_TYPE = {
     grid: {
         value: 1,
         label: 'Grid',
@@ -17,4 +17,4 @@ const containerType = {
     },
 };
 
-export default containerType;
+export default CONTAINER_TYPE;
