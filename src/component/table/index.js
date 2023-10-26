@@ -82,6 +82,14 @@ const Table = props => {
         return column;
     });
 
+    const muiTopToolbarProps = () => {
+        if (!isSupportAddAction() && !toolbarCustomAction.length) return {style: {display: 'none'}};
+    };
+
+    const muiBottomToolbarProps = () => {
+        if (!enablePagination && !onChangePage) return {style: {display: 'none'}};
+    };
+
     const rowDisplay = (cell, type) => {
         const value = cell.getValue();
 
@@ -190,7 +198,7 @@ const Table = props => {
                 enableColumnFilters={enableFilter}
                 enableColumnResizing={enableColumnResizing}
                 enableDensityToggle={enableDensityToggle}
-                enableEditing={isSupportRowAction}
+                enableEditing={isSupportRowAction()}
                 enableFilterMatchHighlighting={false}
                 enableFullScreenToggle={enableFullScreenToggle}
                 enableGlobalFilter={enableSearch}
@@ -206,8 +214,10 @@ const Table = props => {
                 manualFiltering
                 manualPagination
                 manualSorting
+                muiBottomToolbarProps={muiBottomToolbarProps()}
                 muiTableContainerProps={muiTableContainerProps}
                 muiTablePaginationProps={muiTablePaginationProps}
+                muiTopToolbarProps={muiTopToolbarProps()}
                 onColumnFiltersChange={setColumnFilters}
                 onGlobalFilterChange={onSearch}
                 onPaginationChange={setPagination}
@@ -217,8 +227,8 @@ const Table = props => {
                 positionActionsColumn="last"
                 positionToolbarAlertBanner="none"
                 renderRowActions={({row}) => rowAction(row)}
-                renderTopToolbarCustomActions={toolbarAction}
                 renderToolbarInternalActions={({table}) => toolbarComponent(table)}
+                renderTopToolbarCustomActions={toolbarAction}
                 rowCount={rowCount}
                 state={{pagination, columnFilters, sorting, rowSelection, isLoading}}
             />

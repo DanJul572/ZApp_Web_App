@@ -16,7 +16,6 @@ import ShortText from '@/component/input/ShortText';
 import Table from '@/component/table';
 import Toggle from '@/component/input/Toggle';
 
-import ACTION_TYPE from '@/constant/ACTION_TYPE';
 import BUTTON_TYPE from '@/constant/BUTTON_TYPE';
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
 import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
@@ -29,20 +28,6 @@ import mockRows from '@/mock/table/rows';
 
 const Content = props => {
     const {content, selected, setSelected} = props;
-    const actions = [
-        {
-            type: ACTION_TYPE.insert.value,
-        },
-        {
-            type: ACTION_TYPE.update.value,
-        },
-        {
-            type: ACTION_TYPE.delete.value,
-        },
-        {
-            type: ACTION_TYPE.detail.value,
-        },
-    ];
 
     const Container = ({children, component}) => {
         return (
@@ -74,7 +59,7 @@ const Content = props => {
             if (type === CONTAINER_TYPE.card.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Box border={1} borderColor={colors.grey[300]} borderRadius={1} padding={1}>
+                        <Box border={1} borderColor={grey[300]} borderRadius={1} padding={1}>
                             <Box>
                                 {section &&
                                     section.length > 0 &&
@@ -155,28 +140,7 @@ const Content = props => {
             if (type === DATA_DISPLAY_TYPE.table.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Table
-                            action={actions}
-                            columnKey={'id'}
-                            columns={mockColumns}
-                            enableExport={true}
-                            enableHiding={true}
-                            enablePagination={true}
-                            enableRowSelection={true}
-                            enableSearch={true}
-                            enableSorting={true}
-                            onChangePage={() => {}}
-                            onClickRowAction={() => {}}
-                            // onClickToolbarAction={onCLickToolbarAction}
-                            onDelete={() => {}}
-                            onSearch={() => {}}
-                            onSelect={() => {}}
-                            onSort={() => {}}
-                            pageCount={1}
-                            pageIndex={1}
-                            rowCount={1}
-                            rows={mockRows}
-                        />
+                        <Table columnKey={'id'} columns={mockColumns} rows={mockRows} />
                     </Container>
                 );
             }
