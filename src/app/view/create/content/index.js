@@ -59,7 +59,14 @@ const Content = props => {
             if (type === CONTAINER_TYPE.card.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Box border={1} borderColor={grey[300]} borderRadius={1} padding={1}>
+                        <Box
+                            border={section.length ? 1 : 0}
+                            borderColor={grey[300]}
+                            borderRadius={1}
+                            padding={section.length ? 1 : 0}>
+                            <Typography fontSize={10} fontWeight="bold">
+                                Card
+                            </Typography>
                             <Box>
                                 {section &&
                                     section.length > 0 &&
@@ -70,7 +77,7 @@ const Content = props => {
                 );
             } else if (type === CONTAINER_TYPE.grid.value) {
                 return (
-                    <Container key={id} component={component} padding={1}>
+                    <Container key={id} component={component}>
                         <Grid container>
                             <Grid item xs={12}>
                                 <Typography fontSize={10} fontWeight="bold">
@@ -148,7 +155,7 @@ const Content = props => {
             if (type === BUTTON_TYPE.button.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Button size="small" variant="contained" disabled={true} style={{display: 'block'}}>
+                        <Button size="small" variant="contained" style={{display: 'block'}}>
                             Button
                         </Button>
                     </Container>
