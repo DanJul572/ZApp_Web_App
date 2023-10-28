@@ -17,7 +17,7 @@ import ShortText from '@/component/input/ShortText';
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
 
 const Position = props => {
-    const {selected, content, setContent, setSelected} = props;
+    const {selected, content, setContent, setSelected, deleteSelected} = props;
 
     const [containerID, setContainerID] = useState(null);
     const [columnIndex, setColumnIndex] = useState(null);
@@ -51,32 +51,11 @@ const Position = props => {
         return content;
     };
 
-    const deleteSelected = content => {
-        for (let i = 0; i < content.length; i++) {
-            const component = content[i];
-            if (component.id === selected.id) {
-                content.splice(i, 1);
-            }
-            if (component.group.value === COMPONENT_GROUP_TYPE.container.value) {
-                for (let x = 0; x < component.section.length; x++) {
-                    const section = component.section[x];
-                    deleteSelected(section);
-                }
-                for (let y = 0; y < component.section.length; y++) {
-                    if (component.section[y].length === 0) {
-                        component.section.splice(y, 1);
-                    }
-                }
-            }
-        }
-        return content;
-    };
-
     const onMove = () => {
-        const deleted = deleteSelected(content);
-        const changed = changePosition(deleted);
+        let newContent = deleteSelected(content);
+        newContent = changePosition(newContent);
 
-        setContent(changed);
+        setContent([...newContent]);
         setSelected(null);
         setOpen(false);
     };

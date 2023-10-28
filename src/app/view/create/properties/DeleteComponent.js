@@ -4,34 +4,12 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
-
 const DeleteComponent = props => {
-    const {selected, content, setContent, setSelected} = props;
-
-    const deleteSelected = content => {
-        for (let i = 0; i < content.length; i++) {
-            const component = content[i];
-            if (component.id === selected.id) {
-                content.splice(i, 1);
-            }
-            if (component.group.value === COMPONENT_GROUP_TYPE.container.value) {
-                for (let x = 0; x < component.section.length; x++) {
-                    const section = component.section[x];
-                    deleteSelected(section);
-                }
-                for (let y = 0; y < component.section.length; y++) {
-                    if (component.section[y].length === 0) {
-                        component.section.splice(y, 1);
-                    }
-                }
-            }
-        }
-        return content;
-    };
+    const {selected, content, setContent, setSelected, deleteSelected} = props;
 
     const onDelete = () => {
-        setContent(deleteSelected(content));
+        const newContent = deleteSelected(content);
+        setContent([...newContent]);
         setSelected(null);
     };
 
