@@ -63,6 +63,7 @@ const Content = props => {
                             border={section.length ? 1 : 0}
                             borderColor={grey[300]}
                             borderRadius={1}
+                            height="100%"
                             padding={section.length ? 1 : 0}>
                             <Typography fontSize={10} fontWeight="bold">
                                 Card
@@ -108,7 +109,7 @@ const Content = props => {
             } else if (type === INPUT_TYPE.longText.value) {
                 return (
                     <Container key={id} component={component}>
-                        <LongText disabled={true} label={properties.label || INPUT_TYPE.longText.label} />
+                        <LongText disabled={true} rows={4} label={properties.label || INPUT_TYPE.longText.label} />
                     </Container>
                 );
             } else if (type === INPUT_TYPE.number.value) {
@@ -140,10 +141,7 @@ const Content = props => {
             } else if (type === VISUAL_ELEMENT_TYPE.text.value) {
                 return (
                     <Container key={id} component={component}>
-                        <Typography fontSize={12}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
-                        </Typography>
+                        <Typography fontSize={12}>{properties.label || VISUAL_ELEMENT_TYPE.text.label}</Typography>
                     </Container>
                 );
             }
@@ -160,7 +158,7 @@ const Content = props => {
                 return (
                     <Container key={id} component={component}>
                         <Button size="small" variant="contained" style={{display: 'block'}}>
-                            Button
+                            {properties.label || BUTTON_TYPE.button.label}
                         </Button>
                     </Container>
                 );
@@ -169,7 +167,7 @@ const Content = props => {
     };
 
     return (
-        <Grid item xs={8} border={1} borderColor={grey[400]} padding={2}>
+        <Grid item xs={8} marginTop={6} marginX={40} padding={2}>
             {content && content.length > 0 && content.map(component => renderComponent(component))}
         </Grid>
     );

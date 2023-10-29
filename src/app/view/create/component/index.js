@@ -84,7 +84,17 @@ const Component = props => {
     }, []);
 
     return (
-        <Grid item xs={2} border={1} borderRight={0} borderColor={grey[400]}>
+        <Grid
+            border={1}
+            borderColor={grey[400]}
+            bottom={0}
+            item
+            left={0}
+            marginTop={7}
+            position="fixed"
+            top={0}
+            width={500}
+            xs={2}>
             {componentList.length > 0 &&
                 componentList.map((group, index) => (
                     <List key={index} disablePadding>

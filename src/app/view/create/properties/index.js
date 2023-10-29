@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 
 import DeleteComponent from './DeleteComponent';
 import Identity from './Identity';
+import Label from './Label';
 import Position from './Position';
 import Size from './Size';
 
@@ -52,7 +53,17 @@ const Properties = props => {
     };
 
     return (
-        <Grid item xs={2} border={1} borderLeft={0} borderColor={grey[400]}>
+        <Grid
+            border={1}
+            borderColor={grey[400]}
+            bottom={0}
+            item
+            marginTop={7}
+            position="fixed"
+            right={0}
+            top={0}
+            width={500}
+            xs={2}>
             <DeleteComponent
                 content={content}
                 deleteSelected={deleteSelected}
@@ -70,6 +81,7 @@ const Properties = props => {
                 setSelected={setSelected}
             />
             <Size content={content} selected={selected} changeProperties={changeProperties} setContent={setContent} />
+            <Label content={content} selected={selected} changeProperties={changeProperties} setContent={setContent} />
         </Grid>
     );
 };

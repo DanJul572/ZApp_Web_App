@@ -17,7 +17,7 @@ const ViewCreate = () => {
     return (
         <Box>
             <TopBar />
-            <Grid container>
+            <Grid container justifyContent="space-between" display="flex">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
                 <Content content={content} selected={selected} setSelected={setSelected} />
                 <Properties selected={selected} content={content} setContent={setContent} setSelected={setSelected} />

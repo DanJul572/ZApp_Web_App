@@ -11,7 +11,6 @@ const Identity = props => {
 
     const onCoppy = () => {
         if (!selected && !navigator.clipboard) return;
-
         navigator.clipboard.writeText(selected.id);
     };
 
