@@ -5,8 +5,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Settings from '@mui/icons-material/Settings';
 import Typography from '@mui/material/Typography';
@@ -55,9 +53,7 @@ const Size = props => {
                     <Settings fontSize="12" />
                 </IconButton>
             </Box>
-            <Divider />
             <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>Component Size</DialogTitle>
                 <DialogContent>
                     <Box>
                         <ShortText label="Size" value={size} onChange={setSize} />

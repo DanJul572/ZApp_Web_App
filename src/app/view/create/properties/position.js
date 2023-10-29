@@ -5,8 +5,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Settings from '@mui/icons-material/Settings';
 import Typography from '@mui/material/Typography';
@@ -76,9 +74,7 @@ const Position = props => {
                     <Settings fontSize="12" />
                 </IconButton>
             </Box>
-            <Divider />
             <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>Change Component Position</DialogTitle>
                 <DialogContent>
                     <Box display="flex" flexDirection="column" gap={1}>
                         <ShortText label="Container ID" value={containerID} onChange={setContainerID} />

@@ -77,7 +77,8 @@ const Content = props => {
                     </Container>
                 );
             } else if (type === CONTAINER_TYPE.grid.value) {
-                let containerSize = properties.size ? properties.size.split(',') : false;
+                let columnSize = properties.size ? properties.size.split(',') : [];
+                let defaultSize = 12 / (section.length > 0 ? section.length : 1);
                 return (
                     <Container key={id} component={component}>
                         <Grid container>
@@ -90,7 +91,7 @@ const Content = props => {
                                 section.map((childs, index) => (
                                     <Grid
                                         item
-                                        xs={containerSize.length > 0 ? containerSize[index] : 12 / section.length}
+                                        xs={columnSize.length > 0 ? parseInt(columnSize[index]) : defaultSize}
                                         key={index}>
                                         {childs.map(child => renderComponent(child))}
                                     </Grid>

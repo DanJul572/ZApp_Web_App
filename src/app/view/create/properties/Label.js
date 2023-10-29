@@ -5,8 +5,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Settings from '@mui/icons-material/Settings';
 import Typography from '@mui/material/Typography';
@@ -57,12 +55,10 @@ const Label = props => {
                     <Settings fontSize="12" />
                 </IconButton>
             </Box>
-            <Divider />
             <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>Component Label</DialogTitle>
                 <DialogContent>
                     <Box width={500}>
-                        <LongText label="Size" value={label} onChange={setLabel} rows={4} />
+                        <LongText label="Label" value={label} onChange={setLabel} rows={4} />
                     </Box>
                 </DialogContent>
                 <DialogActions>

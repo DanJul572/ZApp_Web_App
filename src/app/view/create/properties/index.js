@@ -80,8 +80,8 @@ const Properties = props => {
                 setContent={setContent}
                 setSelected={setSelected}
             />
-            <Size content={content} selected={selected} changeProperties={changeProperties} setContent={setContent} />
             <Label content={content} selected={selected} changeProperties={changeProperties} setContent={setContent} />
+            <Size content={content} selected={selected} changeProperties={changeProperties} setContent={setContent} />
         </Grid>
     );
 };
