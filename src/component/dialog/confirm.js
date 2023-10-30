@@ -15,11 +15,11 @@ const Confirm = props => {
                 <DialogContentText>{text}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={() => onConfirm(true)} variant="contained" size="small">
-                    {confirmButton}
-                </Button>
                 <Button onClick={() => onConfirm(false)} size="small">
                     {cancelButton}
+                </Button>
+                <Button onClick={() => onConfirm(true)} variant="contained" size="small">
+                    {confirmButton}
                 </Button>
             </DialogActions>
         </Dialog>
