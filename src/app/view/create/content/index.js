@@ -19,7 +19,7 @@ import Toggle from '@/component/input/Toggle';
 import BUTTON_TYPE from '@/constant/BUTTON_TYPE';
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
 import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
-import DATA_DISPLAY_TYPE from '@/constant/DATA_DISPLAY';
+import DATA_DISPLAY_TYPE from '@/constant/DATA_DISPLAY_TYPE';
 import INPUT_TYPE from '@/constant/INPUT_TYPE';
 import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
 

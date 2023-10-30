@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import LongText from '@/component/input/LongText';
 
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
-import DATA_DISPLAY_TYPE from '@/constant/DATA_DISPLAY';
+import DATA_DISPLAY_TYPE from '@/constant/DATA_DISPLAY_TYPE';
 import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
 
 const Label = props => {

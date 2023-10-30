@@ -7,10 +7,10 @@ const VISUAL_ELEMENT_TYPE = {
         value: 2,
         label: 'Divider',
     },
-    image: {
-        value: 2,
-        label: 'Image',
-    },
+    // image: {
+    //     value: 3,
+    //     label: 'Image',
+    // },
 };
 
 export default VISUAL_ELEMENT_TYPE;
