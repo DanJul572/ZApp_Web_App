@@ -1,25 +1,26 @@
-import ListIcon from '@mui/icons-material/List';
-import PreviewIcon from '@mui/icons-material/Preview';
-import ViewColumnIcon from '@mui/icons-material/ViewColumn';
-
 const MENU_LIST = [
-    [
-        {
-            name: 'Module',
-            icon: <ViewColumnIcon />,
-            url: '/module',
-        },
-        {
-            name: 'View',
-            icon: <PreviewIcon />,
-            url: '/view',
-        },
-        {
-            name: 'Menu',
-            icon: <ListIcon />,
-            url: 'menu',
-        },
-    ],
+    {
+        id: '1',
+        label: 'Core',
+        url: '',
+        child: [
+            {
+                id: '2',
+                label: 'Module',
+                url: '/module',
+            },
+            {
+                id: '3',
+                label: 'View',
+                url: '/view',
+            },
+            {
+                id: '4',
+                label: 'Menu',
+                url: '/menu',
+            },
+        ],
+    },
 ];
 
 export default MENU_LIST;

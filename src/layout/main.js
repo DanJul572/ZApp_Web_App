@@ -5,59 +5,19 @@ import {useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import grey from '@mui/material/colors/grey';
 import IconButton from '@mui/material/IconButton';
-import Link from 'next/link';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
-import MENU_LIST from '@/constant/MENU_LIST';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-const drawerWidth = 240;
+import Sidebar from './Sidebar';
 
-export default function Main({children, window}) {
+export default function Main({children}) {
     const [mobileOpen, setMobileOpen] = useState(false);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-
-    const drawer = (
-        <div>
-            {MENU_LIST.map((section, index) => (
-                <div key={index}>
-                    <List>
-                        {section.map((child, index) => (
-                            <Link
-                                href={child.url}
-                                key={index}
-                                style={{
-                                    textDecoration: 'none',
-                                    color: grey[700],
-                                }}>
-                                <ListItem disablePadding>
-                                    <ListItemButton>
-                                        <ListItemIcon>{child.icon}</ListItemIcon>
-                                        <ListItemText primary={child.name} />
-                                    </ListItemButton>
-                                </ListItem>
-                            </Link>
-                        ))}
-                    </List>
-                    <Divider />
-                </div>
-            ))}
-        </div>
-    );
-
-    const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
         <Box sx={{display: 'flex'}}>
@@ -65,8 +25,9 @@ export default function Main({children, window}) {
             <AppBar
                 position="fixed"
                 sx={{
-                    width: {sm: `calc(100% - ${drawerWidth}px)`},
-                    ml: {sm: `${drawerWidth}px`},
+                    top: 0,
+                    left: 0,
+                    right: 0,
                 }}>
                 <Toolbar>
                     <IconButton
@@ -82,43 +43,13 @@ export default function Main({children, window}) {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Box component="nav" sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}} aria-label="mailbox folders">
-                <Drawer
-                    container={container}
-                    variant="temporary"
-                    open={mobileOpen}
-                    onClose={handleDrawerToggle}
-                    ModalProps={{
-                        keepMounted: true,
-                    }}
-                    sx={{
-                        display: {xs: 'block', sm: 'none'},
-                        '& .MuiDrawer-paper': {
-                            boxSizing: 'border-box',
-                            width: drawerWidth,
-                        },
-                    }}>
-                    {drawer}
-                </Drawer>
-                <Drawer
-                    variant="permanent"
-                    sx={{
-                        display: {xs: 'none', sm: 'block'},
-                        '& .MuiDrawer-paper': {
-                            boxSizing: 'border-box',
-                            width: drawerWidth,
-                        },
-                    }}
-                    open>
-                    {drawer}
-                </Drawer>
-            </Box>
+            <Sidebar />
             <Box
                 component="main"
                 sx={{
                     flexGrow: 1,
                     p: 3,
-                    width: {sm: `calc(100% - ${drawerWidth}px)`},
+                    marginLeft: 37,
                 }}>
                 <Toolbar />
                 {children}
