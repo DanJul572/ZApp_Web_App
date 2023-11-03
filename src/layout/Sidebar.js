@@ -1,9 +1,7 @@
 import {forwardRef} from 'react';
-import {useRouter} from 'next/navigation';
-import {useSpring, animated} from '@react-spring/web';
+import {useRouter, usePathname} from 'next/navigation';
 
 import Box from '@mui/material/Box';
-import Collapse from '@mui/material/Collapse';
 import {alpha, styled} from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 
@@ -16,50 +14,43 @@ import InsertDriveFileOutlined from '@mui/icons-material/InsertDriveFileOutlined
 
 import MENU_LIST from '@/constant/MENU_LIST';
 
-const TransitionComponent = props => {
-    const style = useSpring({
-        to: {
-            opacity: props.in ? 1 : 0,
-        },
-    });
-
-    return (
-        <animated.div style={style}>
-            <Collapse {...props} />
-        </animated.div>
-    );
-};
-
-const CustomTreeItem = forwardRef((props, ref) => (
-    <TreeItem {...props} TransitionComponent={TransitionComponent} ref={ref} />
-));
+const CustomTreeItem = forwardRef((props, ref) => <TreeItem {...props} ref={ref} />);
 CustomTreeItem.displayName = 'CustomTreeItem';
 
-const StyledTreeItem = styled(CustomTreeItem)(({theme}) => ({
-    [`& .${treeItemClasses.iconContainer}`]: {
-        '& .close': {
-            opacity: 0.3,
-        },
-    },
+const StyledTreeItem = styled(CustomTreeItem)(({theme, selected}) => ({
     [`& .${treeItemClasses.group}`]: {
         marginLeft: 15,
         paddingLeft: 18,
         borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
     },
+    [`& .${treeItemClasses.content}`]: {
+        backgroundColor: selected ? alpha(theme.palette.primary.main, 0.2) : 'transparent',
+    },
 }));
 
 const Sidebar = () => {
     const {push} = useRouter();
+    const pathname = usePathname();
 
     const menuList = menu => {
+        const isActive = pathname === menu.url;
+
         if (menu.child) {
             return (
-                <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label}>
+                <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} selected={isActive}>
                     {menu.child.map(child => menuList(child))}
                 </StyledTreeItem>
             );
         } else {
-            return <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} onClick={() => push(menu.url)} />;
+            return (
+                <StyledTreeItem
+                    key={menu.id}
+                    nodeId={menu.id}
+                    label={menu.label}
+                    onClick={() => push(menu.url)}
+                    selected={isActive}
+                />
+            );
         }
     };
 
@@ -78,7 +69,6 @@ const Sidebar = () => {
             }}>
             <TreeView
                 aria-label="customized"
-                defaultExpanded={['1']}
                 defaultCollapseIcon={<FolderOpen />}
                 defaultExpandIcon={<Folder />}
                 defaultEndIcon={<InsertDriveFileOutlined />}

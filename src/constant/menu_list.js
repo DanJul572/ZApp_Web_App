@@ -1,7 +1,7 @@
 const MENU_LIST = [
     {
         id: '1',
-        label: 'Core',
+        label: 'Template',
         url: '',
         child: [
             {
@@ -10,7 +10,7 @@ const MENU_LIST = [
                 url: '/module',
             },
             {
-                id: '3',
+                id: '5',
                 label: 'View',
                 url: '/view',
             },

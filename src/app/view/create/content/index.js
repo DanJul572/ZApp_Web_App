@@ -13,8 +13,12 @@ import Dropdown from '@/component/input/Dropdown';
 import LongText from '@/component/input/LongText';
 import Number from '@/component/input/Number';
 import ShortText from '@/component/input/ShortText';
-import Table from '@/component/table';
 import Toggle from '@/component/input/Toggle';
+import Date from '@/component/input/Date';
+import Time from '@/component/input/Time';
+import File from '@/component/input/File';
+
+import Table from '@/component/table';
 
 import BUTTON_TYPE from '@/constant/BUTTON_TYPE';
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
@@ -129,6 +133,24 @@ const Content = props => {
                 return (
                     <Container key={id} component={component}>
                         <Dropdown options={[]} disabled={true} label={properties.label || INPUT_TYPE.dropdown.label} />
+                    </Container>
+                );
+            } else if (type === INPUT_TYPE.date.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Date disabled={true} label={properties.label || INPUT_TYPE.date.label} />
+                    </Container>
+                );
+            } else if (type === INPUT_TYPE.time.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Time disabled={true} label={properties.label || INPUT_TYPE.time.label} />
+                    </Container>
+                );
+            } else if (type === INPUT_TYPE.file.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <File disabled={true} label={properties.label || INPUT_TYPE.file.label} />
                     </Container>
                 );
             }

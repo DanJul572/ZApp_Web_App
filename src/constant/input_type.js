@@ -19,6 +19,18 @@ const INPUT_TYPE = {
         value: 6,
         label: 'Toggle',
     },
+    date: {
+        value: 7,
+        label: 'Date',
+    },
+    time: {
+        value: 8,
+        label: 'Time',
+    },
+    file: {
+        value: 9,
+        label: 'File',
+    },
 };
 
 export default INPUT_TYPE;
