@@ -20,6 +20,8 @@ import File from '@/component/input/File';
 
 import Table from '@/component/table';
 
+import Bar from '@/component/chart/Bar';
+
 import BUTTON_TYPE from '@/constant/BUTTON_TYPE';
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
 import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
@@ -173,6 +175,12 @@ const Content = props => {
                 return (
                     <Container key={id} component={component}>
                         <Table columnKey={'id'} columns={mockColumns} rows={mockRows} />
+                    </Container>
+                );
+            } else if (type === DATA_DISPLAY_TYPE.chart.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Bar labels={['Bar 1', 'Bar 2', 'Bar 3', 'Bar 4']} values={[2, 4, 3, 1]} />
                     </Container>
                 );
             }

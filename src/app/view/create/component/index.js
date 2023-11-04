@@ -23,11 +23,25 @@ const Component = props => {
     const [componentList, setComponentList] = useState([]);
     const [open, setOpen] = useState({});
 
-    const container = Object.keys(CONTAINER_TYPE).map(key => CONTAINER_TYPE[key]);
-    const input = Object.keys(INPUT_TYPE).map(key => INPUT_TYPE[key]);
-    const dataDisplay = Object.keys(DATA_DISPLAY_TYPE).map(key => DATA_DISPLAY_TYPE[key]);
-    const visualElement = Object.keys(VISUAL_ELEMENT_TYPE).map(key => VISUAL_ELEMENT_TYPE[key]);
-    const button = Object.keys(BUTTON_TYPE).map(key => BUTTON_TYPE[key]);
+    const container = Object.keys(CONTAINER_TYPE)
+        .sort()
+        .map(key => CONTAINER_TYPE[key]);
+
+    const input = Object.keys(INPUT_TYPE)
+        .sort()
+        .map(key => INPUT_TYPE[key]);
+
+    const dataDisplay = Object.keys(DATA_DISPLAY_TYPE)
+        .sort()
+        .map(key => DATA_DISPLAY_TYPE[key]);
+
+    const visualElement = Object.keys(VISUAL_ELEMENT_TYPE)
+        .sort()
+        .map(key => VISUAL_ELEMENT_TYPE[key]);
+
+    const button = Object.keys(BUTTON_TYPE)
+        .sort()
+        .map(key => BUTTON_TYPE[key]);
 
     const handleCollapse = group => {
         setOpen(prevState => ({
