@@ -31,6 +31,10 @@ const INPUT_TYPE = {
         value: 9,
         label: 'File',
     },
+    richText: {
+        value: 10,
+        label: 'Rich Text',
+    },
 };
 
 export default INPUT_TYPE;

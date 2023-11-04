@@ -1,5 +1,6 @@
 import {Inter} from 'next/font/google';
 import ErrorProvider from '@/context/ErrorProvider';
+import 'suneditor/dist/css/suneditor.min.css';
 
 const inter = Inter({subsets: ['latin']});
 

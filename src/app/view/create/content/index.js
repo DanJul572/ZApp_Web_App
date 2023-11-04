@@ -9,14 +9,15 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
+import Date from '@/component/input/Date';
 import Dropdown from '@/component/input/Dropdown';
+import File from '@/component/input/File';
 import LongText from '@/component/input/LongText';
 import Number from '@/component/input/Number';
+import RichText from '@/component/input/RichText';
 import ShortText from '@/component/input/ShortText';
-import Toggle from '@/component/input/Toggle';
-import Date from '@/component/input/Date';
 import Time from '@/component/input/Time';
-import File from '@/component/input/File';
+import Toggle from '@/component/input/Toggle';
 
 import Table from '@/component/table';
 
@@ -153,6 +154,12 @@ const Content = props => {
                 return (
                     <Container key={id} component={component}>
                         <File disabled={true} label={properties.label || INPUT_TYPE.file.label} />
+                    </Container>
+                );
+            } else if (type === INPUT_TYPE.richText.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <RichText disabled={true} label={properties.label || INPUT_TYPE.file.label} />
                     </Container>
                 );
             }

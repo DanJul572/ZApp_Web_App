@@ -15,7 +15,7 @@ const Confirm = props => {
                 <DialogContentText>{text}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={() => onConfirm(false)} size="small">
+                <Button onClick={() => onConfirm(false)} variant="outlined" size="small">
                     {cancelButton}
                 </Button>
                 <Button onClick={() => onConfirm(true)} variant="contained" size="small">

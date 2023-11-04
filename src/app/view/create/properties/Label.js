@@ -12,7 +12,6 @@ import Typography from '@mui/material/Typography';
 import LongText from '@/component/input/LongText';
 
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
-import DATA_DISPLAY_TYPE from '@/constant/DATA_DISPLAY_TYPE';
 import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
 
 const Label = props => {
@@ -35,7 +34,7 @@ const Label = props => {
         let type = selected.type.value;
 
         if (group === COMPONENT_GROUP_TYPE.container.value) return false;
-        if (group === COMPONENT_GROUP_TYPE.dataDisplay.value && type === DATA_DISPLAY_TYPE.table.value) return false;
+        if (group === COMPONENT_GROUP_TYPE.dataDisplay.value) return false;
         if (group === COMPONENT_GROUP_TYPE.visualElement.value && type === VISUAL_ELEMENT_TYPE.divider.value) return false;
 
         return true;
