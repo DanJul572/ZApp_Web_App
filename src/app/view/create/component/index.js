@@ -91,6 +91,7 @@ const Component = props => {
             item
             left={0}
             marginTop={7}
+            overflow="auto"
             position="fixed"
             top={0}
             width={500}

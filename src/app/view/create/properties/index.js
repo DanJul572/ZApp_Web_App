@@ -59,6 +59,7 @@ const Properties = props => {
             bottom={0}
             item
             marginTop={7}
+            overflow="auto"
             position="fixed"
             right={0}
             top={0}

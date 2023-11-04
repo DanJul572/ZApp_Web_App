@@ -1,5 +1,5 @@
 import {forwardRef} from 'react';
-import {useRouter, usePathname} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 
 import Box from '@mui/material/Box';
 import {alpha, styled} from '@mui/material/styles';
@@ -17,40 +17,29 @@ import MENU_LIST from '@/constant/MENU_LIST';
 const CustomTreeItem = forwardRef((props, ref) => <TreeItem {...props} ref={ref} />);
 CustomTreeItem.displayName = 'CustomTreeItem';
 
-const StyledTreeItem = styled(CustomTreeItem)(({theme, selected}) => ({
+const StyledTreeItem = styled(CustomTreeItem)(({theme}) => ({
     [`& .${treeItemClasses.group}`]: {
         marginLeft: 15,
         paddingLeft: 18,
         borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
     },
-    [`& .${treeItemClasses.content}`]: {
-        backgroundColor: selected ? alpha(theme.palette.primary.main, 0.2) : 'transparent',
+    [`& .${treeItemClasses.label}`]: {
+        fontSize: 12,
     },
 }));
 
 const Sidebar = () => {
     const {push} = useRouter();
-    const pathname = usePathname();
 
     const menuList = menu => {
-        const isActive = pathname === menu.url;
-
         if (menu.child) {
             return (
-                <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} selected={isActive}>
+                <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label}>
                     {menu.child.map(child => menuList(child))}
                 </StyledTreeItem>
             );
         } else {
-            return (
-                <StyledTreeItem
-                    key={menu.id}
-                    nodeId={menu.id}
-                    label={menu.label}
-                    onClick={() => push(menu.url)}
-                    selected={isActive}
-                />
-            );
+            return <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} onClick={() => push(menu.url)} />;
         }
     };
 
