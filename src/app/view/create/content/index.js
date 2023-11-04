@@ -159,7 +159,7 @@ const Content = props => {
             } else if (type === INPUT_TYPE.richText.value) {
                 return (
                     <Container key={id} component={component}>
-                        <RichText disabled={true} label={properties.label || INPUT_TYPE.file.label} />
+                        <RichText disabled={true} label={properties.label || INPUT_TYPE.richText.label} />
                     </Container>
                 );
             }
