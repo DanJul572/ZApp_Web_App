@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box';
 import ContentCopy from '@mui/icons-material/ContentCopy';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
@@ -22,7 +21,7 @@ const Identity = props => {
 
     return validComponent() ? (
         <>
-            <Box padding={2} display="flex" justifyContent="space-between">
+            <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between">
                 <Typography fontSize={12} fontWeight="bold">
                     {selected.id}
                 </Typography>
@@ -30,7 +29,6 @@ const Identity = props => {
                     <ContentCopy fontSize="12" />
                 </IconButton>
             </Box>
-            <Divider />
         </>
     ) : (
         <></>

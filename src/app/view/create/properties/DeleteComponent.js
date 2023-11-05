@@ -1,7 +1,6 @@
 import {useState} from 'react';
 
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
@@ -25,7 +24,7 @@ const DeleteComponent = props => {
 
     return selected ? (
         <>
-            <Box padding={2} display="flex" justifyContent="space-between">
+            <Box paddingX={2} marginY={2} display="flex" justifyContent="space-between">
                 <Typography fontSize={12} fontWeight="bold">
                     {selected.type.label}
                 </Typography>
@@ -33,7 +32,6 @@ const DeleteComponent = props => {
                     <Delete fontSize="12" />
                 </IconButton>
             </Box>
-            <Divider />
             <Confirm
                 open={open}
                 title="Delete Component"

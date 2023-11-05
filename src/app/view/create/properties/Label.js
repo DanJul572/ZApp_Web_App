@@ -46,7 +46,7 @@ const Label = props => {
 
     return validComponent() ? (
         <>
-            <Box padding={2} display="flex" justifyContent="space-between" alignItems="center">
+            <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
                 <Typography fontSize={12} fontWeight="bold">
                     Label
                 </Typography>

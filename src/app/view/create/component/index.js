@@ -104,7 +104,7 @@ const Component = props => {
             bottom={0}
             item
             left={0}
-            marginTop={7}
+            marginTop={8}
             overflow="auto"
             position="fixed"
             top={0}
