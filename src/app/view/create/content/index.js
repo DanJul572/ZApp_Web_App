@@ -9,7 +9,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
-import CustomRadio from '@/component/input/Radio';
+import Radio from '@/component/input/Radio';
 import Date from '@/component/input/Date';
 import Dropdown from '@/component/input/Dropdown';
 import File from '@/component/input/File';
@@ -166,7 +166,7 @@ const Content = props => {
             } else if (type === INPUT_TYPE.radio.value) {
                 return (
                     <Container key={id} component={component}>
-                        <CustomRadio
+                        <Radio
                             disabled={true}
                             label={properties.label || INPUT_TYPE.radio.label}
                             options={[

@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
+import {Radio as MuiRadio} from '@mui/material';
 import RadioGroup from '@mui/material/RadioGroup';
 import Typography from '@mui/material/Typography';
 
-const CustomRadio = props => {
+const Radio = props => {
     const {value, label, options, disabled, onChange} = props;
 
     const renderOptions = () => {
@@ -17,7 +17,7 @@ const CustomRadio = props => {
                         key={index}
                         value={option.value}
                         control={
-                            <Radio
+                            <MuiRadio
                                 checked={value === option.value}
                                 disabled={disabled}
                                 onChange={e => onChange(e.target.value)}
@@ -40,4 +40,4 @@ const CustomRadio = props => {
     );
 };
 
-export default CustomRadio;
+export default Radio;

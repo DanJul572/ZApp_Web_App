@@ -1,7 +1,7 @@
 import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
 
-import DeleteComponent from './DeleteComponent';
+import Delete from './Delete';
 import Identity from './Identity';
 import Label from './Label';
 import Position from './Position';
@@ -65,7 +65,7 @@ const Properties = props => {
             top={0}
             width={500}
             xs={2}>
-            <DeleteComponent
+            <Delete
                 content={content}
                 deleteSelected={deleteSelected}
                 selected={selected}

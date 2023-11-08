@@ -4,11 +4,11 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import Delete from '@mui/icons-material/Delete';
+import {Delete as  DeleteIcon} from '@mui/icons-material';
 
 import Confirm from '@/component/dialog/Confirm';
 
-const DeleteComponent = props => {
+const Delete = props => {
     const {selected, content, setContent, setSelected, deleteSelected} = props;
 
     const [open, setOpen] = useState(false);
@@ -29,7 +29,7 @@ const DeleteComponent = props => {
                     {selected.type.label}
                 </Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <Delete fontSize="12" />
+                    <DeleteIcon fontSize="12" />
                 </IconButton>
             </Box>
             <Confirm
@@ -46,4 +46,4 @@ const DeleteComponent = props => {
     );
 };
 
-export default DeleteComponent;
+export default Delete;
