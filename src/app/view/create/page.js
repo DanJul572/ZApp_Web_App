@@ -15,6 +15,7 @@ const ViewCreate = () => {
     const navigationType = {
         content: 'content',
         variabel: 'variabel',
+        function: 'function',
         module: 'module',
     };
 

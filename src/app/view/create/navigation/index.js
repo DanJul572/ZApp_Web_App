@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 
 import Dashboard from '@mui/icons-material/Dashboard';
 import DataArray from '@mui/icons-material/DataArraySharp';
+import DataObject from '@mui/icons-material/DataObject';
 import Home from '@mui/icons-material/Home';
 
 import grey from '@mui/material/colors/grey';
@@ -23,6 +24,11 @@ const Navigation = props => {
                     value={navigationType.variable}
                     label="Variable"
                     icon={<DataArray fontSize="25" />}
+                />
+                <BottomNavigationAction
+                    value={navigationType.function}
+                    label="Function"
+                    icon={<DataObject fontSize="25" />}
                 />
                 <BottomNavigationAction value={navigationType.module} label="Module" icon={<Home fontSize="25" />} />
             </BottomNavigation>

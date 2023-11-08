@@ -35,6 +35,10 @@ const INPUT_TYPE = {
         value: 10,
         label: 'Rich Text',
     },
+    radio: {
+        value: 11,
+        label: 'Radio',
+    },
 };
 
 export default INPUT_TYPE;

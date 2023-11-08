@@ -9,6 +9,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
+import CustomRadio from '@/component/input/Radio';
 import Date from '@/component/input/Date';
 import Dropdown from '@/component/input/Dropdown';
 import File from '@/component/input/File';
@@ -160,6 +161,20 @@ const Content = props => {
                 return (
                     <Container key={id} component={component}>
                         <RichText disabled={true} label={properties.label || INPUT_TYPE.richText.label} />
+                    </Container>
+                );
+            } else if (type === INPUT_TYPE.radio.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <CustomRadio
+                            disabled={true}
+                            label={properties.label || INPUT_TYPE.radio.label}
+                            options={[
+                                {label: 'Value 1', value: 1},
+                                {label: 'Value 2', value: 2},
+                                {label: 'Value 3', value: 3},
+                            ]}
+                        />
                     </Container>
                 );
             }
