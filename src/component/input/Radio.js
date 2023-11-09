@@ -1,8 +1,9 @@
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {Radio as MuiRadio} from '@mui/material';
 import RadioGroup from '@mui/material/RadioGroup';
 import Typography from '@mui/material/Typography';
+
+import MuiRadio from './alias/MuiRadio';
 
 const Radio = props => {
     const {value, label, options, disabled, onChange} = props;

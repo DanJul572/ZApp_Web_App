@@ -5,17 +5,17 @@ const Code = props => {
 
     return (
         <CodeEditor
-            value={value}
+            data-color-mode="dark"
             language="js"
-            placeholder="Please enter JS code."
             onChange={evn => onChange(evn.target.value)}
             padding={15}
+            placeholder="Please enter JS code."
             style={{
                 borderRadius: 3,
                 fontSize: 12,
                 fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
             }}
-            data-color-mode="dark"
+            value={value}
         />
     );
 };

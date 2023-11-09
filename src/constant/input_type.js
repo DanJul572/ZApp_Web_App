@@ -39,6 +39,10 @@ const INPUT_TYPE = {
         value: 11,
         label: 'Radio',
     },
+    checkbox: {
+        value: 12,
+        label: 'Check Box',
+    },
 };
 
 export default INPUT_TYPE;

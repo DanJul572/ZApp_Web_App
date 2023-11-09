@@ -9,12 +9,13 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
-import Radio from '@/component/input/Radio';
+import Checkbox from '@/component/input/Checkbox';
 import Date from '@/component/input/Date';
 import Dropdown from '@/component/input/Dropdown';
 import File from '@/component/input/File';
 import LongText from '@/component/input/LongText';
 import Number from '@/component/input/Number';
+import Radio from '@/component/input/Radio';
 import RichText from '@/component/input/RichText';
 import ShortText from '@/component/input/ShortText';
 import Time from '@/component/input/Time';
@@ -169,6 +170,20 @@ const Content = props => {
                         <Radio
                             disabled={true}
                             label={properties.label || INPUT_TYPE.radio.label}
+                            options={[
+                                {label: 'Value 1', value: 1},
+                                {label: 'Value 2', value: 2},
+                                {label: 'Value 3', value: 3},
+                            ]}
+                        />
+                    </Container>
+                );
+            } else if (type === INPUT_TYPE.checkbox.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Checkbox
+                            disabled={true}
+                            label={properties.label || INPUT_TYPE.checkbox.label}
                             options={[
                                 {label: 'Value 1', value: 1},
                                 {label: 'Value 2', value: 2},
