@@ -34,6 +34,7 @@ import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
 
 import mockColumns from '@/mock/table/columns';
 import mockRows from '@/mock/table/rows';
+import Collapse from '@/component/container/Collapse';
 
 const Content = props => {
     const {content, selected, setSelected} = props;
@@ -72,7 +73,6 @@ const Content = props => {
                             border={section.length ? 1 : 0}
                             borderColor={grey[300]}
                             borderRadius={1}
-                            height="100%"
                             padding={section.length ? 1 : 0}>
                             <Typography fontSize={10} fontWeight="bold">
                                 Card
@@ -106,6 +106,16 @@ const Content = props => {
                                     </Grid>
                                 ))}
                         </Grid>
+                    </Container>
+                );
+            } else if (type === CONTAINER_TYPE.collaps.value) {
+                return (
+                    <Container key={id} component={component}>
+                        <Collapse label={properties.label || CONTAINER_TYPE.collaps.label}>
+                            {section &&
+                                section.length > 0 &&
+                                section.map(childs => childs.map(child => renderComponent(child)))}
+                        </Collapse>
                     </Container>
                 );
             }

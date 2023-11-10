@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import LongText from '@/component/input/LongText';
 
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
+import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
 import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
 
 const Label = props => {
@@ -33,7 +34,7 @@ const Label = props => {
         let group = selected.group.value;
         let type = selected.type.value;
 
-        if (group === COMPONENT_GROUP_TYPE.container.value) return false;
+        if (group === COMPONENT_GROUP_TYPE.container.value && type !== CONTAINER_TYPE.collaps.value) return false;
         if (group === COMPONENT_GROUP_TYPE.dataDisplay.value) return false;
         if (group === COMPONENT_GROUP_TYPE.visualElement.value && type === VISUAL_ELEMENT_TYPE.divider.value) return false;
 

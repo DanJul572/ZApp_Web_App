@@ -7,10 +7,10 @@ const CONTAINER_TYPE = {
         value: 2,
         label: 'Card',
     },
-    // collaps: {
-    //     value: 3,
-    //     label: 'Collapse',
-    // },
+    collaps: {
+        value: 3,
+        label: 'Collapse',
+    },
     // form: {
     //     value: 4,
     //     label: 'Form',
