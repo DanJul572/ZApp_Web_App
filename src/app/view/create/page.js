@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 
 import Component from './component';
 import Content from './content';
+import Function from './function';
 import Navigation from './navigation';
 import Properties from './properties';
 import TopBar from './topbar';
@@ -26,6 +27,8 @@ const ViewCreate = () => {
     const activeContent = () => {
         if (activeNavigation === navigationType.content)
             return <Content content={content} selected={selected} setSelected={setSelected} />;
+
+        if (activeNavigation === navigationType.function) return <Function />;
     };
 
     return (

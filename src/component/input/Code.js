@@ -9,7 +9,7 @@ const Code = props => {
             language="js"
             onChange={evn => onChange(evn.target.value)}
             padding={15}
-            placeholder="Please enter JS code."
+            placeholder="Enter JS code."
             style={{
                 borderRadius: 3,
                 fontSize: 12,

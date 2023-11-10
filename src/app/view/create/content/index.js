@@ -9,6 +9,8 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
+import Collapse from '@/component/container/Collapse';
+
 import Checkbox from '@/component/input/Checkbox';
 import Date from '@/component/input/Date';
 import Dropdown from '@/component/input/Dropdown';
@@ -34,7 +36,6 @@ import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
 
 import mockColumns from '@/mock/table/columns';
 import mockRows from '@/mock/table/rows';
-import Collapse from '@/component/container/Collapse';
 
 const Content = props => {
     const {content, selected, setSelected} = props;
