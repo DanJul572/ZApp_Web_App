@@ -5,7 +5,7 @@ import {MaterialReactTable} from 'material-react-table';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
-import {boolean, numeric, tableReference} from '@/helper/data_display';
+import dataDisplay from '@/helper/data_display';
 
 import AdvanceFilter from './AdvanceFilter';
 import ExportDialog from './ExportDialog';
@@ -15,7 +15,6 @@ import ToolbarAction from './ToolbarAction';
 import ToolBarComponent from './ToolbarComponent';
 
 import ACTION_TYPE from '@/constant/ACTION_TYPE';
-import DATA_TYPE from '@/constant/DATA_TYPE';
 
 const Table = props => {
     const {
@@ -92,14 +91,7 @@ const Table = props => {
 
     const rowDisplay = (cell, type) => {
         const value = cell.getValue();
-
-        if (type === DATA_TYPE.select.value) return tableReference(value);
-
-        if (type === DATA_TYPE.boolean.value) return boolean(value);
-
-        if (type === DATA_TYPE.autoIncrement.value || type === DATA_TYPE.integer.value) return numeric(value);
-
-        return value;
+        return dataDisplay(type, value);
     };
 
     const columnFooter = footer => {

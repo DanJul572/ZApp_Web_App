@@ -19,9 +19,9 @@ const DATA_TYPE = {
         value: 5,
         label: 'Boolean',
     },
-    select: {
+    tableReference: {
         value: 6,
-        label: 'Select',
+        label: 'Table Reference',
     },
 };
 

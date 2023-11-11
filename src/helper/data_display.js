@@ -1,5 +1,14 @@
-const tableReference = value => (value ? `(${value.value}) - ${value.label}` : '');
-const boolean = value => (value ? 'Yes' : 'No');
-const numeric = value => (value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '');
+import DATA_TYPE from '@/constant/DATA_TYPE';
 
-export {tableReference, boolean, numeric};
+const dataDisplay = (type, value) => {
+    if (type === DATA_TYPE.tableReference.value) return value ? `(${value.value}) - ${value.label}` : '';
+
+    if (type === DATA_TYPE.boolean) return value ? 'Yes' : 'No';
+
+    if (type === DATA_TYPE.integer || type === DATA_TYPE.autoIncrement)
+        return value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '';
+
+    return value;
+};
+
+export default dataDisplay;

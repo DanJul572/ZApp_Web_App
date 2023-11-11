@@ -145,7 +145,7 @@ const FieldForm = props => {
     };
 
     const refTableSettings = () => {
-        if (fieldType.value !== DATA_TYPE.select.value) return false;
+        if (fieldType.value !== DATA_TYPE.tableReference.value) return false;
 
         return (
             <Box display="flex" flexDirection="column" gap={2}>
@@ -211,7 +211,7 @@ const FieldForm = props => {
             fieldType.value !== DATA_TYPE.autoIncrement.value &&
             fieldType.value !== DATA_TYPE.integer.value &&
             fieldType.value !== DATA_TYPE.varchar.value &&
-            fieldType.value !== DATA_TYPE.select.value
+            fieldType.value !== DATA_TYPE.tableReference.value
         )
             return false;
 
