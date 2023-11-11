@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
-import MuiCollapse from './alias/MuiCollapse';
+import MuiCollapse from '@/alias/MuiCollapse';
 
 const Collapse = props => {
     const {children, label} = props;

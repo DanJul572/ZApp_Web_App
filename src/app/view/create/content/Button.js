@@ -1,6 +1,6 @@
-import {Button as MuiButton} from '@mui/material';
-
 import BUTTON_TYPE from '@/constant/BUTTON_TYPE';
+
+import MuiButton from '@/alias/MuiButton';
 
 const Button = props => {
     const {type, properties} = props;

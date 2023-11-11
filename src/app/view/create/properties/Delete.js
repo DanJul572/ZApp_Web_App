@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import {Delete as  DeleteIcon} from '@mui/icons-material';
-
 import Confirm from '@/component/dialog/Confirm';
+
+import MuiDeleteIcon from '@/alias/MuiDeleteIcon';
 
 const Delete = props => {
     const {selected, content, setContent, setSelected, deleteSelected} = props;
@@ -29,7 +29,7 @@ const Delete = props => {
                     {selected.type.label}
                 </Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <DeleteIcon fontSize="12" />
+                    <MuiDeleteIcon fontSize="12" />
                 </IconButton>
             </Box>
             <Confirm
