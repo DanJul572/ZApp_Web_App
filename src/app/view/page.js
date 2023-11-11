@@ -52,7 +52,7 @@ export default function View() {
                 onSelect={() => {}}
                 onSort={() => {}}
                 pageCount={1}
-                pageIndex={1}
+                pageIndex={0}
                 rowCount={1}
                 rows={mockRows}
             />

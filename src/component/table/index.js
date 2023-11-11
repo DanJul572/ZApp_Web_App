@@ -46,7 +46,7 @@ const Table = props => {
         onSelect,
         onSort,
         pageCount = 0,
-        pageIndex = 1,
+        pageIndex = 0,
         rowCount = 0,
         rowCustomAction = [],
         rows = [],
@@ -71,7 +71,7 @@ const Table = props => {
         columnPinning: columnPinning,
     };
     const muiTableContainerProps = {sx: {maxHeight: '500px'}};
-    const muiTablePaginationProps = {rowsPerPageOptions: [10]};
+    const muiTablePaginationProps = {showRowsPerPage: false};
 
     const newColumns = columns.map(column => {
         column.Cell = ({cell}) => rowDisplay(cell, column.type);
@@ -189,8 +189,8 @@ const Table = props => {
         manualPagination: true,
         manualSorting: true,
         muiBottomToolbarProps: muiBottomToolbarProps(),
+        muiPaginationProps: muiTablePaginationProps,
         muiTableContainerProps: muiTableContainerProps,
-        muiTablePaginationProps: muiTablePaginationProps,
         muiTopToolbarProps: muiTopToolbarProps(),
         onColumnFiltersChange: setColumnFilters,
         onGlobalFilterChange: onSearch,
