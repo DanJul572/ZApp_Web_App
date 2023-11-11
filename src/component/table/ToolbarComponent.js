@@ -9,7 +9,7 @@ import {
     MRT_ToggleGlobalFilterButton,
     MRT_ShowHideColumnsButton,
     MRT_ToggleDensePaddingButton,
-    MRT_FullScreenToggleButton,
+    MRT_ToggleFullScreenButton,
 } from 'material-react-table';
 
 const ToolBarComponent = props => {
@@ -49,7 +49,7 @@ const ToolBarComponent = props => {
             {enableAdvanceFilter && advanceFilterButton}
             {enableHiding && <MRT_ShowHideColumnsButton table={table} />}
             {enableDensityToggle && <MRT_ToggleDensePaddingButton table={table} />}
-            {enableFullScreenToggle && <MRT_FullScreenToggleButton table={table} />}
+            {enableFullScreenToggle && <MRT_ToggleFullScreenButton table={table} />}
             {enableExport && exportButton}
         </Box>
     );

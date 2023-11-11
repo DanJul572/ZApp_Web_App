@@ -46,14 +46,16 @@ export default function Module() {
                 enableRowSelection={true}
                 enableSearch={true}
                 enableSorting={true}
+                enableFilter={true}
+                enablePinning={true}
                 onChangePage={() => {}}
                 onClickRowAction={() => {}}
                 onClickToolbarAction={onCLickToolbarAction}
                 onDelete={() => {}}
                 onSearch={() => {}}
                 onSelect={() => {}}
-                onSort={() => {}}
-                pageCount={1}
+                onSort={(val) => console.log(val)}
+                pageCount={5}
                 pageIndex={1}
                 rowCount={1}
                 rows={mockRows}

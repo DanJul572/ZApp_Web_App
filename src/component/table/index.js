@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-import {MaterialReactTable} from 'material-react-table';
+import {MaterialReactTable, useMaterialReactTable} from 'material-react-table';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -164,6 +164,49 @@ const Table = props => {
         );
     };
 
+    const table = useMaterialReactTable({
+        columns: newColumns,
+        data: rows,
+        displayColumnDefOptions: displayColumnDefOptions(),
+        enableColumnActions: false,
+        enableColumnFilters: enableFilter,
+        enableColumnResizing: enableColumnResizing,
+        enableDensityToggle: enableDensityToggle,
+        enableEditing: isSupportRowAction(),
+        enableFilterMatchHighlighting: false,
+        enableFullScreenToggle: enableFullScreenToggle,
+        enableGlobalFilter: enableSearch,
+        enableHiding: enableHiding,
+        enablePagination: enablePagination,
+        enablePinning: enablePinning,
+        enableRowSelection: enableRowSelection,
+        enableSorting: enableSorting,
+        enableStickyFooter: true,
+        enableStickyHeader: true,
+        getRowId: row => row[columnKey],
+        initialState: initialState,
+        manualFiltering: true,
+        manualPagination: true,
+        manualSorting: true,
+        muiBottomToolbarProps: muiBottomToolbarProps(),
+        muiTableContainerProps: muiTableContainerProps,
+        muiTablePaginationProps: muiTablePaginationProps,
+        muiTopToolbarProps: muiTopToolbarProps(),
+        onColumnFiltersChange: setColumnFilters,
+        onGlobalFilterChange: onSearch,
+        onPaginationChange: setPagination,
+        onRowSelectionChange: setRowSelection,
+        onSortingChange: setSorting,
+        pageCount: pageCount,
+        positionActionsColumn: 'last',
+        positionToolbarAlertBanner: 'none',
+        renderRowActions: ({row}) => rowAction(row),
+        renderToolbarInternalActions: ({table}) => toolbarComponent(table),
+        renderTopToolbarCustomActions: toolbarAction,
+        rowCount: rowCount,
+        state: {pagination, columnFilters, sorting, rowSelection, isLoading},
+    });
+
     useEffect(() => {
         if (enablePagination && onChangePage) onChangePage(pagination.pageIndex);
     }, [pagination.pageIndex, pagination.pageSize]);
@@ -182,48 +225,7 @@ const Table = props => {
 
     return (
         <>
-            <MaterialReactTable
-                columns={newColumns}
-                data={rows}
-                displayColumnDefOptions={displayColumnDefOptions()}
-                enableColumnActions={false}
-                enableColumnFilters={enableFilter}
-                enableColumnResizing={enableColumnResizing}
-                enableDensityToggle={enableDensityToggle}
-                enableEditing={isSupportRowAction()}
-                enableFilterMatchHighlighting={false}
-                enableFullScreenToggle={enableFullScreenToggle}
-                enableGlobalFilter={enableSearch}
-                enableHiding={enableHiding}
-                enablePagination={enablePagination}
-                enablePinning={enablePinning}
-                enableRowSelection={enableRowSelection}
-                enableSorting={enableSorting}
-                enableStickyFooter
-                enableStickyHeader
-                getRowId={row => row[columnKey]}
-                initialState={initialState}
-                manualFiltering
-                manualPagination
-                manualSorting
-                muiBottomToolbarProps={muiBottomToolbarProps()}
-                muiTableContainerProps={muiTableContainerProps}
-                muiTablePaginationProps={muiTablePaginationProps}
-                muiTopToolbarProps={muiTopToolbarProps()}
-                onColumnFiltersChange={setColumnFilters}
-                onGlobalFilterChange={onSearch}
-                onPaginationChange={setPagination}
-                onRowSelectionChange={setRowSelection}
-                onSortingChange={setSorting}
-                pageCount={pageCount}
-                positionActionsColumn="last"
-                positionToolbarAlertBanner="none"
-                renderRowActions={({row}) => rowAction(row)}
-                renderToolbarInternalActions={({table}) => toolbarComponent(table)}
-                renderTopToolbarCustomActions={toolbarAction}
-                rowCount={rowCount}
-                state={{pagination, columnFilters, sorting, rowSelection, isLoading}}
-            />
+            <MaterialReactTable table={table} />
             {enableAdvanceFilter && (
                 <AdvanceFilter
                     columns={columns}
