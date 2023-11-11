@@ -185,6 +185,7 @@ const Table = props => {
         enableStickyHeader: true,
         getRowId: row => row[columnKey],
         initialState: initialState,
+        layoutMode: 'grid',
         manualFiltering: true,
         manualPagination: true,
         manualSorting: true,

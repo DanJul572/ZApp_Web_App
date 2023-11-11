@@ -30,7 +30,7 @@ const Function = () => {
     };
 
     return (
-        <Box marginX={40} sx={{backgroundColor: 'red'}} width="100%">
+        <Box marginX={40} width="100%">
             <Table action={action} columnKey={'id'} columns={mockColumns} onClickToolbarAction={onAdd} rows={mockRows} />
             <Drawer open={open} setOpen={setOpen}>
                 <Box display="flex" alignItems="end" justifyContent="flex-end" gap={1}>
