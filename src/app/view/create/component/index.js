@@ -28,6 +28,7 @@ const Component = props => {
         .map(key => CONTAINER_TYPE[key]);
 
     const input = Object.keys(INPUT_TYPE)
+        .filter(key => key !== 'code')
         .sort()
         .map(key => INPUT_TYPE[key]);
 
