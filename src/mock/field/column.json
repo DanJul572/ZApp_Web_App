@@ -2,39 +2,36 @@
     {
         "accessorKey": "id",
         "header": "ID",
-        "type": 1,
-        "size": 50,
-        "minSize": 50,
-        "maxSize": 100
+        "type": 4
     },
     {
         "accessorKey": "name",
         "header": "Name",
-        "type": 2
+        "type": 1
     },
     {
         "accessorKey": "label",
         "header": "Label",
-        "type": 2
+        "type": 1
     },
     {
         "accessorKey": "DATA_TYPE",
         "header": "Data Type",
-        "type": 6
+        "type": 3
     },
     {
         "accessorKey": "tableRef",
         "header": "Table Reference",
-        "type": 2
+        "type": 1
     },
     {
         "accessorKey": "multiSelect",
         "header": "Multi Select",
-        "type": 5
+        "type": 6
     },
     {
         "accessorKey": "primaryKey",
         "header": "Primary Key",
-        "type": 5
+        "type": 6
     }
 ]

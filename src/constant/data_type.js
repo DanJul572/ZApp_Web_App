@@ -23,6 +23,10 @@ const DATA_TYPE = {
         value: 6,
         label: 'Table Reference',
     },
+    datetime: {
+        value: 7,
+        label: 'Datetime',
+    },
 };
 
 export default DATA_TYPE;

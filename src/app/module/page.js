@@ -46,7 +46,7 @@ export default function Module() {
                 enableRowSelection={true}
                 enableSearch={true}
                 enableSorting={true}
-                onChangePage={(val) => console.log(val)}
+                onChangePage={() => {}}
                 onClickRowAction={() => {}}
                 onClickToolbarAction={onCLickToolbarAction}
                 onDelete={() => {}}
