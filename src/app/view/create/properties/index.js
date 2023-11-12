@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
 
@@ -10,7 +11,7 @@ import Size from './Size';
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
 
 const Properties = props => {
-    const {selected, setSelected, setContent, content} = props;
+    const {selected, setSelected, setContent, content, activeNavigation, navigationType} = props;
 
     const deleteSelected = content => {
         for (let i = 0; i < content.length; i++) {
@@ -65,24 +66,38 @@ const Properties = props => {
             top={0}
             width={500}
             xs={2}>
-            <Delete
-                content={content}
-                deleteSelected={deleteSelected}
-                selected={selected}
-                setContent={setContent}
-                setSelected={setSelected}
-            />
-            <Identity selected={selected} />
-            <Position
-                changeProperties={changeProperties}
-                content={content}
-                deleteSelected={deleteSelected}
-                selected={selected}
-                setContent={setContent}
-                setSelected={setSelected}
-            />
-            <Label content={content} selected={selected} changeProperties={changeProperties} setContent={setContent} />
-            <Size content={content} selected={selected} changeProperties={changeProperties} setContent={setContent} />
+            {activeNavigation === navigationType.content && (
+                <Box>
+                    <Delete
+                        content={content}
+                        deleteSelected={deleteSelected}
+                        selected={selected}
+                        setContent={setContent}
+                        setSelected={setSelected}
+                    />
+                    <Identity selected={selected} />
+                    <Position
+                        changeProperties={changeProperties}
+                        content={content}
+                        deleteSelected={deleteSelected}
+                        selected={selected}
+                        setContent={setContent}
+                        setSelected={setSelected}
+                    />
+                    <Label
+                        content={content}
+                        selected={selected}
+                        changeProperties={changeProperties}
+                        setContent={setContent}
+                    />
+                    <Size
+                        content={content}
+                        selected={selected}
+                        changeProperties={changeProperties}
+                        setContent={setContent}
+                    />
+                </Box>
+            )}
         </Grid>
     );
 };
