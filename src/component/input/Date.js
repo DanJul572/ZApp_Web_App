@@ -37,6 +37,7 @@ const Date = props => {
                     value={dayjs(value)}
                     onChange={valueFormater}
                     disabled={disabled}
+                    format="DD/MM/YYYY"
                     slotProps={{
                         textField: {
                             disabled: disabled,

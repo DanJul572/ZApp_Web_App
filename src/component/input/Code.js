@@ -1,11 +1,12 @@
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
 const Code = props => {
-    const {value, onChange} = props;
+    const {value, onChange, disabled} = props;
 
     return (
         <CodeEditor
             data-color-mode="dark"
+            disabled={disabled}
             language="js"
             onChange={evn => onChange(evn.target.value)}
             padding={15}
