@@ -24,17 +24,27 @@ const StyledTreeItem = styled(CustomTreeItem)(({theme}) => ({
 }));
 
 const Tree = props => {
-    const {onClick, list} = props;
+    const {onChildClick, onParentClick, list} = props;
+
+    const clickParent = menu => {
+        if (onParentClick) {
+            onParentClick({
+                id: menu.id,
+                label: menu.label,
+                url: menu.url,
+            });
+        }
+    };
 
     const menuList = menu => {
         if (menu.child) {
             return (
-                <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label}>
+                <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} onClick={() => clickParent(menu)}>
                     {menu.child.map(child => menuList(child))}
                 </StyledTreeItem>
             );
         } else {
-            return <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} onClick={() => onClick(menu)} />;
+            return <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} onClick={() => onChildClick(menu)} />;
         }
     };
 

@@ -27,7 +27,7 @@ const Sidebar = () => {
                 borderRight: 1,
                 borderColor: grey[300],
             }}>
-            <Tree onClick={onClick} list={MENU_LIST} />
+            <Tree onChildClick={onClick} list={MENU_LIST} />
         </Box>
     );
 };
