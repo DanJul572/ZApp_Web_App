@@ -43,6 +43,10 @@ const INPUT_TYPE = {
         value: 12,
         label: 'Check Box',
     },
+    code: {
+        value: 13,
+        label: 'Code',
+    },
 };
 
 export default INPUT_TYPE;

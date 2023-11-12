@@ -5,6 +5,8 @@ const dataDisplay = (type, value) => {
     if (type === INPUT_TYPE.checkbox.value)
         return value ? value.map(item => `(${item.value}) - ${item.label}`).join(' | ') : '';
 
+    if (type === INPUT_TYPE.code.value) return value ? 'Code' : '';
+
     if (type === INPUT_TYPE.date.value) return value ? dayjs(value).format('DD/MM/YYYY') : '';
 
     if (type === INPUT_TYPE.file.value) return value ? 'File' : '';
