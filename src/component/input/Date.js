@@ -11,6 +11,8 @@ import {DatePicker} from '@mui/x-date-pickers/DatePicker';
 import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
+import FORMAT from '@/constant/FORMAT';
+
 const Date = props => {
     const {label, onChange, value, rules, name, group, disabled} = props;
 
@@ -25,7 +27,7 @@ const Date = props => {
     }, [value]);
 
     const valueFormater = val => {
-        const date = dayjs(val).format('YYYY-MM-DDT00:00:00');
+        const date = dayjs(val).format(FORMAT.date.value);
         return onChange(date);
     };
 
@@ -37,7 +39,7 @@ const Date = props => {
                     value={dayjs(value)}
                     onChange={valueFormater}
                     disabled={disabled}
-                    format="DD/MM/YYYY"
+                    format={FORMAT.date.display}
                     slotProps={{
                         textField: {
                             disabled: disabled,
