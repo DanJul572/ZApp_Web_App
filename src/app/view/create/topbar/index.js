@@ -24,7 +24,7 @@ const TopBar = () => {
                 xs={12}>
                 <Box display="flex" alignItems="center" gap={1}>
                     <IconButton size="small" sx={{padding: 0}} onClick={back}>
-                        <ArrowBack fontSize="12" />
+                        <ArrowBack fontSize="small" />
                     </IconButton>
                     <Typography style={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>

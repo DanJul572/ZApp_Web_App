@@ -28,7 +28,7 @@ const RowAction = props => {
                         })
                     }
                     size="small">
-                    <Edit fontSize="11" />
+                    <Edit fontSize="small" />
                 </IconButton>
             )}
             {isSupportRowAction() && action.find(item => item.type === ACTION_TYPE.delete.value) && (
@@ -40,7 +40,7 @@ const RowAction = props => {
                         })
                     }
                     size="small">
-                    <Delete fontSize="11" />
+                    <Delete fontSize="small" />
                 </IconButton>
             )}
             {isSupportRowAction() && action.find(item => item.type === ACTION_TYPE.detail.value) && (
@@ -52,12 +52,12 @@ const RowAction = props => {
                         })
                     }
                     size="small">
-                    <Info fontSize="11" />
+                    <Info fontSize="small" />
                 </IconButton>
             )}
             {rowCustomAction.length > 0 && (
                 <IconButton onClick={onClickCustomAction} size="small">
-                    <Description fontSize="11" />
+                    <Description fontSize="small" />
                 </IconButton>
             )}
         </Box>

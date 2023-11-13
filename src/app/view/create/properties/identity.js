@@ -26,7 +26,7 @@ const Identity = props => {
                     {selected.id}
                 </Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={onCoppy}>
-                    <ContentCopy fontSize="12" />
+                    <ContentCopy fontSize="small" />
                 </IconButton>
             </Box>
         </>

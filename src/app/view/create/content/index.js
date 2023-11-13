@@ -28,7 +28,7 @@ const Content = props => {
                 {children}
                 <Tooltip arrow title={component.type.label} placement="left">
                     <IconButton onClick={() => setSelected(component)} size="small" style={{padding: 0}}>
-                        <MoreHorizIcon fontSize="10" />
+                        <MoreHorizIcon fontSize="small" />
                     </IconButton>
                 </Tooltip>
             </Box>

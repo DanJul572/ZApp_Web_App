@@ -19,18 +19,22 @@ const Navigation = props => {
     return (
         <Box width="100%" marginTop={7} marginX={39} marginBottom={1} borderBottom={1} borderColor={grey[400]}>
             <BottomNavigation showLabels value={activeNavigation} onChange={handleChange}>
-                <BottomNavigationAction value={navigationType.content} label="Content" icon={<Dashboard fontSize="25" />} />
+                <BottomNavigationAction
+                    value={navigationType.content}
+                    label="Content"
+                    icon={<Dashboard fontSize="small" />}
+                />
                 <BottomNavigationAction
                     value={navigationType.variable}
                     label="Variable"
-                    icon={<DataArray fontSize="25" />}
+                    icon={<DataArray fontSize="small" />}
                 />
                 <BottomNavigationAction
                     value={navigationType.function}
                     label="Function"
-                    icon={<DataObject fontSize="25" />}
+                    icon={<DataObject fontSize="small" />}
                 />
-                <BottomNavigationAction value={navigationType.module} label="Module" icon={<Home fontSize="25" />} />
+                <BottomNavigationAction value={navigationType.module} label="Module" icon={<Home fontSize="small" />} />
             </BottomNavigation>
         </Box>
     );

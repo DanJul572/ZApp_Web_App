@@ -29,7 +29,7 @@ const Delete = props => {
                     {selected.type.label}
                 </Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <MuiDeleteIcon fontSize="12" />
+                    <MuiDeleteIcon fontSize="small" />
                 </IconButton>
             </Box>
             <Confirm

@@ -33,7 +33,7 @@ const Collapse = props => {
                     }}
                     size="small"
                     sx={{padding: 0}}>
-                    {open ? <KeyboardArrowDown fontSize="12" /> : <KeyboardArrowRight fontSize="12" />}
+                    {open ? <KeyboardArrowDown fontSize="small" /> : <KeyboardArrowRight fontSize="small" />}
                 </IconButton>
             </Box>
             <MuiCollapse in={open} sx={{padding: 1}}>

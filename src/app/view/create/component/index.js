@@ -123,7 +123,7 @@ const Component = props => {
                             <Typography fontSize={11} fontWeight="bold">
                                 {group.label}
                             </Typography>
-                            {open[group.value] ? <ExpandLess fontSize="11" /> : <ExpandMore fontSize="11" />}
+                            {open[group.value] ? <ExpandLess fontSize="small" /> : <ExpandMore fontSize="small" />}
                         </ListItemButton>
                         <Collapse in={open[group.value]}>
                             <List disablePadding>

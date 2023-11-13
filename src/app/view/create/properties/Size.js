@@ -50,7 +50,7 @@ const Size = props => {
                     Size
                 </Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <Settings fontSize="12" />
+                    <Settings fontSize="small" />
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
