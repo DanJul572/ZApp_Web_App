@@ -15,23 +15,13 @@
         "type": 1
     },
     {
-        "accessorKey": "DATA_TYPE",
-        "header": "Data Type",
+        "accessorKey": "inputType",
+        "header": "Input Type",
         "type": 3
     },
     {
-        "accessorKey": "tableRef",
-        "header": "Table Reference",
-        "type": 1
-    },
-    {
-        "accessorKey": "multiSelect",
-        "header": "Multi Select",
-        "type": 6
-    },
-    {
-        "accessorKey": "primaryKey",
-        "header": "Primary Key",
+        "accessorKey": "identity",
+        "header": "Is Identity",
         "type": 6
     }
 ]

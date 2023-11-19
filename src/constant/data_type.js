@@ -1,31 +1,35 @@
 const DATA_TYPE = {
-    autoIncrement: {
-        value: 1,
-        label: 'Auto Increment',
-    },
     varchar: {
-        value: 2,
+        value: 1,
         label: 'Varchar',
     },
     text: {
-        value: 3,
+        value: 2,
         label: 'Text',
     },
     integer: {
-        value: 4,
+        value: 3,
         label: 'Integer',
     },
     boolean: {
-        value: 5,
+        value: 4,
         label: 'Boolean',
     },
     tableReference: {
-        value: 6,
+        value: 5,
         label: 'Table Reference',
     },
     datetime: {
-        value: 7,
+        value: 6,
         label: 'Datetime',
+    },
+    text: {
+        value: 7,
+        label: 'Text',
+    },
+    byte: {
+        value: 8,
+        label: 'Byte',
     },
 };
 
