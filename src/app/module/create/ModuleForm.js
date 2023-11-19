@@ -13,8 +13,6 @@ const ModuleForm = props => {
             <Grid container spacing={2}>
                 <Grid item display="flex" flexDirection="column" gap={2} xs={6}>
                     <ShortText
-                        group="moduleForm"
-                        name="moduleName"
                         label="Module Name"
                         size="small"
                         onChange={setModuleName}
@@ -22,8 +20,6 @@ const ModuleForm = props => {
                         rules="required|field_name"
                     />
                     <ShortText
-                        group="moduleForm"
-                        name="moduleLabel"
                         label="Module Label"
                         size="small"
                         onChange={setModuleLabel}

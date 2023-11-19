@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+import {useContext, useEffect, useState} from 'react';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
@@ -13,8 +13,14 @@ const Dropdown = props => {
     const {label, onChange, options, value, rules, group, name, disabled} = props;
 
     const {setError, clearError} = useContext(ErrorContext);
+    const error = validator(rules, value ? value.toString() : '');
 
-    const error = validator(rules, value ? value.value.toString() : '');
+    const [newValue, setNewValue] = useState(null);
+
+    useEffect(() => {
+        const val = options.find(option => option.value === value);
+        setNewValue(val || null);
+    }, [value]);
 
     useEffect(() => {
         if (!group && !name) return;
@@ -44,11 +50,11 @@ const Dropdown = props => {
         <Box>
             <Autocomplete
                 disabled={disabled}
-                onChange={(e, value) => onChange(value)}
+                onChange={(e, value) => onChange(value.value)}
                 options={options.length ? options : []}
                 renderInput={params => renderInput(params)}
                 size="small"
-                value={value}
+                value={newValue}
                 renderOption={(props, option) => renderOptions(props, option)}
                 isOptionEqualToValue={(option, value) => option.value === value.value}
             />

@@ -23,12 +23,8 @@ const DATA_TYPE = {
         value: 6,
         label: 'Datetime',
     },
-    text: {
-        value: 7,
-        label: 'Text',
-    },
     byte: {
-        value: 8,
+        value: 7,
         label: 'Byte',
     },
 };

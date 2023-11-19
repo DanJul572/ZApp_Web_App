@@ -34,11 +34,13 @@ const FieldForm = props => {
         tableRef: null,
         tableRefKey: null,
         tableRefName: null,
+        tableRefAlias: null,
         tableRefFilter: null,
         notNull: false,
         multiSelect: false,
         identity: false,
         autoIncrement: false,
+        unique: false,
     });
     const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
     const [rowSelected, setRowSelected] = useState(false);
@@ -67,37 +69,37 @@ const FieldForm = props => {
             tableRef: null,
             tableRefKey: null,
             tableRefName: null,
+            tableRefAlias: null,
             tableRefFilter: null,
             notNull: false,
             multiSelect: false,
             identity: false,
             autoIncrement: false,
+            unique: false,
         });
     };
 
     const dataTypeValue = inputType => {
         if (
             !inputType ||
-            inputType.value === INPUT_TYPE.checkbox.value ||
-            inputType.value === INPUT_TYPE.dropdown.value ||
-            inputType.value === INPUT_TYPE.radio.value
+            inputType === INPUT_TYPE.checkbox.value ||
+            inputType === INPUT_TYPE.dropdown.value ||
+            inputType === INPUT_TYPE.radio.value
         )
             return null;
 
-        if (inputType.value === INPUT_TYPE.code.value || inputType.value === INPUT_TYPE.richText.value)
-            return DATA_TYPE.text.value;
+        if (inputType === INPUT_TYPE.code.value || inputType === INPUT_TYPE.richText.value) return DATA_TYPE.text.value;
 
-        if (inputType.value === INPUT_TYPE.date.value || inputType.value === INPUT_TYPE.time.value)
-            return DATA_TYPE.datetime.value;
+        if (inputType === INPUT_TYPE.date.value || inputType === INPUT_TYPE.time.value) return DATA_TYPE.datetime.value;
 
-        if (inputType.value === INPUT_TYPE.file.value) return DATA_TYPE.byte.value;
+        if (inputType === INPUT_TYPE.file.value) return DATA_TYPE.byte.value;
 
-        if (inputType.value === INPUT_TYPE.longText.value || inputType.value === INPUT_TYPE.shortText.value)
+        if (inputType === INPUT_TYPE.longText.value || inputType === INPUT_TYPE.shortText.value)
             return DATA_TYPE.varchar.value;
 
-        if (inputType.value === INPUT_TYPE.number.value) return DATA_TYPE.integer.value;
+        if (inputType === INPUT_TYPE.number.value) return DATA_TYPE.integer.value;
 
-        if (inputType.value === INPUT_TYPE.toggle.value) return DATA_TYPE.boolean.value;
+        if (inputType === INPUT_TYPE.toggle.value) return DATA_TYPE.boolean.value;
     };
 
     const deleteField = () => {
@@ -144,11 +146,13 @@ const FieldForm = props => {
             tableRef: fieldSettings.tableRef,
             tableRefKey: fieldSettings.tableRefKey,
             tableRefName: fieldSettings.tableRefName,
+            tableRefAlias: fieldSettings.tableRefAlias,
             tableRefFilter: fieldSettings.tableRefFilter,
             notNull: fieldSettings.notNull,
             multiSelect: fieldSettings.multiSelect,
             identity: fieldSettings.identity,
             autoIncrement: fieldSettings.autoIncrement,
+            unique: fieldSettings.unique,
         };
         setFieldRows([...fieldRows, newRows]);
         setOpenFieldForm(false);
@@ -156,9 +160,9 @@ const FieldForm = props => {
 
     const refTableSettings = () => {
         if (
-            inputType.value !== INPUT_TYPE.dropdown.value &&
-            inputType.value !== INPUT_TYPE.checkbox.value &&
-            inputType.value !== INPUT_TYPE.radio.value
+            inputType !== INPUT_TYPE.dropdown.value &&
+            inputType !== INPUT_TYPE.checkbox.value &&
+            inputType !== INPUT_TYPE.radio.value
         )
             return false;
 
@@ -186,6 +190,11 @@ const FieldForm = props => {
                     onChange={value => changeSettingValue('tableRefName', value)}
                 />
                 <ShortText
+                    label="Table Reference Alias"
+                    value={fieldSettings.tableRefAlias}
+                    onChange={value => changeSettingValue('tableRefAlias', value)}
+                />
+                <ShortText
                     label="Table Reference Filter"
                     value={fieldSettings.tableRefFilter}
                     onChange={value => changeSettingValue('tableRefFilter', value)}
@@ -196,9 +205,9 @@ const FieldForm = props => {
 
     const identitySetting = () => {
         if (
-            inputType.value !== INPUT_TYPE.longText.value &&
-            inputType.value !== INPUT_TYPE.number.value &&
-            inputType.value !== INPUT_TYPE.shortText.value
+            inputType !== INPUT_TYPE.longText.value &&
+            inputType !== INPUT_TYPE.number.value &&
+            inputType !== INPUT_TYPE.shortText.value
         )
             return false;
 
@@ -214,7 +223,7 @@ const FieldForm = props => {
     };
 
     const autoIncrementSetting = () => {
-        if (inputType.value !== INPUT_TYPE.number.value) return false;
+        if (inputType !== INPUT_TYPE.number.value) return false;
 
         return (
             <Box>
@@ -239,6 +248,27 @@ const FieldForm = props => {
         );
     };
 
+    const uniqueSetting = () => {
+        if (
+            inputType !== INPUT_TYPE.longText.value &&
+            inputType !== INPUT_TYPE.number.value &&
+            inputType !== INPUT_TYPE.shortText.value &&
+            inputType !== INPUT_TYPE.dropdown.value &&
+            inputType !== INPUT_TYPE.radio.value
+        )
+            return false;
+
+        return (
+            <Box>
+                <Toggle
+                    label="Unique"
+                    value={fieldSettings.unique}
+                    onChange={value => changeSettingValue('unique', value)}
+                />
+            </Box>
+        );
+    };
+
     const fieldSettingsComponent = () => {
         if (!inputType) return false;
 
@@ -257,6 +287,7 @@ const FieldForm = props => {
                     {identitySetting()}
                     {autoIncrementSetting()}
                     {notNullSetting()}
+                    {uniqueSetting()}
                 </Box>
             </Box>
         );
