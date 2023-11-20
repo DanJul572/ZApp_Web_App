@@ -9,13 +9,16 @@ import Button from '@mui/material/Button';
 import FieldForm from './FieldForm';
 import ModuleForm from './ModuleForm';
 
+import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
-import {post} from '@/helper/request';
+
+import request from '@/helper/request';
 
 const CreateModule = () => {
     const {back} = useRouter();
 
     const {setLoading} = useLoading();
+    const {setAlert} = useAlert();
 
     const [moduleName, setModuleName] = useState(null);
     const [moduleLabel, setModuleLabel] = useState(null);
@@ -27,6 +30,8 @@ const CreateModule = () => {
     };
 
     const onSave = () => {
+        setLoading(true);
+
         let fields = [...fieldRows].map(field => {
             delete field.id;
             return field;
@@ -38,12 +43,21 @@ const CreateModule = () => {
             fields: fields,
         };
 
-        post('module/create', data)
+        request
+            .post('module/create', data)
             .then(res => {
-                console.log(res);
+                setAlert({
+                    status: true,
+                    type: 'success',
+                    message: res,
+                });
             })
             .catch(err => {
-                console.log(err);
+                setAlert({
+                    status: true,
+                    type: 'error',
+                    message: err,
+                });
             })
             .finally(() => setLoading(false));
     };

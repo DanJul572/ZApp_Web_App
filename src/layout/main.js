@@ -10,6 +10,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import Alert from '@/component/alert';
+
 import Sidebar from './Sidebar';
 
 export default function Main({children}) {
@@ -52,6 +54,7 @@ export default function Main({children}) {
                     marginLeft: 37,
                 }}>
                 <Toolbar />
+                <Alert />
                 {children}
             </Box>
         </Box>

@@ -11,4 +11,8 @@ const post = (url, body) => {
     });
 };
 
-export {post};
+const request = {
+    post,
+};
+
+export default request;
