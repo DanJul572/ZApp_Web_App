@@ -57,7 +57,6 @@ const ExportDialog = props => {
                 </Button>
                 <Button
                     size="small"
-                    color="primary"
                     onClick={() =>
                         onDownload({
                             selection: exportSelectionType.value,

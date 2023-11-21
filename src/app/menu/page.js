@@ -36,7 +36,7 @@ const Menu = () => {
                     <Button size="small" color="error" startIcon={<Delete fontSize="small" />} variant="outlined">
                         <Typography>Delete</Typography>
                     </Button>
-                    <Button size="small" color="primary" startIcon={<Save fontSize="small" />} variant="outlined">
+                    <Button size="small" startIcon={<Save fontSize="small" />} variant="outlined">
                         <Typography>Save</Typography>
                     </Button>
                 </Box>

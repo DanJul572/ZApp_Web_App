@@ -3,7 +3,6 @@ import ErrorProvider from '@/context/ErrorProvider';
 import {LoadingProvider} from '@/context/LoadingProvider';
 
 import 'suneditor/dist/css/suneditor.min.css';
-import Loading from '@/component/loading';
 import {AlertProvider} from '@/context/AlertProvider';
 
 const inter = Inter({subsets: ['latin']});
@@ -20,7 +19,6 @@ export default function RootLayout({children}) {
                 <ErrorProvider>
                     <LoadingProvider>
                         <AlertProvider>
-                            <Loading />
                             {children}
                         </AlertProvider>
                     </LoadingProvider>

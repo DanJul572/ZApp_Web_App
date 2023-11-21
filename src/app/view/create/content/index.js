@@ -1,9 +1,11 @@
-import blue from '@mui/material/colors/blue';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Tooltip from '@mui/material/Tooltip';
+
+import useTheme from '@mui/material/styles/useTheme';
+
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
 
@@ -14,6 +16,8 @@ import FieldControl from './FieldControl';
 import VisualElement from './VisualElement';
 
 const Content = props => {
+    const theme = useTheme();
+
     const {content, selected, setSelected} = props;
 
     const Wraper = ({children, component}) => {
@@ -21,7 +25,7 @@ const Content = props => {
             <Box
                 key={component.id}
                 border={selected && component.id === selected.id ? 1 : 0}
-                borderColor={blue[300]}
+                borderColor={theme.palette.primary.light}
                 padding={1}
                 paddingBottom={0}
                 borderRadius={1}>

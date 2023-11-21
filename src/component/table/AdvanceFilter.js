@@ -24,7 +24,7 @@ const AdvanceFilter = props => {
                 <Button size="small" onClick={() => setOpenAdvanceFilterDialog(false)}>
                     Cancel
                 </Button>
-                <Button color="primary" onClick={() => onAdvanceFilter(query)} size="small" variant="contained">
+                <Button onClick={() => onAdvanceFilter(query)} size="small" variant="contained">
                     Apply
                 </Button>
             </DialogActions>

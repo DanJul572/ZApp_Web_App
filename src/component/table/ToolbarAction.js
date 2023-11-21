@@ -16,7 +16,6 @@ const ToolbarAction = props => {
             }}>
             {isSupportAddAction && (
                 <Button
-                    color="primary"
                     onClick={() => onClickToolbarAction(ACTION_TYPE.insert)}
                     variant="contained"
                     size="small">
@@ -26,7 +25,6 @@ const ToolbarAction = props => {
             {toolbarCustomAction.map((action, index) => (
                 <Button
                     key={index}
-                    color="primary"
                     onClick={() => onClickToolbarAction(action)}
                     variant="contained"
                     size="small">

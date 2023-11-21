@@ -2,8 +2,13 @@
 
 import {useState} from 'react';
 
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+
+import createTheme from '@mui/material/styles/createTheme';
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
+
+
+import THEME from '@/constant/THEME';
 
 import Component from './component';
 import Content from './content';
@@ -13,6 +18,8 @@ import Properties from './properties';
 import TopBar from './topbar';
 
 const ViewCreate = () => {
+    const theme = createTheme(THEME);
+    
     const navigationType = {
         content: 'content',
         variabel: 'variabel',
@@ -32,7 +39,7 @@ const ViewCreate = () => {
     };
 
     return (
-        <Box>
+        <ThemeProvider theme={theme}>
             <TopBar />
             <Grid container justifyContent="space-between" display="flex">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
@@ -51,7 +58,7 @@ const ViewCreate = () => {
                     setSelected={setSelected}
                 />
             </Grid>
-        </Box>
+        </ThemeProvider>
     );
 };
 
