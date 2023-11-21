@@ -25,7 +25,7 @@ const Content = props => {
             <Box
                 key={component.id}
                 border={selected && component.id === selected.id ? 1 : 0}
-                borderColor={theme.palette.primary.light}
+                borderColor={theme.palette.primary.main}
                 padding={1}
                 paddingBottom={0}
                 borderRadius={1}>

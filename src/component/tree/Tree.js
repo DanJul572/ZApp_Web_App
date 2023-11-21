@@ -1,6 +1,7 @@
 import {forwardRef} from 'react';
 
 import {alpha, styled} from '@mui/material/styles';
+import useTheme from '@mui/material/styles/useTheme';
 
 import {TreeView} from '@mui/x-tree-view/TreeView';
 import {TreeItem, treeItemClasses} from '@mui/x-tree-view/TreeItem';
@@ -19,12 +20,15 @@ const StyledTreeItem = styled(CustomTreeItem)(({theme}) => ({
         borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
     },
     [`& .${treeItemClasses.label}`]: {
-        fontSize: 12,
+        fontSize: 15,
+        color: theme.palette.text.primary,
     },
 }));
 
 const Tree = props => {
     const {onChildClick, onParentClick, list} = props;
+
+    const theme = useTheme();
 
     const clickParent = menu => {
         if (onParentClick) {
@@ -51,9 +55,9 @@ const Tree = props => {
     return (
         <TreeView
             aria-label="customized"
-            defaultCollapseIcon={<FolderOpen />}
-            defaultEndIcon={<InsertDriveFileOutlined />}
-            defaultExpandIcon={<Folder />}
+            defaultCollapseIcon={<FolderOpen sx={{color: theme.palette.primary.main}} />}
+            defaultEndIcon={<InsertDriveFileOutlined sx={{color: theme.palette.primary.main}} />}
+            defaultExpandIcon={<Folder sx={{color: theme.palette.primary.main}} />}
             sx={{overflowX: 'hidden'}}>
             {list && list.length > 0 && list.map(menu => menuList(menu))}
         </TreeView>

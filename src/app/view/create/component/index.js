@@ -101,7 +101,7 @@ const Component = props => {
     return (
         <Grid
             border={1}
-            borderColor={grey[400]}
+            borderColor={grey[300]}
             bottom={0}
             item
             left={0}

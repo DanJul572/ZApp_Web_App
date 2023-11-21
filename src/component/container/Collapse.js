@@ -1,9 +1,10 @@
 import {useState} from 'react';
 
 import Box from '@mui/material/Box';
-import grey from '@mui/material/colors/grey';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+
+import useTheme from '@mui/material/styles/useTheme';
 
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
@@ -13,18 +14,23 @@ import MuiCollapse from '@/alias/MuiCollapse';
 const Collapse = props => {
     const {children, label} = props;
 
+    const theme = useTheme();
+
     const [open, setOpen] = useState(true);
 
     return (
-        <Box border={1} borderColor={grey[300]} borderRadius={1}>
+        <Box border={1} borderColor={theme.palette.primary.main} borderRadius={1}>
             <Box
                 borderBottom={1}
-                borderColor={grey[300]}
+                borderColor={theme.palette.primary.main}
                 display="flex"
                 justifyContent="space-between"
                 padding={1}
-                sx={{backgroundColor: grey[100]}}>
-                <Typography fontSize={12} fontWeight="bold">
+                sx={{backgroundColor: theme.palette.primary.main}}>
+                <Typography
+                    fontSize={12}
+                    fontWeight="bold"
+                    color={theme.palette.getContrastText(theme.palette.primary.main)}>
                     {label}
                 </Typography>
                 <IconButton
@@ -33,7 +39,14 @@ const Collapse = props => {
                     }}
                     size="small"
                     sx={{padding: 0}}>
-                    {open ? <KeyboardArrowDown fontSize="small" /> : <KeyboardArrowRight fontSize="small" />}
+                    {open ? (
+                        <KeyboardArrowDown
+                            fontSize="small"
+                            sx={{color: theme.palette.getContrastText(theme.palette.primary.main)}}
+                        />
+                    ) : (
+                        <KeyboardArrowRight fontSize="small" />
+                    )}
                 </IconButton>
             </Box>
             <MuiCollapse in={open} sx={{padding: 1}}>

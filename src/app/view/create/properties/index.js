@@ -56,7 +56,7 @@ const Properties = props => {
     return (
         <Grid
             border={1}
-            borderColor={grey[400]}
+            borderColor={grey[300]}
             bottom={0}
             item
             marginTop={7}

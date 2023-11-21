@@ -17,7 +17,7 @@ const Navigation = props => {
     };
 
     return (
-        <Box width="100%" marginTop={7} marginX={39} marginBottom={1} borderBottom={1} borderColor={grey[400]}>
+        <Box width="100%" marginTop={7} marginX={39} marginBottom={1} borderBottom={1} borderColor={grey[300]}>
             <BottomNavigation showLabels value={activeNavigation} onChange={handleChange}>
                 <BottomNavigationAction
                     value={navigationType.content}
