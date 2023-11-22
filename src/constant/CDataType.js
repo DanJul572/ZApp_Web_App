@@ -1,4 +1,4 @@
-const DATA_TYPE = {
+const CDataType = {
     varchar: {
         value: 1,
         label: 'Varchar',
@@ -29,4 +29,4 @@ const DATA_TYPE = {
     },
 };
 
-export default DATA_TYPE;
+export default CDataType;

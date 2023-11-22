@@ -1,4 +1,4 @@
-const MENU_LIST = [
+const CMenuList = [
     {
         id: '1',
         label: 'Template',
@@ -23,4 +23,4 @@ const MENU_LIST = [
     },
 ];
 
-export default MENU_LIST;
+export default CMenuList;

@@ -1,4 +1,4 @@
-const CONTAINER_TYPE = {
+const CContainerType = {
     grid: {
         value: 1,
         label: 'Grid',
@@ -17,4 +17,4 @@ const CONTAINER_TYPE = {
     // },
 };
 
-export default CONTAINER_TYPE;
+export default CContainerType;

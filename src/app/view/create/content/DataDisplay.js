@@ -1,7 +1,7 @@
 import Table from '@/component/table';
 import Bar from '@/component/chart/Bar';
 
-import DATA_DISPLAY_TYPE from '@/constant/DATA_DISPLAY_TYPE';
+import CDataDisplayType from '@/constant/CDataDisplayType';
 
 import mockColumns from '@/mock/table/columns';
 import mockRows from '@/mock/table/rows';
@@ -10,9 +10,9 @@ const DataDisplay = props => {
     const {type} = props;
 
     const content = () => {
-        if (type === DATA_DISPLAY_TYPE.table.value) {
+        if (type === CDataDisplayType.table.value) {
             return <Table columnKey={'id'} columns={mockColumns} rows={mockRows} />;
-        } else if (type === DATA_DISPLAY_TYPE.chart.value) {
+        } else if (type === CDataDisplayType.chart.value) {
             return <Bar labels={['Bar 1', 'Bar 2', 'Bar 3', 'Bar 4']} values={[2, 4, 3, 1]} />;
         }
     };

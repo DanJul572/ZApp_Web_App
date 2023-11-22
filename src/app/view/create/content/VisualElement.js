@@ -1,16 +1,16 @@
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
-import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
+import CVisualElement from '@/constant/CVisualElementType';
 
 const VisualElement = props => {
     const {type, properties} = props;
 
     const content = () => {
-        if (type === VISUAL_ELEMENT_TYPE.divider.value) {
+        if (type === CVisualElement.divider.value) {
             return <Divider />;
-        } else if (type === VISUAL_ELEMENT_TYPE.text.value) {
-            return <Typography fontSize={12}>{properties.label || VISUAL_ELEMENT_TYPE.text.label}</Typography>;
+        } else if (type === CVisualElement.text.value) {
+            return <Typography fontSize={12}>{properties.label || CVisualElement.text.label}</Typography>;
         }
     };
 

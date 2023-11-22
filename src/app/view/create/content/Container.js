@@ -5,13 +5,13 @@ import Typography from '@mui/material/Typography';
 
 import Collapse from '@/component/container/Collapse';
 
-import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
+import CContainerType from '@/constant/CContainerType';
 
 const Container = props => {
     const {type, section, properties, renderComponent} = props;
 
     const content = () => {
-        if (type === CONTAINER_TYPE.card.value) {
+        if (type === CContainerType.card.value) {
             return (
                 <Box
                     border={section.length ? 1 : 0}
@@ -26,7 +26,7 @@ const Container = props => {
                     </Box>
                 </Box>
             );
-        } else if (type === CONTAINER_TYPE.grid.value) {
+        } else if (type === CContainerType.grid.value) {
             let columnSize = properties.size ? properties.size.split(',') : [];
             let defaultSize = 12 / (section.length > 0 ? section.length : 1);
             return (
@@ -44,9 +44,9 @@ const Container = props => {
                         ))}
                 </Grid>
             );
-        } else if (type === CONTAINER_TYPE.collaps.value) {
+        } else if (type === CContainerType.collaps.value) {
             return (
-                <Collapse label={properties.label || CONTAINER_TYPE.collaps.label}>
+                <Collapse label={properties.label || CContainerType.collaps.label}>
                     {section && section.length > 0 && section.map(childs => childs.map(child => renderComponent(child)))}
                 </Collapse>
             );

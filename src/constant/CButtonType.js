@@ -1,8 +1,8 @@
-const BUTTON_TYPE = {
+const CButtonType = {
     button: {
         value: 1,
         label: 'Button',
     },
 };
 
-export default BUTTON_TYPE;
+export default CButtonType;

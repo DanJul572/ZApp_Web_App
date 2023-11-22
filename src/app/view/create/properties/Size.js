@@ -11,8 +11,8 @@ import Typography from '@mui/material/Typography';
 
 import ShortText from '@/component/input/ShortText';
 
-import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
-import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
+import CContainerType from '@/constant/CContainerType';
+import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Size = props => {
     const {content, selected, changeProperties, setContent} = props;
@@ -31,8 +31,8 @@ const Size = props => {
         if (!selected) return false;
 
         if (
-            selected.type.value === CONTAINER_TYPE.grid.value &&
-            selected.group.value === COMPONENT_GROUP_TYPE.container.value
+            selected.type.value === CContainerType.grid.value &&
+            selected.group.value === CComponentGroupType.container.value
         )
             return true;
 

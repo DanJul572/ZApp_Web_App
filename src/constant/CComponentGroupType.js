@@ -1,4 +1,4 @@
-const COMPONENT_GROUP_TYPE = {
+const CComponentGroupType = {
     container: {
         value: 1,
         label: 'Container',
@@ -21,4 +21,4 @@ const COMPONENT_GROUP_TYPE = {
     },
 };
 
-export default COMPONENT_GROUP_TYPE;
+export default CComponentGroupType;

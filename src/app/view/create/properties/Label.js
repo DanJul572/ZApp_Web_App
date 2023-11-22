@@ -11,9 +11,9 @@ import Typography from '@mui/material/Typography';
 
 import LongText from '@/component/input/LongText';
 
-import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
-import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
-import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
+import CComponentGroupType from '@/constant/CComponentGroupType';
+import CContainerType from '@/constant/CContainerType';
+import CVisualElement from '@/constant/CVisualElementType';
 
 const Label = props => {
     const {content, selected, changeProperties, setContent} = props;
@@ -34,9 +34,9 @@ const Label = props => {
         let group = selected.group.value;
         let type = selected.type.value;
 
-        if (group === COMPONENT_GROUP_TYPE.container.value && type !== CONTAINER_TYPE.collaps.value) return false;
-        if (group === COMPONENT_GROUP_TYPE.dataDisplay.value) return false;
-        if (group === COMPONENT_GROUP_TYPE.visualElement.value && type === VISUAL_ELEMENT_TYPE.divider.value) return false;
+        if (group === CComponentGroupType.container.value && type !== CContainerType.collaps.value) return false;
+        if (group === CComponentGroupType.dataDisplay.value) return false;
+        if (group === CComponentGroupType.visualElement.value && type === CVisualElement.divider.value) return false;
 
         return true;
     };

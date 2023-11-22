@@ -10,12 +10,12 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import Typography from '@mui/material/Typography';
 
-import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
-import CONTAINER_TYPE from '@/constant/CONTAINER_TYPE';
-import DATA_DISPLAY_TYPE from '@/constant/DATA_DISPLAY_TYPE';
-import INPUT_TYPE from '@/constant/INPUT_TYPE';
-import VISUAL_ELEMENT_TYPE from '@/constant/VISUAL_ELEMENT_TYPE';
-import BUTTON_TYPE from '@/constant/BUTTON_TYPE';
+import CComponentGroupType from '@/constant/CComponentGroupType';
+import CContainerType from '@/constant/CContainerType';
+import CDataDisplayType from '@/constant/CDataDisplayType';
+import CInputType from '@/constant/CInputType';
+import CVisualElement from '@/constant/CVisualElementType';
+import CButtonType from '@/constant/CButtonType';
 
 const Component = props => {
     const {content, setContent, setSelected} = props;
@@ -23,26 +23,26 @@ const Component = props => {
     const [componentList, setComponentList] = useState([]);
     const [open, setOpen] = useState({});
 
-    const container = Object.keys(CONTAINER_TYPE)
+    const container = Object.keys(CContainerType)
         .sort()
-        .map(key => CONTAINER_TYPE[key]);
+        .map(key => CContainerType[key]);
 
-    const input = Object.keys(INPUT_TYPE)
+    const input = Object.keys(CInputType)
         .filter(key => key !== 'code')
         .sort()
-        .map(key => INPUT_TYPE[key]);
+        .map(key => CInputType[key]);
 
-    const dataDisplay = Object.keys(DATA_DISPLAY_TYPE)
+    const dataDisplay = Object.keys(CDataDisplayType)
         .sort()
-        .map(key => DATA_DISPLAY_TYPE[key]);
+        .map(key => CDataDisplayType[key]);
 
-    const visualElement = Object.keys(VISUAL_ELEMENT_TYPE)
+    const visualElement = Object.keys(CVisualElement)
         .sort()
-        .map(key => VISUAL_ELEMENT_TYPE[key]);
+        .map(key => CVisualElement[key]);
 
-    const button = Object.keys(BUTTON_TYPE)
+    const button = Object.keys(CButtonType)
         .sort()
-        .map(key => BUTTON_TYPE[key]);
+        .map(key => CButtonType[key]);
 
     const handleCollapse = group => {
         setOpen(prevState => ({
@@ -59,7 +59,7 @@ const Component = props => {
         component.id = uuidv4();
         component.properties = {};
 
-        if (group.value === COMPONENT_GROUP_TYPE.container.value) component.section = [];
+        if (group.value === CComponentGroupType.container.value) component.section = [];
 
         setSelected(component);
         setContent([...content, component]);
@@ -72,7 +72,7 @@ const Component = props => {
     };
 
     const componentListInitiation = () => {
-        let groupType = {...COMPONENT_GROUP_TYPE};
+        let groupType = {...CComponentGroupType};
 
         groupType.container.components = container;
         groupType.fieldControl.components = input;

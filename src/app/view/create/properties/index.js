@@ -8,7 +8,7 @@ import Label from './Label';
 import Position from './Position';
 import Size from './Size';
 
-import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
+import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Properties = props => {
     const {selected, setSelected, setContent, content, activeNavigation, navigationType} = props;
@@ -19,7 +19,7 @@ const Properties = props => {
             if (component.id === selected.id) {
                 content.splice(i, 1);
             }
-            if (component.group.value === COMPONENT_GROUP_TYPE.container.value) {
+            if (component.group.value === CComponentGroupType.container.value) {
                 for (let x = 0; x < component.section.length; x++) {
                     const section = component.section[x];
                     deleteSelected(section);
@@ -43,7 +43,7 @@ const Properties = props => {
             if (component.id === newSelected.id) {
                 content.splice(x, 1, newSelected);
             }
-            if (component.group.value === COMPONENT_GROUP_TYPE.container.value) {
+            if (component.group.value === CComponentGroupType.container.value) {
                 for (let y = 0; y < component.section.length; y++) {
                     const section = component.section[y];
                     changeProperties(key, value, section);

@@ -5,7 +5,7 @@ import grey from '@mui/material/colors/grey';
 
 import Tree from '@/component/tree/Tree';
 
-import MENU_LIST from '@/constant/MENU_LIST';
+import CMenuList from '@/constant/CMenuList';
 
 const Sidebar = () => {
     const {push} = useRouter();
@@ -27,7 +27,7 @@ const Sidebar = () => {
                 borderRight: 1,
                 borderColor: grey[300],
             }}>
-            <Tree onChildClick={onClick} list={MENU_LIST} />
+            <Tree onChildClick={onClick} list={CMenuList} />
         </Box>
     );
 };

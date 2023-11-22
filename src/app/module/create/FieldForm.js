@@ -5,9 +5,9 @@ import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import grey from '@mui/material/colors/grey';
 
-import ACTION_TYPE from '@/constant/ACTION_TYPE';
-import DATA_TYPE from '@/constant/DATA_TYPE';
-import INPUT_TYPE from '@/constant/INPUT_TYPE';
+import CActionType from '@/constant/CActionType';
+import CDataType from '@/constant/CDataType';
+import CInputType from '@/constant/CInputType';
 
 import Confirm from '@/component/dialog/Confirm';
 import Dropdown from '@/component/input/Dropdown';
@@ -20,9 +20,9 @@ import mockColumns from '@/mock/field/column';
 const FieldForm = props => {
     const {fieldRows, setFieldRows} = props;
 
-    const inputTypeOptions = Object.values(INPUT_TYPE);
-    const dataTypeOptions = Object.values(DATA_TYPE).filter(
-        type => type.value === DATA_TYPE.varchar.value || type.value === DATA_TYPE.integer.value,
+    const inputTypeOptions = Object.values(CInputType);
+    const dataTypeOptions = Object.values(CDataType).filter(
+        type => type.value === CDataType.varchar.value || type.value === CDataType.integer.value,
     );
 
     const [openFieldForm, setOpenFieldForm] = useState(false);
@@ -54,7 +54,7 @@ const FieldForm = props => {
     ];
     const action = [
         {
-            type: ACTION_TYPE.delete.value,
+            type: CActionType.delete.value,
             path: '/',
         },
     ];
@@ -82,24 +82,24 @@ const FieldForm = props => {
     const dataTypeValue = inputType => {
         if (
             !inputType ||
-            inputType === INPUT_TYPE.checkbox.value ||
-            inputType === INPUT_TYPE.dropdown.value ||
-            inputType === INPUT_TYPE.radio.value
+            inputType === CInputType.checkbox.value ||
+            inputType === CInputType.dropdown.value ||
+            inputType === CInputType.radio.value
         )
             return null;
 
-        if (inputType === INPUT_TYPE.code.value || inputType === INPUT_TYPE.richText.value) return DATA_TYPE.text.value;
+        if (inputType === CInputType.code.value || inputType === CInputType.richText.value) return CDataType.text.value;
 
-        if (inputType === INPUT_TYPE.date.value || inputType === INPUT_TYPE.time.value) return DATA_TYPE.datetime.value;
+        if (inputType === CInputType.date.value || inputType === CInputType.time.value) return CDataType.datetime.value;
 
-        if (inputType === INPUT_TYPE.file.value) return DATA_TYPE.byte.value;
+        if (inputType === CInputType.file.value) return CDataType.byte.value;
 
-        if (inputType === INPUT_TYPE.longText.value || inputType === INPUT_TYPE.shortText.value)
-            return DATA_TYPE.varchar.value;
+        if (inputType === CInputType.longText.value || inputType === CInputType.shortText.value)
+            return CDataType.varchar.value;
 
-        if (inputType === INPUT_TYPE.number.value) return DATA_TYPE.integer.value;
+        if (inputType === CInputType.number.value) return CDataType.integer.value;
 
-        if (inputType === INPUT_TYPE.toggle.value) return DATA_TYPE.boolean.value;
+        if (inputType === CInputType.toggle.value) return CDataType.boolean.value;
     };
 
     const deleteField = () => {
@@ -123,7 +123,7 @@ const FieldForm = props => {
     };
 
     const onClickRowAction = data => {
-        if (data.action.value === ACTION_TYPE.delete.value) {
+        if (data.action.value === CActionType.delete.value) {
             setOpenConfirmDialog(true);
             setRowSelected(data.row);
         }
@@ -160,9 +160,9 @@ const FieldForm = props => {
 
     const refTableSettings = () => {
         if (
-            inputType !== INPUT_TYPE.dropdown.value &&
-            inputType !== INPUT_TYPE.checkbox.value &&
-            inputType !== INPUT_TYPE.radio.value
+            inputType !== CInputType.dropdown.value &&
+            inputType !== CInputType.checkbox.value &&
+            inputType !== CInputType.radio.value
         )
             return false;
 
@@ -205,9 +205,9 @@ const FieldForm = props => {
 
     const identitySetting = () => {
         if (
-            inputType !== INPUT_TYPE.longText.value &&
-            inputType !== INPUT_TYPE.number.value &&
-            inputType !== INPUT_TYPE.shortText.value
+            inputType !== CInputType.longText.value &&
+            inputType !== CInputType.number.value &&
+            inputType !== CInputType.shortText.value
         )
             return false;
 
@@ -223,7 +223,7 @@ const FieldForm = props => {
     };
 
     const autoIncrementSetting = () => {
-        if (inputType !== INPUT_TYPE.number.value) return false;
+        if (inputType !== CInputType.number.value) return false;
 
         return (
             <Box>
@@ -250,11 +250,11 @@ const FieldForm = props => {
 
     const uniqueSetting = () => {
         if (
-            inputType !== INPUT_TYPE.longText.value &&
-            inputType !== INPUT_TYPE.number.value &&
-            inputType !== INPUT_TYPE.shortText.value &&
-            inputType !== INPUT_TYPE.dropdown.value &&
-            inputType !== INPUT_TYPE.radio.value
+            inputType !== CInputType.longText.value &&
+            inputType !== CInputType.number.value &&
+            inputType !== CInputType.shortText.value &&
+            inputType !== CInputType.dropdown.value &&
+            inputType !== CInputType.radio.value
         )
             return false;
 

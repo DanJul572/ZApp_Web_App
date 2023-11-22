@@ -1,4 +1,4 @@
-import BUTTON_TYPE from '@/constant/BUTTON_TYPE';
+import CButtonType from '@/constant/CButtonType';
 
 import MuiButton from '@/alias/MuiButton';
 
@@ -6,10 +6,10 @@ const Button = props => {
     const {type, properties} = props;
 
     const content = () => {
-        if (type === BUTTON_TYPE.button.value) {
+        if (type === CButtonType.button.value) {
             return (
                 <MuiButton size="small" variant="contained" style={{display: 'block'}}>
-                    {properties.label || BUTTON_TYPE.button.label}
+                    {properties.label || CButtonType.button.label}
                 </MuiButton>
             );
         }

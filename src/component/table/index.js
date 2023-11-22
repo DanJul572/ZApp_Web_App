@@ -5,7 +5,7 @@ import {MaterialReactTable, useMaterialReactTable} from 'material-react-table';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
-import dataDisplay from '@/helper/data_display';
+import dataDisplay from '@/helper/dataDisplay';
 
 import AdvanceFilter from './AdvanceFilter';
 import ExportDialog from './ExportDialog';
@@ -14,7 +14,7 @@ import RowCustomActionDialog from './CustomActionDialog';
 import ToolbarAction from './ToolbarAction';
 import ToolBarComponent from './ToolbarComponent';
 
-import ACTION_TYPE from '@/constant/ACTION_TYPE';
+import CActionType from '@/constant/CActionType';
 
 const Table = props => {
     const {
@@ -105,11 +105,11 @@ const Table = props => {
     };
 
     const isSupportRowAction = () => {
-        return action.filter(item => item.type !== ACTION_TYPE.insert.value).length ? true : false;
+        return action.filter(item => item.type !== CActionType.insert.value).length ? true : false;
     };
 
     const isSupportAddAction = () => {
-        return action.find(item => item.type === ACTION_TYPE.insert.value) ? true : false;
+        return action.find(item => item.type === CActionType.insert.value) ? true : false;
     };
 
     const displayColumnDefOptions = () => {

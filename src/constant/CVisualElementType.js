@@ -1,4 +1,4 @@
-const VISUAL_ELEMENT_TYPE = {
+const CVisualElement = {
     text: {
         value: 1,
         label: 'Text',
@@ -13,4 +13,4 @@ const VISUAL_ELEMENT_TYPE = {
     // },
 };
 
-export default VISUAL_ELEMENT_TYPE;
+export default CVisualElement;

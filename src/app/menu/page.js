@@ -15,7 +15,7 @@ import Save from '@mui/icons-material/Save';
 
 import Tree from '@/component/tree/Tree';
 
-import MENU_LIST from '@/constant/MENU_LIST';
+import CMenuList from '@/constant/CMenuList';
 
 const Menu = () => {
     return (
@@ -43,7 +43,7 @@ const Menu = () => {
             </Box>
             <Divider />
             <Box padding={1}>
-                <Tree list={MENU_LIST} />
+                <Tree list={CMenuList} />
             </Box>
         </Box>
     );

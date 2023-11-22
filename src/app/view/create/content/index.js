@@ -7,7 +7,7 @@ import useTheme from '@mui/material/styles/useTheme';
 
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
+import CComponentGroupType from '@/constant/CComponentGroupType';
 
 import Button from './Button';
 import Container from './Container';
@@ -46,31 +46,31 @@ const Content = props => {
         let section = component.section;
         let properties = component.properties;
 
-        if (group === COMPONENT_GROUP_TYPE.container.value) {
+        if (group === CComponentGroupType.container.value) {
             return (
                 <Wraper key={id} component={component}>
                     <Container type={type} section={section} properties={properties} renderComponent={renderComponent} />
                 </Wraper>
             );
-        } else if (group === COMPONENT_GROUP_TYPE.fieldControl.value) {
+        } else if (group === CComponentGroupType.fieldControl.value) {
             return (
                 <Wraper key={id} component={component}>
                     <FieldControl type={type} properties={properties} />
                 </Wraper>
             );
-        } else if (group === COMPONENT_GROUP_TYPE.visualElement.value) {
+        } else if (group === CComponentGroupType.visualElement.value) {
             return (
                 <Wraper key={id} component={component}>
                     <VisualElement type={type} properties={properties} />
                 </Wraper>
             );
-        } else if (group === COMPONENT_GROUP_TYPE.dataDisplay.value) {
+        } else if (group === CComponentGroupType.dataDisplay.value) {
             return (
                 <Wraper key={id} component={component}>
                     <DataDisplay type={type} />
                 </Wraper>
             );
-        } else if (group === COMPONENT_GROUP_TYPE.button.value) {
+        } else if (group === CComponentGroupType.button.value) {
             return (
                 <Wraper key={id} component={component}>
                     <Button type={type} properties={properties} />

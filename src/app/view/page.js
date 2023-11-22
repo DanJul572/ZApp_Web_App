@@ -8,28 +8,28 @@ import Table from '@/component/table';
 import mockColumns from '@/mock/view/columns';
 import mockRows from '@/mock/view/rows';
 
-import ACTION_TYPE from '@/constant/ACTION_TYPE';
+import CActionType from '@/constant/CActionType';
 
 export default function View() {
     const {push} = useRouter();
 
     const actionList = [
         {
-            type: ACTION_TYPE.insert.value,
+            type: CActionType.insert.value,
             path: '/',
         },
         {
-            type: ACTION_TYPE.update.value,
+            type: CActionType.update.value,
             path: '/',
         },
         {
-            type: ACTION_TYPE.delete.value,
+            type: CActionType.delete.value,
             path: '/',
         },
     ];
 
     const onCLickToolbarAction = action => {
-        if (action.value === ACTION_TYPE.insert.value) push('/view/create');
+        if (action.value === CActionType.insert.value) push('/view/create');
     };
 
     return (

@@ -10,7 +10,7 @@ import Table from '@/component/table';
 
 import Confirm from '@/component/dialog/Confirm';
 
-import ACTION_TYPE from '@/constant/ACTION_TYPE';
+import CActionType from '@/constant/CActionType';
 
 const Function = () => {
     const [open, setOpen] = useState(false);
@@ -22,10 +22,10 @@ const Function = () => {
 
     const action = [
         {
-            type: ACTION_TYPE.insert.value,
+            type: CActionType.insert.value,
         },
         {
-            type: ACTION_TYPE.delete.value,
+            type: CActionType.delete.value,
         },
     ];
 
@@ -48,14 +48,14 @@ const Function = () => {
     ];
 
     const onClickToolbarAction = action => {
-        if (action.value === ACTION_TYPE.insert.value) {
+        if (action.value === CActionType.insert.value) {
             setOpen(true);
             setRowSelected(null);
         }
     };
 
     const onClickRowAction = data => {
-        if (data.action.value === ACTION_TYPE.delete.value) {
+        if (data.action.value === CActionType.delete.value) {
             setRowSelected(data.row);
             setOpenConfirmDialog(true);
         }

@@ -8,7 +8,7 @@ import createTheme from '@mui/material/styles/createTheme';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 
 
-import THEME from '@/constant/THEME';
+import CTheme from '@/constant/CTheme';
 
 import Component from './component';
 import Content from './content';
@@ -18,7 +18,7 @@ import Properties from './properties';
 import TopBar from './topbar';
 
 const ViewCreate = () => {
-    const theme = createTheme(THEME);
+    const theme = createTheme(CTheme);
     
     const navigationType = {
         content: 'content',

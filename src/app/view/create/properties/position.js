@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Number from '@/component/input/Number';
 import ShortText from '@/component/input/ShortText';
 
-import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
+import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Position = props => {
     const {selected, content, setContent, setSelected, deleteSelected} = props;
@@ -38,7 +38,7 @@ const Position = props => {
                         component.section[columnIndexInt].splice(rowIndexInt, 0, selected);
                     }
                 }
-                if (component.group.value === COMPONENT_GROUP_TYPE.container.value) {
+                if (component.group.value === CComponentGroupType.container.value) {
                     for (let y = 0; y < component.section.length; y++) {
                         const section = component.section[y];
                         changePosition(section);

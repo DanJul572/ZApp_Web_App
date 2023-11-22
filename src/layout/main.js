@@ -16,14 +16,14 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider';
 
 import Loading from '@/component/loading';
 
-import THEME from '@/constant/THEME';
+import CTheme from '@/constant/CTheme';
 
 import Sidebar from './Sidebar';
 
 export default function Main({children}) {
     const [mobileOpen, setMobileOpen] = useState(false);
 
-    const theme = createTheme(THEME);
+    const theme = createTheme(CTheme);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);

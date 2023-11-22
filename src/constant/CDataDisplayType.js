@@ -1,4 +1,4 @@
-const DATA_DISPLAY_TYPE = {
+const CDataDisplayType = {
     table: {
         value: 1,
         label: 'Table',
@@ -9,4 +9,4 @@ const DATA_DISPLAY_TYPE = {
     },
 };
 
-export default DATA_DISPLAY_TYPE;
+export default CDataDisplayType;

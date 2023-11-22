@@ -3,7 +3,7 @@ import ContentCopy from '@mui/icons-material/ContentCopy';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import COMPONENT_GROUP_TYPE from '@/constant/COMPONENT_GROUP_TYPE';
+import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Identity = props => {
     const {selected} = props;
@@ -15,7 +15,7 @@ const Identity = props => {
 
     const validComponent = () => {
         if (!selected) return false;
-        if (selected.group.value !== COMPONENT_GROUP_TYPE.container.value) return false;
+        if (selected.group.value !== CComponentGroupType.container.value) return false;
         return true;
     };
 
