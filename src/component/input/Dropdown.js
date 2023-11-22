@@ -50,7 +50,7 @@ const Dropdown = props => {
         <Box>
             <Autocomplete
                 disabled={disabled}
-                onChange={(e, value) => onChange(value.value)}
+                onChange={(e, value) => onChange(value ? value.value : null)}
                 options={options.length ? options : []}
                 renderInput={params => renderInput(params)}
                 size="small"
