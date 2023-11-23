@@ -7,10 +7,6 @@ const CComponentGroupType = {
         value: 2,
         label: 'Field Control',
     },
-    dataDisplay: {
-        value: 3,
-        label: 'Data Display',
-    },
     visualElement: {
         value: 4,
         label: 'Visual Element',
@@ -18,6 +14,14 @@ const CComponentGroupType = {
     button: {
         value: 5,
         label: 'Button',
+    },
+    table: {
+        value: 6,
+        label: 'Table',
+    },
+    chart: {
+        value: 7,
+        label: 'Chart',
     },
 };
 

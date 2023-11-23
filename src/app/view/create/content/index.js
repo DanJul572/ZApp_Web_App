@@ -10,9 +10,10 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
 import Button from './Button';
+import Chart from './Chart';
 import Container from './Container';
-import DataDisplay from './DataDisplay';
 import FieldControl from './FieldControl';
+import Tables from './Tables';
 import VisualElement from './VisualElement';
 
 const Content = props => {
@@ -64,10 +65,16 @@ const Content = props => {
                     <VisualElement type={type} properties={properties} />
                 </Wraper>
             );
-        } else if (group === CComponentGroupType.dataDisplay.value) {
+        } else if (group === CComponentGroupType.table.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <DataDisplay type={type} />
+                    <Tables type={type} />
+                </Wraper>
+            );
+        } else if (group === CComponentGroupType.chart.value) {
+            return (
+                <Wraper key={id} component={component}>
+                    <Chart type={type} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.button.value) {

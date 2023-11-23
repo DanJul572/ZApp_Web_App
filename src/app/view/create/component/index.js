@@ -10,12 +10,13 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import Typography from '@mui/material/Typography';
 
+import CButtonType from '@/constant/CButtonType';
+import CChartType from '@/constant/CChartType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CContainerType from '@/constant/CContainerType';
-import CDataDisplayType from '@/constant/CDataDisplayType';
 import CInputType from '@/constant/CInputType';
+import CTableType from '@/constant/CTableType';
 import CVisualElement from '@/constant/CVisualElementType';
-import CButtonType from '@/constant/CButtonType';
 
 const Component = props => {
     const {content, setContent, setSelected} = props;
@@ -32,13 +33,17 @@ const Component = props => {
         .sort()
         .map(key => CInputType[key]);
 
-    const dataDisplay = Object.keys(CDataDisplayType)
-        .sort()
-        .map(key => CDataDisplayType[key]);
-
     const visualElement = Object.keys(CVisualElement)
         .sort()
         .map(key => CVisualElement[key]);
+
+    const table = Object.keys(CTableType)
+        .sort()
+        .map(key => CTableType[key]);
+
+    const chart = Object.keys(CChartType)
+        .sort()
+        .map(key => CChartType[key]);
 
     const button = Object.keys(CButtonType)
         .sort()
@@ -74,11 +79,12 @@ const Component = props => {
     const componentListInitiation = () => {
         let groupType = {...CComponentGroupType};
 
+        groupType.button.components = button;
+        groupType.chart.components = chart;
         groupType.container.components = container;
         groupType.fieldControl.components = input;
-        groupType.dataDisplay.components = dataDisplay;
+        groupType.table.components = table;
         groupType.visualElement.components = visualElement;
-        groupType.button.components = button;
 
         setComponentList(Object.values(groupType));
     };
