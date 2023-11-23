@@ -4,11 +4,11 @@ const CChartType = {
         label: 'Bar',
     },
     line: {
-        value: 1,
+        value: 2,
         label: 'Line',
     },
     pie: {
-        value: 1,
+        value: 3,
         label: 'Pie',
     },
 };
