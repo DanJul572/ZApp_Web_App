@@ -1,21 +1,33 @@
 import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 import {LineChart} from '@mui/x-charts/LineChart';
 
-const Line = () => {
-    return (
-        <Container style={{padding: 0}}>
+const Line = props => {
+    const {labels, values} = props;
+
+    const renderChart = () => {
+        if (!labels || !labels.length || !values || !values.length)
+            return (
+                <Typography fontSize={12} fontWeight="bold">
+                    Chart cannot be loaded.
+                </Typography>
+            );
+
+        return (
             <LineChart
-                xAxis={[{data: [1, 2, 3, 5, 8, 10]}]}
+                xAxis={[{data: labels}]}
                 series={[
                     {
-                        data: [2, 5.5, 2, 8.5, 1.5, 5],
+                        data: values,
                     },
                 ]}
                 height={250}
             />
-        </Container>
-    );
+        );
+    };
+
+    return <Container style={{padding: 0}}>{renderChart()}</Container>;
 };
 
 export default Line;

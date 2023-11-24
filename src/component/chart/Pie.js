@@ -1,24 +1,32 @@
 import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 import {PieChart} from '@mui/x-charts/PieChart';
 
-const Pie = () => {
-    return (
-        <Container style={{padding: 0}}>
+const Pie = props => {
+    const {values} = props;
+
+    const renderChart = () => {
+        if (!values || !values.length)
+            return (
+                <Typography fontSize={12} fontWeight="bold">
+                    Chart cannot be loaded.
+                </Typography>
+            );
+
+        return (
             <PieChart
                 series={[
                     {
-                        data: [
-                            {id: 0, value: 10},
-                            {id: 1, value: 15},
-                            {id: 2, value: 20},
-                        ],
+                        data: values,
                     },
                 ]}
                 height={250}
             />
-        </Container>
-    );
+        );
+    };
+
+    return <Container style={{padding: 0}}>{renderChart()}</Container>;
 };
 
 export default Pie;
