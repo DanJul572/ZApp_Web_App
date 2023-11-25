@@ -10,14 +10,10 @@ import CContainerType from '@/constant/CContainerType';
 import {useBuilder} from '@/context/BuilderProvider';
 
 const Container = props => {
-    const {type, section, properties, renderComponent} = props;
+    const {type, section, properties, renderComponent, parse} = props;
 
     // eslint-disable-next-line no-unused-vars
     const {vars, setVars} = useBuilder();
-
-    const getStyles = () => {
-        return properties.styles ? JSON.parse(properties.styles) : {};
-    };
 
     const content = () => {
         if (type === CContainerType.card.value) {
@@ -28,8 +24,8 @@ const Container = props => {
                     borderRadius={1}
                     padding={section.length ? 1 : 0}>
                     <Typography fontSize={10}>Card</Typography>
-                    <Box sx={getStyles()}>
-                        {section && section.length > 0 && section.map(childs => childs.map(child => renderComponent(child)))}
+                    <Box sx={parse.styles}>
+                        {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                     </Box>
                 </Box>
             );
@@ -47,18 +43,16 @@ const Container = props => {
                                 item
                                 xs={columnSize.length > 0 ? parseInt(columnSize[index]) : defaultSize}
                                 key={index}
-                                sx={getStyles()}>
-                                {childs.map(child => renderComponent(child))}
+                                sx={parse.styles}>
+                                {childs.map(renderComponent)}
                             </Grid>
                         ))}
                 </Grid>
             );
         } else if (type === CContainerType.collaps.value) {
             return (
-                <Collapse
-                    label={properties.label ? eval(properties.label) : CContainerType.collaps.label}
-                    styles={getStyles()}>
-                    {section && section.length > 0 && section.map(childs => childs.map(child => renderComponent(child)))}
+                <Collapse label={parse.label || CContainerType.collaps.label} sx={parse.styles}>
+                    {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                 </Collapse>
             );
         }

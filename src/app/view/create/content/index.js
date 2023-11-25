@@ -9,6 +9,8 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
+import {useBuilder} from '@/context/BuilderProvider';
+
 import Button from './Button';
 import Chart from './Chart';
 import Container from './Container';
@@ -19,7 +21,28 @@ import VisualElement from './VisualElement';
 const Content = props => {
     const theme = useTheme();
 
+    // eslint-disable-next-line no-unused-vars
+    const {vars} = useBuilder();
+
     const {content, selected, setSelected} = props;
+
+    const getStyles = styles => {
+        try {
+            return styles ? JSON.parse(styles) : {};
+        } catch (error) {
+            console.log(`Error : ${error.message}`);
+            return {};
+        }
+    };
+
+    const getLabel = func => {
+        try {
+            return eval(func);
+        } catch (error) {
+            console.log(`Error : ${error.message}`);
+            return;
+        }
+    };
 
     const Wraper = ({children, component}) => {
         return (
@@ -46,23 +69,33 @@ const Content = props => {
         let type = component.type.value;
         let section = component.section;
         let properties = component.properties;
+        let parse = {};
+
+        parse.styles = getStyles(properties.styles);
+        parse.label = getLabel(properties.label);
 
         if (group === CComponentGroupType.container.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <Container type={type} section={section} properties={properties} renderComponent={renderComponent} />
+                    <Container
+                        type={type}
+                        section={section}
+                        properties={properties}
+                        renderComponent={renderComponent}
+                        parse={parse}
+                    />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.fieldControl.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <FieldControl type={type} properties={properties} />
+                    <FieldControl type={type} properties={properties} parse={parse} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.visualElement.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <VisualElement type={type} properties={properties} />
+                    <VisualElement type={type} properties={properties} parse={parse} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.table.value) {

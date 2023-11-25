@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import InsertLink from '@mui/icons-material/InsertLink';
 import Typography from '@mui/material/Typography';
@@ -54,6 +55,7 @@ const Label = props => {
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
+                <DialogTitle fontSize={15}>Label</DialogTitle>
                 <DialogContent>
                     <Box width={500}>
                         <Code value={label} onChange={setLabel} lang="js" />

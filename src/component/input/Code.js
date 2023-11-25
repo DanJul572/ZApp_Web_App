@@ -10,11 +10,11 @@ const Code = props => {
             language={lang}
             onChange={evn => onChange(evn.target.value)}
             padding={15}
-            placeholder="Enter code."
-            sx={{
+            placeholder="Write here..."
+            style={{
                 borderRadius: 3,
                 fontSize: 12,
-                fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+                fontFamily: 'Consolas',
             }}
             value={value}
         />
