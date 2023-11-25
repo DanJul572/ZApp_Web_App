@@ -12,14 +12,14 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import MuiCollapse from '@/alias/MuiCollapse';
 
 const Collapse = props => {
-    const {children, label, styles} = props;
+    const {children, label, sx} = props;
 
     const theme = useTheme();
 
     const [open, setOpen] = useState(true);
 
     const getStyles = () => {
-        return styles ? {padding: 1} : {...styles, padding: 1};
+        return sx ? {...sx, padding: 1} : {padding: 1};
     };
 
     return (
