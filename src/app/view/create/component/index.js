@@ -122,7 +122,7 @@ const Component = props => {
                     <List key={index} disablePadding>
                         <ListItemButton
                             onClick={() => handleCollapse(group.value)}
-                            style={{
+                            sx={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
                             }}>
@@ -137,7 +137,7 @@ const Component = props => {
                                     <ListItemButton
                                         key={index}
                                         onClick={() => handleSelected(groupTypeValue(group), component)}>
-                                        <Typography fontSize={11} style={{marginLeft: 10}}>
+                                        <Typography fontSize={11} sx={{marginLeft: 1}}>
                                             {component.label}
                                         </Typography>
                                     </ListItemButton>

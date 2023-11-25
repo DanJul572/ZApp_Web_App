@@ -23,7 +23,7 @@ const Identity = props => {
         <>
             <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between">
                 <Typography fontSize={12}>{selected.id}</Typography>
-                <IconButton style={{padding: 0}} size="small" onClick={onCoppy}>
+                <IconButton sx={{padding: 0}} size="small" onClick={onCoppy}>
                     <ContentCopy fontSize="small" />
                 </IconButton>
             </Box>

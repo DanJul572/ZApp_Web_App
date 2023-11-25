@@ -1,5 +1,3 @@
-import {useMemo} from 'react';
-
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
@@ -34,7 +32,7 @@ const Content = props => {
                 borderRadius={1}>
                 {children}
                 <Tooltip arrow title={component.type.label} placement="left">
-                    <IconButton onClick={() => setSelected(component)} size="small" style={{padding: 0}}>
+                    <IconButton onClick={() => setSelected(component)} size="small" sx={{padding: 0}}>
                         <MoreHorizIcon fontSize="small" />
                     </IconButton>
                 </Tooltip>
@@ -88,11 +86,9 @@ const Content = props => {
         }
     };
 
-    const memoizedRenderComponent = useMemo(() => renderComponent, [content]);
-
     return (
         <Grid item xs={8} marginX={40}>
-            {content && content.length > 0 && content.map(component => memoizedRenderComponent(component))}
+            {content && content.length > 0 && content.map(renderComponent)}
         </Grid>
     );
 };

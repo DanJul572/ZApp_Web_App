@@ -6,23 +6,21 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
+import InsertLink from '@mui/icons-material/InsertLink';
 import Typography from '@mui/material/Typography';
 
-import ShortTextOutlined from '@mui/icons-material/ShortTextOutlined';
+import Code from '@/component/input/Code';
 
-import ShortText from '@/component/input/ShortText';
-
-import CContainerType from '@/constant/CContainerType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
-const Size = props => {
+const Styles = props => {
     const {content, selected, changeProperties, setContent} = props;
 
     const [open, setOpen] = useState(false);
-    const [size, setSize] = useState();
+    const [styles, setStyles] = useState();
 
     const onApply = () => {
-        let newContent = changeProperties('size', size, content);
+        let newContent = changeProperties('styles', styles, content);
 
         setContent([...newContent]);
         setOpen(false);
@@ -31,31 +29,29 @@ const Size = props => {
     const validComponent = () => {
         if (!selected) return false;
 
-        if (
-            selected.type.value === CContainerType.grid.value &&
-            selected.group.value === CComponentGroupType.container.value
-        )
-            return true;
+        let group = selected.group.value;
 
-        return false;
+        if (group !== CComponentGroupType.container.value) return false;
+
+        return true;
     };
 
     useEffect(() => {
-        if (selected) setSize(selected.properties.size || null);
+        if (selected) setStyles(selected.properties.styles || null);
     }, [selected]);
 
     return validComponent() ? (
         <>
             <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
-                <Typography fontSize={12}>Size</Typography>
+                <Typography fontSize={12}>Styles</Typography>
                 <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <ShortTextOutlined fontSize="small" />
+                    <InsertLink fontSize="small" />
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
                 <DialogContent>
-                    <Box>
-                        <ShortText label="Size" value={size} onChange={setSize} />
+                    <Box width={500}>
+                        <Code value={styles} onChange={setStyles} lang="json" />
                     </Box>
                 </DialogContent>
                 <DialogActions>
@@ -73,4 +69,4 @@ const Size = props => {
     );
 };
 
-export default Size;
+export default Styles;

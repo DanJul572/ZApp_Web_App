@@ -26,7 +26,7 @@ const Pie = props => {
         );
     };
 
-    return <Container style={{padding: 0}}>{renderChart()}</Container>;
+    return <Container sx={{padding: 0}}>{renderChart()}</Container>;
 };
 
 export default Pie;

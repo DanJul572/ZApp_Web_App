@@ -18,7 +18,7 @@ const RowCustomActionDialog = props => {
 
     return (
         <Dialog open={openRowCustomActionDialog}>
-            <DialogContent style={{width: '20rem', padding: 0}}>
+            <DialogContent sx={{width: '20rem', padding: 0}}>
                 <List>
                     {rowCustomAction.map((action, index) => (
                         <ListItem key={index} disablePadding>

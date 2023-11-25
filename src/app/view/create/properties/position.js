@@ -69,7 +69,7 @@ const Position = props => {
         <>
             <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
                 <Typography fontSize={12}>Position</Typography>
-                <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                     <ShortTextOutlined fontSize="small" />
                 </IconButton>
             </Box>

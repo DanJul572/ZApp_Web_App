@@ -49,14 +49,14 @@ const Label = props => {
         <>
             <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
                 <Typography fontSize={12}>Label</Typography>
-                <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                     <InsertLink fontSize="small" />
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
                 <DialogContent>
                     <Box width={500}>
-                        <Code value={label} onChange={setLabel} />
+                        <Code value={label} onChange={setLabel} lang="js" />
                     </Box>
                 </DialogContent>
                 <DialogActions>

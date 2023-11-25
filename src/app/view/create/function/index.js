@@ -104,7 +104,7 @@ const Function = () => {
                 </Box>
                 <Box display="flex" flexDirection="column" gap={2}>
                     <ShortText label="Name" value={name} onChange={setName} />
-                    <Code value={code} onChange={setCode} />
+                    <Code value={code} onChange={setCode} lang="js" />
                 </Box>
             </Drawer>
             <Confirm

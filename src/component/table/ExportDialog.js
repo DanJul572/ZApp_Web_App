@@ -27,7 +27,7 @@ const ExportDialog = props => {
     return (
         <Dialog open={openExportDialog}>
             <DialogContent
-                style={{
+                sx={{
                     width: '20rem',
                     padding: '1.5rem',
                     display: 'flex',

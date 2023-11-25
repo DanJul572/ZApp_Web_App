@@ -8,7 +8,7 @@ const Button = props => {
     const content = () => {
         if (type === CButtonType.button.value) {
             return (
-                <MuiButton size="small" variant="contained" style={{display: 'block'}}>
+                <MuiButton size="small" variant="contained" sx={{display: 'block'}}>
                     {properties.label || CButtonType.button.label}
                 </MuiButton>
             );

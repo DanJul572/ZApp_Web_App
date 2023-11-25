@@ -15,7 +15,7 @@ const TopBar = () => {
     const theme = useTheme();
 
     return (
-        <Grid container position="fixed" style={{backgroundColor: 'white'}} zIndex={2} top={0} right={0} left={0}>
+        <Grid container position="fixed" sx={{backgroundColor: 'white'}} zIndex={2} top={0} right={0} left={0}>
             <Grid
                 alignItems="center"
                 border={1}
@@ -29,7 +29,7 @@ const TopBar = () => {
                     <IconButton size="small" sx={{padding: 0}} onClick={back}>
                         <ArrowBack fontSize="small" sx={{color: theme.palette.text.primary}} />
                     </IconButton>
-                    <Typography style={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
+                    <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>
                 <Button variant="contained" size="small">
                     Save

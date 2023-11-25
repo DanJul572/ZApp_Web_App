@@ -8,6 +8,7 @@ import Label from './Label';
 import Name from './Name';
 import Position from './Position';
 import Size from './Size';
+import Styles from './Styles';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
@@ -98,6 +99,12 @@ const Properties = props => {
                         setSelected={setSelected}
                     />
                     <Size
+                        content={content}
+                        selected={selected}
+                        changeProperties={changeProperties}
+                        setContent={setContent}
+                    />
+                    <Styles
                         content={content}
                         selected={selected}
                         changeProperties={changeProperties}
