@@ -1,9 +1,11 @@
 import {Inter} from 'next/font/google';
-import ErrorProvider from '@/context/ErrorProvider';
-import {LoadingProvider} from '@/context/LoadingProvider';
 
 import 'suneditor/dist/css/suneditor.min.css';
+
 import {AlertProvider} from '@/context/AlertProvider';
+import {BuilderProvider} from '@/context/BuilderProvider';
+import ErrorProvider from '@/context/ErrorProvider';
+import {LoadingProvider} from '@/context/LoadingProvider';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -19,7 +21,7 @@ export default function RootLayout({children}) {
                 <ErrorProvider>
                     <LoadingProvider>
                         <AlertProvider>
-                            {children}
+                            <BuilderProvider>{children}</BuilderProvider>
                         </AlertProvider>
                     </LoadingProvider>
                 </ErrorProvider>

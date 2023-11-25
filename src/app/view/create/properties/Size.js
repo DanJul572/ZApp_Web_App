@@ -46,9 +46,7 @@ const Size = props => {
     return validComponent() ? (
         <>
             <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
-                <Typography fontSize={12} fontWeight="bold">
-                    Size
-                </Typography>
+                <Typography fontSize={12}>Size</Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                     <Settings fontSize="small" />
                 </IconButton>

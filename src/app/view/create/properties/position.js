@@ -6,8 +6,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
-import Settings from '@mui/icons-material/Settings';
 import Typography from '@mui/material/Typography';
+
+import ShortTextOutlined from '@mui/icons-material/ShortTextOutlined';
 
 import Number from '@/component/input/Number';
 import ShortText from '@/component/input/ShortText';
@@ -67,11 +68,9 @@ const Position = props => {
     return selected ? (
         <>
             <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
-                <Typography fontSize={12} fontWeight="bold">
-                    Position
-                </Typography>
+                <Typography fontSize={12}>Position</Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <Settings fontSize="small" />
+                    <ShortTextOutlined fontSize="small" />
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>

@@ -1,3 +1,5 @@
+import {useMemo} from 'react';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
@@ -86,9 +88,11 @@ const Content = props => {
         }
     };
 
+    const memoizedRenderComponent = useMemo(() => renderComponent, [content]);
+
     return (
         <Grid item xs={8} marginX={40}>
-            {content && content.length > 0 && content.map(component => renderComponent(component))}
+            {content && content.length > 0 && content.map(component => memoizedRenderComponent(component))}
         </Grid>
     );
 };

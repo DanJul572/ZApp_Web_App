@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Delete from './Delete';
 import Identity from './Identity';
 import Label from './Label';
+import Name from './Name';
 import Position from './Position';
 import Size from './Size';
 
@@ -76,6 +77,18 @@ const Properties = props => {
                         setSelected={setSelected}
                     />
                     <Identity selected={selected} />
+                    <Name
+                        content={content}
+                        selected={selected}
+                        changeProperties={changeProperties}
+                        setContent={setContent}
+                    />
+                    <Label
+                        content={content}
+                        selected={selected}
+                        changeProperties={changeProperties}
+                        setContent={setContent}
+                    />
                     <Position
                         changeProperties={changeProperties}
                         content={content}
@@ -83,12 +96,6 @@ const Properties = props => {
                         selected={selected}
                         setContent={setContent}
                         setSelected={setSelected}
-                    />
-                    <Label
-                        content={content}
-                        selected={selected}
-                        changeProperties={changeProperties}
-                        setContent={setContent}
                     />
                     <Size
                         content={content}

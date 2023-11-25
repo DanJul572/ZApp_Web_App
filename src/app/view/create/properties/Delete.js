@@ -25,9 +25,7 @@ const Delete = props => {
     return selected ? (
         <>
             <Box paddingX={2} marginY={2} display="flex" justifyContent="space-between">
-                <Typography fontSize={12} fontWeight="bold">
-                    {selected.type.label}
-                </Typography>
+                <Typography fontSize={12}>{selected.type.label}</Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                     <MuiDeleteIcon fontSize="small" />
                 </IconButton>

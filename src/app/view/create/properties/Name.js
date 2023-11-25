@@ -6,23 +6,22 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
-import InsertLink from '@mui/icons-material/InsertLink';
 import Typography from '@mui/material/Typography';
 
-import Code from '@/component/input/Code';
+import ShortTextOutlined from '@mui/icons-material/ShortTextOutlined';
+
+import ShortText from '@/component/input/ShortText';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
-import CContainerType from '@/constant/CContainerType';
-import CVisualElement from '@/constant/CVisualElementType';
 
-const Label = props => {
+const Name = props => {
     const {content, selected, changeProperties, setContent} = props;
 
     const [open, setOpen] = useState(false);
-    const [label, setLabel] = useState();
+    const [name, setName] = useState();
 
     const onApply = () => {
-        let newContent = changeProperties('label', label, content);
+        let newContent = changeProperties('name', name, content);
 
         setContent([...newContent]);
         setOpen(false);
@@ -32,31 +31,28 @@ const Label = props => {
         if (!selected) return false;
 
         let group = selected.group.value;
-        let type = selected.type.value;
 
-        if (group === CComponentGroupType.container.value && type !== CContainerType.collaps.value) return false;
-        if (group === CComponentGroupType.table.value || group === CComponentGroupType.chart.value) return false;
-        if (group === CComponentGroupType.visualElement.value && type === CVisualElement.divider.value) return false;
+        if (group !== CComponentGroupType.fieldControl.value) return false;
 
         return true;
     };
 
     useEffect(() => {
-        if (selected) setLabel(selected.properties.label || null);
+        if (selected) setName(selected.properties.name || null);
     }, [selected]);
 
     return validComponent() ? (
         <>
             <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
-                <Typography fontSize={12}>Label</Typography>
+                <Typography fontSize={12}>Name</Typography>
                 <IconButton style={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <InsertLink fontSize="small" />
+                    <ShortTextOutlined fontSize="small" />
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
                 <DialogContent>
                     <Box width={500}>
-                        <Code value={label} onChange={setLabel} />
+                        <ShortText value={name} onChange={setName} />
                     </Box>
                 </DialogContent>
                 <DialogActions>
@@ -74,4 +70,4 @@ const Label = props => {
     );
 };
 
-export default Label;
+export default Name;
