@@ -7,13 +7,8 @@ import Collapse from '@/component/container/Collapse';
 
 import CContainerType from '@/constant/CContainerType';
 
-import {useBuilder} from '@/context/BuilderProvider';
-
 const Container = props => {
     const {type, section, properties, renderComponent, parse} = props;
-
-    // eslint-disable-next-line no-unused-vars
-    const {vars, setVars} = useBuilder();
 
     const content = () => {
         if (type === CContainerType.card.value) {
