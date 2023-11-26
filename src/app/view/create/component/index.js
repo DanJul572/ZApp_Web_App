@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react';
-import {v4 as uuidv4} from 'uuid';
 
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
@@ -61,7 +60,7 @@ const Component = props => {
 
         let component = {group, type};
 
-        component.id = uuidv4();
+        component.id = Date.now();
         component.properties = {};
 
         if (group.value === CComponentGroupType.container.value) component.section = [];
