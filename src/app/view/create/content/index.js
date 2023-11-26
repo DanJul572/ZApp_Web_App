@@ -29,7 +29,7 @@ const Content = props => {
     const getValues = (code, type) => {
         if (!code || !type) return null;
         try {
-            if (type === 'json') return code ? JSON.parse(styles) : {};
+            if (type === 'json') return code ? JSON.parse(code) : {};
             return code ? eval(code) : null;
         } catch (error) {
             console.log(`Error : ${error.message}`);
@@ -54,7 +54,8 @@ const Content = props => {
                 borderColor={theme.palette.primary.main}
                 padding={1}
                 paddingBottom={0}
-                borderRadius={1}>
+                borderRadius={1}
+                flex={1}>
                 {children}
                 <Tooltip arrow title={component.type.label} placement="left">
                     <IconButton onClick={() => setSelected(component)} size="small" sx={{padding: 0}}>

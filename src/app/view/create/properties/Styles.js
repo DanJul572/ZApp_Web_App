@@ -32,7 +32,7 @@ const Styles = props => {
 
         let group = selected.group.value;
 
-        if (group !== CComponentGroupType.container.value) return false;
+        if (group !== CComponentGroupType.container.value && group !== CComponentGroupType.visualElement.value) return false;
 
         return true;
     };

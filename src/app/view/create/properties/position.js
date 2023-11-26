@@ -32,7 +32,8 @@ const Position = props => {
         } else {
             for (let x = 0; x < content.length; x++) {
                 const component = content[x];
-                if (component.id === containerID) {
+                const id = component.id.toString();
+                if (id === containerID) {
                     if (!component.section[columnIndex]) {
                         component.section.push([selected]);
                     } else {

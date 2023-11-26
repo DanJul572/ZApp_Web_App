@@ -13,11 +13,7 @@ const Container = props => {
     const content = () => {
         if (type === CContainerType.card.value) {
             return (
-                <Box
-                    border={section.length ? 1 : 0}
-                    borderColor={grey[300]}
-                    borderRadius={1}
-                    padding={section.length ? 1 : 0}>
+                <Box border={1} borderColor={grey[300]} borderRadius={1} padding={1}>
                     <Typography fontSize={10}>Card</Typography>
                     <Box sx={parse.styles}>
                         {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
