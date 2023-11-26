@@ -6,6 +6,7 @@ import Delete from './Delete';
 import Identity from './Identity';
 import Label from './Label';
 import Name from './Name';
+import OnClick from './OnClick';
 import Position from './Position';
 import Size from './Size';
 import Styles from './Styles';
@@ -85,6 +86,12 @@ const Properties = props => {
                         setContent={setContent}
                     />
                     <Label
+                        content={content}
+                        selected={selected}
+                        changeProperties={changeProperties}
+                        setContent={setContent}
+                    />
+                    <OnClick
                         content={content}
                         selected={selected}
                         changeProperties={changeProperties}

@@ -7,7 +7,6 @@ import Grid from '@mui/material/Grid';
 import createTheme from '@mui/material/styles/createTheme';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 
-
 import CTheme from '@/constant/CTheme';
 
 import Component from './component';
@@ -19,7 +18,7 @@ import TopBar from './topbar';
 
 const ViewCreate = () => {
     const theme = createTheme(CTheme);
-    
+
     const navigationType = {
         content: 'content',
         variabel: 'variabel',

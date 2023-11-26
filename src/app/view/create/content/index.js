@@ -26,18 +26,20 @@ const Content = props => {
 
     const {content, selected, setSelected} = props;
 
-    const getStyles = styles => {
+    const getValues = (code, type) => {
+        if (!code || !type) return null;
         try {
-            return styles ? JSON.parse(styles) : {};
+            if (type === 'json') return code ? JSON.parse(styles) : {};
+            return code ? eval(code) : null;
         } catch (error) {
             console.log(`Error : ${error.message}`);
-            return {};
+            return type === 'json' ? {} : null;
         }
     };
 
-    const getLabel = func => {
+    const runFunction = func => {
         try {
-            return eval(func);
+            eval(func);
         } catch (error) {
             console.log(`Error : ${error.message}`);
             return;
@@ -71,8 +73,8 @@ const Content = props => {
         let properties = component.properties;
         let parse = {};
 
-        parse.styles = getStyles(properties.styles);
-        parse.label = getLabel(properties.label);
+        parse.styles = getValues(properties.styles, 'json');
+        parse.label = getValues(properties.label, 'js');
 
         if (group === CComponentGroupType.container.value) {
             return (
@@ -113,7 +115,7 @@ const Content = props => {
         } else if (group === CComponentGroupType.button.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <Button type={type} properties={properties} />
+                    <Button type={type} properties={properties} runFunction={runFunction} />
                 </Wraper>
             );
         }
