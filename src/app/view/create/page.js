@@ -39,7 +39,7 @@ const ViewCreate = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <TopBar />
+            <TopBar content={content} setContent={setContent} />
             <Grid container justifyContent="space-between" display="flex">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
                 <Navigation

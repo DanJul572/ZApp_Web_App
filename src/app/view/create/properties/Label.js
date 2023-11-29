@@ -55,7 +55,7 @@ const Label = props => {
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle fontSize={15}>Label</DialogTitle>
+                <DialogTitle>Label</DialogTitle>
                 <DialogContent>
                     <Box width={500}>
                         <Code value={label} onChange={setLabel} lang="js" />

@@ -50,7 +50,7 @@ const OnClick = props => {
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle fontSize={15}>On Click</DialogTitle>
+                <DialogTitle>On Click</DialogTitle>
                 <DialogContent>
                     <Box width={500}>
                         <Code value={onClick} onChange={setOnClick} lang="js" />

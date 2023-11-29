@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
@@ -50,8 +51,9 @@ const Name = props => {
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
+                <DialogTitle>Name</DialogTitle>
                 <DialogContent>
-                    <Box width={500}>
+                    <Box width={500} paddingY={1}>
                         <ShortText value={name} onChange={setName} />
                     </Box>
                 </DialogContent>

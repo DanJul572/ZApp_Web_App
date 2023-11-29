@@ -50,7 +50,7 @@ const Styles = props => {
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle fontSize={15}>Styles</DialogTitle>
+                <DialogTitle>Styles</DialogTitle>
                 <DialogContent>
                     <Box width={500}>
                         <Code value={styles} onChange={setStyles} lang="json" />

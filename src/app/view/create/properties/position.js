@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
@@ -75,8 +76,9 @@ const Position = props => {
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>
+                <DialogTitle>Position</DialogTitle>
                 <DialogContent>
-                    <Box display="flex" flexDirection="column" gap={1}>
+                    <Box display="flex" flexDirection="column" gap={1} paddingY={1}>
                         <ShortText label="Container ID" value={containerID} onChange={setContainerID} />
                         <Box display="flex" gap={1}>
                             <Number label="Section" value={columnIndex} onChange={setColumnIndex} />

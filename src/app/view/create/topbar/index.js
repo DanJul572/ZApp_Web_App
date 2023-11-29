@@ -9,10 +9,59 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import useTheme from '@mui/material/styles/useTheme';
 
-const TopBar = () => {
-    const {back} = useRouter();
+import styled from '@mui/material/styles/styled';
 
+const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+});
+
+const TopBar = props => {
+    const {content, setContent} = props;
+
+    const {back} = useRouter();
     const theme = useTheme();
+
+    const onExport = () => {
+        const jsonString = JSON.stringify(content, null, 2);
+        const blob = new Blob([jsonString], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+
+        a.href = url;
+        a.download = 'Views.json';
+
+        document.body.appendChild(a);
+
+        a.click();
+
+        document.body.removeChild(a);
+    };
+
+    const onImport = event => {
+        const selectedFile = event.target.files[0];
+        if (selectedFile && selectedFile.type === 'application/json') {
+            const reader = new FileReader();
+            reader.onload = e => {
+                try {
+                    const jsonContent = JSON.parse(e.target.result);
+                    setContent(jsonContent);
+                } catch (error) {
+                    console.error('Error parsing JSON file : ', error);
+                }
+            };
+            reader.readAsText(selectedFile);
+        } else {
+            console.error('Invalid file type. Please choose a JSON file.');
+        }
+    };
 
     return (
         <Grid container position="fixed" sx={{backgroundColor: 'white'}} zIndex={2} top={0} right={0} left={0}>
@@ -31,9 +80,21 @@ const TopBar = () => {
                     </IconButton>
                     <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>
-                <Button variant="contained" size="small">
-                    Save
-                </Button>
+                <Box display="flex" gap={1}>
+                    <Button component="label" variant="outlined" size="small">
+                        Import
+                        <VisuallyHiddenInput type="file" onChange={onImport} />
+                    </Button>
+                    <Button variant="outlined" size="small" onClick={onExport}>
+                        Export
+                    </Button>
+                    <Button variant="outlined" size="small">
+                        Save As Draft
+                    </Button>
+                    <Button variant="contained" size="small">
+                        Save
+                    </Button>
+                </Box>
             </Grid>
         </Grid>
     );
