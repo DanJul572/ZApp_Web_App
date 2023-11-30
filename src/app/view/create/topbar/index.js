@@ -29,7 +29,7 @@ const TopBar = props => {
     const {back} = useRouter();
     const theme = useTheme();
 
-    const onExport = () => {
+    const onDownload = () => {
         const jsonString = JSON.stringify(content, null, 2);
         const blob = new Blob([jsonString], {type: 'application/json'});
         const url = URL.createObjectURL(blob);
@@ -45,7 +45,7 @@ const TopBar = props => {
         document.body.removeChild(a);
     };
 
-    const onImport = event => {
+    const onUpload = event => {
         const selectedFile = event.target.files[0];
         if (selectedFile && selectedFile.type === 'application/json') {
             const reader = new FileReader();
@@ -81,19 +81,23 @@ const TopBar = props => {
                     <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
-                    <Button component="label" variant="outlined" size="small">
-                        Import
-                        <VisuallyHiddenInput type="file" onChange={onImport} />
-                    </Button>
-                    <Button variant="outlined" size="small" onClick={onExport}>
-                        Export
-                    </Button>
-                    <Button variant="outlined" size="small">
-                        Save As Draft
-                    </Button>
-                    <Button variant="contained" size="small">
-                        Save
-                    </Button>
+                    <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
+                        <Button component="label" variant="outlined" size="small">
+                            Upload
+                            <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
+                        </Button>
+                        <Button variant="outlined" size="small" onClick={onDownload}>
+                            Download
+                        </Button>
+                    </Box>
+                    <Box display="flex" gap={1}>
+                        <Button variant="outlined" size="small">
+                            Save As Draft
+                        </Button>
+                        <Button variant="contained" size="small">
+                            Save
+                        </Button>
+                    </Box>
                 </Box>
             </Grid>
         </Grid>
