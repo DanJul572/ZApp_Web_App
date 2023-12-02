@@ -45,17 +45,18 @@ const Table = props => {
         onSearch,
         onSelect,
         onSort,
-        pageSize = 0,
-        pageIndex = 0,
         rowCount = 0,
         rowCustomAction = [],
         rows = [],
         toolbarCustomAction = [],
     } = props;
 
+    const pageSize = 10;
+    const pageIndex = 0;
+
     const [pagination, setPagination] = useState({
         pageIndex: pageIndex,
-        pageSize: isLoading ? 10 : pageSize,
+        pageSize: pageSize,
     });
     const [columnFilters, setColumnFilters] = useState([]);
     const [sorting, setSorting] = useState([]);
@@ -108,18 +109,6 @@ const Table = props => {
                 size: 120,
             },
         };
-    };
-
-    const getRowCount = () => {
-        return isLoading ? 1 : rowCount;
-    };
-
-    const getPageSize = () => {
-        return isLoading ? 10 : pageSize;
-    };
-
-    const getRows = () => {
-        return isLoading ? [] : rows;
     };
 
     const toolbarAction = () => {
@@ -177,7 +166,7 @@ const Table = props => {
 
     const table = useMaterialReactTable({
         columns: newColumns,
-        data: getRows(),
+        data: rows,
         displayColumnDefOptions: displayColumnDefOptions(),
         enableColumnActions: false,
         enableColumnFilters: enableFilter,
@@ -209,18 +198,18 @@ const Table = props => {
         onPaginationChange: setPagination,
         onRowSelectionChange: setRowSelection,
         onSortingChange: setSorting,
-        pageSize: getPageSize(),
+        pageSize: pageSize,
         positionActionsColumn: 'last',
         positionToolbarAlertBanner: 'none',
         renderRowActions: ({row}) => rowAction(row),
         renderToolbarInternalActions: ({table}) => toolbarComponent(table),
         renderTopToolbarCustomActions: toolbarAction,
-        rowCount: getRowCount(),
+        rowCount: rowCount,
         state: {pagination, columnFilters, sorting, rowSelection, isLoading},
     });
 
     useEffect(() => {
-        if (enablePagination && onChangePage) onChangePage(pagination.pageIndex);
+        if (enablePagination && onChangePage) onChangePage(pagination.pageIndex + 1);
     }, [pagination.pageIndex, pagination.pageSize]);
 
     useEffect(() => {

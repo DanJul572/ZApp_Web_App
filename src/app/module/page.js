@@ -15,8 +15,10 @@ export default function Module() {
     const {setAlert} = useAlert();
 
     const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(1);
+    const [filter, setFilter] = useState([]);
+    const [sort, setSort] = useState([]);
     const [rows, setRows] = useState([]);
-    const [pageSize, setPageSize] = useState(1);
     const [rowCount, setRowCount] = useState(10);
 
     const actionList = [
@@ -25,15 +27,7 @@ export default function Module() {
             path: '/',
         },
         {
-            type: CActionType.update.value,
-            path: '/',
-        },
-        {
             type: CActionType.delete.value,
-            path: '/',
-        },
-        {
-            type: CActionType.detail.value,
             path: '/',
         },
     ];
@@ -46,23 +40,16 @@ export default function Module() {
         setLoading(true);
 
         const body = {
-            page: 1,
-            search: {
-                column: 'label',
-                value: 'ex',
-            },
-            sort: {
-                column: 'createdAt',
-                value: 'ASC',
-            },
+            page: page,
+            filter: filter,
+            sort: sort,
         };
 
         request
             .post('/module/list', body)
             .then(res => {
-                setRows(res);
-                setPageSize(10);
-                setRowCount(1);
+                setRows(res.rows);
+                setRowCount(res.count);
             })
             .catch(err => {
                 setAlert({
@@ -78,10 +65,10 @@ export default function Module() {
 
     useEffect(() => {
         getRows();
+    }, [page, filter, sort]);
 
-        return () => {
-            setAlert(null);
-        };
+    useEffect(() => {
+        return () => setAlert(null);
     }, []);
 
     return (
@@ -93,18 +80,14 @@ export default function Module() {
                 enableExport={true}
                 enableHiding={true}
                 enablePagination={true}
-                enableRowSelection={true}
-                enableSearch={true}
+                enableFilter={true}
                 enableSorting={true}
                 isLoading={loading}
-                onChangePage={() => {}}
+                onChangePage={setPage}
                 onClickRowAction={() => {}}
                 onClickToolbarAction={onCLickToolbarAction}
-                onDelete={() => {}}
-                onSearch={() => {}}
-                onSelect={() => {}}
-                onSort={() => {}}
-                pageSize={pageSize}
+                onFilter={setFilter}
+                onSort={setSort}
                 pageIndex={0}
                 rowCount={rowCount}
                 rows={rows}
