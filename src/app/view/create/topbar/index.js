@@ -90,6 +90,11 @@ const TopBar = props => {
                             Download
                         </Button>
                     </Box>
+                    <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
+                        <Button variant="outlined" size="small">
+                            Generate
+                        </Button>
+                    </Box>
                     <Box display="flex" gap={1}>
                         <Button variant="outlined" size="small">
                             Save As Draft
