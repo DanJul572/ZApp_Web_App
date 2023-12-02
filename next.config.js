@@ -3,7 +3,7 @@ const nextConfig = {
     output: 'export',
     reactStrictMode: true,
     env: {
-        apiUrl: 'http://127.0.0.1:8080/api/',
+        apiUrl: 'http://127.0.0.1:8080/api',
     },
 };
 

@@ -21,24 +21,19 @@
         "maxSize": 500
     },
     {
-        "accessorKey": "created_by",
-        "header": "Created By",
+        "accessorKey": "createdAt",
+        "header": "Created At",
         "size": 150,
         "minSize": 150,
-        "maxSize": 300
+        "maxSize": 300,
+        "type": 14
     },
     {
-        "accessorKey": "created_date",
-        "header": "Created Date",
+        "accessorKey": "updatedAt",
+        "header": "Updated At",
         "size": 150,
         "minSize": 150,
-        "maxSize": 300
-    },
-    {
-        "accessorKey": "updated_date",
-        "header": "Updated Date",
-        "size": 150,
-        "minSize": 150,
-        "maxSize": 300
+        "maxSize": 300,
+        "type": 14
     }
 ]

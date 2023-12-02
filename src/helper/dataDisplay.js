@@ -10,6 +10,8 @@ const dataDisplay = (type, value) => {
 
     if (type === CInputType.date.value) return value ? dayjs(value).format(CDateTimeFormat.date.display) : '';
 
+    if (type === CInputType.datetime.value) return value ? dayjs(value).format(CDateTimeFormat.datetime.display) : '';
+
     if (type === CInputType.file.value) return value ? 'File' : '';
 
     if (type === CInputType.richText.value) return value ? 'HTML' : '';

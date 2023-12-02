@@ -44,7 +44,7 @@ const CreateModule = () => {
         };
 
         request
-            .post('module/create', data)
+            .post('/module/create', data)
             .then(res => {
                 setAlert({
                     status: true,

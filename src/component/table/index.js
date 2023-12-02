@@ -45,7 +45,7 @@ const Table = props => {
         onSearch,
         onSelect,
         onSort,
-        pageCount = 0,
+        pageSize = 0,
         pageIndex = 0,
         rowCount = 0,
         rowCustomAction = [],
@@ -55,7 +55,7 @@ const Table = props => {
 
     const [pagination, setPagination] = useState({
         pageIndex: pageIndex,
-        pageSize: isLoading ? 10 : pageCount,
+        pageSize: isLoading ? 10 : pageSize,
     });
     const [columnFilters, setColumnFilters] = useState([]);
     const [sorting, setSorting] = useState([]);
@@ -111,11 +111,11 @@ const Table = props => {
     };
 
     const getRowCount = () => {
-        return isLoading ? 10 : rowCount;
+        return isLoading ? 1 : rowCount;
     };
 
-    const getPageCount = () => {
-        return isLoading ? 10 : pageCount;
+    const getPageSize = () => {
+        return isLoading ? 10 : pageSize;
     };
 
     const getRows = () => {
@@ -209,7 +209,7 @@ const Table = props => {
         onPaginationChange: setPagination,
         onRowSelectionChange: setRowSelection,
         onSortingChange: setSorting,
-        pageCount: getPageCount(),
+        pageSize: getPageSize(),
         positionActionsColumn: 'last',
         positionToolbarAlertBanner: 'none',
         renderRowActions: ({row}) => rowAction(row),

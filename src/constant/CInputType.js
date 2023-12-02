@@ -47,6 +47,10 @@ const CInputType = {
         value: 13,
         label: 'Code',
     },
+    datetime: {
+        value: 14,
+        label: 'Datetime',
+    },
 };
 
 export default CInputType;
