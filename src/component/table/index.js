@@ -55,7 +55,7 @@ const Table = props => {
 
     const [pagination, setPagination] = useState({
         pageIndex: pageIndex,
-        pageSize: pageCount,
+        pageSize: isLoading ? 10 : pageCount,
     });
     const [columnFilters, setColumnFilters] = useState([]);
     const [sorting, setSorting] = useState([]);
@@ -72,7 +72,6 @@ const Table = props => {
     };
     const muiTableContainerProps = {sx: {maxHeight: '500px'}};
     const muiTablePaginationProps = {showRowsPerPage: false};
-
     const newColumns = columns.map(column => {
         column.Cell = ({cell}) => rowDisplay(cell, column.type);
 
@@ -94,16 +93,6 @@ const Table = props => {
         return dataDisplay(type, value);
     };
 
-    const columnFooter = footer => {
-        if (!footer) return false;
-
-        return (
-            <Stack>
-                {footer.label} :<Box color="warning.main">{footer.value}</Box>
-            </Stack>
-        );
-    };
-
     const isSupportRowAction = () => {
         return action.filter(item => item.type !== CActionType.insert.value).length ? true : false;
     };
@@ -119,6 +108,18 @@ const Table = props => {
                 size: 120,
             },
         };
+    };
+
+    const getRowCount = () => {
+        return isLoading ? 10 : rowCount;
+    };
+
+    const getPageCount = () => {
+        return isLoading ? 10 : pageCount;
+    };
+
+    const getRows = () => {
+        return isLoading ? [] : rows;
     };
 
     const toolbarAction = () => {
@@ -164,9 +165,19 @@ const Table = props => {
         );
     };
 
+    const columnFooter = footer => {
+        if (!footer) return false;
+
+        return (
+            <Stack>
+                {footer.label} :<Box color="warning.main">{footer.value}</Box>
+            </Stack>
+        );
+    };
+
     const table = useMaterialReactTable({
         columns: newColumns,
-        data: rows,
+        data: getRows(),
         displayColumnDefOptions: displayColumnDefOptions(),
         enableColumnActions: false,
         enableColumnFilters: enableFilter,
@@ -198,13 +209,13 @@ const Table = props => {
         onPaginationChange: setPagination,
         onRowSelectionChange: setRowSelection,
         onSortingChange: setSorting,
-        pageCount: pageCount,
+        pageCount: getPageCount(),
         positionActionsColumn: 'last',
         positionToolbarAlertBanner: 'none',
         renderRowActions: ({row}) => rowAction(row),
         renderToolbarInternalActions: ({table}) => toolbarComponent(table),
         renderTopToolbarCustomActions: toolbarAction,
-        rowCount: rowCount,
+        rowCount: getRowCount(),
         state: {pagination, columnFilters, sorting, rowSelection, isLoading},
     });
 
