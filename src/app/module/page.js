@@ -21,18 +21,16 @@ export default function Module() {
     const [filter, setFilter] = useState([]);
     const [sort, setSort] = useState([]);
     const [rows, setRows] = useState([]);
-    const [rowCount, setRowCount] = useState(10);
+    const [rowCount, setRowCount] = useState(0);
     const [rowSelected, setRowSelected] = useState(null);
     const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
 
     const actionList = [
         {
             type: CActionType.insert.value,
-            path: '/',
         },
         {
             type: CActionType.delete.value,
-            path: '/',
         },
     ];
 

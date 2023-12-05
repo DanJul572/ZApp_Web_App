@@ -1,5 +1,6 @@
 import Checkbox from '@/component/input/Checkbox';
 import Date from '@/component/input/Date';
+import Datetime from '@/component/input/Datetime';
 import Dropdown from '@/component/input/Dropdown';
 import File from '@/component/input/File';
 import LongText from '@/component/input/LongText';
@@ -59,6 +60,8 @@ const FieldControl = props => {
                     ]}
                 />
             );
+
+        if (type === CInputType.datetime.value) return <Datetime disabled={true} label={parse.label || null} />;
     };
 
     return content();

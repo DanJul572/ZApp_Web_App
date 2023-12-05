@@ -49,7 +49,7 @@ const CInputType = {
     },
     datetime: {
         value: 14,
-        label: 'Datetime',
+        label: 'Date Time',
     },
 };
 
