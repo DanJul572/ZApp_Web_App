@@ -9,7 +9,7 @@ const Loading = () => {
     const {loading} = useLoading();
 
     return (
-        <Backdrop sx={{color: '#FFF', zIndex: theme => theme.zIndex.drawer + 1}} open={loading}>
+        <Backdrop sx={{color: '#FFF', zIndex: theme => theme.zIndex.drawer + 1, position: 'absolute'}} open={loading}>
             <CircularProgress color="inherit" />
         </Backdrop>
     );

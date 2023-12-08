@@ -1,4 +1,4 @@
-import {Inter} from 'next/font/google';
+import {Roboto} from 'next/font/google';
 
 import 'suneditor/dist/css/suneditor.min.css';
 import 'react-querybuilder/dist/query-builder.css';
@@ -8,7 +8,10 @@ import {BuilderProvider} from '@/context/BuilderProvider';
 import ErrorProvider from '@/context/ErrorProvider';
 import {LoadingProvider} from '@/context/LoadingProvider';
 
-const inter = Inter({subsets: ['latin']});
+const roboto = Roboto({
+    weight: '400',
+    subsets: ['latin'],
+});
 
 export const metadata = {
     title: 'ZApp',
@@ -18,7 +21,7 @@ export const metadata = {
 export default function RootLayout({children}) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={roboto.className}>
                 <ErrorProvider>
                     <LoadingProvider>
                         <AlertProvider>

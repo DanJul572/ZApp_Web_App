@@ -26,7 +26,7 @@ const VisuallyHiddenInput = styled('input')({
 const TopBar = props => {
     const {content, setContent} = props;
 
-    const {back} = useRouter();
+    const {push} = useRouter();
     const theme = useTheme();
 
     const onDownload = () => {
@@ -64,7 +64,7 @@ const TopBar = props => {
     };
 
     return (
-        <Grid container position="fixed" sx={{backgroundColor: 'white'}} zIndex={2} top={0} right={0} left={0}>
+        <Grid container position="absolute" sx={{backgroundColor: 'white'}} zIndex={2} top={0} right={0} left={0}>
             <Grid
                 alignItems="center"
                 border={1}
@@ -75,7 +75,7 @@ const TopBar = props => {
                 padding={2}
                 xs={12}>
                 <Box display="flex" alignItems="center" gap={1}>
-                    <IconButton size="small" sx={{padding: 0}} onClick={back}>
+                    <IconButton size="small" sx={{padding: 0}} onClick={() => push('/view')}>
                         <ArrowBack fontSize="small" sx={{color: theme.palette.text.primary}} />
                     </IconButton>
                     <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
