@@ -1,6 +1,6 @@
 const CDateTimeFormat = {
     time: {
-        display: 'H:m:s',
+        display: 'HH:mm:ss',
         value: '1901-01-01THH:mm:ss',
     },
     date: {
@@ -8,7 +8,7 @@ const CDateTimeFormat = {
         value: 'YYYY-MM-DDT00:00:00',
     },
     datetime: {
-        display: 'DD/MM/YYYY H:m:s',
+        display: 'DD/MM/YYYY HH:mm:ss',
         value: 'YYYY-MM-DDTHH:mm:ss',
     },
 };
