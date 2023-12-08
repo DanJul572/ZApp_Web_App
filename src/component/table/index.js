@@ -71,13 +71,14 @@ const Table = props => {
         pagination: pagination,
         columnPinning: columnPinning,
     };
+
     const muiTableContainerProps = {sx: {maxHeight: '500px'}};
+    
     const muiTablePaginationProps = {showRowsPerPage: false};
+
     const newColumns = columns.map(column => {
         column.Cell = ({cell}) => rowDisplay(cell, column.type);
-
         if (column.footer) column.Footer = () => columnFooter(column.footer);
-
         return column;
     });
 

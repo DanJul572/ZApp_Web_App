@@ -1,6 +1,7 @@
 import {Inter} from 'next/font/google';
 
 import 'suneditor/dist/css/suneditor.min.css';
+import 'react-querybuilder/dist/query-builder.css';
 
 import {AlertProvider} from '@/context/AlertProvider';
 import {BuilderProvider} from '@/context/BuilderProvider';
