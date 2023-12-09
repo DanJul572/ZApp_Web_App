@@ -26,8 +26,7 @@ const Disable = props => {
     });
 
     const onApply = () => {
-        const newContent = changeProperties('disable', disable, content);
-        setContent([...newContent]);
+        callChangeProperties(disable);
         setOpen(false);
     };
 
@@ -42,17 +41,22 @@ const Disable = props => {
                 isBind: false,
                 value: value,
             };
-            const newContent = changeProperties('disable', temValue, content);
-            setContent(structuredClone(newContent));
+            callChangeProperties(temValue);
         }
     };
 
     const onRemove = () => {
-        setDisable({
+        const temValue = {
             isBind: false,
             value: false,
-        });
+        };
+        callChangeProperties(temValue);
         setOpen(false);
+    };
+
+    const callChangeProperties = val => {
+        const newContent = changeProperties('disable', val, content);
+        setContent([...newContent]);
     };
 
     const validComponent = () => {
@@ -75,7 +79,7 @@ const Disable = props => {
             <Tooltip arrow title={disable.isBind ? 'Is Bindding' : null} placement="left">
                 <Box paddingX={2} marginY={2} display="flex" justifyContent="space-between" alignItems="center">
                     <Toggle
-                        value={disable.isBind || !disable.value ? false : disable.value}
+                        value={Boolean(disable.value)}
                         label="Disable"
                         onChange={value => onChange(false, value)}
                         disabled={disable.isBind}

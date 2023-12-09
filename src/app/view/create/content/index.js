@@ -26,11 +26,17 @@ const Content = props => {
 
     const {content, selected, setSelected} = props;
 
-    const getValues = (code, type) => {
-        if (!code || !type) return null;
+    const getValues = (data, type) => {
+        if (!data || !type) return null;
         try {
-            if (type === 'json') return code ? JSON.parse(code) : {};
-            return code ? eval(code) : null;
+            if (typeof data === 'object') {
+                if (data.isBind) return data.value;
+                if (type === 'json') return data.value ? JSON.parse(data.value) : {};
+                return data.value ? eval(data.value) : null;
+            } else {
+                if (type === 'json') return data ? JSON.parse(data) : {};
+                return data ? eval(data) : null;
+            }
         } catch (error) {
             console.log(`Error : ${error.message}`);
             return type === 'json' ? {} : null;
@@ -76,6 +82,7 @@ const Content = props => {
 
         parse.styles = getValues(properties.styles, 'json');
         parse.label = getValues(properties.label, 'js');
+        parse.disable = getValues(properties.disable, 'js');
 
         if (group === CComponentGroupType.container.value) {
             return (
@@ -116,7 +123,7 @@ const Content = props => {
         } else if (group === CComponentGroupType.button.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <Button type={type} properties={properties} runFunction={runFunction} />
+                    <Button type={type} properties={properties} runFunction={runFunction} parse={parse} />
                 </Wraper>
             );
         }
