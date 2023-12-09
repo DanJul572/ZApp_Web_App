@@ -1,8 +1,10 @@
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
 
 import Delete from './Delete';
+import Disable from './Disable';
 import Identity from './Identity';
 import Label from './Label';
 import Name from './Name';
@@ -112,6 +114,13 @@ const Properties = props => {
                         setContent={setContent}
                     />
                     <Styles
+                        content={content}
+                        selected={selected}
+                        changeProperties={changeProperties}
+                        setContent={setContent}
+                    />
+                    <Divider />
+                    <Disable
                         content={content}
                         selected={selected}
                         changeProperties={changeProperties}

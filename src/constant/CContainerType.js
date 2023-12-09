@@ -11,10 +11,10 @@ const CContainerType = {
         value: 3,
         label: 'Collapse',
     },
-    // form: {
-    //     value: 4,
-    //     label: 'Form',
-    // },
+    section: {
+        value: 4,
+        label: 'Section',
+    },
 };
 
 export default CContainerType;
