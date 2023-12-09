@@ -30,7 +30,7 @@ const Content = props => {
         if (!data || !type) return null;
         try {
             if (typeof data === 'object') {
-                if (data.isBind) return data.value;
+                if (!data.isBind) return data.value;
                 if (type === 'json') return data.value ? JSON.parse(data.value) : {};
                 return data.value ? eval(data.value) : null;
             } else {
