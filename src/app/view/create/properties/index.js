@@ -72,7 +72,8 @@ const Properties = props => {
             width={500}
             xs={2}>
             {activeNavigation === navigationType.content && (
-                <Box>
+                <Box display="flex" flexDirection="column" gap={2} paddingTop={3}>
+                    <Identity selected={selected} />
                     <Delete
                         content={content}
                         deleteSelected={deleteSelected}
@@ -80,7 +81,14 @@ const Properties = props => {
                         setContent={setContent}
                         setSelected={setSelected}
                     />
-                    <Identity selected={selected} />
+                    <Position
+                        changeProperties={changeProperties}
+                        content={content}
+                        deleteSelected={deleteSelected}
+                        selected={selected}
+                        setContent={setContent}
+                        setSelected={setSelected}
+                    />
                     <Name
                         content={content}
                         selected={selected}
@@ -99,13 +107,11 @@ const Properties = props => {
                         changeProperties={changeProperties}
                         setContent={setContent}
                     />
-                    <Position
-                        changeProperties={changeProperties}
+                    <Disable
                         content={content}
-                        deleteSelected={deleteSelected}
                         selected={selected}
+                        changeProperties={changeProperties}
                         setContent={setContent}
-                        setSelected={setSelected}
                     />
                     <Size
                         content={content}
@@ -114,13 +120,6 @@ const Properties = props => {
                         setContent={setContent}
                     />
                     <Styles
-                        content={content}
-                        selected={selected}
-                        changeProperties={changeProperties}
-                        setContent={setContent}
-                    />
-                    <Divider />
-                    <Disable
                         content={content}
                         selected={selected}
                         changeProperties={changeProperties}

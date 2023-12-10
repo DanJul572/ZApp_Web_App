@@ -69,7 +69,7 @@ const Position = props => {
 
     return selected ? (
         <>
-            <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
+            <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                 <Typography fontSize={12}>Position</Typography>
                 <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                     <ShortTextOutlined fontSize="small" />

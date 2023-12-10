@@ -77,7 +77,7 @@ const Disable = props => {
     return validComponent() ? (
         <>
             <Tooltip arrow title={disable.isBind ? 'Is Bindding' : null} placement="left">
-                <Box paddingX={2} marginY={2} display="flex" justifyContent="space-between" alignItems="center">
+                <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                     <Toggle
                         value={Boolean(disable.value)}
                         label="Disable"

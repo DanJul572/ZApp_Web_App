@@ -43,7 +43,7 @@ const Styles = props => {
 
     return validComponent() ? (
         <>
-            <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
+            <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                 <Typography fontSize={12}>Styles</Typography>
                 <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                     <InsertLink fontSize="small" />

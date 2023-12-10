@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
@@ -93,7 +94,7 @@ const Component = props => {
 
         let collapse = {};
         componentList.forEach(group => {
-            collapse[group.value] = true;
+            collapse[group.value] = false;
         });
 
         setOpen(collapse);
@@ -116,35 +117,37 @@ const Component = props => {
             top={0}
             width={500}
             xs={2}>
-            {componentList.length > 0 &&
-                componentList.map((group, index) => (
-                    <List key={index} disablePadding>
-                        <ListItemButton
-                            onClick={() => handleCollapse(group.value)}
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                            }}>
-                            <Typography fontSize={11} fontWeight="bold">
-                                {group.label}
-                            </Typography>
-                            {open[group.value] ? <ExpandLess fontSize="small" /> : <ExpandMore fontSize="small" />}
-                        </ListItemButton>
-                        <Collapse in={open[group.value]}>
-                            <List disablePadding>
-                                {group.components.map((component, index) => (
-                                    <ListItemButton
-                                        key={index}
-                                        onClick={() => handleSelected(groupTypeValue(group), component)}>
-                                        <Typography fontSize={11} sx={{marginLeft: 1}}>
-                                            {component.label}
-                                        </Typography>
-                                    </ListItemButton>
-                                ))}
-                            </List>
-                        </Collapse>
-                    </List>
-                ))}
+            <Box paddingTop={2}>
+                {componentList.length > 0 &&
+                    componentList.map((group, index) => (
+                        <List key={index} disablePadding>
+                            <ListItemButton
+                                onClick={() => handleCollapse(group.value)}
+                                sx={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                }}>
+                                <Typography fontSize={11} fontWeight="bold">
+                                    {group.label}
+                                </Typography>
+                                {open[group.value] ? <ExpandLess fontSize="small" /> : <ExpandMore fontSize="small" />}
+                            </ListItemButton>
+                            <Collapse in={open[group.value]}>
+                                <List disablePadding>
+                                    {group.components.map((component, index) => (
+                                        <ListItemButton
+                                            key={index}
+                                            onClick={() => handleSelected(groupTypeValue(group), component)}>
+                                            <Typography fontSize={11} sx={{marginLeft: 1}}>
+                                                {component.label}
+                                            </Typography>
+                                        </ListItemButton>
+                                    ))}
+                                </List>
+                            </Collapse>
+                        </List>
+                    ))}
+            </Box>
         </Grid>
     );
 };

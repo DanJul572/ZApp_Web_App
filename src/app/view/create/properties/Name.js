@@ -44,7 +44,7 @@ const Name = props => {
 
     return validComponent() ? (
         <>
-            <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between" alignItems="center">
+            <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                 <Typography fontSize={12}>Name</Typography>
                 <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                     <ShortTextOutlined fontSize="small" />

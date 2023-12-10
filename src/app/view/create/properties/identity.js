@@ -21,7 +21,7 @@ const Identity = props => {
 
     return validComponent() ? (
         <>
-            <Box paddingX={2} marginBottom={2} display="flex" justifyContent="space-between">
+            <Box paddingX={2} display="flex" justifyContent="space-between">
                 <Typography fontSize={12}>{selected.id}</Typography>
                 <IconButton sx={{padding: 0}} size="small" onClick={onCoppy}>
                     <ContentCopy fontSize="small" />
