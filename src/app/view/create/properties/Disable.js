@@ -17,7 +17,7 @@ import Toggle from '@/component/input/Toggle';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Disable = props => {
-    const {content, selected, changeProperties, setContent} = props;
+    const {content, selected, editComponent, setContent} = props;
 
     const [open, setOpen] = useState(false);
     const [disable, setDisable] = useState({
@@ -55,7 +55,7 @@ const Disable = props => {
     };
 
     const callChangeProperties = val => {
-        const newContent = changeProperties('disable', val, content);
+        const newContent = editComponent('disable', val, content);
         setContent([...newContent]);
     };
 

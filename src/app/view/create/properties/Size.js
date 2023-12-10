@@ -16,13 +16,13 @@ import CContainerType from '@/constant/CContainerType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Size = props => {
-    const {content, selected, changeProperties, setContent} = props;
+    const {content, selected, editComponent, setContent} = props;
 
     const [open, setOpen] = useState(false);
     const [size, setSize] = useState();
 
     const onApply = () => {
-        let newContent = changeProperties('size', size, content);
+        let newContent = editComponent('size', size, content);
 
         setContent([...newContent]);
         setOpen(false);

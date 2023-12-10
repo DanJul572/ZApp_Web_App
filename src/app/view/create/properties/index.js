@@ -1,3 +1,5 @@
+import {v4 as uuidv4} from 'uuid';
+
 import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
@@ -17,16 +19,56 @@ import CComponentGroupType from '@/constant/CComponentGroupType';
 const Properties = props => {
     const {selected, setSelected, setContent, content, activeNavigation, navigationType} = props;
 
-    const deleteSelected = content => {
+    const changeComponentID = component => {
+        const id = uuidv4();
+        component.id = id;
+        if (component.group.value === CComponentGroupType.container.value) {
+            for (let y = 0; y < component.section.length; y++) {
+                const section = component.section[y];
+                for (let x = 0; x < section.length; x++) {
+                    const childComponent = section[x];
+                    changeComponentID(childComponent);
+                }
+            }
+        }
+        return component;
+    };
+
+    const duplicateProcess = (content, duplicateComponent) => {
+        for (let x = 0; x < content.length; x++) {
+            const component = content[x];
+            if (component.id === selected.id) {
+                content.splice(x, 0, duplicateComponent);
+                return content;
+            }
+            if (component.group.value === CComponentGroupType.container.value) {
+                for (let y = 0; y < component.section.length; y++) {
+                    const section = component.section[y];
+                    duplicateProcess(section, duplicateComponent);
+                }
+            }
+        }
+        return content;
+    };
+
+    const duplicateComponent = () => {
+        const cloneComponent = structuredClone(selected);
+        const newComponent = changeComponentID(cloneComponent);
+        const newContent = duplicateProcess(content, newComponent);
+        setContent([...newContent]);
+    };
+
+    const deleteComponent = content => {
         for (let i = 0; i < content.length; i++) {
             const component = content[i];
             if (component.id === selected.id) {
                 content.splice(i, 1);
+                return content;
             }
             if (component.group.value === CComponentGroupType.container.value) {
                 for (let x = 0; x < component.section.length; x++) {
                     const section = component.section[x];
-                    deleteSelected(section);
+                    deleteComponent(section);
                 }
                 for (let y = 0; y < component.section.length; y++) {
                     if (component.section[y].length === 0) {
@@ -38,19 +80,19 @@ const Properties = props => {
         return content;
     };
 
-    const changeProperties = (key, value, content) => {
+    const editComponent = (key, value, content) => {
         let newSelected = selected;
         newSelected.properties[key] = value;
-
         for (let x = 0; x < content.length; x++) {
             const component = content[x];
             if (component.id === newSelected.id) {
                 content.splice(x, 1, newSelected);
+                return content;
             }
             if (component.group.value === CComponentGroupType.container.value) {
                 for (let y = 0; y < component.section.length; y++) {
                     const section = component.section[y];
-                    changeProperties(key, value, section);
+                    editComponent(key, value, section);
                 }
             }
         }
@@ -75,55 +117,26 @@ const Properties = props => {
                     <Identity selected={selected} />
                     <Delete
                         content={content}
-                        deleteSelected={deleteSelected}
+                        deleteComponent={deleteComponent}
                         selected={selected}
                         setContent={setContent}
                         setSelected={setSelected}
+                        duplicateComponent={duplicateComponent}
                     />
                     <Position
-                        changeProperties={changeProperties}
+                        editComponent={editComponent}
                         content={content}
-                        deleteSelected={deleteSelected}
+                        deleteComponent={deleteComponent}
                         selected={selected}
                         setContent={setContent}
                         setSelected={setSelected}
                     />
-                    <Name
-                        content={content}
-                        selected={selected}
-                        changeProperties={changeProperties}
-                        setContent={setContent}
-                    />
-                    <Label
-                        content={content}
-                        selected={selected}
-                        changeProperties={changeProperties}
-                        setContent={setContent}
-                    />
-                    <OnClick
-                        content={content}
-                        selected={selected}
-                        changeProperties={changeProperties}
-                        setContent={setContent}
-                    />
-                    <Disable
-                        content={content}
-                        selected={selected}
-                        changeProperties={changeProperties}
-                        setContent={setContent}
-                    />
-                    <Size
-                        content={content}
-                        selected={selected}
-                        changeProperties={changeProperties}
-                        setContent={setContent}
-                    />
-                    <Styles
-                        content={content}
-                        selected={selected}
-                        changeProperties={changeProperties}
-                        setContent={setContent}
-                    />
+                    <Name content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
+                    <Label content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
+                    <OnClick content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
+                    <Disable content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
+                    <Size content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
+                    <Styles content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                 </Box>
             )}
         </Grid>

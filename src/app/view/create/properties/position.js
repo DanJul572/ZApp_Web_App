@@ -17,7 +17,7 @@ import ShortText from '@/component/input/ShortText';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Position = props => {
-    const {selected, content, setContent, setSelected, deleteSelected} = props;
+    const {selected, content, setContent, setSelected, deleteComponent} = props;
 
     const [containerID, setContainerID] = useState(null);
     const [columnIndex, setColumnIndex] = useState(null);
@@ -53,7 +53,7 @@ const Position = props => {
     };
 
     const onMove = () => {
-        let newContent = deleteSelected(content);
+        let newContent = deleteComponent(content);
         newContent = changePosition(newContent);
 
         setContent([...newContent]);

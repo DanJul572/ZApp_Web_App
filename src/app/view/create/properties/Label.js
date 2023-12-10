@@ -17,13 +17,13 @@ import CContainerType from '@/constant/CContainerType';
 import CVisualElement from '@/constant/CVisualElementType';
 
 const Label = props => {
-    const {content, selected, changeProperties, setContent} = props;
+    const {content, selected, editComponent, setContent} = props;
 
     const [open, setOpen] = useState(false);
     const [label, setLabel] = useState();
 
     const onApply = () => {
-        let newContent = changeProperties('label', label, content);
+        let newContent = editComponent('label', label, content);
 
         setContent([...newContent]);
         setOpen(false);

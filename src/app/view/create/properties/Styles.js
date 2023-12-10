@@ -15,13 +15,13 @@ import Code from '@/component/input/Code';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Styles = props => {
-    const {content, selected, changeProperties, setContent} = props;
+    const {content, selected, editComponent, setContent} = props;
 
     const [open, setOpen] = useState(false);
     const [styles, setStyles] = useState();
 
     const onApply = () => {
-        let newContent = changeProperties('styles', styles, content);
+        let newContent = editComponent('styles', styles, content);
 
         setContent([...newContent]);
         setOpen(false);

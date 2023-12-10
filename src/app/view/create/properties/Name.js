@@ -16,13 +16,13 @@ import ShortText from '@/component/input/ShortText';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Name = props => {
-    const {content, selected, changeProperties, setContent} = props;
+    const {content, selected, editComponent, setContent} = props;
 
     const [open, setOpen] = useState(false);
     const [name, setName] = useState();
 
     const onApply = () => {
-        let newContent = changeProperties('name', name, content);
+        let newContent = editComponent('name', name, content);
 
         setContent([...newContent]);
         setOpen(false);

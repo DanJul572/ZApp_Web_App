@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import ContentCopy from '@mui/icons-material/ContentCopy';
+import ContentPaste from '@mui/icons-material/ContentPaste';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
@@ -24,7 +24,7 @@ const Identity = props => {
             <Box paddingX={2} display="flex" justifyContent="space-between">
                 <Typography fontSize={12}>{selected.id}</Typography>
                 <IconButton sx={{padding: 0}} size="small" onClick={onCoppy}>
-                    <ContentCopy fontSize="small" />
+                    <ContentPaste fontSize="small" />
                 </IconButton>
             </Box>
         </>

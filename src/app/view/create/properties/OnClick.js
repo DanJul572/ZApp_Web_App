@@ -15,13 +15,13 @@ import Code from '@/component/input/Code';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const OnClick = props => {
-    const {content, selected, changeProperties, setContent} = props;
+    const {content, selected, editComponent, setContent} = props;
 
     const [open, setOpen] = useState(false);
     const [onClick, setOnClick] = useState();
 
     const onApply = () => {
-        let newContent = changeProperties('onClick', onClick, content);
+        let newContent = editComponent('onClick', onClick, content);
 
         setContent([...newContent]);
         setOpen(false);
