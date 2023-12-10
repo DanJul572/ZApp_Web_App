@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
 
