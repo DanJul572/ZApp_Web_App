@@ -58,6 +58,7 @@ const TopBar = props => {
                 }
             };
             reader.readAsText(selectedFile);
+            event.target.value = null;
         } else {
             console.error('Invalid file type. Please choose a JSON file.');
         }
