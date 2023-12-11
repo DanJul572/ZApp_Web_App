@@ -17,11 +17,12 @@ import Toggle from '@/component/input/Toggle';
 import CInputType from '@/constant/CInputType';
 
 const FieldControl = props => {
-    const {type, parse, properties} = props;
+    const {type, properties, getValues} = props;
 
     const {vars, setVars} = useBuilder();
 
     const disabled = !Boolean(properties.name);
+    const label = getValues(properties.label, 'js', vars);
 
     const onChange = value => {
         if (properties.name) {
@@ -32,33 +33,31 @@ const FieldControl = props => {
     };
 
     const content = () => {
-        if (type === CInputType.shortText.value) return <ShortText disabled={disabled} label={parse.label || null} />;
+        if (type === CInputType.shortText.value)
+            return <ShortText value={vars[properties.name]} onChange={onChange} disabled={disabled} label={label || null} />;
 
-        if (type === CInputType.longText.value) return <LongText disabled={disabled} rows={4} label={parse.label || null} />;
+        if (type === CInputType.longText.value) return <LongText disabled={disabled} rows={4} label={label || null} />;
 
-        if (type === CInputType.number.value) return <Number disabled={disabled} label={parse.label || null} />;
+        if (type === CInputType.number.value) return <Number disabled={disabled} label={label || null} />;
 
         if (type === CInputType.toggle.value)
-            return (
-                <Toggle disabled={disabled} value={vars[properties.name]} onChange={onChange} label={parse.label || null} />
-            );
+            return <Toggle disabled={disabled} value={vars[properties.name]} onChange={onChange} label={label || null} />;
 
-        if (type === CInputType.dropdown.value)
-            return <Dropdown options={[]} disabled={disabled} label={parse.label || null} />;
+        if (type === CInputType.dropdown.value) return <Dropdown options={[]} disabled={disabled} label={label || null} />;
 
-        if (type === CInputType.date.value) return <Date disabled={disabled} label={parse.label || null} />;
+        if (type === CInputType.date.value) return <Date disabled={disabled} label={label || null} />;
 
-        if (type === CInputType.time.value) return <Time disabled={disabled} label={parse.label || null} />;
+        if (type === CInputType.time.value) return <Time disabled={disabled} label={label || null} />;
 
-        if (type === CInputType.file.value) return <File disabled={disabled} label={parse.label || null} />;
+        if (type === CInputType.file.value) return <File disabled={disabled} label={label || null} />;
 
-        if (type === CInputType.richText.value) return <RichText disabled={disabled} label={parse.label || null} />;
+        if (type === CInputType.richText.value) return <RichText disabled={disabled} label={label || null} />;
 
         if (type === CInputType.radio.value)
             return (
                 <Radio
                     disabled={disabled}
-                    label={parse.label || null}
+                    label={label || null}
                     options={[
                         {label: 'Value 1', value: 1},
                         {label: 'Value 2', value: 2},
@@ -71,7 +70,7 @@ const FieldControl = props => {
             return (
                 <Checkbox
                     disabled={disabled}
-                    label={parse.label || null}
+                    label={label || null}
                     options={[
                         {label: 'Value 1', value: 1},
                         {label: 'Value 2', value: 2},
@@ -80,7 +79,7 @@ const FieldControl = props => {
                 />
             );
 
-        if (type === CInputType.datetime.value) return <Datetime disabled={disabled} label={parse.label || null} />;
+        if (type === CInputType.datetime.value) return <Datetime disabled={disabled} label={label || null} />;
     };
 
     return content();

@@ -81,7 +81,7 @@ const Position = props => {
                     <Box display="flex" flexDirection="column" gap={1} paddingY={1}>
                         <ShortText label="Container ID" value={containerID} onChange={setContainerID} />
                         <Box display="flex" gap={1}>
-                            <Number label="Section" value={columnIndex} onChange={setColumnIndex} />
+                            <Number label="Column" value={columnIndex} onChange={setColumnIndex} />
                             <Number label="Row" value={rowIndex} onChange={setRowIndex} />
                         </Box>
                     </Box>

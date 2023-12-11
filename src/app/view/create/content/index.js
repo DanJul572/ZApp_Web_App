@@ -9,8 +9,6 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
-import {useBuilder} from '@/context/BuilderProvider';
-
 import Button from './Button';
 import Chart from './Chart';
 import Container from './Container';
@@ -21,12 +19,10 @@ import VisualElement from './VisualElement';
 const Content = props => {
     const theme = useTheme();
 
-    // eslint-disable-next-line no-unused-vars
-    const {vars} = useBuilder();
-
     const {content, selected, setSelected} = props;
 
-    const getValues = (data, type) => {
+    // eslint-disable-next-line no-unused-vars
+    const getValues = (data, type, vars) => {
         if (!data || !type) return null;
         try {
             if (typeof data === 'object') {
@@ -82,7 +78,6 @@ const Content = props => {
 
         parse.styles = getValues(properties.styles, 'json');
         parse.label = getValues(properties.label, 'js');
-        parse.disable = getValues(properties.disable, 'js');
 
         if (group === CComponentGroupType.container.value) {
             return (
@@ -99,7 +94,7 @@ const Content = props => {
         } else if (group === CComponentGroupType.fieldControl.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <FieldControl type={type} properties={properties} parse={parse} />
+                    <FieldControl type={type} properties={properties} getValues={getValues} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.visualElement.value) {
@@ -123,7 +118,7 @@ const Content = props => {
         } else if (group === CComponentGroupType.button.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <Button type={type} properties={properties} runFunction={runFunction} parse={parse} />
+                    <Button type={type} properties={properties} runFunction={runFunction} getValues={getValues} />
                 </Wraper>
             );
         }
