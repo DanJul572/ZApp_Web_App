@@ -101,11 +101,11 @@ const Properties = props => {
 
     return (
         <Grid
-            border={1}
+            borderLeft={1}
             borderColor={grey[300]}
             bottom={0}
             item
-            marginTop={7}
+            marginTop={8}
             overflow="auto"
             position="fixed"
             right={0}

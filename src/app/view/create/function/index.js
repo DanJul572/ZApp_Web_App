@@ -84,7 +84,7 @@ const Function = () => {
     };
 
     return (
-        <Box marginX={40} width="100%">
+        <Box marginX={40} width="100%" padding={1}>
             <Table
                 action={action}
                 columnKey={'id'}

@@ -65,10 +65,10 @@ const TopBar = props => {
     };
 
     return (
-        <Grid container position="absolute" sx={{backgroundColor: 'white'}} zIndex={2} top={0} right={0} left={0}>
+        <Grid container position="absolute" zIndex={2} top={0} right={0} left={0}>
             <Grid
                 alignItems="center"
-                border={1}
+                borderBottom={1}
                 borderColor={grey[300]}
                 display="flex"
                 item

@@ -2,6 +2,7 @@
 
 import {useState} from 'react';
 
+import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 
 import createTheme from '@mui/material/styles/createTheme';
@@ -39,6 +40,7 @@ const ViewCreate = () => {
 
     return (
         <ThemeProvider theme={theme}>
+            <CssBaseline />
             <TopBar content={content} setContent={setContent} />
             <Grid container justifyContent="space-between" display="flex">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />

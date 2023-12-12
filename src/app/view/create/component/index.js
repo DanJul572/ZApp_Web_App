@@ -108,12 +108,12 @@ const Component = props => {
 
     return (
         <Grid
-            border={1}
+            borderRight={1}
             borderColor={grey[300]}
             bottom={0}
             item
             left={0}
-            marginTop={7}
+            marginTop={8}
             overflow="auto"
             position="fixed"
             top={0}

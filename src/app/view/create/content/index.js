@@ -125,7 +125,7 @@ const Content = props => {
     };
 
     return (
-        <Grid item xs={8} marginX={40}>
+        <Grid item xs={8} marginX={40} padding={1}>
             {content && content.length > 0 && content.map(renderComponent)}
         </Grid>
     );
