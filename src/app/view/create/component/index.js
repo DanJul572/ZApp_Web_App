@@ -12,6 +12,13 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import Typography from '@mui/material/Typography';
 
+import BarChart from '@mui/icons-material/BarChart';
+import GridView from '@mui/icons-material/GridView';
+import ShortTextOutlined from '@mui/icons-material/ShortTextOutlined';
+import SmartButton from '@mui/icons-material/SmartButton';
+import TableChart from '@mui/icons-material/TableChart';
+import TextFields from '@mui/icons-material/TextFields';
+
 import CButtonType from '@/constant/CButtonType';
 import CChartType from '@/constant/CChartType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
@@ -91,6 +98,15 @@ const Component = props => {
         setComponentList(Object.values(groupType));
     };
 
+    const icon = type => {
+        if (type === CComponentGroupType.button.value) return <SmartButton fontSize="small" />;
+        else if (type === CComponentGroupType.container.value) return <GridView fontSize="small" />;
+        else if (type === CComponentGroupType.chart.value) return <BarChart fontSize="small" />;
+        else if (type === CComponentGroupType.fieldControl.value) return <TextFields fontSize="small" />;
+        else if (type === CComponentGroupType.table.value) return <TableChart fontSize="small" />;
+        else return <ShortTextOutlined />;
+    };
+
     useEffect(() => {
         if (!componentList.length) return;
 
@@ -129,9 +145,12 @@ const Component = props => {
                                     display: 'flex',
                                     justifyContent: 'space-between',
                                 }}>
-                                <Typography fontSize={11} fontWeight="bold">
-                                    {group.label}
-                                </Typography>
+                                <Box display="flex" gap={1} alignItems="center">
+                                    {icon(group.value)}
+                                    <Typography fontSize={11} fontWeight="bold">
+                                        {group.label}
+                                    </Typography>
+                                </Box>
                                 {open[group.value] ? <ExpandLess fontSize="small" /> : <ExpandMore fontSize="small" />}
                             </ListItemButton>
                             <Collapse in={open[group.value]}>
