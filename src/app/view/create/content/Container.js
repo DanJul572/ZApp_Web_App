@@ -10,6 +10,8 @@ import CContainerType from '@/constant/CContainerType';
 const Container = props => {
     const {type, section, properties, renderComponent, parse} = props;
 
+    const color = properties.color ? properties.color.value : null;
+
     const content = () => {
         if (type === CContainerType.card.value) {
             return (
@@ -40,9 +42,9 @@ const Container = props => {
                         ))}
                 </Grid>
             );
-        } else if (type === CContainerType.collaps.value) {
+        } else if (type === CContainerType.collapse.value) {
             return (
-                <Collapse label={parse.label || CContainerType.collaps.label} sx={parse.styles}>
+                <Collapse label={parse.label || CContainerType.collapse.label} sx={parse.styles} color={color}>
                     {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                 </Collapse>
             );

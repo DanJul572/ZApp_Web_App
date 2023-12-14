@@ -7,7 +7,7 @@ const CContainerType = {
         value: 2,
         label: 'Card',
     },
-    collaps: {
+    collapse: {
         value: 3,
         label: 'Collapse',
     },

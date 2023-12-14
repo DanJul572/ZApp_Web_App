@@ -35,7 +35,7 @@ const Label = props => {
         let group = selected.group.value;
         let type = selected.type.value;
 
-        if (group === CComponentGroupType.container.value && type !== CContainerType.collaps.value) return false;
+        if (group === CComponentGroupType.container.value && type !== CContainerType.collapse.value) return false;
         if (group === CComponentGroupType.table.value || group === CComponentGroupType.chart.value) return false;
         if (group === CComponentGroupType.visualElement.value && type === CVisualElement.divider.value) return false;
 

@@ -100,7 +100,7 @@ const Content = props => {
         } else if (group === CComponentGroupType.visualElement.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <VisualElement type={type} properties={properties} parse={parse} />
+                    <VisualElement type={type} properties={properties} getValues={getValues} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.table.value) {

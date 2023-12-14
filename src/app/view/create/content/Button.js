@@ -11,11 +11,12 @@ const Button = props => {
 
     const disable = getValues(properties.disable, 'js', vars);
     const label = getValues(properties.label, 'js', vars);
+    const color = properties.color ? properties.color.name : 'primary';
 
     const content = () => {
         if (type === CButtonType.button.value) {
             return (
-                <MuiButton size="small" variant="contained" sx={{display: 'block'}} disabled={Boolean(disable)}>
+                <MuiButton size="small" variant="contained" sx={{display: 'block'}} disabled={Boolean(disable)} color={color}>
                     {label || CButtonType.button.label}
                 </MuiButton>
             );
