@@ -7,9 +7,12 @@ import useTheme from '@mui/material/styles/useTheme';
 import AlignHorizontalCenter from '@mui/icons-material/AlignHorizontalCenter';
 import AlignHorizontalLeft from '@mui/icons-material/AlignHorizontalLeft';
 import AlignHorizontalRight from '@mui/icons-material/AlignHorizontalRight';
+
+/*
 import AlignVerticalBottom from '@mui/icons-material/AlignVerticalBottom';
 import AlignVerticalCenter from '@mui/icons-material/AlignVerticalCenter';
 import AlignVerticalTop from '@mui/icons-material/AlignVerticalTop';
+*/
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
@@ -43,6 +46,7 @@ const Display = props => {
         },
     ];
 
+    /*
     const vertical = [
         {
             name: 'top',
@@ -60,6 +64,7 @@ const Display = props => {
             type: 'vertical',
         },
     ];
+    */
 
     const onApply = value => {
         const newDisplay = {
@@ -89,13 +94,14 @@ const Display = props => {
             return <AlignHorizontalLeft sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
         else if (value.name === 'horizontalCenter')
             return <AlignHorizontalCenter sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
-        else if (value.name === 'right')
-            return <AlignHorizontalRight sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
+        else return <AlignHorizontalRight sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
+        /*
         else if (value.name === 'top')
             return <AlignVerticalTop sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
         else if (value.name === 'verticalCenter')
             return <AlignVerticalCenter sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
         else return <AlignVerticalBottom sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
+        */
     };
 
     const poisiton = (display, index) => {
@@ -135,9 +141,11 @@ const Display = props => {
             <Box marginTop={1} display="flex" justifyContent="space-between" alignItems="center">
                 {horizontal.map(poisiton)}
             </Box>
-            <Box marginTop={1} display="flex" justifyContent="space-between" alignItems="center">
-                {vertical.map(poisiton)}
-            </Box>
+            {/*
+                <Box marginTop={1} display="flex" justifyContent="space-between" alignItems="center">
+                    {vertical.map(poisiton)}
+                </Box>
+            */}
         </Box>
     ) : (
         <></>

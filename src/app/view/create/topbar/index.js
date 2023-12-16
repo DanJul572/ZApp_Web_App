@@ -4,7 +4,6 @@ import ArrowBack from '@mui/icons-material/ArrowBack';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import grey from '@mui/material/colors/grey';
-import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import useTheme from '@mui/material/styles/useTheme';
@@ -65,48 +64,51 @@ const TopBar = props => {
     };
 
     return (
-        <Grid container position="absolute" zIndex={2} top={0} right={0} left={0}>
-            <Grid
-                alignItems="center"
-                borderBottom={1}
-                borderColor={grey[300]}
-                display="flex"
-                item
-                justifyContent="space-between"
-                padding={2}
-                xs={12}>
-                <Box display="flex" alignItems="center" gap={1}>
-                    <IconButton size="small" sx={{padding: 0}} onClick={() => push('/view')}>
-                        <ArrowBack fontSize="small" sx={{color: theme.palette.text.primary}} />
-                    </IconButton>
-                    <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
+        <Box
+            sx={{
+                position: 'sticky',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: 2,
+                borderBottom: 1,
+                borderColor: grey[300],
+                zIndex: 2,
+                top: 0,
+                right: 0,
+                left: 0,
+            }}>
+            <Box display="flex" alignItems="center" gap={1}>
+                <IconButton size="small" sx={{padding: 0}} onClick={() => push('/view')}>
+                    <ArrowBack fontSize="small" sx={{color: theme.palette.text.primary}} />
+                </IconButton>
+                <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
+            </Box>
+            <Box display="flex" gap={1}>
+                <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
+                    <Button component="label" variant="outlined" size="small">
+                        Upload
+                        <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
+                    </Button>
+                    <Button variant="outlined" size="small" onClick={onDownload}>
+                        Download
+                    </Button>
+                </Box>
+                <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
+                    <Button variant="outlined" size="small">
+                        Generate
+                    </Button>
                 </Box>
                 <Box display="flex" gap={1}>
-                    <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
-                        <Button component="label" variant="outlined" size="small">
-                            Upload
-                            <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
-                        </Button>
-                        <Button variant="outlined" size="small" onClick={onDownload}>
-                            Download
-                        </Button>
-                    </Box>
-                    <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
-                        <Button variant="outlined" size="small">
-                            Generate
-                        </Button>
-                    </Box>
-                    <Box display="flex" gap={1}>
-                        <Button variant="outlined" size="small">
-                            Save As Draft
-                        </Button>
-                        <Button variant="contained" size="small">
-                            Save
-                        </Button>
-                    </Box>
+                    <Button variant="outlined" size="small">
+                        Save As Draft
+                    </Button>
+                    <Button variant="contained" size="small">
+                        Save
+                    </Button>
                 </Box>
-            </Grid>
-        </Grid>
+            </Box>
+        </Box>
     );
 };
 
