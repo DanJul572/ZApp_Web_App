@@ -4,16 +4,17 @@ import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
 
+// import Styles from './Styles';
 import Color from './Color';
 import Delete from './Delete';
 import Disable from './Disable';
+import Display from './Display';
 import Identity from './Identity';
 import Label from './Label';
 import Name from './Name';
 import OnClick from './OnClick';
 import Position from './Position';
 import Size from './Size';
-// import Styles from './Styles';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
@@ -137,6 +138,7 @@ const Properties = props => {
                     <OnClick content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Disable content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Size content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
+                    <Display content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Color content={content} selected={selected} editComponent={editComponent} setContent={setContent}/>
                     {/* <Styles content={content} selected={selected} editComponent={editComponent} setContent={setContent} /> */}
                 </Box>

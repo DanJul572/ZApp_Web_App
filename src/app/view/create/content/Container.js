@@ -17,9 +17,7 @@ const Container = props => {
             return (
                 <Box border={1} borderColor={grey[300]} borderRadius={1} padding={1}>
                     <Typography fontSize={10}>Card</Typography>
-                    <Box sx={parse.styles}>
-                        {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
-                    </Box>
+                    <Box>{section && section.length > 0 && section.map(childs => childs.map(renderComponent))}</Box>
                 </Box>
             );
         } else if (type === CContainerType.grid.value) {
@@ -32,11 +30,7 @@ const Container = props => {
                     </Grid>
                     {section &&
                         section.map((childs, index) => (
-                            <Grid
-                                item
-                                xs={columnSize.length > 0 ? parseInt(columnSize[index]) : defaultSize}
-                                key={index}
-                                sx={parse.styles}>
+                            <Grid item xs={columnSize.length > 0 ? parseInt(columnSize[index]) : defaultSize} key={index}>
                                 {childs.map(renderComponent)}
                             </Grid>
                         ))}
@@ -44,7 +38,7 @@ const Container = props => {
             );
         } else if (type === CContainerType.collapse.value) {
             return (
-                <Collapse label={parse.label || CContainerType.collapse.label} sx={parse.styles} color={color}>
+                <Collapse label={parse.label || CContainerType.collapse.label} color={color}>
                     {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                 </Collapse>
             );
