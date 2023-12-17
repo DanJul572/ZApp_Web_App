@@ -45,9 +45,11 @@ const FieldControl = props => {
 
         if (type === CInputType.dropdown.value) return <Dropdown options={[]} disabled={disabled} label={label || null} />;
 
-        if (type === CInputType.date.value) return <Date disabled={disabled} label={label || null} />;
+        if (type === CInputType.date.value)
+            return <Date value="1901-01-01 00:00:01" disabled={disabled} label={label || null} />;
 
-        if (type === CInputType.time.value) return <Time disabled={disabled} label={label || null} />;
+        if (type === CInputType.time.value)
+            return <Time value="1901-01-01 00:00:01" disabled={disabled} label={label || null} />;
 
         if (type === CInputType.file.value) return <File disabled={disabled} label={label || null} />;
 
@@ -79,7 +81,8 @@ const FieldControl = props => {
                 />
             );
 
-        if (type === CInputType.datetime.value) return <Datetime disabled={disabled} label={label || null} />;
+        if (type === CInputType.datetime.value)
+            return <Datetime value="1901-01-01 00:00:01" disabled={disabled} label={label || null} />;
     };
 
     return content();
