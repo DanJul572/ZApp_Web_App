@@ -16,8 +16,8 @@ const Button = props => {
     const display = {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: properties.display && properties.display.vertical ? properties.display.vertical.value : 'flex-start',
         alignItems: properties.display && properties.display.horizontal ? properties.display.horizontal.value : 'flex-start',
+        // justifyContent: properties.display && properties.display.vertical ? properties.display.vertical.value : 'flex-start',
     };
 
     const content = () => {

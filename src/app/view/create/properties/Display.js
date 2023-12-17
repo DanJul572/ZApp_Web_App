@@ -25,7 +25,7 @@ const Display = props => {
 
     const [display, setDisplay] = useState({
         vertical: null,
-        horizontal: null,
+        // horizontal: null,
     });
 
     const horizontal = [
@@ -69,9 +69,9 @@ const Display = props => {
     const onApply = value => {
         const newDisplay = {
             horizontal: display.horizontal,
-            vertical: display.vertical,
+            // vertical: display.vertical,
         };
-        newDisplay[value.type] = value;
+        newDisplay[value.type] = newDisplay[value.type] && newDisplay[value.type].name === value.name ? null : value;
         const newContent = editComponent('display', newDisplay, content);
         setContent([...newContent]);
         setDisplay(newDisplay);
@@ -129,7 +129,7 @@ const Display = props => {
         if (selected) {
             const emptyValue = {
                 vertical: null,
-                horizontal: null,
+                // horizontal: null,
             };
             setDisplay(selected.properties.display || emptyValue);
         }
