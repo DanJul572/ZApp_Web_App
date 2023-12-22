@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -124,11 +123,7 @@ const Content = props => {
         }
     };
 
-    return (
-        <Grid item xs={8} marginX={40} padding={1}>
-            {content && content.length > 0 && content.map(renderComponent)}
-        </Grid>
-    );
+    return <Box padding={1}>{content && content.length > 0 && content.map(renderComponent)}</Box>;
 };
 
 export default Content;

@@ -44,12 +44,14 @@ const ViewCreate = () => {
             <TopBar content={content} setContent={setContent} />
             <Grid container justifyContent="space-between" display="flex">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
-                <Navigation
-                    activeNavigation={activeNavigation}
-                    navigationType={navigationType}
-                    setActiveNavigation={setActiveNavigation}
-                />
-                {activeContent()}
+                <Grid item xs={8} marginX="17%">
+                    <Navigation
+                        activeNavigation={activeNavigation}
+                        navigationType={navigationType}
+                        setActiveNavigation={setActiveNavigation}
+                    />
+                    {activeContent()}
+                </Grid>
                 <Properties
                     activeNavigation={activeNavigation}
                     content={content}
