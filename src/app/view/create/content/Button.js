@@ -10,14 +10,18 @@ const Button = props => {
 
     const {vars} = useBuilder();
 
+    const displayValue = type => {
+        return properties.display && properties.display[type] ? properties.display[type].value : 'flex-start';
+    };
+
     const disable = getValues(properties.disable, 'js', vars);
     const label = getValues(properties.label, 'js', vars);
     const color = properties.color ? properties.color.name : 'primary';
     const display = {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: properties.display && properties.display.horizontal ? properties.display.horizontal.value : 'flex-start',
-        // justifyContent: properties.display && properties.display.vertical ? properties.display.vertical.value : 'flex-start',
+        alignItems: displayValue('horizontal'),
+        // justifyContent: displayValue('vertical'),
     };
 
     const content = () => {
