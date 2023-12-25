@@ -90,7 +90,12 @@ const FieldForm = props => {
 
         if (inputType === CInputType.code.value || inputType === CInputType.richText.value) return CDataType.text.value;
 
-        if (inputType === CInputType.date.value || inputType === CInputType.time.value) return CDataType.datetime.value;
+        if (
+            inputType === CInputType.date.value ||
+            inputType === CInputType.time.value ||
+            inputType === CInputType.datetime.value
+        )
+            return CDataType.datetime.value;
 
         if (inputType === CInputType.file.value) return CDataType.byte.value;
 
