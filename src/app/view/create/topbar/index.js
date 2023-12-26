@@ -1,5 +1,8 @@
 import {useRouter} from 'next/navigation';
 
+import {useLoading} from '@/context/LoadingProvider';
+import {useToast} from '@/context/ToastProvider';
+
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -9,6 +12,8 @@ import Typography from '@mui/material/Typography';
 import useTheme from '@mui/material/styles/useTheme';
 
 import styled from '@mui/material/styles/styled';
+
+import request from '@/helper/request';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -26,6 +31,8 @@ const TopBar = props => {
     const {content, setContent} = props;
 
     const {push} = useRouter();
+    const {setLoading} = useLoading();
+    const {setToast} = useToast();
     const theme = useTheme();
 
     const onDownload = () => {
@@ -61,6 +68,32 @@ const TopBar = props => {
         } else {
             console.error('Invalid file type. Please choose a JSON file.');
         }
+    };
+
+    const onSave = () => {
+        setLoading(true);
+
+        const body = {
+            moduleId: 1,
+            content: JSON.stringify(content),
+        };
+        request
+            .post('/view/create', body)
+            .then(res => {
+                setToast({
+                    status: true,
+                    type: 'success',
+                    message: res,
+                });
+            })
+            .catch(err => {
+                setToast({
+                    status: true,
+                    type: 'error',
+                    message: err,
+                });
+            })
+            .finally(() => setLoading(false));
     };
 
     return (
@@ -103,7 +136,7 @@ const TopBar = props => {
                     <Button variant="outlined" size="small">
                         Save As Draft
                     </Button>
-                    <Button variant="contained" size="small">
+                    <Button variant="contained" size="small" onClick={onSave}>
                         Save
                     </Button>
                 </Box>
