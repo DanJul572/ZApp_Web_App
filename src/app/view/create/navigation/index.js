@@ -2,11 +2,11 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Box from '@mui/material/Box';
 
-import ViewModule from '@mui/icons-materia/ViewModulel';
 import Dashboard from '@mui/icons-material/Dashboard';
 import DataArray from '@mui/icons-material/DataArraySharp';
 import DataObject from '@mui/icons-material/DataObject';
 import InsertDriveFileOutlined from '@mui/icons-material/InsertDriveFileOutlined';
+import ViewModule from '@mui/icons-material/ViewModule';
 
 import grey from '@mui/material/colors/grey';
 
