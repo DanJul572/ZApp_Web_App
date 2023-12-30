@@ -16,39 +16,39 @@ const CInputType = {
         label: 'Number',
     },
     toggle: {
-        value: 6,
+        value: 5,
         label: 'Toggle',
     },
     date: {
-        value: 7,
+        value: 6,
         label: 'Date',
     },
     time: {
-        value: 8,
+        value: 7,
         label: 'Time',
     },
     file: {
-        value: 9,
+        value: 8,
         label: 'File',
     },
     richText: {
-        value: 10,
+        value: 9,
         label: 'Rich Text',
     },
     radio: {
-        value: 11,
+        value: 10,
         label: 'Radio',
     },
     checkbox: {
-        value: 12,
+        value: 11,
         label: 'Check Box',
     },
     code: {
-        value: 13,
+        value: 12,
         label: 'Code',
     },
     datetime: {
-        value: 14,
+        value: 13,
         label: 'Date Time',
     },
 };

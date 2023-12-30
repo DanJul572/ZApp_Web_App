@@ -27,6 +27,10 @@ const CDataType = {
         value: 7,
         label: 'Byte',
     },
+    json: {
+        value: 8,
+        label: 'JSON',
+    },
 };
 
 export default CDataType;

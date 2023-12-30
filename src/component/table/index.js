@@ -8,9 +8,9 @@ import Stack from '@mui/material/Stack';
 import dataDisplay from '@/helper/dataDisplay';
 
 import AdvanceFilter from './AdvanceFilter';
+import RowCustomActionDialog from './CustomActionDialog';
 import ExportDialog from './ExportDialog';
 import RowAction from './RowAction';
-import RowCustomActionDialog from './CustomActionDialog';
 import ToolbarAction from './ToolbarAction';
 import ToolBarComponent from './ToolbarComponent';
 
@@ -73,7 +73,7 @@ const Table = props => {
     };
 
     const muiTableContainerProps = {sx: {maxHeight: '500px'}};
-    
+
     const muiTablePaginationProps = {showRowsPerPage: false};
 
     const newColumns = columns.map(column => {
@@ -200,7 +200,6 @@ const Table = props => {
         onRowSelectionChange: setRowSelection,
         onSortingChange: setSorting,
         pageSize: pageSize,
-        positionActionsColumn: 'last',
         positionToolbarAlertBanner: 'none',
         renderRowActions: ({row}) => rowAction(row),
         renderToolbarInternalActions: ({table}) => toolbarComponent(table),
@@ -225,7 +224,7 @@ const Table = props => {
         if (enableRowSelection && onSelect) onSelect(Object.keys(rowSelection));
     }, [rowSelection]);
 
-    return (
+    return newColumns && newColumns.length > 0 ? (
         <>
             <MaterialReactTable table={table} />
             {enableAdvanceFilter && (
@@ -255,6 +254,8 @@ const Table = props => {
                 />
             )}
         </>
+    ) : (
+        <></>
     );
 };
 

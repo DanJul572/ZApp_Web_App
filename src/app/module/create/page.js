@@ -1,7 +1,7 @@
 'use client';
 
-import {useState} from 'react';
 import {useRouter} from 'next/navigation';
+import {useState} from 'react';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -15,7 +15,7 @@ import {useLoading} from '@/context/LoadingProvider';
 import request from '@/helper/request';
 
 const CreateModule = () => {
-    const {back} = useRouter();
+    const {back, push} = useRouter();
 
     const {setLoading} = useLoading();
     const {setAlert} = useAlert();
@@ -51,6 +51,7 @@ const CreateModule = () => {
                     type: 'success',
                     message: res,
                 });
+                push('/module');
             })
             .catch(err => {
                 setAlert({

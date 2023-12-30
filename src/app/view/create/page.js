@@ -14,6 +14,7 @@ import {ToastProvider} from '@/context/ToastProvider';
 import Component from './component';
 import Content from './content';
 import Function from './function';
+import Module from './module';
 import Navigation from './navigation';
 import Properties from './properties';
 import TopBar from './topbar';
@@ -30,6 +31,7 @@ const ViewCreate = () => {
         content: 'content',
         variabel: 'variabel',
         function: 'function',
+        page: 'page',
         module: 'module',
     };
 
@@ -40,8 +42,8 @@ const ViewCreate = () => {
     const activeContent = () => {
         if (activeNavigation === navigationType.content)
             return <Content content={content} selected={selected} setSelected={setSelected} />;
-
-        if (activeNavigation === navigationType.function) return <Function />;
+        else if (activeNavigation === navigationType.function) return <Function />;
+        else if (activeNavigation === navigationType.module) return <Module />;
     };
 
     return (

@@ -16,6 +16,14 @@
         "type": 1
     },
     {
+        "accessorKey": "label",
+        "header": "Label",
+        "size": 150,
+        "minSize": 150,
+        "maxSize": 300,
+        "type": 1
+    },
+    {
         "accessorKey": "description",
         "header": "Description",
         "size": 250,

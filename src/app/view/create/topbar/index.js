@@ -1,4 +1,5 @@
 import {useRouter} from 'next/navigation';
+import {useState} from 'react';
 
 import {useLoading} from '@/context/LoadingProvider';
 import {useToast} from '@/context/ToastProvider';
@@ -6,13 +7,19 @@ import {useToast} from '@/context/ToastProvider';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import grey from '@mui/material/colors/grey';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import grey from '@mui/material/colors/grey';
+
 import useTheme from '@mui/material/styles/useTheme';
 
 import styled from '@mui/material/styles/styled';
 
+import Number from '@/component/input/Number';
 import request from '@/helper/request';
 
 const VisuallyHiddenInput = styled('input')({
@@ -34,6 +41,9 @@ const TopBar = props => {
     const {setLoading} = useLoading();
     const {setToast} = useToast();
     const theme = useTheme();
+
+    const [open, setOpen] = useState(true);
+    const [moduleId, setModuleId] = useState(null);
 
     const onDownload = () => {
         const jsonString = JSON.stringify(content, null, 2);
@@ -96,51 +106,70 @@ const TopBar = props => {
             .finally(() => setLoading(false));
     };
 
+    const onApply = () => {
+        setOpen(false);
+    };
+
     return (
-        <Box
-            sx={{
-                position: 'sticky',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: 2,
-                borderBottom: 1,
-                borderColor: grey[300],
-                zIndex: 2,
-                top: 0,
-                right: 0,
-                left: 0,
-            }}>
-            <Box display="flex" alignItems="center" gap={1}>
-                <IconButton size="small" sx={{padding: 0}} onClick={() => push('/view')}>
-                    <ArrowBack fontSize="small" sx={{color: theme.palette.text.primary}} />
-                </IconButton>
-                <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
-            </Box>
-            <Box display="flex" gap={1}>
-                <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
-                    <Button component="label" variant="outlined" size="small">
-                        Upload
-                        <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
-                    </Button>
-                    <Button variant="outlined" size="small" onClick={onDownload}>
-                        Download
-                    </Button>
-                </Box>
-                <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
-                    <Button variant="outlined" size="small">
-                        Generate
-                    </Button>
+        <Box>
+            <Box
+                sx={{
+                    position: 'sticky',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: 2,
+                    borderBottom: 1,
+                    borderColor: grey[300],
+                    zIndex: 2,
+                    top: 0,
+                    right: 0,
+                    left: 0,
+                }}>
+                <Box display="flex" alignItems="center" gap={1}>
+                    <IconButton size="small" sx={{padding: 0}} onClick={() => push('/view')}>
+                        <ArrowBack fontSize="small" sx={{color: theme.palette.text.primary}} />
+                    </IconButton>
+                    <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
-                    <Button variant="outlined" size="small">
-                        Save As Draft
-                    </Button>
-                    <Button variant="contained" size="small" onClick={onSave}>
-                        Save
-                    </Button>
+                    <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
+                        <Button component="label" variant="outlined" size="small">
+                            Upload
+                            <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
+                        </Button>
+                        <Button variant="outlined" size="small" onClick={onDownload}>
+                            Download
+                        </Button>
+                    </Box>
+                    <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
+                        <Button variant="outlined" size="small" onClick={() => setOpen(true)}>
+                            Connect
+                        </Button>
+                    </Box>
+                    <Box display="flex" gap={1}>
+                        <Button variant="outlined" size="small">
+                            Save As Draft
+                        </Button>
+                        <Button variant="contained" size="small" onClick={onSave}>
+                            Save
+                        </Button>
+                    </Box>
                 </Box>
             </Box>
+            <Dialog open={open}>
+                <DialogTitle>Connect To Module</DialogTitle>
+                <DialogContent>
+                    <Box width={500}>
+                        <Number value={moduleId} onChange={setModuleId} label="Module ID" />
+                    </Box>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={onApply} variant="contained" size="small">
+                        Apply
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </Box>
     );
 };

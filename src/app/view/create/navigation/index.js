@@ -2,6 +2,7 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Box from '@mui/material/Box';
 
+import ViewModule from '@mui/icons-materia/ViewModulel';
 import Dashboard from '@mui/icons-material/Dashboard';
 import DataArray from '@mui/icons-material/DataArraySharp';
 import DataObject from '@mui/icons-material/DataObject';
@@ -35,9 +36,14 @@ const Navigation = props => {
                     icon={<DataObject fontSize="small" />}
                 />
                 <BottomNavigationAction
-                    value={navigationType.module}
+                    value={navigationType.page}
                     label="Page"
                     icon={<InsertDriveFileOutlined fontSize="small" />}
+                />
+                <BottomNavigationAction
+                    value={navigationType.module}
+                    label="Module"
+                    icon={<ViewModule fontSize="small" />}
                 />
             </BottomNavigation>
         </Box>
