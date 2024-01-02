@@ -15,8 +15,6 @@ import ShortText from '@/component/input/ShortText';
 import Table from '@/component/table';
 import Toggle from '@/component/input/Toggle';
 
-import mockColumns from '@/mock/field/column';
-
 const FieldForm = props => {
     const {fieldRows, setFieldRows} = props;
 
@@ -50,6 +48,33 @@ const FieldForm = props => {
         {
             type: openFieldFormACTION_TYPE,
             label: 'Add New Field',
+        },
+    ];
+    const columns = [
+        {
+            accessorKey: 'id',
+            header: 'ID',
+            type: 4,
+        },
+        {
+            accessorKey: 'name',
+            header: 'Name',
+            type: 1,
+        },
+        {
+            accessorKey: 'label',
+            header: 'Label',
+            type: 1,
+        },
+        {
+            accessorKey: 'inputType',
+            header: 'Input Type',
+            type: 3,
+        },
+        {
+            accessorKey: 'identity',
+            header: 'Is Identity',
+            type: 6,
         },
     ];
     const action = [
@@ -303,7 +328,7 @@ const FieldForm = props => {
             <Table
                 action={action}
                 columnKey={'id'}
-                columns={mockColumns}
+                columns={columns}
                 onClickRowAction={onClickRowAction}
                 onClickToolbarAction={onClickToolbarAction}
                 toolbarCustomAction={toolbarCustomAction}

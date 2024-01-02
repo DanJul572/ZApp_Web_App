@@ -3,7 +3,7 @@ import {useRouter} from 'next/navigation';
 import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
 
-import Tree from '@/component/tree/Tree';
+import Tree from '@/component/tree';
 
 import CMenuList from '@/constant/CMenuList';
 

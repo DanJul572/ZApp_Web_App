@@ -13,7 +13,7 @@ import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUp from '@mui/icons-material/KeyboardArrowUp';
 import Save from '@mui/icons-material/Save';
 
-import Tree from '@/component/tree/Tree';
+import Tree from '@/component/tree';
 
 import CMenuList from '@/constant/CMenuList';
 

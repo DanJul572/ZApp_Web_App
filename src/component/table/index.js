@@ -96,7 +96,7 @@ const Table = props => {
     };
 
     const isSupportRowAction = () => {
-        return action.filter(item => item.type !== CActionType.insert.value).length ? true : false;
+        return action.filter(item => item.type !== CActionType.insert.value).length > 0 ? true : false;
     };
 
     const isSupportAddAction = () => {
