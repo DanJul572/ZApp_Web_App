@@ -74,7 +74,7 @@ const FieldForm = props => {
         {
             accessorKey: 'identity',
             header: 'Is Identity',
-            type: 6,
+            type: 5,
         },
     ];
     const action = [

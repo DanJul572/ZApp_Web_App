@@ -84,7 +84,7 @@ const TopBar = props => {
         setLoading(true);
 
         const body = {
-            moduleId: 1,
+            moduleId: moduleId,
             content: JSON.stringify(content),
         };
         request

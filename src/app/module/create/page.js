@@ -40,6 +40,7 @@ const CreateModule = () => {
         const data = {
             name: moduleName,
             label: moduleLabel,
+            description: moduleDescription,
             fields: fields,
         };
 

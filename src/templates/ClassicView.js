@@ -3,7 +3,6 @@
 import {useEffect, useState} from 'react';
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
-import {useRouter} from 'next/navigation';
 
 import Confirm from '@/component/dialog/Confirm';
 import Table from '@/component/table';
@@ -12,9 +11,8 @@ import CActionType from '@/constant/CActionType';
 import request from '@/helper/request';
 
 const ClassicView = props => {
-    const {moduleID} = props;
+    const {moduleID, onAdd} = props;
 
-    const {push} = useRouter();
     const {setAlert} = useAlert();
     const {setLoading} = useLoading();
 
@@ -29,7 +27,7 @@ const ClassicView = props => {
     const actionList = [
         {
             type: CActionType.insert.value,
-        }
+        },
     ];
 
     const getColumns = () => {
@@ -85,7 +83,7 @@ const ClassicView = props => {
     };
 
     const onCLickToolbarAction = action => {
-        if (action.value === CActionType.insert.value) push('/view/create');
+        if (action.value === CActionType.insert.value && onAdd) onAdd();
     };
 
     const onConfirm = confirm => {
