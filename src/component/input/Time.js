@@ -36,7 +36,7 @@ const Time = props => {
             <Typography fontSize={12}>{label}</Typography>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <TimePicker
-                    value={dayjs(value)}
+                    value={value ? dayjs(value) : null}
                     onChange={valueFormater}
                     disabled={disabled}
                     format={CDateTimeFormat.time.display}

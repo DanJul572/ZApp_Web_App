@@ -21,6 +21,23 @@ const CMenuList = [
             },
         ],
     },
+    {
+        id: '5',
+        label: 'Interpreter',
+        url: '',
+        child: [
+            {
+                id: '6',
+                label: 'Test 1',
+                url: '/1',
+            },
+            {
+                id: '7',
+                label: 'Test 2',
+                url: '/2',
+            },
+        ],
+    },
 ];
 
 export default CMenuList;

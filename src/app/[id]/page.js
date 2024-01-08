@@ -16,7 +16,7 @@ const Page = props => {
     const {setLoading} = useLoading();
     const {setAlert} = useAlert();
 
-    const [content, setContent] = useState();
+    const [content, setContent] = useState(null);
 
     const getContent = () => {
         setLoading(true);
@@ -27,8 +27,16 @@ const Page = props => {
         request
             .post('/general/detail', body)
             .then(res => {
-                const content = JSON.parse(res.content);
-                setContent(content);
+                if (res) {
+                    const content = JSON.parse(res.content);
+                    setContent(content);
+                } else {
+                    setAlert({
+                        status: true,
+                        type: 'error',
+                        message: 'View is not found.',
+                    });
+                }
             })
             .catch(err => {
                 setAlert({
@@ -42,13 +50,12 @@ const Page = props => {
 
     useEffect(() => {
         getContent();
+        return () => {
+            setAlert(false);
+        };
     }, []);
 
-    return (
-        <Main>
-            <Interpreter isBuilder={false} content={content} />
-        </Main>
-    );
+    return <Main>{content ? <Interpreter isBuilder={false} content={content} /> : <></>}</Main>;
 };
 
 export default Page;
