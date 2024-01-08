@@ -8,7 +8,13 @@ const Toggle = props => {
     return (
         <Box>
             <Typography fontSize={12}>{label}</Typography>
-            <Switch checked={value} value={value} onChange={() => onChange(!value)} disabled={disabled} size="small" />
+            <Switch
+                checked={Boolean(value)}
+                value={Boolean(value)}
+                onChange={() => onChange(!value)}
+                disabled={disabled}
+                size="small"
+            />
         </Box>
     );
 };
