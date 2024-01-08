@@ -22,7 +22,6 @@ const Page = props => {
         setLoading(true);
         const body = {
             moduleId: 1,
-            field: 'id',
             id: params.id,
         };
         request
