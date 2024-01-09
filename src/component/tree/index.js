@@ -1,5 +1,7 @@
 import {forwardRef} from 'react';
 
+import {v4 as uuidv4} from 'uuid';
+
 import {alpha, styled} from '@mui/material/styles';
 import useTheme from '@mui/material/styles/useTheme';
 
@@ -41,6 +43,7 @@ const Tree = props => {
     };
 
     const menuList = menu => {
+        menu.id = uuidv4();
         if (menu.child) {
             return (
                 <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} onClick={() => clickParent(menu)}>

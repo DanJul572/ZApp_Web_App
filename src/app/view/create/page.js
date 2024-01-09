@@ -24,7 +24,7 @@ import Toast from '@/component/toast';
 
 import CTheme from '@/constant/CTheme';
 
-const ViewCreate = () => {
+const Page = () => {
     const theme = createTheme(CTheme);
 
     const navigationType = {
@@ -79,4 +79,4 @@ const ViewCreate = () => {
     );
 };
 
-export default ViewCreate;
+export default Page;

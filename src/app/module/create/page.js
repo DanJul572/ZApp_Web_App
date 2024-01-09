@@ -14,7 +14,7 @@ import {useLoading} from '@/context/LoadingProvider';
 
 import request from '@/helper/request';
 
-const CreateModule = () => {
+const Page = () => {
     const {back, push} = useRouter();
 
     const {setLoading} = useLoading();
@@ -87,4 +87,4 @@ const CreateModule = () => {
     );
 };
 
-export default CreateModule;
+export default Page;

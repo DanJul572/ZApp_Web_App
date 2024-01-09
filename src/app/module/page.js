@@ -3,14 +3,16 @@
 import {useRouter} from 'next/navigation';
 import ClassicView from '@/templates/ClassicView';
 
-const Module = () => {
+import CModuleID from '@/constant/CModuleID';
+
+const Page = () => {
     const {push} = useRouter();
 
     const onAdd = () => {
         push('/module/create');
     };
 
-    return <ClassicView moduleID={2} onAdd={onAdd} />;
+    return <ClassicView moduleID={CModuleID.modules} onAdd={onAdd} />;
 };
 
-export default Module;
+export default Page;

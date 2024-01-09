@@ -5,7 +5,9 @@ import {useRouter} from 'next/navigation';
 import Main from '@/layout/Main';
 import ClassicView from '@/templates/ClassicView';
 
-const View = () => {
+import CModuleID from '@/constant/CModuleID';
+
+const Page = () => {
     const {push} = useRouter();
 
     const onAdd = () => {
@@ -14,9 +16,9 @@ const View = () => {
 
     return (
         <Main>
-            <ClassicView moduleID={1} onAdd={onAdd} />
+            <ClassicView moduleID={CModuleID.views} onAdd={onAdd} />
         </Main>
     );
 };
 
-export default View;
+export default Page;

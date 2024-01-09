@@ -9,16 +9,33 @@ import Typography from '@mui/material/Typography';
 import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
+import request from '@/helper/request';
+
 const Dropdown = props => {
-    const {label, onChange, options, value, rules, group, name, disabled} = props;
+    const {label, onChange, options, value, rules, group, name, disabled, id} = props;
 
     const {setError, clearError} = useContext(ErrorContext);
     const error = validator(rules, value ? value.toString() : '');
 
     const [newValue, setNewValue] = useState(null);
+    const [newOptions, setNewOptions] = useState([]);
+
+    const getOptions = () => {
+        request.post('/general/options', {id: id}).then(res => {
+            setNewOptions(res);
+        });
+    };
 
     useEffect(() => {
-        const val = options.find(option => option.value === value);
+        if (id) {
+            getOptions();
+        } else {
+            setNewOptions(options || []);
+        }
+    }, []);
+
+    useEffect(() => {
+        const val = newOptions.find(option => option.value === value);
         setNewValue(val || null);
     }, [value]);
 
@@ -51,7 +68,7 @@ const Dropdown = props => {
             <Autocomplete
                 disabled={disabled}
                 onChange={(e, value) => onChange(value ? value.value : null)}
-                options={options.length ? options : []}
+                options={newOptions.length ? newOptions : []}
                 renderInput={params => renderInput(params)}
                 size="small"
                 value={newValue}
