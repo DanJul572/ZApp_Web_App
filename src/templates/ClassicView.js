@@ -22,11 +22,16 @@ const ClassicView = props => {
     const [sort, setSort] = useState([]);
     const [rows, setRows] = useState([]);
     const [rowCount, setRowCount] = useState(0);
+    const [columnKey, setColumnKey] = useState(null);
+    const [selectedRow, setSelectedRow] = useState(null);
     const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
 
     const actionList = [
         {
             type: CActionType.insert.value,
+        },
+        {
+            type: CActionType.delete.value,
         },
     ];
 
@@ -40,6 +45,8 @@ const ClassicView = props => {
         request
             .post('/general/columns', body)
             .then(res => {
+                const columnKey = res.find(column => column.identity);
+                setColumnKey(columnKey.accessorKey);
                 setColumns(res);
             })
             .catch(err => {
@@ -82,8 +89,45 @@ const ClassicView = props => {
             });
     };
 
+    const onDelete = () => {
+        setLoading(true);
+
+        const body = {
+            moduleId: moduleID,
+            id: selectedRow[columnKey],
+        };
+
+        request
+            .post('/general/delete', body)
+            .then(res => {
+                setAlert({
+                    status: true,
+                    type: 'success',
+                    message: res,
+                });
+                getRows();
+            })
+            .catch(err => {
+                setAlert({
+                    status: true,
+                    type: 'error',
+                    message: err,
+                });
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
     const onCLickToolbarAction = action => {
         if (action.value === CActionType.insert.value && onAdd) onAdd();
+    };
+
+    const onClickRowAction = data => {
+        if (data.action.value === CActionType.delete.value) {
+            setSelectedRow(data.row);
+            setOpenConfirmDialog(true);
+        }
     };
 
     const onConfirm = confirm => {
@@ -115,6 +159,7 @@ const ClassicView = props => {
                 enableSorting={true}
                 onChangePage={setPage}
                 onClickToolbarAction={onCLickToolbarAction}
+                onClickRowAction={onClickRowAction}
                 onFilter={setFilter}
                 onSort={setSort}
                 pageIndex={0}
@@ -123,8 +168,8 @@ const ClassicView = props => {
             />
             <Confirm
                 open={openConfirmDialog}
-                title="Delete Module"
-                text="Are you sure you want to delete this module ?"
+                title="Delete Data"
+                text="Are you sure you want to delete this data ?"
                 confirmButton="Delete"
                 cancelButton="Cancel"
                 onConfirm={onConfirm}
