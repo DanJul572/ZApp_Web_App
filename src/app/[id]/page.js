@@ -28,7 +28,7 @@ const Page = props => {
             .post('/general/detail', body)
             .then(res => {
                 if (res) {
-                    const content = JSON.parse(res.content);
+                    const content = res.content;
                     setContent(content);
                 } else {
                     setAlert({

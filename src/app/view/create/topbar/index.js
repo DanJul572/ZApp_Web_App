@@ -14,12 +14,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import grey from '@mui/material/colors/grey';
-
+import styled from '@mui/material/styles/styled';
 import useTheme from '@mui/material/styles/useTheme';
 
-import styled from '@mui/material/styles/styled';
-
 import Number from '@/component/input/Number';
+
+import CModuleID from '@/constant/CModuleID';
+
 import request from '@/helper/request';
 
 const VisuallyHiddenInput = styled('input')({
@@ -84,11 +85,14 @@ const TopBar = props => {
         setLoading(true);
 
         const body = {
-            moduleId: moduleId,
-            content: JSON.stringify(content),
+            moduleId: CModuleID.views,
+            data: {
+                moduleId: moduleId,
+                content: JSON.stringify(content),
+            },
         };
         request
-            .post('/view/create', body)
+            .post('/general/create', body)
             .then(res => {
                 setToast({
                     status: true,

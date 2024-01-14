@@ -1,5 +1,8 @@
 'use client';
 
+import {useAlert} from '@/context/AlertProvider';
+import {useLoading} from '@/context/LoadingProvider';
+import {useRouter} from 'next/navigation';
 import {useState} from 'react';
 
 import {v4 as uuidv4} from 'uuid';
@@ -18,13 +21,20 @@ import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUp from '@mui/icons-material/KeyboardArrowUp';
 import Save from '@mui/icons-material/Save';
 
-import Tree from '@/component/tree';
-
 import Dropdown from '@/component/input/Dropdown';
 import ShortText from '@/component/input/ShortText';
+import Tree from '@/component/tree';
+
 import CMenuList from '@/constant/CMenuList';
+import CModuleID from '@/constant/CModuleID';
+
+import request from '@/helper/request';
 
 const Page = () => {
+    const {push} = useRouter();
+    const {setLoading} = useLoading();
+    const {setAlert} = useAlert();
+
     const [label, setLabel] = useState(null);
     const [roleId, setRoleId] = useState(null);
     const [list, setList] = useState(CMenuList);
@@ -112,6 +122,35 @@ const Page = () => {
         setList(result);
     };
 
+    const onSave = () => {
+        const body = {
+            moduleId: CModuleID.menus,
+            data: {
+                label: label,
+                tree: JSON.stringify(list),
+                roleId: roleId,
+            },
+        };
+        request
+            .post('/general/create', body)
+            .then(res => {
+                setAlert({
+                    status: true,
+                    type: 'success',
+                    message: res,
+                });
+                push('/menu');
+            })
+            .catch(err => {
+                setAlert({
+                    status: true,
+                    type: 'error',
+                    message: err,
+                });
+            })
+            .finally(() => setLoading(false));
+    };
+
     return (
         <Box>
             <Box gap={2} display="flex" flexDirection="column" marginBottom={2}>
@@ -143,7 +182,12 @@ const Page = () => {
                         </Tooltip>
                     </Box>
                     <Box display="flex" gap={1} justifyContent="flex-end">
-                        <Button size="small" color="success" startIcon={<Save fontSize="small" />} variant="outlined">
+                        <Button
+                            size="small"
+                            color="success"
+                            startIcon={<Save fontSize="small" />}
+                            variant="outlined"
+                            onClick={onSave}>
                             <Typography>Save</Typography>
                         </Button>
                     </Box>
