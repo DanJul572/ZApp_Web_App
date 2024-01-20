@@ -1,9 +1,9 @@
 'use client';
 
+import {useEffect, useState} from 'react';
+import {useRouter, useSearchParams} from 'next/navigation';
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
-import {useRouter} from 'next/navigation';
-import {useState} from 'react';
 
 import {v4 as uuidv4} from 'uuid';
 
@@ -25,23 +25,24 @@ import Dropdown from '@/component/input/Dropdown';
 import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';
 
-import CMenuList from '@/constant/CMenuList';
 import CModuleID from '@/constant/CModuleID';
 
 import request from '@/helper/request';
 
 const Page = () => {
     const {push} = useRouter();
+    const searchParams = useSearchParams();
     const {setLoading} = useLoading();
     const {setAlert} = useAlert();
 
     const [label, setLabel] = useState(null);
     const [roleId, setRoleId] = useState(null);
-    const [list, setList] = useState(CMenuList);
+    const [list, setList] = useState([]);
     const [activeMenuId, setActiveMenuId] = useState(null);
     const [activeMenuLabel, setActiveMenuLabel] = useState(null);
     const [activeMenuUrl, setActiveMenuUrl] = useState(null);
 
+    const id = searchParams.get('id');
     const actionType = {
         add: 1,
         edit: 2,
@@ -91,6 +92,31 @@ const Page = () => {
         return menu;
     };
 
+    const onLoad = () => {
+        setLoading(true);
+
+        const body = {
+            moduleId: CModuleID.menus,
+            rowId: id,
+        };
+
+        request
+            .post('/general/detail', body)
+            .then(res => {
+                setLabel(res.label);
+                setRoleId(res.roleId);
+                setList(res.tree);
+            })
+            .catch(err => {
+                setAlert({
+                    status: true,
+                    type: 'error',
+                    message: err,
+                });
+            })
+            .finally(() => setLoading(false));
+    };
+
     const onClick = menu => {
         setActiveMenuId(menu.id);
         setActiveMenuLabel(menu.label);
@@ -123,6 +149,7 @@ const Page = () => {
     };
 
     const onSave = () => {
+        const url = id ? '/general/update' : '/general/create';
         const body = {
             moduleId: CModuleID.menus,
             data: {
@@ -131,8 +158,11 @@ const Page = () => {
                 roleId: roleId,
             },
         };
+
+        if (id) body.rowId = id;
+
         request
-            .post('/general/create', body)
+            .post(url, body)
             .then(res => {
                 setAlert({
                     status: true,
@@ -150,6 +180,10 @@ const Page = () => {
             })
             .finally(() => setLoading(false));
     };
+
+    useEffect(() => {
+        if (id) onLoad();
+    }, []);
 
     return (
         <Box>
