@@ -11,7 +11,7 @@ import CActionType from '@/constant/CActionType';
 import request from '@/helper/request';
 
 const ClassicView = props => {
-    const {moduleID, onAdd} = props;
+    const {moduleID, onAdd, onEdit} = props;
 
     const {setAlert} = useAlert();
     const {setLoading} = useLoading();
@@ -32,6 +32,9 @@ const ClassicView = props => {
         },
         {
             type: CActionType.delete.value,
+        },
+        {
+            type: CActionType.update.value,
         },
     ];
 
@@ -127,6 +130,8 @@ const ClassicView = props => {
         if (data.action.value === CActionType.delete.value) {
             setSelectedRow(data.row);
             setOpenConfirmDialog(true);
+        } else if (data.action.value === CActionType.update.value) {
+            onEdit(data.row[columnKey]);
         }
     };
 

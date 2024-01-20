@@ -22,7 +22,7 @@ const Page = props => {
         setLoading(true);
         const body = {
             moduleId: 1,
-            id: params.id,
+            rowId: params.id,
         };
         request
             .post('/general/detail', body)

@@ -29,7 +29,7 @@ const CMenuList = [
             {
                 id: '6',
                 label: 'Test',
-                url: '/6',
+                url: '/1',
             },
         ],
     },

@@ -1,6 +1,7 @@
 'use client';
 
 import {useState} from 'react';
+import {useSearchParams} from 'next/navigation';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
@@ -26,6 +27,7 @@ import CTheme from '@/constant/CTheme';
 
 const Page = () => {
     const theme = createTheme(CTheme);
+    const searchParams = useSearchParams();
 
     const navigationType = {
         content: 'content',
@@ -34,6 +36,7 @@ const Page = () => {
         page: 'page',
         module: 'module',
     };
+    const id = searchParams.get('id');
 
     const [content, setContent] = useState([]);
     const [selected, setSelected] = useState(null);
@@ -52,7 +55,7 @@ const Page = () => {
                 <ToastProvider>
                     <Loading />
                     <Toast />
-                    <TopBar content={content} setContent={setContent} />
+                    <TopBar content={content} setContent={setContent} id={id} />
                     <Grid container justifyContent="space-between" display="flex">
                         <Component content={content} setContent={setContent} setSelected={setSelected} />
                         <Grid item xs={8} marginX="17%">

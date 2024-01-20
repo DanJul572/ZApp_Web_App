@@ -1,5 +1,5 @@
 import {useRouter} from 'next/navigation';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {useLoading} from '@/context/LoadingProvider';
 import {useToast} from '@/context/ToastProvider';
@@ -36,14 +36,14 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 const TopBar = props => {
-    const {content, setContent} = props;
+    const {content, setContent, id} = props;
 
     const {push} = useRouter();
     const {setLoading} = useLoading();
     const {setToast} = useToast();
     const theme = useTheme();
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [moduleId, setModuleId] = useState(null);
 
     const onDownload = () => {
@@ -84,6 +84,7 @@ const TopBar = props => {
     const onSave = () => {
         setLoading(true);
 
+        const url = id ? '/general/update' : '/general/create';
         const body = {
             moduleId: CModuleID.views,
             data: {
@@ -91,8 +92,11 @@ const TopBar = props => {
                 content: JSON.stringify(content),
             },
         };
+
+        if (id) body.rowId = id;
+
         request
-            .post('/general/create', body)
+            .post(url, body)
             .then(res => {
                 setToast({
                     status: true,
@@ -110,9 +114,39 @@ const TopBar = props => {
             .finally(() => setLoading(false));
     };
 
-    const onApply = () => {
-        setOpen(false);
+    const onLoad = () => {
+        setLoading(true);
+
+        const body = {
+            moduleId: CModuleID.views,
+            rowId: id,
+        };
+
+        request
+            .post('/general/detail', body)
+            .then(res => {
+                setContent(res.content);
+            })
+            .catch(err => {
+                setToast({
+                    status: true,
+                    type: 'error',
+                    message: err,
+                });
+            })
+            .finally(() => setLoading(false));
     };
+
+    const onApply = () => setOpen(false);
+
+    useEffect(() => {
+        if (!id) {
+            setOpen(true);
+        } else {
+            setModuleId(id);
+            onLoad();
+        }
+    }, []);
 
     return (
         <Box>
