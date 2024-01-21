@@ -51,6 +51,10 @@ const CInputType = {
         value: 13,
         label: 'Date Time',
     },
+    password: {
+        value: 14,
+        label: 'Password',
+    },
 };
 
 export default CInputType;

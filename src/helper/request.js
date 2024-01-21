@@ -12,11 +12,23 @@ const get = (url, params) => {
 };
 
 const post = (url, body) => {
+    const headers = {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+    };
+
+    const token = localStorage.getItem('token');
+    if (token) {
+        headers.Authorization = token;
+    }
+
     return new Promise((resolve, reject) => {
         url = process.env.apiUrl + url;
 
         axios
-            .post(url, body)
+            .post(url, body, {
+                headers: headers,
+            })
             .then(res => resolve(res.data))
             .catch(error => reject(error.response ? error.response.data : error.message));
     });
