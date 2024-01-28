@@ -5,6 +5,7 @@ import 'react-querybuilder/dist/query-builder.css';
 
 import {AlertProvider} from '@/context/AlertProvider';
 import {BuilderProvider} from '@/context/BuilderProvider';
+import {ToastProvider} from '@/context/ToastProvider';
 import ErrorProvider from '@/context/ErrorProvider';
 import {LoadingProvider} from '@/context/LoadingProvider';
 
@@ -25,7 +26,9 @@ export default function RootLayout({children}) {
                 <ErrorProvider>
                     <LoadingProvider>
                         <AlertProvider>
-                            <BuilderProvider>{children}</BuilderProvider>
+                            <BuilderProvider>
+                                <ToastProvider>{children}</ToastProvider>
+                            </BuilderProvider>
                         </AlertProvider>
                     </LoadingProvider>
                 </ErrorProvider>

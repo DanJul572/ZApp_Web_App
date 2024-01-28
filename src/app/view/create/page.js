@@ -3,14 +3,7 @@
 import {useState} from 'react';
 import {useSearchParams} from 'next/navigation';
 
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-
-import createTheme from '@mui/material/styles/createTheme';
-import ThemeProvider from '@mui/material/styles/ThemeProvider';
-
-import {LoadingProvider} from '@/context/LoadingProvider';
-import {ToastProvider} from '@/context/ToastProvider';
 
 import Component from './component';
 import Content from './content';
@@ -20,13 +13,9 @@ import Navigation from './navigation';
 import Properties from './properties';
 import TopBar from './topbar';
 
-import Loading from '@/component/loading';
-import Toast from '@/component/toast';
-
-import CTheme from '@/constant/CTheme';
+import Empty from '@/layout/Empty';
 
 const Page = () => {
-    const theme = createTheme(CTheme);
     const searchParams = useSearchParams();
 
     const navigationType = {
@@ -50,35 +39,28 @@ const Page = () => {
     };
 
     return (
-        <ThemeProvider theme={theme}>
-            <LoadingProvider>
-                <ToastProvider>
-                    <Loading />
-                    <Toast />
-                    <TopBar content={content} setContent={setContent} id={id} />
-                    <Grid container justifyContent="space-between" display="flex">
-                        <Component content={content} setContent={setContent} setSelected={setSelected} />
-                        <Grid item xs={8} marginX="17%">
-                            <Navigation
-                                activeNavigation={activeNavigation}
-                                navigationType={navigationType}
-                                setActiveNavigation={setActiveNavigation}
-                            />
-                            {activeContent()}
-                        </Grid>
-                        <Properties
-                            activeNavigation={activeNavigation}
-                            content={content}
-                            navigationType={navigationType}
-                            selected={selected}
-                            setContent={setContent}
-                            setSelected={setSelected}
-                        />
-                    </Grid>
-                </ToastProvider>
-            </LoadingProvider>
-            <CssBaseline />
-        </ThemeProvider>
+        <Empty>
+            <TopBar content={content} setContent={setContent} id={id} />
+            <Grid container justifyContent="space-between" display="flex">
+                <Component content={content} setContent={setContent} setSelected={setSelected} />
+                <Grid item xs={8} marginX="17%">
+                    <Navigation
+                        activeNavigation={activeNavigation}
+                        navigationType={navigationType}
+                        setActiveNavigation={setActiveNavigation}
+                    />
+                    {activeContent()}
+                </Grid>
+                <Properties
+                    activeNavigation={activeNavigation}
+                    content={content}
+                    navigationType={navigationType}
+                    selected={selected}
+                    setContent={setContent}
+                    setSelected={setSelected}
+                />
+            </Grid>
+        </Empty>
     );
 };
 

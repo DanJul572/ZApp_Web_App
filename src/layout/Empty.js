@@ -4,23 +4,26 @@ import CssBaseline from '@mui/material/CssBaseline';
 import createTheme from '@mui/material/styles/createTheme';
 
 import {LoadingProvider} from '@/context/LoadingProvider';
+import {ToastProvider} from '@/context/ToastProvider';
 
 import Loading from '@/component/loading';
+import Toast from '@/component/toast';
 
 import CTheme from '@/constant/CTheme';
 
-const Empty = props => {
+const Empty = ({children}) => {
     const theme = createTheme(CTheme);
-
-    const {children} = props;
 
     return (
         <ThemeProvider theme={theme}>
-            <LoadingProvider>
-                <Loading />
-                {children}
-            </LoadingProvider>
             <CssBaseline />
+            <LoadingProvider>
+                <ToastProvider>
+                    <Loading />
+                    <Toast />
+                    {children}
+                </ToastProvider>
+            </LoadingProvider>
         </ThemeProvider>
     );
 };

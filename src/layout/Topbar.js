@@ -17,7 +17,7 @@ const Topbar = () => {
     };
 
     return (
-        <Box display="flex" justifyContent="space-between" alignItems="center" padding={1}>
+        <Box display="flex" justifyContent="space-between" alignItems="center" padding={2}>
             <Typography variant="h6" noWrap component="div">
                 ZApp
             </Typography>
