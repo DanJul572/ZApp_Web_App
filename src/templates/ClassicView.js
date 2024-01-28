@@ -8,9 +8,11 @@ import Confirm from '@/component/dialog/Confirm';
 import Table from '@/component/table';
 
 import CActionType from '@/constant/CActionType';
-import request from '@/helper/request';
+import Request from '@/helper/request';
 
 const ClassicView = props => {
+    const {post} = Request();
+
     const {moduleID, onAdd, onEdit} = props;
 
     const {setAlert} = useAlert();
@@ -45,8 +47,7 @@ const ClassicView = props => {
             id: moduleID,
         };
 
-        request
-            .post('/general/columns', body)
+        post('/general/columns', body)
             .then(res => {
                 const columnKey = res.find(column => column.identity);
                 setColumnKey(columnKey.accessorKey);
@@ -74,8 +75,7 @@ const ClassicView = props => {
             sort: sort,
         };
 
-        request
-            .post('/general/rows', body)
+        post('/general/rows', body)
             .then(res => {
                 setRows(res.rows);
                 setRowCount(res.count);
@@ -100,8 +100,7 @@ const ClassicView = props => {
             id: selectedRow[columnKey],
         };
 
-        request
-            .post('/general/delete', body)
+        post('/general/delete', body)
             .then(res => {
                 setAlert({
                     status: true,

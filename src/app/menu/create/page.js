@@ -27,9 +27,11 @@ import Tree from '@/component/tree';
 
 import CModuleID from '@/constant/CModuleID';
 
-import request from '@/helper/request';
+import Request from '@/helper/request';
 
 const Page = () => {
+    const {post} = Request();
+
     const {push} = useRouter();
     const searchParams = useSearchParams();
     const {setLoading} = useLoading();
@@ -100,8 +102,7 @@ const Page = () => {
             rowId: id,
         };
 
-        request
-            .post('/general/detail', body)
+        post('/general/detail', body)
             .then(res => {
                 setLabel(res.label);
                 setRoleId(res.roleId);
@@ -161,8 +162,7 @@ const Page = () => {
 
         if (id) body.rowId = id;
 
-        request
-            .post(url, body)
+        post(url, body)
             .then(res => {
                 setAlert({
                     status: true,

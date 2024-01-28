@@ -9,10 +9,12 @@ import Typography from '@mui/material/Typography';
 import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
-import request from '@/helper/request';
+import Request from '@/helper/request';
 
 const Dropdown = props => {
     const {label, onChange, options, value, rules, group, name, disabled, id} = props;
+
+    const {post} = Request();
 
     const {setError, clearError} = useContext(ErrorContext);
     const error = validator(rules, value ? value.toString() : '');
@@ -21,7 +23,7 @@ const Dropdown = props => {
     const [newOptions, setNewOptions] = useState([]);
 
     const getOptions = () => {
-        request.post('/general/options', {id: id}).then(res => {
+        post('/general/options', {id: id}).then(res => {
             setNewOptions(res);
         });
     };

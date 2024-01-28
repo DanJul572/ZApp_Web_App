@@ -21,7 +21,7 @@ import Number from '@/component/input/Number';
 
 import CModuleID from '@/constant/CModuleID';
 
-import request from '@/helper/request';
+import Request from '@/helper/request';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -37,6 +37,8 @@ const VisuallyHiddenInput = styled('input')({
 
 const TopBar = props => {
     const {content, setContent, id} = props;
+
+    const {post} = Request();
 
     const {push} = useRouter();
     const {setLoading} = useLoading();
@@ -95,8 +97,7 @@ const TopBar = props => {
 
         if (id) body.rowId = id;
 
-        request
-            .post(url, body)
+        post(url, body)
             .then(res => {
                 setToast({
                     status: true,
@@ -122,8 +123,7 @@ const TopBar = props => {
             rowId: id,
         };
 
-        request
-            .post('/general/detail', body)
+        post('/general/detail', body)
             .then(res => {
                 setContent(res.content);
             })

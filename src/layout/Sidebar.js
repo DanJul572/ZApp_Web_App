@@ -6,11 +6,13 @@ import grey from '@mui/material/colors/grey';
 
 import {getCookie, setCookie} from 'cookies-next';
 
-import request from '@/helper/request';
+import Request from '@/helper/request';
 
 import Tree from '@/component/tree';
 
 const Sidebar = () => {
+    const {get} = Request();
+
     const {push} = useRouter();
 
     const [list, setList] = useState([]);
@@ -18,7 +20,7 @@ const Sidebar = () => {
     const onClick = menu => push(menu.url);
 
     const onLoad = () => {
-        request.get('/general/menu').then(res => {
+        get('/general/menu').then(res => {
             setList(res.tree);
             setCookie(res.tree);
         });

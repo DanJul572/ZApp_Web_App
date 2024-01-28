@@ -18,12 +18,13 @@ import grey from '@mui/material/colors/grey';
 import Password from '@/component/input/Password';
 import ShortText from '@/component/input/ShortText';
 
-import request from '@/helper/request';
+import Request from '@/helper/request';
 
 import CTheme from '@/constant/CTheme';
 
 const Page = () => {
     const theme = createTheme(CTheme);
+    const {post} = Request();
 
     const {push} = useRouter();
     const {setLoading} = useLoading();
@@ -39,8 +40,8 @@ const Page = () => {
             email: email,
             password: password,
         };
-        request
-            .post('/auth/login', body, false)
+
+        post('/auth/login', body, false)
             .then(res => {
                 setCookie('token', res.accessToken);
                 push('/module');

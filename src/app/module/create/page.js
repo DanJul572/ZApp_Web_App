@@ -12,11 +12,12 @@ import ModuleForm from './ModuleForm';
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
 
-import request from '@/helper/request';
+import Request from '@/helper/request';
 
 const Page = () => {
-    const {back, push} = useRouter();
+    const {post} = Request();
 
+    const {back, push} = useRouter();
     const {setLoading} = useLoading();
     const {setAlert} = useAlert();
 
@@ -44,8 +45,7 @@ const Page = () => {
             fields: fields,
         };
 
-        request
-            .post('/module/create', data)
+        post('/module/create', data)
             .then(res => {
                 setAlert({
                     status: true,

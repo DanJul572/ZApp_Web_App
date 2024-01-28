@@ -7,14 +7,15 @@ import {useLoading} from '@/context/LoadingProvider';
 
 import Interpreter from '@/interpreter';
 import Main from '@/layout/Main';
-
-import request from '@/helper/request';
+import Request from '@/helper/request';
 
 const Page = props => {
     const {params} = props;
 
     const {setLoading} = useLoading();
     const {setAlert} = useAlert();
+
+    const {post} = Request();
 
     const [content, setContent] = useState(null);
 
@@ -24,8 +25,7 @@ const Page = props => {
             moduleId: 1,
             rowId: params.id,
         };
-        request
-            .post('/general/detail', body)
+        post('/general/detail', body)
             .then(res => {
                 if (res) {
                     const content = res.content;
