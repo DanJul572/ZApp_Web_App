@@ -12,6 +12,11 @@ const Request = () => {
 
     const {push} = useRouter();
 
+    const forceRedirect = () => {
+        auth.logout();
+        push('/login');
+    };
+
     const get = (url, params, withAuth = true) => {
         if (withAuth) {
             const token = getCookie('token');
@@ -32,8 +37,7 @@ const Request = () => {
                 .catch(error => {
                     const message = error.response ? error.response.data : error.message;
                     if (withAuth && error.response.status === 401) {
-                        auth.logout();
-                        push('/login');
+                        forceRedirect();
                         return;
                     }
                     reject(message);
@@ -60,8 +64,7 @@ const Request = () => {
                 .catch(error => {
                     const message = error.response ? error.response.data : error.message;
                     if (withAuth && error.response.status === 401) {
-                        auth.logout();
-                        push('/login');
+                        forceRedirect();
                         return;
                     }
                     reject(message);

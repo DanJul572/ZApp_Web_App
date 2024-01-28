@@ -1,5 +1,8 @@
 import {useRouter} from 'next/navigation';
 
+import {useToast} from '@/context/ToastProvider';
+import {useLoading} from '@/context/LoadingProvider';
+
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -7,13 +10,31 @@ import Typography from '@mui/material/Typography';
 import Logout from '@mui/icons-material/Logout';
 
 import auth from '@/helper/auth';
+import Request from '@/helper/request';
 
 const Topbar = () => {
+    const {post} = Request();
+
     const {push} = useRouter();
+    const {setToast} = useToast();
+    const {setLoading} = useLoading();
 
     const logout = () => {
-        auth.logout();
-        push('/login');
+        setLoading(true);
+
+        post('/auth/logout')
+            .then(() => {
+                auth.logout();
+                push('/login');
+            })
+            .catch(err => {
+                setToast({
+                    status: true,
+                    message: err,
+                    type: 'error',
+                });
+            })
+            .finally(() => setLoading(false));
     };
 
     return (

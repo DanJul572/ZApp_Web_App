@@ -11,6 +11,7 @@ import createTheme from '@mui/material/styles/createTheme';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 
 import Loading from '@/component/loading';
+import Toast from '@/component/toast';
 
 import CTheme from '@/constant/CTheme';
 
@@ -23,6 +24,7 @@ export default function Main({children}) {
     return (
         <ThemeProvider theme={theme}>
             <Loading />
+            <Toast />
             <Box sx={{display: 'flex'}}>
                 <CssBaseline />
                 <AppBar

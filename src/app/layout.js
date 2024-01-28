@@ -26,9 +26,9 @@ export default function RootLayout({children}) {
                 <ErrorProvider>
                     <LoadingProvider>
                         <AlertProvider>
-                            <BuilderProvider>
-                                <ToastProvider>{children}</ToastProvider>
-                            </BuilderProvider>
+                            <ToastProvider>
+                                <BuilderProvider>{children}</BuilderProvider>
+                            </ToastProvider>
                         </AlertProvider>
                     </LoadingProvider>
                 </ErrorProvider>
