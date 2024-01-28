@@ -4,11 +4,11 @@ import {useRouter} from 'next/navigation';
 import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
 
-import Tree from '@/component/tree';
+import {getCookie, setCookie} from 'cookies-next';
 
 import request from '@/helper/request';
 
-import CModuleID from '@/constant/CModuleID';
+import Tree from '@/component/tree';
 
 const Sidebar = () => {
     const {push} = useRouter();
@@ -18,19 +18,14 @@ const Sidebar = () => {
     const onClick = menu => push(menu.url);
 
     const onLoad = () => {
-        const body = {
-            moduleId: CModuleID.menus,
-            rowId: 1,
-        };
-
-        request.post('/general/detail', body).then(res => {
+        request.get('/general/menu').then(res => {
             setList(res.tree);
-            localStorage.setItem('tree', JSON.stringify(res.tree));
+            setCookie(res.tree);
         });
     };
 
     useEffect(() => {
-        const tree = JSON.parse(localStorage.getItem('tree'));
+        const tree = getCookie('tree');
         if (!tree) onLoad();
         else setList(tree);
     }, []);

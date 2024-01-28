@@ -10,15 +10,18 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@babel/runtime": "^7.23.9",
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
         "@mui/icons-material": "^5.14.16",
         "@mui/material": "^5.14.18",
+        "@mui/system": "^5.15.6",
         "@mui/x-charts": "^6.18.2",
         "@mui/x-date-pickers": "^6.18.1",
         "@mui/x-tree-view": "^6.17.0",
         "@uiw/react-textarea-code-editor": "^2.1.9",
         "axios": "^1.6.2",
+        "cookies-next": "^4.1.1",
         "dayjs": "^1.11.10",
         "material-react-table": "^2.0.4",
         "mui-file-input": "^3.0.2",
@@ -28,6 +31,7 @@
         "react-querybuilder": "^6.5.4",
         "suneditor": "^2.45.1",
         "suneditor-react": "^3.6.1",
+        "typescript": "^5.3.3",
         "uuid": "^9.0.1"
     },
     "devDependencies": {

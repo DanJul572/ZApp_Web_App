@@ -9,6 +9,7 @@
         "no-unused-vars": "warn",
         "object-curly-spacing": "warn",
         "react-hooks/exhaustive-deps": "off",
+        "react/no-unescaped-entities": "off",
         "semi": "warn"
     }
 }

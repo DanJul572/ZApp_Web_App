@@ -1,25 +1,38 @@
 import axios from 'axios';
+import {getCookie} from 'cookies-next';
 
-const get = (url, params) => {
+const headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+};
+
+const get = (url, params, withAuth = true) => {
+    if (withAuth) {
+        const token = getCookie('token');
+        if (token) {
+            headers.Authorization = token;
+        }
+    }
+
     return new Promise((resolve, reject) => {
         url = process.env.apiUrl + url;
-
+        const config = {
+            params: params,
+            headers: headers,
+        };
         axios
-            .get(url, {params})
+            .get(url, config)
             .then(res => resolve(res.data))
             .catch(error => reject(error.response ? error.response.data : error.message));
     });
 };
 
-const post = (url, body) => {
-    const headers = {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-    };
-
-    const token = localStorage.getItem('token');
-    if (token) {
-        headers.Authorization = token;
+const post = (url, body, withAuth = true) => {
+    if (withAuth) {
+        const token = getCookie('token');
+        if (token) {
+            headers.Authorization = token;
+        }
     }
 
     return new Promise((resolve, reject) => {

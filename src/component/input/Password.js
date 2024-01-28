@@ -36,7 +36,7 @@ const Password = props => {
     }, [value]);
 
     return (
-        <FormControl variant="outlined">
+        <FormControl variant="outlined" fullWidth>
             <Typography fontSize={12}>{label}</Typography>
             <OutlinedInput
                 disabled={disabled}
