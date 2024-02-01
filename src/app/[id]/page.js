@@ -9,6 +9,8 @@ import Interpreter from '@/interpreter';
 import Main from '@/layout/Main';
 import Request from '@/helper/request';
 
+import CModuleID from '@/constant/CModuleID';
+
 const Page = props => {
     const {params} = props;
 
@@ -22,7 +24,7 @@ const Page = props => {
     const getContent = () => {
         setLoading(true);
         const body = {
-            moduleId: 1,
+            moduleId: CModuleID.views,
             rowId: params.id,
         };
         post('/general/detail', body)

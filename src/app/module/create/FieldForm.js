@@ -244,7 +244,7 @@ const FieldForm = props => {
         return (
             <Box>
                 <Toggle
-                    label="is Identity"
+                    label="Is Identity"
                     value={fieldSettings.identity}
                     onChange={value => changeSettingValue('identity', value)}
                 />
