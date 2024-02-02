@@ -4,7 +4,9 @@ import Button from '@mui/material/Button';
 import CActionType from '@/constant/CActionType';
 
 const ToolbarAction = props => {
-    const {onClickToolbarAction, toolbarCustomAction, isSupportAddAction} = props;
+    const {action, onClickToolbarAction, toolbarCustomAction, isSupportAddAction} = props;
+
+    const insertAction = action.find(action => action.type === CActionType.insert.value);
 
     return (
         <Box
@@ -15,19 +17,12 @@ const ToolbarAction = props => {
                 flexWrap: 'wrap',
             }}>
             {isSupportAddAction && (
-                <Button
-                    onClick={() => onClickToolbarAction(CActionType.insert)}
-                    variant="contained"
-                    size="small">
+                <Button onClick={() => onClickToolbarAction(insertAction)} variant="contained" size="small">
                     Create New Data
                 </Button>
             )}
             {toolbarCustomAction.map((action, index) => (
-                <Button
-                    key={index}
-                    onClick={() => onClickToolbarAction(action)}
-                    variant="contained"
-                    size="small">
+                <Button key={index} onClick={() => onClickToolbarAction(action)} variant="contained" size="small">
                     {action.label}
                 </Button>
             ))}

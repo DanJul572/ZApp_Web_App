@@ -1,18 +1,26 @@
 'use client';
 
-import {useRouter} from 'next/navigation';
 import ClassicView from '@/templates/ClassicView';
 
 import CModuleID from '@/constant/CModuleID';
+import CActionType from '@/constant/CActionType';
 
 const Page = () => {
-    const {push} = useRouter();
+    const actions = [
+        {
+            type: CActionType.update.value,
+            path: '/menu/create',
+        },
+        {
+            type: CActionType.insert.value,
+            path: '/menu/create',
+        },
+        {
+            type: CActionType.delete.value,
+        },
+    ];
 
-    const onAdd = () => push('/menu/create');
-
-    const onEdit = id => push(`/menu/create?id=${id}`);
-
-    return <ClassicView moduleID={CModuleID.menus} onAdd={onAdd} onEdit={onEdit} />;
+    return <ClassicView moduleID={CModuleID.menus} actions={actions} />;
 };
 
 export default Page;

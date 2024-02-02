@@ -1,143 +1,31 @@
 'use client';
 
-import {useEffect, useState} from 'react';
-import {useAlert} from '@/context/AlertProvider';
-import {useLoading} from '@/context/LoadingProvider';
+import {useEffect} from 'react';
 
 import Confirm from '@/component/dialog/Confirm';
 import Table from '@/component/table';
-
-import CActionType from '@/constant/CActionType';
-import Request from '@/helper/request';
+import Query from '@/hooks/query';
 
 const ClassicView = props => {
-    const {post} = Request();
-
-    const {moduleID, onAdd, onEdit} = props;
-
-    const {setAlert} = useAlert();
-    const {setLoading} = useLoading();
-
-    const [columns, setColumns] = useState([]);
-    const [page, setPage] = useState(1);
-    const [filter, setFilter] = useState([]);
-    const [sort, setSort] = useState([]);
-    const [rows, setRows] = useState([]);
-    const [rowCount, setRowCount] = useState(0);
-    const [columnKey, setColumnKey] = useState(null);
-    const [selectedRow, setSelectedRow] = useState(null);
-    const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
-
-    const actionList = [
-        {
-            type: CActionType.insert.value,
-        },
-        {
-            type: CActionType.delete.value,
-        },
-        {
-            type: CActionType.update.value,
-        },
-    ];
-
-    const getColumns = () => {
-        setLoading(true);
-
-        const body = {
-            id: moduleID,
-        };
-
-        post('/general/columns', body)
-            .then(res => {
-                const columnKey = res.find(column => column.identity);
-                setColumnKey(columnKey.accessorKey);
-                setColumns(res);
-            })
-            .catch(err => {
-                setAlert({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    };
-
-    const getRows = () => {
-        setLoading(true);
-
-        const body = {
-            id: moduleID,
-            page: page,
-            filter: filter,
-            sort: sort,
-        };
-
-        post('/general/rows', body)
-            .then(res => {
-                setRows(res.rows);
-                setRowCount(res.count);
-            })
-            .catch(err => {
-                setAlert({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    };
-
-    const onDelete = () => {
-        setLoading(true);
-
-        const body = {
-            moduleId: moduleID,
-            id: selectedRow[columnKey],
-        };
-
-        post('/general/delete', body)
-            .then(res => {
-                setAlert({
-                    status: true,
-                    type: 'success',
-                    message: res,
-                });
-                getRows();
-            })
-            .catch(err => {
-                setAlert({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    };
-
-    const onCLickToolbarAction = action => {
-        if (action.value === CActionType.insert.value && onAdd) onAdd();
-    };
-
-    const onClickRowAction = data => {
-        if (data.action.value === CActionType.delete.value) {
-            setSelectedRow(data.row);
-            setOpenConfirmDialog(true);
-        } else if (data.action.value === CActionType.update.value) {
-            onEdit(data.row[columnKey]);
-        }
-    };
-
-    const onConfirm = confirm => {
-        if (confirm) onDelete();
-        setOpenConfirmDialog(false);
-    };
+    const {
+        columns,
+        page,
+        filter,
+        sort,
+        getRows,
+        getColumns,
+        setAlert,
+        actions,
+        setPage,
+        onCLickToolbarAction,
+        onClickRowAction,
+        setFilter,
+        setSort,
+        rowCount,
+        rows,
+        openConfirmDialog,
+        onConfirm,
+    } = Query(props);
 
     useEffect(() => {
         if (columns && columns.length > 0) {
@@ -153,7 +41,7 @@ const ClassicView = props => {
     return (
         <>
             <Table
-                action={actionList}
+                action={actions}
                 columnKey={'id'}
                 columns={columns}
                 enableExport={true}

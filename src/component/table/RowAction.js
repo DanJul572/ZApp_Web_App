@@ -17,13 +17,17 @@ const RowAction = props => {
         setRowClicked(row.original);
     };
 
+    const findAction = type => {
+        return action.find(item => item.type === CActionType[type].value);
+    };
+
     return (
         <Box sx={{display: 'flex', alignItems: 'center'}}>
-            {isSupportRowAction() && action.find(item => item.type === CActionType.update.value) && (
+            {isSupportRowAction() && findAction('update') && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            action: CActionType.update,
+                            action: findAction('update'),
                             row: row.original,
                         })
                     }
@@ -31,11 +35,11 @@ const RowAction = props => {
                     <Edit fontSize="small" />
                 </IconButton>
             )}
-            {isSupportRowAction() && action.find(item => item.type === CActionType.delete.value) && (
+            {isSupportRowAction() && findAction('delete') && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            action: CActionType.delete,
+                            action: findAction('delete'),
                             row: row.original,
                         })
                     }
@@ -43,11 +47,11 @@ const RowAction = props => {
                     <Delete fontSize="small" />
                 </IconButton>
             )}
-            {isSupportRowAction() && action.find(item => item.type === CActionType.detail.value) && (
+            {isSupportRowAction() && findAction('detail') && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
-                            action: CActionType.detail,
+                            action: findAction('detail'),
                             row: row.original,
                         })
                     }

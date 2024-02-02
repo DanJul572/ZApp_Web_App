@@ -55,7 +55,7 @@ const Function = () => {
     };
 
     const onClickRowAction = data => {
-        if (data.action.value === CActionType.delete.value) {
+        if (data.action.type === CActionType.delete.value) {
             setRowSelected(data.row);
             setOpenConfirmDialog(true);
         }

@@ -116,6 +116,7 @@ const Table = props => {
         if (!toolbarCustomAction.length && !isSupportAddAction()) return;
         return (
             <ToolbarAction
+                action={action}
                 onClickToolbarAction={onClickToolbarAction}
                 toolbarCustomAction={toolbarCustomAction}
                 isSupportAddAction={isSupportAddAction()}

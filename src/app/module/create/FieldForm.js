@@ -153,7 +153,7 @@ const FieldForm = props => {
     };
 
     const onClickRowAction = data => {
-        if (data.action.value === CActionType.delete.value) {
+        if (data.action.type === CActionType.delete.value) {
             setOpenConfirmDialog(true);
             setRowSelected(data.row);
         }
