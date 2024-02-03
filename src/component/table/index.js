@@ -40,7 +40,6 @@ const Table = props => {
         onChangePage,
         onClickRowAction,
         onClickToolbarAction,
-        onDownload,
         onFilter,
         onSearch,
         onSelect,
@@ -103,15 +102,6 @@ const Table = props => {
         return action.find(item => item.type === CActionType.insert.value) ? true : false;
     };
 
-    const displayColumnDefOptions = () => {
-        if (!isSupportRowAction()) return false;
-        return {
-            'mrt-row-actions': {
-                size: 120,
-            },
-        };
-    };
-
     const toolbarAction = () => {
         if (!toolbarCustomAction.length && !isSupportAddAction()) return;
         return (
@@ -169,7 +159,7 @@ const Table = props => {
     const table = useMaterialReactTable({
         columns: newColumns,
         data: rows,
-        displayColumnDefOptions: displayColumnDefOptions(),
+        // displayColumnDefOptions: displayColumnDefOptions(),
         enableColumnActions: false,
         enableColumnFilters: enableFilter,
         enableColumnResizing: enableColumnResizing,
@@ -240,9 +230,10 @@ const Table = props => {
             )}
             {enableExport && (
                 <ExportDialog
+                    table={table}
+                    columns={columns}
                     openExportDialog={openExportDialog}
                     setOpenExportDialog={setOpenExportDialog}
-                    onDownload={onDownload}
                 />
             )}
             {rowCustomAction.length > 0 && (

@@ -25,6 +25,7 @@ const RowAction = props => {
         <Box sx={{display: 'flex', alignItems: 'center'}}>
             {isSupportRowAction() && findAction('update') && (
                 <IconButton
+                    color="success"
                     onClick={() =>
                         onClickRowAction({
                             action: findAction('update'),
@@ -37,6 +38,7 @@ const RowAction = props => {
             )}
             {isSupportRowAction() && findAction('delete') && (
                 <IconButton
+                    color="error"
                     onClick={() =>
                         onClickRowAction({
                             action: findAction('delete'),
@@ -49,6 +51,7 @@ const RowAction = props => {
             )}
             {isSupportRowAction() && findAction('detail') && (
                 <IconButton
+                    color="info"
                     onClick={() =>
                         onClickRowAction({
                             action: findAction('detail'),
@@ -60,7 +63,7 @@ const RowAction = props => {
                 </IconButton>
             )}
             {rowCustomAction.length > 0 && (
-                <IconButton onClick={onClickCustomAction} size="small">
+                <IconButton color="primary" onClick={onClickCustomAction} size="small">
                     <Description fontSize="small" />
                 </IconButton>
             )}

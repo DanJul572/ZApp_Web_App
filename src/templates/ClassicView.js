@@ -25,6 +25,7 @@ const ClassicView = props => {
                 action={actions}
                 columnKey={'id'}
                 columns={columns}
+                enableRowSelection={true}
                 enableExport={true}
                 enableHiding={true}
                 enablePagination={true}
