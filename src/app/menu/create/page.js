@@ -1,9 +1,9 @@
 'use client';
 
-import {useEffect, useState} from 'react';
-import {useRouter, useSearchParams} from 'next/navigation';
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
+import {useRouter, useSearchParams} from 'next/navigation';
+import {useEffect, useState} from 'react';
 
 import {v4 as uuidv4} from 'uuid';
 
@@ -15,10 +15,11 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import grey from '@mui/material/colors/grey';
 
-import Add from '@mui/icons-material/Add';
+import CreateNewFolder from '@mui/icons-material/CreateNewFolder';
 import Delete from '@mui/icons-material/Delete';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUp from '@mui/icons-material/KeyboardArrowUp';
+import NoteAdd from '@mui/icons-material/NoteAdd';
 import Save from '@mui/icons-material/Save';
 
 import Dropdown from '@/component/input/Dropdown';
@@ -51,6 +52,14 @@ const Page = () => {
         delete: 3,
         up: 4,
         down: 5,
+    };
+
+    const getNewMenu = () => {
+        return {
+            id: uuidv4(),
+            label: 'New Item',
+            url: '',
+        };
     };
 
     const changeMenuItem = (menu, type, itemParam = null) => {
@@ -129,12 +138,13 @@ const Page = () => {
         setList(result);
     };
 
+    const onAddRootMenu = () => {
+        const menu = getNewMenu();
+        setList([...list, menu]);
+    };
+
     const onAdd = () => {
-        const menu = {
-            id: uuidv4(),
-            label: 'New Item',
-            url: '',
-        };
+        const menu = getNewMenu();
         const result = changeMenuItem([...list], actionType.add, menu);
         setList(result);
     };
@@ -204,9 +214,14 @@ const Page = () => {
                                 <KeyboardArrowDown fontSize="small" />
                             </IconButton>
                         </Tooltip>
-                        <Tooltip arrow title="Add Folder">
+                        <Tooltip arrow title="Add Root Menu">
+                            <IconButton size="small" color="success" variant="outlined" onClick={onAddRootMenu}>
+                                <CreateNewFolder fontSize="small" />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip arrow title="Add Sub Menu">
                             <IconButton size="small" color="success" variant="outlined" onClick={onAdd}>
-                                <Add fontSize="small" />
+                                <NoteAdd fontSize="small" />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Delete">

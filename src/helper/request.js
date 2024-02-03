@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {useRouter} from 'next/navigation';
 import {getCookie} from 'cookies-next';
+import {useRouter} from 'next/navigation';
 
 import auth from './auth';
 
@@ -36,7 +36,8 @@ const Request = () => {
                 .then(res => resolve(res.data))
                 .catch(error => {
                     const message = error.response ? error.response.data : error.message;
-                    if (withAuth && error.response.status === 401) {
+                    const status = error.response.status;
+                    if (withAuth && (status === 401 || status === 403)) {
                         forceRedirect();
                         return;
                     }
@@ -63,7 +64,8 @@ const Request = () => {
                 .then(res => resolve(res.data))
                 .catch(error => {
                     const message = error.response ? error.response.data : error.message;
-                    if (withAuth && error.response.status === 401) {
+                    const status = error.response.status;
+                    if (withAuth && (status === 401 || status === 403)) {
                         forceRedirect();
                         return;
                     }
