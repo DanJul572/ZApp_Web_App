@@ -1,20 +1,12 @@
 'use client';
 
-import {useEffect} from 'react';
-
 import Confirm from '@/component/dialog/Confirm';
 import Table from '@/component/table';
-import Query from '@/hooks/query';
+import GeneralTable from '@/hooks/GeneralTable';
 
 const ClassicView = props => {
     const {
         columns,
-        page,
-        filter,
-        sort,
-        getRows,
-        getColumns,
-        setAlert,
         actions,
         setPage,
         onCLickToolbarAction,
@@ -25,18 +17,7 @@ const ClassicView = props => {
         rows,
         openConfirmDialog,
         onConfirm,
-    } = Query(props);
-
-    useEffect(() => {
-        if (columns && columns.length > 0) {
-            getRows();
-        }
-    }, [columns, page, filter, sort]);
-
-    useEffect(() => {
-        getColumns();
-        return () => setAlert(null);
-    }, []);
+    } = GeneralTable(props);
 
     return (
         <>

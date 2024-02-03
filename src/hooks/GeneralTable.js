@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
@@ -7,7 +7,7 @@ import Request from '@/helper/request';
 import CActionType from '@/constant/CActionType';
 import {useRouter} from 'next/navigation';
 
-const Query = props => {
+const GeneralTable = props => {
     const {moduleID, actions} = props;
 
     const {post} = Request();
@@ -125,14 +125,19 @@ const Query = props => {
         setOpenConfirmDialog(false);
     };
 
+    useEffect(() => {
+        if (columns && columns.length > 0) {
+            getRows();
+        }
+    }, [columns, page, filter, sort]);
+
+    useEffect(() => {
+        getColumns();
+        return () => setAlert(null);
+    }, []);
+
     return {
         columns,
-        page,
-        filter,
-        sort,
-        getRows,
-        getColumns,
-        setAlert,
         actions,
         setPage,
         onCLickToolbarAction,
@@ -146,4 +151,4 @@ const Query = props => {
     };
 };
 
-export default Query;
+export default GeneralTable;
