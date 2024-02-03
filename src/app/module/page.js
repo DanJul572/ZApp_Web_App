@@ -17,6 +17,7 @@ const Page = () => {
         },
         {
             type: CActionType.delete.value,
+            api: '/module/delete',
         },
     ];
 

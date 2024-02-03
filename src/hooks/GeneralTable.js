@@ -87,7 +87,10 @@ const GeneralTable = props => {
             id: selectedRow[columnKey],
         };
 
-        post('/general/delete', body)
+        const action = actions.find(action => action.type === CActionType.delete.value);
+        const url = action.api || '/general/delete';
+
+        post(url, body)
             .then(res => {
                 setAlert({
                     status: true,
