@@ -12,8 +12,8 @@ const GeneralTable = props => {
     const {moduleID, actions} = props;
 
     const {post} = Request();
-    const {push} = useRouter();
 
+    const {push} = useRouter();
     const {setAlert} = useAlert();
     const {setLoading} = useLoading();
 
@@ -117,7 +117,7 @@ const GeneralTable = props => {
             setSelectedRow(data.row);
             setOpenConfirmDialog(true);
         } else if (data.action.type === CActionType.update.value) {
-            push(`${data.action.path}?id=${data.row[columnKey]}`);
+            push(`${data.action.path}?${columnKey}=${data.row[columnKey]}`);
         }
     };
 
