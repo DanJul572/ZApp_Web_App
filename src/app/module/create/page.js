@@ -12,7 +12,7 @@ import ModuleForm from './ModuleForm';
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
 
-import Request from '@/helper/request';
+import Request from '@/hooks/Request';
 
 const Page = () => {
     const {post} = Request();

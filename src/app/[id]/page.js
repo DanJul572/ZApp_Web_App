@@ -7,7 +7,8 @@ import {useLoading} from '@/context/LoadingProvider';
 
 import Interpreter from '@/interpreter';
 import Main from '@/layout/Main';
-import Request from '@/helper/request';
+
+import Request from '@/hooks/Request';
 
 import CModuleID from '@/constant/CModuleID';
 

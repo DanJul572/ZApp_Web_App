@@ -21,7 +21,7 @@ import Number from '@/component/input/Number';
 
 import CModuleID from '@/constant/CModuleID';
 
-import Request from '@/helper/request';
+import Request from '@/hooks/Request';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',

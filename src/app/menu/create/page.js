@@ -28,7 +28,7 @@ import Tree from '@/component/tree';
 
 import CModuleID from '@/constant/CModuleID';
 
-import Request from '@/helper/request';
+import Request from '@/hooks/Request';
 
 const Page = () => {
     const {post} = Request();

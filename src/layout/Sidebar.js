@@ -6,7 +6,7 @@ import grey from '@mui/material/colors/grey';
 
 import {getCookie, setCookie} from 'cookies-next';
 
-import Request from '@/helper/request';
+import Request from '@/hooks/Request';
 
 import Tree from '@/component/tree';
 

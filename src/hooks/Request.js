@@ -2,7 +2,7 @@ import axios from 'axios';
 import {getCookie} from 'cookies-next';
 import {useRouter} from 'next/navigation';
 
-import auth from './auth';
+import auth from '../helper/auth';
 
 const Request = () => {
     const headers = {

@@ -1,11 +1,12 @@
+import {useRouter} from 'next/navigation';
 import {useEffect, useState} from 'react';
 
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
 
-import Request from '@/helper/request';
+import Request from '@/hooks/Request';
+
 import CActionType from '@/constant/CActionType';
-import {useRouter} from 'next/navigation';
 
 const GeneralTable = props => {
     const {moduleID, actions} = props;
