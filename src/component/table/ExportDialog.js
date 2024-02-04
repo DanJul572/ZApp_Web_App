@@ -12,7 +12,7 @@ import DialogContent from '@mui/material/DialogContent';
 import Dropdown from '@/component/input/Dropdown';
 
 const ExportDialog = props => {
-    const {columns, openExportDialog, setOpenExportDialog, table} = props;
+    const {openExportDialog, setOpenExportDialog, table} = props;
 
     const rowType = [
         {value: 'selected', label: 'Selected'},
@@ -33,17 +33,26 @@ const ExportDialog = props => {
     const [exportSelectionType, setExportSelectionType] = useState(null);
     const [exportExtentionType, setExportExtentionType] = useState(null);
 
+    const closeDialog = () => {
+        setExportSelectionType(null);
+        setExportExtentionType(null);
+        setOpenExportDialog(false);
+    };
+
     const exportAsPDF = rows => {
         const doc = new jsPDF();
         const tableData = rows.map(row => Object.values(row.original));
-        const tableHeaders = columns.map(c => c.header);
+        const tableHeaders = table
+            .getVisibleLeafColumns()
+            .filter(c => c.getCanHide())
+            .map(c => c.columnDef.header);
 
         autoTable(doc, {
             head: [tableHeaders],
             body: tableData,
         });
 
-        doc.save('mrt-pdf-example.pdf');
+        doc.save(`Data.pdf`);
     };
 
     const exportAsCSV = rows => {
@@ -68,7 +77,7 @@ const ExportDialog = props => {
             exportAsPDF(rows);
         }
 
-        setOpenExportDialog(false);
+        closeDialog();
     };
 
     return (
@@ -87,7 +96,6 @@ const ExportDialog = props => {
                     onChange={setExportSelectionType}
                     value={exportSelectionType}
                     size="small"
-                    rules="required"
                 />
                 <Dropdown
                     label="Extention"
@@ -95,11 +103,10 @@ const ExportDialog = props => {
                     onChange={setExportExtentionType}
                     value={exportExtentionType}
                     size="small"
-                    rules="required"
                 />
             </DialogContent>
             <DialogActions>
-                <Button size="small" onClick={() => setOpenExportDialog(false)}>
+                <Button size="small" onClick={closeDialog}>
                     Cancel
                 </Button>
                 <Button size="small" onClick={handleExportRows} variant="contained">
