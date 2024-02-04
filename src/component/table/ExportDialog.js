@@ -25,10 +25,18 @@ const ExportDialog = props => {
     ];
 
     const csvConfig = mkConfig({
+        filename: 'Data',
         fieldSeparator: ',',
         decimalSeparator: '.',
         useKeysAsHeaders: true,
     });
+
+    const tableHeaders = table
+        .getVisibleLeafColumns()
+        .filter(c => c.getCanHide())
+        .map(c => {
+            return {id: c.columnDef.id, header: c.columnDef.header};
+        });
 
     const [exportSelectionType, setExportSelectionType] = useState(null);
     const [exportExtentionType, setExportExtentionType] = useState(null);
@@ -42,13 +50,9 @@ const ExportDialog = props => {
     const exportAsPDF = rows => {
         const doc = new jsPDF();
         const tableData = rows.map(row => Object.values(row.original));
-        const tableHeaders = table
-            .getVisibleLeafColumns()
-            .filter(c => c.getCanHide())
-            .map(c => c.columnDef.header);
 
         autoTable(doc, {
-            head: [tableHeaders],
+            head: [tableHeaders.map(c => c.header)],
             body: tableData,
         });
 
@@ -56,7 +60,15 @@ const ExportDialog = props => {
     };
 
     const exportAsCSV = rows => {
-        const rowData = rows.map(row => row.original);
+        const rowData = rows.map(row => {
+            const updatedRow = {...row.original};
+            Object.keys(updatedRow).forEach(key => {
+                if (!tableHeaders.map(c => c.id).includes(key)) {
+                    delete updatedRow[key];
+                }
+            });
+            return updatedRow;
+        });
         const csv = generateCsv(csvConfig)(rowData);
         download(csvConfig)(csv);
     };
