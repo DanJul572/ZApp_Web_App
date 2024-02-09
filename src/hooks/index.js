@@ -1,6 +1,7 @@
 import Alert from './Alert';
 import GeneralQuery from './GeneralQuery';
 import Loader from './Loader';
+import Redirect from './Redirect';
 import Toaster from './Toaster';
 import Vars from './Vars';
 
@@ -9,6 +10,7 @@ const Hooks = () => {
         Alert: Alert(),
         GeneralQuery: GeneralQuery(),
         Loader: Loader(),
+        Redirect: Redirect(),
         Toaster: Toaster(),
         Vars: Vars(),
     };
