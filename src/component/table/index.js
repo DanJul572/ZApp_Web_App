@@ -5,6 +5,8 @@ import {MaterialReactTable, useMaterialReactTable} from 'material-react-table';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
+import dataDisplay from '@/helper/dataDisplay';
+
 import AdvanceFilter from './AdvanceFilter';
 import RowCustomActionDialog from './CustomActionDialog';
 import ExportDialog from './ExportDialog';
@@ -74,6 +76,7 @@ const Table = props => {
     const muiTablePaginationProps = {showRowsPerPage: false};
 
     const newColumns = columns.map(column => {
+        column.Cell = ({cell}) => rowDisplay(cell, column.type);
         if (column.footer) column.Footer = () => columnFooter(column.footer);
         return column;
     });
@@ -84,6 +87,11 @@ const Table = props => {
 
     const muiBottomToolbarProps = () => {
         if (!enablePagination && !onChangePage) return {style: {display: 'none'}};
+    };
+
+    const rowDisplay = (cell, type) => {
+        const value = cell.getValue();
+        return dataDisplay(type, value);
     };
 
     const isSupportRowAction = () => {
