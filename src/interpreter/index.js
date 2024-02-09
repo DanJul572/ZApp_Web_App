@@ -20,33 +20,6 @@ const Interpreter = props => {
 
     const {isBuilder, content, selected, setSelected} = props;
 
-    // eslint-disable-next-line no-unused-vars
-    const getValues = (data, type, vars) => {
-        if (!data || !type) return null;
-        try {
-            if (typeof data === 'object') {
-                if (!data.isBind) return data.value;
-                if (type === 'json') return data.value ? JSON.parse(data.value) : {};
-                return data.value ? eval(data.value) : null;
-            } else {
-                if (type === 'json') return data ? JSON.parse(data) : {};
-                return data ? eval(data) : null;
-            }
-        } catch (error) {
-            console.log(`Error : ${error.message}`);
-            return type === 'json' ? {} : null;
-        }
-    };
-
-    const runFunction = func => {
-        try {
-            eval(func);
-        } catch (error) {
-            console.log(`Error : ${error.message}`);
-            return;
-        }
-    };
-
     const Wraper = ({children, component}) => {
         if (!isBuilder) return <Box padding={1}>{children}</Box>;
 
@@ -77,9 +50,6 @@ const Interpreter = props => {
         let properties = component.properties;
         let parse = {};
 
-        parse.styles = getValues(properties.styles, 'json');
-        parse.label = getValues(properties.label, 'js');
-
         if (group === CComponentGroupType.container.value) {
             return (
                 <Wraper key={id} component={component}>
@@ -95,13 +65,13 @@ const Interpreter = props => {
         } else if (group === CComponentGroupType.fieldControl.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <FieldControl type={type} properties={properties} getValues={getValues} />
+                    <FieldControl type={type} properties={properties} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.visualElement.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <VisualElement type={type} properties={properties} getValues={getValues} />
+                    <VisualElement type={type} properties={properties} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.table.value) {
@@ -119,7 +89,7 @@ const Interpreter = props => {
         } else if (group === CComponentGroupType.button.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <Button type={type} properties={properties} runFunction={runFunction} getValues={getValues} />
+                    <Button type={type} properties={properties} />
                 </Wraper>
             );
         }

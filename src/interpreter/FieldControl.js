@@ -1,5 +1,3 @@
-import {useBuilder} from '@/context/BuilderProvider';
-
 import Checkbox from '@/component/input/Checkbox';
 import Date from '@/component/input/Date';
 import Datetime from '@/component/input/Datetime';
@@ -16,30 +14,39 @@ import Toggle from '@/component/input/Toggle';
 
 import CInputType from '@/constant/CInputType';
 
-const FieldControl = props => {
-    const {type, properties, getValues} = props;
+import Vars from '@/hooks/Vars';
+import Runner from '@/runner';
 
-    const {vars, setVars} = useBuilder();
+const FieldControl = props => {
+    const {type, properties} = props;
+
+    const {getValues} = Runner();
+    const {changeVar, get} = Vars();
 
     const disabled = !Boolean(properties.name);
-    const label = getValues(properties.label, 'js', vars);
+    const label = getValues(properties.label, 'js');
 
     const onChange = value => {
         if (properties.name) {
-            const newVars = {...vars};
-            newVars[properties.name] = value;
-            setVars(newVars);
+            changeVar(properties.name, value);
         }
     };
 
     const content = () => {
         if (type === CInputType.shortText.value)
-            return <ShortText value={vars[properties.name]} onChange={onChange} disabled={disabled} label={label || null} />;
+            return (
+                <ShortText
+                    value={get(properties.name) || null}
+                    onChange={onChange}
+                    disabled={disabled}
+                    label={label || null}
+                />
+            );
 
         if (type === CInputType.longText.value)
             return (
                 <LongText
-                    value={vars[properties.name]}
+                    value={get(properties.name) || null}
                     onChange={onChange}
                     disabled={disabled}
                     rows={4}
@@ -48,15 +55,19 @@ const FieldControl = props => {
             );
 
         if (type === CInputType.number.value)
-            return <Number value={vars[properties.name]} onChange={onChange} disabled={disabled} label={label || null} />;
+            return (
+                <Number value={get(properties.name) || null} onChange={onChange} disabled={disabled} label={label || null} />
+            );
 
         if (type === CInputType.toggle.value)
-            return <Toggle disabled={disabled} value={vars[properties.name]} onChange={onChange} label={label || null} />;
+            return (
+                <Toggle disabled={disabled} value={get(properties.name) || null} onChange={onChange} label={label || null} />
+            );
 
         if (type === CInputType.dropdown.value)
             return (
                 <Dropdown
-                    value={vars[properties.name]}
+                    value={get(properties.name) || null}
                     onChange={onChange}
                     options={[]}
                     disabled={disabled}
@@ -65,21 +76,34 @@ const FieldControl = props => {
             );
 
         if (type === CInputType.date.value)
-            return <Date value={vars[properties.name]} onChange={onChange} disabled={disabled} label={label || null} />;
+            return (
+                <Date value={get(properties.name) || null} onChange={onChange} disabled={disabled} label={label || null} />
+            );
 
         if (type === CInputType.time.value)
-            return <Time value={vars[properties.name]} onChange={onChange} disabled={disabled} label={label || null} />;
+            return (
+                <Time value={get(properties.name) || null} onChange={onChange} disabled={disabled} label={label || null} />
+            );
 
         if (type === CInputType.file.value)
-            return <File value={vars[properties.name]} onChange={onChange} disabled={disabled} label={label || null} />;
+            return (
+                <File value={get(properties.name) || null} onChange={onChange} disabled={disabled} label={label || null} />
+            );
 
         if (type === CInputType.richText.value)
-            return <RichText value={vars[properties.name]} onChange={onChange} disabled={disabled} label={label || null} />;
+            return (
+                <RichText
+                    value={get(properties.name) || null}
+                    onChange={onChange}
+                    disabled={disabled}
+                    label={label || null}
+                />
+            );
 
         if (type === CInputType.radio.value)
             return (
                 <Radio
-                    value={vars[properties.name]}
+                    value={get(properties.name) || null}
                     onChange={onChange}
                     disabled={disabled}
                     label={label || null}
@@ -94,7 +118,7 @@ const FieldControl = props => {
         if (type === CInputType.checkbox.value)
             return (
                 <Checkbox
-                    value={vars[properties.name]}
+                    value={get(properties.name) || null}
                     onChange={onChange}
                     disabled={disabled}
                     label={label || null}
@@ -107,7 +131,14 @@ const FieldControl = props => {
             );
 
         if (type === CInputType.datetime.value)
-            return <Datetime value={vars[properties.name]} onChange={onChange} disabled={disabled} label={label || null} />;
+            return (
+                <Datetime
+                    value={get(properties.name) || null}
+                    onChange={onChange}
+                    disabled={disabled}
+                    label={label || null}
+                />
+            );
     };
 
     return content();
