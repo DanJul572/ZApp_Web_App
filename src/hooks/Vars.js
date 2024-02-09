@@ -13,7 +13,7 @@ const Vars = () => {
         setVars(newVars);
     };
 
-    const get = name => vars[name];
+    const get = name => (vars ? vars[name] : null);
 
     const getAll = () => vars;
 
