@@ -7,10 +7,15 @@ import Collapse from '@/component/container/Collapse';
 
 import CContainerType from '@/constant/CContainerType';
 
+import Runner from '@/runner';
+
 const Container = props => {
-    const {type, section, properties, renderComponent, parse} = props;
+    const {type, section, properties, renderComponent} = props;
+
+    const {getValues} = Runner();
 
     const color = properties.color ? properties.color.value : null;
+    const label = getValues(properties.label, 'js');
 
     const content = () => {
         if (type === CContainerType.card.value) {
@@ -38,7 +43,7 @@ const Container = props => {
             );
         } else if (type === CContainerType.collapse.value) {
             return (
-                <Collapse label={parse.label || CContainerType.collapse.label} color={color}>
+                <Collapse label={label || CContainerType.collapse.label} color={color}>
                     {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                 </Collapse>
             );
