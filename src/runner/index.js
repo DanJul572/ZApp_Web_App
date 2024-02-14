@@ -2,7 +2,7 @@ import Hooks from '@/hooks';
 
 const Runner = () => {
     // eslint-disable-next-line no-unused-vars
-    const hooks = Hooks();
+    const ZApp = Hooks();
 
     const runFunction = func => {
         try {

@@ -4,18 +4,18 @@ import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
 
-// import Styles from './Styles';
 import Color from './Color';
-import ModuleID from './ModuleID';
 import Delete from './Delete';
 import Disable from './Disable';
 import Display from './Display';
 import Identity from './Identity';
 import Label from './Label';
+import ModuleID from './ModuleID';
 import Name from './Name';
 import OnClick from './OnClick';
 import Position from './Position';
 import Size from './Size';
+import TableAction from './TableAction';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
@@ -142,7 +142,12 @@ const Properties = props => {
                     <Size content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Display content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Color content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    {/* <Styles content={content} selected={selected} editComponent={editComponent} setContent={setContent} /> */}
+                    <TableAction
+                        content={content}
+                        selected={selected}
+                        editComponent={editComponent}
+                        setContent={setContent}
+                    />
                 </Box>
             )}
         </Grid>

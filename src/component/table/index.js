@@ -159,7 +159,6 @@ const Table = props => {
     const table = useMaterialReactTable({
         columns: newColumns,
         data: rows,
-        // displayColumnDefOptions: displayColumnDefOptions(),
         enableColumnActions: false,
         enableColumnFilters: enableFilter,
         enableColumnResizing: enableColumnResizing,
