@@ -125,6 +125,7 @@ const TopBar = props => {
 
         post('/general/detail', body)
             .then(res => {
+                setModuleId(res.moduleId);
                 setContent(res.content);
             })
             .catch(err => {
@@ -143,7 +144,6 @@ const TopBar = props => {
         if (!id) {
             setOpen(true);
         } else {
-            setModuleId(id);
             onLoad();
         }
     }, []);
