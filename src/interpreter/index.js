@@ -77,7 +77,7 @@ const Interpreter = props => {
         } else if (group === CComponentGroupType.table.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <Tables type={type} />
+                    <Tables type={type} properties={properties} isBuilder={isBuilder} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.chart.value) {

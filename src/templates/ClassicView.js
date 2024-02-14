@@ -7,6 +7,7 @@ import GeneralTable from '@/hooks/GeneralTable';
 const ClassicView = props => {
     const {
         columns,
+        columnKey,
         actions,
         setPage,
         onCLickToolbarAction,
@@ -23,7 +24,7 @@ const ClassicView = props => {
         <>
             <Table
                 action={actions}
-                columnKey={'id'}
+                columnKey={columnKey}
                 columns={columns}
                 enableRowSelection={true}
                 enableExport={true}

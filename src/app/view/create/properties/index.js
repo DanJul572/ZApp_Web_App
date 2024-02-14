@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 
 // import Styles from './Styles';
 import Color from './Color';
+import ModuleID from './ModuleID';
 import Delete from './Delete';
 import Disable from './Disable';
 import Display from './Display';
@@ -133,13 +134,14 @@ const Properties = props => {
                         setContent={setContent}
                         setSelected={setSelected}
                     />
+                    <ModuleID content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Name content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Label content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <OnClick content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Disable content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Size content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     <Display content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    <Color content={content} selected={selected} editComponent={editComponent} setContent={setContent}/>
+                    <Color content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
                     {/* <Styles content={content} selected={selected} editComponent={editComponent} setContent={setContent} /> */}
                 </Box>
             )}
