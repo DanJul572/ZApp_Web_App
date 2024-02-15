@@ -9,7 +9,7 @@ import Request from '@/hooks/Request';
 import CActionType from '@/constant/CActionType';
 
 const GeneralTable = props => {
-    const {moduleID, actions} = props;
+    const {moduleID, actions, isBuilder} = props;
 
     const {post} = Request();
 
@@ -136,7 +136,9 @@ const GeneralTable = props => {
     }, [columns, page, filter, sort]);
 
     useEffect(() => {
-        getColumns();
+        if (!isBuilder) {
+            getColumns();
+        }
         return () => setAlert(null);
     }, []);
 

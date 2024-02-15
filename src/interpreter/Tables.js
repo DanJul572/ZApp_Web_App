@@ -21,26 +21,29 @@ const Tables = props => {
     const prop = {
         moduleID,
         actions,
+        isBuilder,
     };
 
-    const {columns, columnKey, setPage, setFilter, setSort, rowCount, rows, openConfirmDialog, onConfirm} =
+    const {columns, columnKey, rowCount, rows, openConfirmDialog, setPage, setFilter, setSort, onConfirm} =
         GeneralTable(prop);
 
     const onCLickToolbarAction = action => {
         if (action.type === CActionType.insert.value) runFunction(action.onClick);
     };
 
+    const onClickRowAction = data => {
+        const action = data.action;
+        if (action.type === CActionType.update.value) runFunction(action.onClick);
+    };
+
     const content = () => {
-        if (isBuilder)
+        if (isBuilder) {
             return (
                 <Typography fontWeight="bold" textAlign="center">
                     TABLE COMPONENT CANNOT SHOW IN BUILDER MODE.
                 </Typography>
             );
-
-        if (!moduleID) return false;
-
-        if (type === CTableType.table.value) {
+        } else if (type === CTableType.table.value && moduleID) {
             return (
                 <>
                     <Table
@@ -55,6 +58,7 @@ const Tables = props => {
                         enableSorting={true}
                         onChangePage={setPage}
                         onClickToolbarAction={onCLickToolbarAction}
+                        onClickRowAction={onClickRowAction}
                         onFilter={setFilter}
                         onSort={setSort}
                         pageIndex={0}
