@@ -84,7 +84,7 @@ const TableAction = props => {
 
     useEffect(() => {
         if (selected) setSelectedAction(selected.properties.actions || []);
-    }, [content]);
+    }, [selected, content]);
 
     return validComponent() ? (
         <>

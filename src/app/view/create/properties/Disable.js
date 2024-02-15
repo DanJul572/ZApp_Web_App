@@ -72,7 +72,7 @@ const Disable = props => {
             const value = selected.properties.disable;
             if (value) setDisable(value);
         }
-    }, [content]);
+    }, [content, selected]);
 
     return validComponent() ? (
         <>
