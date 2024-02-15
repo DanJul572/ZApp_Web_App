@@ -52,9 +52,7 @@ const TableAction = props => {
             }
         } else {
             newActions = newActions.map(action => {
-                if (action.type === param.type) {
-                    return param;
-                }
+                return action.type === param.type ? param : action;
             });
             setOpen(false);
         }
@@ -70,6 +68,10 @@ const TableAction = props => {
 
     const applyOnClick = () => {
         changeActions(open, false);
+    };
+
+    const getValue = param => {
+        return checkAction(param) || param;
     };
 
     const validComponent = () => {
@@ -110,7 +112,7 @@ const TableAction = props => {
                                 <IconButton
                                     sx={{padding: 0}}
                                     size="small"
-                                    onClick={() => setOpen(action)}
+                                    onClick={() => setOpen(getValue(action))}
                                     disabled={!Boolean(checkAction(action))}>
                                     <InsertLink fontSize="small" />
                                 </IconButton>
