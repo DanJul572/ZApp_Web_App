@@ -1,3 +1,5 @@
+import {Suspense} from 'react';
+
 import {Roboto} from 'next/font/google';
 
 import 'suneditor/dist/css/suneditor.min.css';
@@ -23,15 +25,17 @@ export default function RootLayout({children}) {
     return (
         <html lang="en">
             <body className={roboto.className}>
-                <ErrorProvider>
-                    <LoadingProvider>
-                        <AlertProvider>
-                            <ToastProvider>
-                                <BuilderProvider>{children}</BuilderProvider>
-                            </ToastProvider>
-                        </AlertProvider>
-                    </LoadingProvider>
-                </ErrorProvider>
+                <Suspense>
+                    <ErrorProvider>
+                        <LoadingProvider>
+                            <AlertProvider>
+                                <ToastProvider>
+                                    <BuilderProvider>{children}</BuilderProvider>
+                                </ToastProvider>
+                            </AlertProvider>
+                        </LoadingProvider>
+                    </ErrorProvider>
+                </Suspense>
             </body>
         </html>
     );
