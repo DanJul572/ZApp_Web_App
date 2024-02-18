@@ -7,7 +7,11 @@ const GeneralQuery = () => {
         return post('/general/create', body);
     };
 
-    return {create};
+    const detail = body => {
+        return post('/general/detail', body);
+    };
+
+    return {create, detail};
 };
 
 export default GeneralQuery;
