@@ -15,10 +15,12 @@ import FieldControl from './FieldControl';
 import Tables from './Tables';
 import VisualElement from './VisualElement';
 
+import Page from './Page';
+
 const Interpreter = props => {
     const theme = useTheme();
 
-    const {isBuilder, content, selected, setSelected} = props;
+    const {isBuilder, content, page, selected, setSelected} = props;
 
     const Wraper = ({children, component}) => {
         if (!isBuilder) return <Box padding={1}>{children}</Box>;
@@ -95,7 +97,11 @@ const Interpreter = props => {
         }
     };
 
-    return <Box padding={1}>{content && content.length > 0 && content.map(renderComponent)}</Box>;
+    return (
+        <Page isBuilder={isBuilder} page={page}>
+            {content && content.length > 0 && content.map(renderComponent)}
+        </Page>
+    );
 };
 
 export default Interpreter;

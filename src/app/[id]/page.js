@@ -15,6 +15,7 @@ const Page = props => {
     const {post} = Request();
 
     const [content, setContent] = useState(null);
+    const [page, setPage] = useState(null);
 
     const getContent = () => {
         const body = {
@@ -25,7 +26,9 @@ const Page = props => {
             .then(res => {
                 if (res) {
                     const content = res.content;
+                    const page = JSON.parse(res.page);
                     setContent(content);
+                    setPage(page);
                 } else {
                     console.log('View is not found.');
                 }
@@ -39,7 +42,7 @@ const Page = props => {
         getContent();
     }, []);
 
-    return <Main>{content ? <Interpreter isBuilder={false} content={content} /> : <></>}</Main>;
+    return <Main>{content ? <Interpreter isBuilder={false} content={content} page={page} /> : <></>}</Main>;
 };
 
 export default Page;
