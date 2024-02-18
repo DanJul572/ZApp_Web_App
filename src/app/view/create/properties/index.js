@@ -1,8 +1,12 @@
+import PropTypes from 'prop-types';
+import {useState} from 'react';
 import {v4 as uuidv4} from 'uuid';
 
 import Box from '@mui/material/Box';
-import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import grey from '@mui/material/colors/grey';
 
 import Color from './Color';
 import Delete from './Delete';
@@ -11,6 +15,7 @@ import Display from './Display';
 import Identity from './Identity';
 import Label from './Label';
 import ModuleID from './ModuleID';
+import ModuleSettings from './ModuleSettings';
 import Name from './Name';
 import OnClick from './OnClick';
 import Position from './Position';
@@ -19,8 +24,42 @@ import TableAction from './TableAction';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
+const CustomTabPanel = props => {
+    const {children, value, index, ...other} = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}>
+            {value === index && children}
+        </div>
+    );
+};
+
+CustomTabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+
 const Properties = props => {
     const {selected, setSelected, setContent, content, activeNavigation, navigationType} = props;
+
+    const [value, setValue] = useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
     const changeComponentID = component => {
         const id = uuidv4();
@@ -116,38 +155,91 @@ const Properties = props => {
             width={500}
             xs={2}>
             {activeNavigation === navigationType.content && (
-                <Box display="flex" flexDirection="column" gap={2} paddingTop={3}>
-                    <Identity selected={selected} />
-                    <Delete
-                        content={content}
-                        deleteComponent={deleteComponent}
-                        selected={selected}
-                        setContent={setContent}
-                        setSelected={setSelected}
-                        duplicateComponent={duplicateComponent}
-                    />
-                    <Position
-                        editComponent={editComponent}
-                        content={content}
-                        deleteComponent={deleteComponent}
-                        selected={selected}
-                        setContent={setContent}
-                        setSelected={setSelected}
-                    />
-                    <ModuleID content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    <Name content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    <Label content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    <OnClick content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    <Disable content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    <Size content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    <Display content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    <Color content={content} selected={selected} editComponent={editComponent} setContent={setContent} />
-                    <TableAction
-                        content={content}
-                        selected={selected}
-                        editComponent={editComponent}
-                        setContent={setContent}
-                    />
+                <Box sx={{width: '100%'}}>
+                    <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+                        <Tabs value={value} onChange={handleChange} centered>
+                            <Tab label="Module" {...a11yProps(0)} />
+                            <Tab label="Properties" {...a11yProps(1)} />
+                        </Tabs>
+                    </Box>
+                    <CustomTabPanel value={value} index={0}>
+                        <ModuleSettings />
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={1}>
+                        <Box display="flex" flexDirection="column" gap={2} paddingTop={3}>
+                            <Identity selected={selected} />
+                            <Delete
+                                content={content}
+                                deleteComponent={deleteComponent}
+                                selected={selected}
+                                setContent={setContent}
+                                setSelected={setSelected}
+                                duplicateComponent={duplicateComponent}
+                            />
+                            <Position
+                                editComponent={editComponent}
+                                content={content}
+                                deleteComponent={deleteComponent}
+                                selected={selected}
+                                setContent={setContent}
+                                setSelected={setSelected}
+                            />
+                            <ModuleID
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <Name
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <Label
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <OnClick
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <Disable
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <Size
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <Display
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <Color
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <TableAction
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                        </Box>
+                    </CustomTabPanel>
                 </Box>
             )}
         </Grid>

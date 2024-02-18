@@ -7,9 +7,9 @@ import Grid from '@mui/material/Grid';
 
 import Component from './component';
 import Content from './content';
-import Function from './function';
-import Module from './module';
-import Navigation from './navigation';
+// import Function from './function';
+// import Module from './module';
+// import Navigation from './navigation';
 import Properties from './properties';
 import TopBar from './topbar';
 
@@ -25,18 +25,22 @@ const Page = () => {
         page: 'page',
         module: 'module',
     };
+    const activeNavigation = navigationType.content;
     const id = searchParams.get('id');
 
     const [content, setContent] = useState([]);
     const [selected, setSelected] = useState(null);
-    const [activeNavigation, setActiveNavigation] = useState(navigationType.content);
 
+    // const [activeNavigation, setActiveNavigation] = useState(navigationType.content);
+
+    /*
     const activeContent = () => {
         if (activeNavigation === navigationType.content)
             return <Content content={content} selected={selected} setSelected={setSelected} />;
         else if (activeNavigation === navigationType.function) return <Function />;
         else if (activeNavigation === navigationType.module) return <Module />;
     };
+    */
 
     return (
         <Empty>
@@ -44,12 +48,12 @@ const Page = () => {
             <Grid container justifyContent="space-between" display="flex">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
                 <Grid item xs={8} marginX="17%">
-                    <Navigation
+                    {/* <Navigation
                         activeNavigation={activeNavigation}
                         navigationType={navigationType}
                         setActiveNavigation={setActiveNavigation}
-                    />
-                    {activeContent()}
+                    /> */}
+                    <Content content={content} selected={selected} setSelected={setSelected} />
                 </Grid>
                 <Properties
                     activeNavigation={activeNavigation}
