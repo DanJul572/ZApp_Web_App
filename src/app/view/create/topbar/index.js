@@ -36,7 +36,7 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 const TopBar = props => {
-    const {content, setContent, id} = props;
+    const {content, setContent, label, setLabel, page, setPage, id} = props;
 
     const {post} = Request();
 
@@ -92,6 +92,8 @@ const TopBar = props => {
             data: {
                 moduleId: moduleId,
                 content: JSON.stringify(content),
+                label: label,
+                page: JSON.stringify(page),
             },
         };
 
@@ -127,6 +129,8 @@ const TopBar = props => {
             .then(res => {
                 setModuleId(res.moduleId);
                 setContent(res.content);
+                setLabel(res.label);
+                setPage(JSON.parse(res.page));
             })
             .catch(err => {
                 setToast({

@@ -15,7 +15,7 @@ import Display from './Display';
 import Identity from './Identity';
 import Label from './Label';
 import ModuleID from './ModuleID';
-import ModuleSettings from './ModuleSettings';
+import PageSettings from './PageSettings';
 import Name from './Name';
 import OnClick from './OnClick';
 import Position from './Position';
@@ -53,7 +53,18 @@ function a11yProps(index) {
 }
 
 const Properties = props => {
-    const {selected, setSelected, setContent, content, activeNavigation, navigationType} = props;
+    const {
+        selected,
+        setSelected,
+        setContent,
+        content,
+        label,
+        setLabel,
+        page,
+        setPage,
+        activeNavigation,
+        navigationType,
+    } = props;
 
     const [value, setValue] = useState(0);
 
@@ -158,12 +169,12 @@ const Properties = props => {
                 <Box sx={{width: '100%'}}>
                     <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
                         <Tabs value={value} onChange={handleChange} centered>
-                            <Tab label="Module" {...a11yProps(0)} />
+                            <Tab label="Page" {...a11yProps(0)} />
                             <Tab label="Properties" {...a11yProps(1)} />
                         </Tabs>
                     </Box>
                     <CustomTabPanel value={value} index={0}>
-                        <ModuleSettings />
+                        <PageSettings label={label} setLabel={setLabel} page={page} setPage={setPage} />
                     </CustomTabPanel>
                     <CustomTabPanel value={value} index={1}>
                         <Box display="flex" flexDirection="column" gap={2} paddingTop={3}>

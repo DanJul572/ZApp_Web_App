@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import InsertLink from '@mui/icons-material/InsertLink';
 
@@ -13,15 +13,26 @@ import Typography from '@mui/material/Typography';
 
 import Code from '@/component/input/Code';
 
-const OnLoad = () => {
+const OnLoad = props => {
+    const {page, setPage} = props;
+
     const [open, setOpen] = useState(false);
     const [onLoad, setOnLoad] = useState(null);
 
-    const onApply = () => {};
+    const onApply = () => {
+        const newPage = page ? {...page} : {};
+        newPage.onLoad = onLoad;
+        setPage(newPage);
+        setOpen(false);
+    };
+
+    useEffect(() => {
+        if (page && page.onLoad) setOnLoad(page.onLoad);
+    }, [page]);
 
     return (
         <Box>
-            <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
+            <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Typography fontSize={12}>On Load</Typography>
                 <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                     <InsertLink fontSize="small" />

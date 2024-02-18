@@ -28,6 +28,8 @@ const Page = () => {
     const activeNavigation = navigationType.content;
     const id = searchParams.get('id');
 
+    const [label, setLabel] = useState(null);
+    const [page, setPage] = useState(null);
     const [content, setContent] = useState([]);
     const [selected, setSelected] = useState(null);
 
@@ -44,7 +46,15 @@ const Page = () => {
 
     return (
         <Empty>
-            <TopBar content={content} setContent={setContent} id={id} />
+            <TopBar
+                content={content}
+                setContent={setContent}
+                label={label}
+                setLabel={setLabel}
+                page={page}
+                setPage={setPage}
+                id={id}
+            />
             <Grid container justifyContent="space-between" display="flex">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
                 <Grid item xs={8} marginX="17%">
@@ -61,6 +71,10 @@ const Page = () => {
                     navigationType={navigationType}
                     selected={selected}
                     setContent={setContent}
+                    label={label}
+                    setLabel={setLabel}
+                    page={page}
+                    setPage={setPage}
                     setSelected={setSelected}
                 />
             </Grid>
