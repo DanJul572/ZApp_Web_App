@@ -56,12 +56,22 @@ const FieldControl = props => {
 
         if (type === CInputType.number.value)
             return (
-                <Number value={get(properties.name) || null} onChange={onChange} disabled={disabled} label={label || null} />
+                <Number
+                    value={get(properties.name) || null}
+                    onChange={onChange}
+                    disabled={disabled}
+                    label={label || null}
+                />
             );
 
         if (type === CInputType.toggle.value)
             return (
-                <Toggle disabled={disabled} value={get(properties.name) || null} onChange={onChange} label={label || null} />
+                <Toggle
+                    disabled={disabled}
+                    value={get(properties.name) || null}
+                    onChange={onChange}
+                    label={label || null}
+                />
             );
 
         if (type === CInputType.dropdown.value)
@@ -77,17 +87,32 @@ const FieldControl = props => {
 
         if (type === CInputType.date.value)
             return (
-                <Date value={get(properties.name) || null} onChange={onChange} disabled={disabled} label={label || null} />
+                <Date
+                    value={get(properties.name) || null}
+                    onChange={onChange}
+                    disabled={disabled}
+                    label={label || null}
+                />
             );
 
         if (type === CInputType.time.value)
             return (
-                <Time value={get(properties.name) || null} onChange={onChange} disabled={disabled} label={label || null} />
+                <Time
+                    value={get(properties.name) || null}
+                    onChange={onChange}
+                    disabled={disabled}
+                    label={label || null}
+                />
             );
 
         if (type === CInputType.file.value)
             return (
-                <File value={get(properties.name) || null} onChange={onChange} disabled={disabled} label={label || null} />
+                <File
+                    value={get(properties.name) || null}
+                    onChange={onChange}
+                    disabled={disabled}
+                    label={label || null}
+                />
             );
 
         if (type === CInputType.richText.value)
