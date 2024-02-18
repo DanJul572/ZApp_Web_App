@@ -26,7 +26,7 @@ const Page = props => {
             .then(res => {
                 if (res) {
                     const content = res.content;
-                    const page = JSON.parse(res.page);
+                    const page = res.page;
                     setContent(content);
                     setPage(page);
                 } else {
