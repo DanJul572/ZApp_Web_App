@@ -130,7 +130,7 @@ const TopBar = props => {
                 setModuleId(res.moduleId);
                 setContent(res.content);
                 setLabel(res.label);
-                setPage(JSON.parse(res.page));
+                setPage(res.page);
             })
             .catch(err => {
                 setToast({
