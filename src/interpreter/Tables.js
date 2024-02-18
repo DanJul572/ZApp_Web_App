@@ -33,7 +33,8 @@ const Tables = props => {
 
     const onClickRowAction = data => {
         const action = data.action;
-        if (action.type === CActionType.update.value) runFunction(action.onClick);
+        const param = {row: data.row};
+        if (action.type === CActionType.update.value) runFunction(action.onClick, param);
     };
 
     const content = () => {

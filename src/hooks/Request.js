@@ -39,7 +39,7 @@ const Request = () => {
                     const status = error.response.status;
                     if (withAuth && (status === 401 || status === 403)) {
                         forceRedirect();
-                        return;
+                        reject(message);
                     }
                     reject(message);
                 });
@@ -67,7 +67,7 @@ const Request = () => {
                     const status = error.response.status;
                     if (withAuth && (status === 401 || status === 403)) {
                         forceRedirect();
-                        return;
+                        reject(message);
                     }
                     reject(message);
                 });

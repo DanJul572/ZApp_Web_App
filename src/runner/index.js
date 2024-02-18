@@ -4,7 +4,8 @@ const Runner = () => {
     // eslint-disable-next-line no-unused-vars
     const ZApp = Hooks();
 
-    const runFunction = func => {
+    // eslint-disable-next-line no-unused-vars
+    const runFunction = (func, param) => {
         try {
             eval(func);
         } catch (error) {
