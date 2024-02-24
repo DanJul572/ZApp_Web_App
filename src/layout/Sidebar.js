@@ -8,6 +8,7 @@ import {getCookie, setCookie} from 'cookies-next';
 
 import Request from '@/hooks/Request';
 
+import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';
 
 const Sidebar = () => {
@@ -16,20 +17,64 @@ const Sidebar = () => {
     const {push} = useRouter();
 
     const [list, setList] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [typingTimeout, setTypingTimeout] = useState(null);
 
     const onClick = menu => push(menu.url);
 
     const onLoad = () => {
         get('/general/menu').then(res => {
             setList(res.tree);
-            setCookie(res.tree);
+            setCookie('tree', res.tree);
         });
     };
 
+    const filterObjectsByLabel = (arr, label) => {
+        function filterRecursive(arr, label) {
+            return arr.filter(obj => {
+                if (obj.label.includes(label)) {
+                    return true;
+                } else if (obj.child) {
+                    obj.child = filterRecursive(obj.child, label);
+                    return obj.child.length > 0;
+                }
+                return false;
+            });
+        }
+        return filterRecursive(arr, label);
+    };
+
+    const search = value => {
+        const tree = JSON.parse(getCookie('tree'));
+        const newList = filterObjectsByLabel(tree, value);
+        setList(newList);
+    };
+
+    const handleChange = val => {
+        const value = val;
+        setSearchTerm(value);
+        if (value) {
+            if (typingTimeout) {
+                clearTimeout(typingTimeout);
+            }
+            setTypingTimeout(
+                setTimeout(() => {
+                    search(value);
+                }, 1000),
+            );
+        } else {
+            const tree = JSON.parse(getCookie('tree'));
+            setList(tree);
+        }
+    };
+
     useEffect(() => {
-        const tree = getCookie('tree');
-        if (!tree) onLoad();
-        else setList(tree);
+        const tree = JSON.parse(getCookie('tree'));
+        if (!tree) {
+            onLoad();
+        } else {
+            setList(tree);
+        }
     }, []);
 
     return (
@@ -45,6 +90,9 @@ const Sidebar = () => {
                 borderRight: 1,
                 borderColor: grey[300],
             }}>
+            <Box paddingX={1} marginBottom={1}>
+                <ShortText value={searchTerm} onChange={handleChange} />
+            </Box>
             <Tree onChildClick={onClick} list={list} />
         </Box>
     );
