@@ -247,7 +247,12 @@ const Page = () => {
                         <Tree list={list} onParentClick={onClick} onChildClick={onClick} />
                     </Box>
                     <Box display="flex" flexDirection="column" gap={2} flex={1}>
-                        <ShortText value={activeMenuLabel} label="Label" onChange={setActiveMenuLabel} onBlur={onEdit} />
+                        <ShortText
+                            value={activeMenuLabel}
+                            label="Label"
+                            onChange={setActiveMenuLabel}
+                            onBlur={onEdit}
+                        />
                         <ShortText value={activeMenuUrl} label="URL" onChange={setActiveMenuUrl} onBlur={onEdit} />
                     </Box>
                 </Box>

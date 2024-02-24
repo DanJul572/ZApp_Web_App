@@ -1,8 +1,12 @@
 import Hooks from '@/hooks';
+import Custom from '@/hooks/custom';
 
 const Runner = () => {
     // eslint-disable-next-line no-unused-vars
     const ZApp = Hooks();
+
+    // eslint-disable-next-line no-unused-vars
+    const ZCustom = Custom();
 
     // eslint-disable-next-line no-unused-vars
     const runFunction = (func, param) => {
