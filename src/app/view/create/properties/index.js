@@ -12,12 +12,13 @@ import Color from './Color';
 import Delete from './Delete';
 import Disable from './Disable';
 import Display from './Display';
+import Hidden from './Hidden';
 import Identity from './Identity';
 import Label from './Label';
 import ModuleID from './ModuleID';
-import PageSettings from './PageSettings';
 import Name from './Name';
 import OnClick from './OnClick';
+import PageSettings from './PageSettings';
 import Position from './Position';
 import Size from './Size';
 import TableAction from './TableAction';
@@ -220,6 +221,12 @@ const Properties = props => {
                                 setContent={setContent}
                             />
                             <Disable
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <Hidden
                                 content={content}
                                 selected={selected}
                                 editComponent={editComponent}

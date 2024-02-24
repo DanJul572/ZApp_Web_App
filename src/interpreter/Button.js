@@ -14,15 +14,11 @@ const Button = props => {
         return properties.display && properties.display[type] ? properties.display[type].value : 'flex-start';
     };
 
-    const disable = getValues(properties.disable, 'js');
-    const label = getValues(properties.label, 'js');
     const color = properties.color ? properties.color.name : 'primary';
-    const display = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: displayValue('horizontal'),
-        // justifyContent: displayValue('vertical'),
-    };
+    const disable = getValues(properties.disable, 'js');
+    const display = {display: 'flex', flexDirection: 'column', alignItems: displayValue('horizontal')};
+    const hidden = getValues(properties.hidden, 'js');
+    const label = getValues(properties.label, 'js');
     const onClick = properties.onClick;
 
     const content = () => {
@@ -33,7 +29,7 @@ const Button = props => {
                         onClick={() => runFunction(onClick)}
                         size="small"
                         variant="contained"
-                        sx={{display: 'block'}}
+                        sx={{display: hidden ? 'none' : 'block'}}
                         disabled={Boolean(disable)}
                         color={color}>
                         {label || CButtonType.button.label}
