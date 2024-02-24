@@ -3,7 +3,7 @@ import Hooks from '..';
 const GeneralProcess = () => {
     const ZApp = Hooks();
 
-    const createOrUpdate = (moduleId, path) => {
+    const createOrUpdate = (moduleId, path = null) => {
         ZApp.Loader.showLoading();
 
         const id = ZApp.Parameter.get('id');
@@ -16,8 +16,11 @@ const GeneralProcess = () => {
                 .then(res => {
                     ZApp.Alert.showSuccessAlert(res);
                     ZApp.Vars.removeAll();
-                    ZApp.Redirect.internal(path);
                     ZApp.Loader.hideLoading();
+
+                    if (path) {
+                        ZApp.Redirect.internal(path);
+                    }
                 })
                 .catch(err => {
                     ZApp.Alert.showErrorAlert(err);
@@ -32,8 +35,11 @@ const GeneralProcess = () => {
                 .then(res => {
                     ZApp.Alert.showSuccessAlert(res);
                     ZApp.Vars.removeAll();
-                    ZApp.Redirect.internal(path);
                     ZApp.Loader.hideLoading();
+
+                    if (path) {
+                        ZApp.Redirect.internal(path);
+                    }
                 })
                 .catch(err => {
                     ZApp.Alert.showErrorAlert(err);

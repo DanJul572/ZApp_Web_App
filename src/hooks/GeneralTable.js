@@ -143,17 +143,19 @@ const GeneralTable = props => {
     }, []);
 
     return {
-        columns,
         actions,
-        setPage,
-        onCLickToolbarAction,
+        columns,
         onClickRowAction,
-        setFilter,
-        setSort,
+        onCLickToolbarAction,
+        onConfirm,
+        openConfirmDialog,
         rowCount,
         rows,
-        openConfirmDialog,
-        onConfirm,
+        setFilter,
+        setOpenConfirmDialog,
+        setPage,
+        setSelectedRow,
+        setSort,
     };
 };
 

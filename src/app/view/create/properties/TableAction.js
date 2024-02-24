@@ -35,6 +35,11 @@ const TableAction = props => {
             type: CActionType.update.value,
             onClick: null,
         },
+        {
+            label: CActionType.delete.label,
+            type: CActionType.delete.value,
+            onClick: null,
+        },
     ];
 
     const checkAction = param => {
@@ -109,13 +114,15 @@ const TableAction = props => {
                                     label={action.label}
                                     onChange={() => changeActions(action, true)}
                                 />
-                                <IconButton
-                                    sx={{padding: 0}}
-                                    size="small"
-                                    onClick={() => setOpen(getValue(action))}
-                                    disabled={!Boolean(checkAction(action))}>
-                                    <InsertLink fontSize="small" />
-                                </IconButton>
+                                {action.type !== CActionType.delete.value && (
+                                    <IconButton
+                                        sx={{padding: 0}}
+                                        size="small"
+                                        onClick={() => setOpen(getValue(action))}
+                                        disabled={!Boolean(checkAction(action))}>
+                                        <InsertLink fontSize="small" />
+                                    </IconButton>
+                                )}
                             </Box>
                         );
                     })}

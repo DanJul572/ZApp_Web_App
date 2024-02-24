@@ -1,23 +1,23 @@
 'use client';
 
 import Confirm from '@/component/dialog/Confirm';
-import Table from '@/component/table';
 import GeneralTable from '@/hooks/GeneralTable';
+import Table from '@/component/table';
 
 const ClassicView = props => {
     const {
-        columns,
-        columnKey,
         actions,
-        setPage,
-        onCLickToolbarAction,
+        columnKey,
+        columns,
         onClickRowAction,
-        setFilter,
-        setSort,
+        onCLickToolbarAction,
+        onConfirm,
+        openConfirmDialog,
         rowCount,
         rows,
-        openConfirmDialog,
-        onConfirm,
+        setFilter,
+        setPage,
+        setSort,
     } = GeneralTable(props);
 
     return (

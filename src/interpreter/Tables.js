@@ -24,8 +24,19 @@ const Tables = props => {
         isBuilder,
     };
 
-    const {columns, columnKey, rowCount, rows, openConfirmDialog, setPage, setFilter, setSort, onConfirm} =
-        GeneralTable(prop);
+    const {
+        columnKey,
+        columns,
+        onConfirm,
+        openConfirmDialog,
+        rowCount,
+        rows,
+        setFilter,
+        setOpenConfirmDialog,
+        setPage,
+        setSelectedRow,
+        setSort,
+    } = GeneralTable(prop);
 
     const onCLickToolbarAction = action => {
         if (action.type === CActionType.insert.value) runFunction(action.onClick);
@@ -34,7 +45,12 @@ const Tables = props => {
     const onClickRowAction = data => {
         const action = data.action;
         const param = {row: data.row};
-        if (action.type === CActionType.update.value) runFunction(action.onClick, param);
+        if (action.type === CActionType.update.value) {
+            runFunction(action.onClick, param);
+        } else if (data.action.type === CActionType.delete.value) {
+            setSelectedRow(data.row);
+            setOpenConfirmDialog(true);
+        }
     };
 
     const content = () => {
