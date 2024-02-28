@@ -44,7 +44,7 @@ const Sidebar = () => {
                 }
                 return false;
             });
-        }
+        };
         return filterRecursive(arr, label);
     };
 
@@ -86,7 +86,7 @@ const Sidebar = () => {
                 borderColor: grey[300],
             }}>
             <Box paddingX={1} marginBottom={1}>
-                <ShortText value={searchTerm} onChange={setSearchTerm} placeholder='Search...' />
+                <ShortText value={searchTerm} onChange={setSearchTerm} placeholder="Search..." />
             </Box>
             <Tree onChildClick={onClick} list={list} />
         </Box>
