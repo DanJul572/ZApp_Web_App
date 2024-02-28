@@ -16,6 +16,8 @@ const Sidebar = () => {
 
     const {push} = useRouter();
 
+    const tree = getCookie('tree') ? JSON.parse(getCookie('tree')) : false;
+
     const [list, setList] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [typingTimeout, setTypingTimeout] = useState(null);
@@ -30,9 +32,11 @@ const Sidebar = () => {
     };
 
     const filterObjectsByLabel = (arr, label) => {
-        function filterRecursive(arr, label) {
+        const filterRecursive = (arr, label) => {
             return arr.filter(obj => {
-                if (obj.label.includes(label)) {
+                const menu = obj.label.toLowerCase();
+                const keyword = label.toLowerCase();
+                if (menu.includes(keyword)) {
                     return true;
                 } else if (obj.child) {
                     obj.child = filterRecursive(obj.child, label);
@@ -45,37 +49,28 @@ const Sidebar = () => {
     };
 
     const search = value => {
-        const tree = JSON.parse(getCookie('tree'));
         const newList = filterObjectsByLabel(tree, value);
         setList(newList);
     };
 
-    const handleChange = val => {
-        const value = val;
-        setSearchTerm(value);
-        if (value) {
-            if (typingTimeout) {
-                clearTimeout(typingTimeout);
-            }
-            setTypingTimeout(
-                setTimeout(() => {
-                    search(value);
-                }, 1000),
-            );
-        } else {
-            const tree = JSON.parse(getCookie('tree'));
-            setList(tree);
-        }
-    };
-
     useEffect(() => {
-        const tree = JSON.parse(getCookie('tree'));
         if (!tree) {
             onLoad();
         } else {
             setList(tree);
         }
     }, []);
+
+    useEffect(() => {
+        if (typingTimeout) {
+            clearTimeout(typingTimeout);
+        }
+        setTypingTimeout(
+            setTimeout(() => {
+                search(searchTerm);
+            }, 1000),
+        );
+    }, [searchTerm]);
 
     return (
         <Box
@@ -91,7 +86,7 @@ const Sidebar = () => {
                 borderColor: grey[300],
             }}>
             <Box paddingX={1} marginBottom={1}>
-                <ShortText value={searchTerm} onChange={handleChange} />
+                <ShortText value={searchTerm} onChange={setSearchTerm} placeholder='Search...' />
             </Box>
             <Tree onChildClick={onClick} list={list} />
         </Box>
