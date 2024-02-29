@@ -1,10 +1,11 @@
 import {useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
+import {getCookie, setCookie} from 'cookies-next';
 
 import Box from '@mui/material/Box';
-import grey from '@mui/material/colors/grey';
+import Typography from '@mui/material/Typography';
 
-import {getCookie, setCookie} from 'cookies-next';
+import grey from '@mui/material/colors/grey';
 
 import Request from '@/hooks/Request';
 
@@ -12,15 +13,14 @@ import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';
 
 const Sidebar = () => {
-    const {get} = Request();
-
     const {push} = useRouter();
-
-    const tree = getCookie('tree') ? JSON.parse(getCookie('tree')) : false;
-
+    const {get} = Request();
+    
     const [list, setList] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [typingTimeout, setTypingTimeout] = useState(null);
+    
+    const tree = getCookie('tree') ? JSON.parse(getCookie('tree')) : [];
 
     const onClick = menu => push(menu.url);
 
@@ -49,15 +49,17 @@ const Sidebar = () => {
     };
 
     const search = value => {
-        const newList = filterObjectsByLabel(tree, value);
-        setList(newList);
+        if (tree.length > 0) {
+            const newList = filterObjectsByLabel(tree, value);
+            setList(newList);
+        }
     };
 
     useEffect(() => {
-        if (!tree) {
-            onLoad();
-        } else {
+        if (tree.length > 0) {
             setList(tree);
+        } else {
+            onLoad();
         }
     }, []);
 
@@ -88,7 +90,12 @@ const Sidebar = () => {
             <Box paddingX={1} marginBottom={1}>
                 <ShortText value={searchTerm} onChange={setSearchTerm} placeholder="Search..." />
             </Box>
-            <Tree onChildClick={onClick} list={list} />
+            {list.length > 0 && <Tree onChildClick={onClick} list={list} />}
+            {list.length <= 0 && (
+                <Box paddingX={1} textAlign="center">
+                    <Typography>Menu is not found.</Typography>
+                </Box>
+            )}
         </Box>
     );
 };
