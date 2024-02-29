@@ -14,6 +14,18 @@ const ShortText = props => {
 
     const error = validator(rules, value);
 
+    const blur = e => {
+        if (onBlur) {
+            onBlur(e.target.value);
+        }
+    };
+
+    const change = e => {
+        if (onChange) {
+            onChange(e.target.value);
+        }
+    };
+
     useEffect(() => {
         if (!group && !name) return;
         if (!error.status) return clearError(group, name);
@@ -31,8 +43,8 @@ const ShortText = props => {
                 value={value || ''}
                 error={error.status}
                 helperText={error.message}
-                onChange={e => onChange(e.target.value)}
-                onBlur={onBlur ? e => onBlur(e.target.value) : () => {}}
+                onChange={change}
+                onBlur={blur}
                 placeholder={placeholder || null}
             />
         </Box>

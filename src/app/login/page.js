@@ -75,8 +75,8 @@ const Page = () => {
                 display="flex"
                 flexDirection="column">
                 <Box marginBottom={3} display="flex" flexDirection="column" gap={1}>
-                    <ShortText label="Email" value={email} onChange={setEmail} />
-                    <Password label="Password" value={password} onChange={setPassword} />
+                    <ShortText label="Email" name="email" value={email} onChange={setEmail} />
+                    <Password label="Password" name="password" value={password} onChange={setPassword} />
                 </Box>
                 <Button variant="contained" onClick={onLogin}>
                     LOGIN

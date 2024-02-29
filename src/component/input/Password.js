@@ -29,6 +29,18 @@ const Password = props => {
         event.preventDefault();
     };
 
+    const blur = e => {
+        if (onBlur) {
+            onBlur(e.target.value);
+        }
+    };
+
+    const change = e => {
+        if (onChange) {
+            onChange(e.target.value);
+        }
+    };
+
     useEffect(() => {
         if (!group && !name) return;
         if (!error.status) return clearError(group, name);
@@ -36,26 +48,33 @@ const Password = props => {
     }, [value]);
 
     return (
-        <FormControl variant="outlined" fullWidth>
-            <Typography fontSize={12}>{label}</Typography>
-            <OutlinedInput
-                disabled={disabled}
-                variant="outlined"
-                size="small"
-                fullWidth
-                value={value || ''}
-                onChange={e => onChange(e.target.value)}
-                onBlur={onBlur ? e => onBlur(e.target.value) : () => {}}
-                type={showPassword ? 'text' : 'password'}
-                endAdornment={
-                    <InputAdornment position="end">
-                        <IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                    </InputAdornment>
-                }
-            />
-        </FormControl>
+        <form>
+            <FormControl variant="outlined" fullWidth>
+                <Typography fontSize={12}>{label}</Typography>
+                <OutlinedInput
+                    autoComplete="on"
+                    disabled={disabled}
+                    endAdornment={
+                        <InputAdornment position="end">
+                            <IconButton
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end">
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                        </InputAdornment>
+                    }
+                    fullWidth
+                    name={name || 'password'}
+                    onBlur={blur}
+                    onChange={change}
+                    size="small"
+                    type={showPassword ? 'text' : 'password'}
+                    value={value || ''}
+                    variant="outlined"
+                />
+            </FormControl>
+        </form>
     );
 };
 
