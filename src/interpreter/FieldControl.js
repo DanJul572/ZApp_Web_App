@@ -21,14 +21,14 @@ const FieldControl = props => {
     const {type, properties} = props;
 
     const {getValues} = Runner();
-    const {changeVar, get} = Vars();
+    const {set, get} = Vars();
 
     const disabled = !Boolean(properties.name);
     const label = getValues(properties.label, 'js');
 
     const onChange = value => {
         if (properties.name) {
-            changeVar(properties.name, value);
+            set(properties.name, value);
         }
     };
 

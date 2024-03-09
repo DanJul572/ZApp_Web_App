@@ -35,11 +35,16 @@ const Alert = () => {
         });
     };
 
+    const hideAlert = () => {
+        setAlert(false);
+    };
+
     return {
         showSuccessAlert,
         showErrorAlert,
         showWarningAlert,
         showInfoAlert,
+        hideAlert,
     };
 };
 

@@ -7,17 +7,25 @@ const Vars = () => {
         setVars(null);
     };
 
-    const changeVar = (name, value) => {
+    const set = (name, value) => {
         const newVars = {...vars};
         newVars[name] = value;
         setVars(newVars);
     };
 
-    const get = name => (vars ? vars[name] : null);
+    const setAll = obj => {
+        setVars(obj);
+    };
 
-    const getAll = () => vars;
+    const get = name => {
+        return vars ? vars[name] : null;
+    };
 
-    return {get, getAll, changeVar, removeAll};
+    const getAll = () => {
+        return vars;
+    };
+
+    return {get, getAll, set, removeAll, setAll};
 };
 
 export default Vars;

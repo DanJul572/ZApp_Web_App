@@ -3,10 +3,10 @@ import Hooks from '..';
 const GeneralProcess = () => {
     const ZApp = Hooks();
 
-    const createOrUpdate = (moduleId, path = null) => {
+    const createOrUpdate = (moduleId, key, path = null) => {
         ZApp.Loader.showLoading();
 
-        const id = ZApp.Parameter.get('id');
+        const id = ZApp.Parameter.get(key);
 
         if (!id) {
             ZApp.GeneralQuery.create({
@@ -48,8 +48,8 @@ const GeneralProcess = () => {
         }
     };
 
-    const findOneAndSet = moduleId => {
-        const id = ZApp.Parameter.get('id');
+    const findOneAndSet = (moduleId, key) => {
+        const id = ZApp.Parameter.get(key);
         if (id) {
             ZApp.Loader.showLoading();
             ZApp.GeneralQuery.detail({
@@ -57,7 +57,11 @@ const GeneralProcess = () => {
                 rowId: id,
             })
                 .then(res => {
-                    ZApp.Vars.changeVar('text', res.text);
+                    delete res.createdAt;
+                    delete res.updatedAt;
+                    delete res[key];
+
+                    ZApp.Vars.setAll(res);
                 })
                 .catch(err => {
                     ZApp.Alert.showErrorAlert(err);
