@@ -15,14 +15,16 @@ import Tree from '@/component/tree';
 const Sidebar = () => {
     const {push} = useRouter();
     const {get} = Request();
-    
+
     const [list, setList] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [typingTimeout, setTypingTimeout] = useState(null);
-    
+
     const tree = getCookie('tree') ? JSON.parse(getCookie('tree')) : [];
 
-    const onClick = menu => push(menu.url);
+    const onClick = menu => {
+        push(menu.url);
+    };
 
     const onLoad = () => {
         get('/general/menu').then(res => {

@@ -6,6 +6,7 @@ const Loader = () => {
     const showLoading = () => {
         setLoading(true);
     };
+
     const hideLoading = () => {
         setLoading(false);
     };

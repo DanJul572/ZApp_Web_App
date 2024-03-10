@@ -30,7 +30,7 @@ const Alert = () => {
     const showInfoAlert = message => {
         setAlert({
             status: true,
-            type: 'indo',
+            type: 'info',
             message: message,
         });
     };

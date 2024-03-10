@@ -30,7 +30,7 @@ const Toaster = () => {
     const showInfoToast = message => {
         setToast({
             status: true,
-            type: 'indo',
+            type: 'info',
             message: message,
         });
     };
