@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import useTheme from '@mui/material/styles/useTheme';
 
 import grey from '@mui/material/colors/grey';
@@ -96,7 +95,6 @@ const Color = props => {
 
     return validComponent() ? (
         <Box paddingX={2}>
-            <Typography fontSize={12}>Color</Typography>
             <Box display="flex" justifyContent="space-between" alignItems="center" gap={2} marginTop={1}>
                 {colors.map(component)}
             </Box>

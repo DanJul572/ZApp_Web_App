@@ -22,6 +22,7 @@ import PageSettings from './PageSettings';
 import Position from './Position';
 import Size from './Size';
 import TableAction from './TableAction';
+import TextDecoration from './TextDecoration';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
@@ -245,6 +246,12 @@ const Properties = props => {
                                 setContent={setContent}
                             />
                             <Color
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <TextDecoration
                                 content={content}
                                 selected={selected}
                                 editComponent={editComponent}
