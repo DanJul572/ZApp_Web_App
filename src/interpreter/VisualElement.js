@@ -15,13 +15,14 @@ const VisualElement = props => {
 
     const label = getValues(properties.label, 'js');
     const color = properties.color ? properties.color.value : theme.palette.text.primary;
+    const size = parseInt(properties.size) || 12;
 
     const content = () => {
         if (type === CVisualElement.divider.value) {
             return <Divider />;
         } else if (type === CVisualElement.text.value) {
             return (
-                <Typography sx={{color: color}} fontSize={12}>
+                <Typography sx={{color: color}} fontSize={size}>
                     {label}
                 </Typography>
             );

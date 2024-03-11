@@ -14,6 +14,7 @@ import ShortText from '@/component/input/ShortText';
 
 import CContainerType from '@/constant/CContainerType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CVisualElement from '@/constant/CVisualElementType';
 
 const Size = props => {
     const {content, selected, editComponent, setContent} = props;
@@ -31,13 +32,12 @@ const Size = props => {
     const validComponent = () => {
         if (!selected) return false;
 
-        if (
-            selected.type.value === CContainerType.grid.value &&
-            selected.group.value === CComponentGroupType.container.value
-        )
-            return true;
+        const type = selected.type.value;
+        const group = selected.group.value;
 
-        return false;
+        if (type === CContainerType.grid.value && group === CComponentGroupType.container.value) return true;
+        else if (type === CVisualElement.text.value && group === CComponentGroupType.visualElement.value) return true;
+        else return false;
     };
 
     useEffect(() => {
