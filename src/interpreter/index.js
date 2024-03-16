@@ -61,6 +61,7 @@ const Interpreter = props => {
                         properties={properties}
                         renderComponent={renderComponent}
                         parse={parse}
+                        isBuilder={isBuilder}
                     />
                 </Wraper>
             );

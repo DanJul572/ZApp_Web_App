@@ -14,6 +14,7 @@ import ShortTextOutlined from '@mui/icons-material/ShortTextOutlined';
 import ShortText from '@/component/input/ShortText';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CContainerType from '@/constant/CContainerType';
 
 const Name = props => {
     const {content, selected, editComponent, setContent} = props;
@@ -32,10 +33,12 @@ const Name = props => {
         if (!selected) return false;
 
         let group = selected.group.value;
+        let type = selected.type.value;
 
-        if (group !== CComponentGroupType.fieldControl.value) return false;
+        if (group === CComponentGroupType.fieldControl.value) return true;
+        else if (group === CComponentGroupType.container.value && type === CContainerType.drawer.value) return true;
 
-        return true;
+        return false;
     };
 
     useEffect(() => {

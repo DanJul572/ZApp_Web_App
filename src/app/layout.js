@@ -10,6 +10,7 @@ import {VarsProvider} from '@/context/VarsProvider';
 import {ToastProvider} from '@/context/ToastProvider';
 import ErrorProvider from '@/context/ErrorProvider';
 import {LoadingProvider} from '@/context/LoadingProvider';
+import {ComponentProvider} from '@/context/ComponentProvider';
 
 const roboto = Roboto({
     weight: '400',
@@ -30,7 +31,9 @@ export default function RootLayout({children}) {
                         <LoadingProvider>
                             <AlertProvider>
                                 <ToastProvider>
-                                    <VarsProvider>{children}</VarsProvider>
+                                    <VarsProvider>
+                                        <ComponentProvider>{children}</ComponentProvider>
+                                    </VarsProvider>
                                 </ToastProvider>
                             </AlertProvider>
                         </LoadingProvider>

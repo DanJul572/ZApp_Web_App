@@ -11,9 +11,9 @@ const CContainerType = {
         value: 3,
         label: 'Collapse',
     },
-    section: {
+    drawer: {
         value: 4,
-        label: 'Section',
+        label: 'Drawer',
     },
 };
 
