@@ -1,8 +1,6 @@
-import Box from '@mui/material/Box';
-import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 
+import Card from '@/component/container/Card';
 import Collapse from '@/component/container/Collapse';
 
 import CContainerType from '@/constant/CContainerType';
@@ -19,23 +17,18 @@ const Container = props => {
 
     const content = () => {
         if (type === CContainerType.card.value) {
-            return (
-                <Box border={1} borderColor={grey[300]} borderRadius={1} padding={1}>
-                    <Typography fontSize={10}>Card</Typography>
-                    <Box>{section && section.length > 0 && section.map(childs => childs.map(renderComponent))}</Box>
-                </Box>
-            );
+            return <Card>{section && section.length > 0 && section.map(childs => childs.map(renderComponent))}</Card>;
         } else if (type === CContainerType.grid.value) {
             let columnSize = properties.size ? properties.size.split(',') : [];
             let defaultSize = 12 / (section.length > 0 ? section.length : 1);
             return (
                 <Grid container>
-                    <Grid item xs={12}>
-                        <Typography fontSize={10}>Grid</Typography>
-                    </Grid>
                     {section &&
                         section.map((childs, index) => (
-                            <Grid item xs={columnSize.length > 0 ? parseInt(columnSize[index]) : defaultSize} key={index}>
+                            <Grid
+                                item
+                                xs={columnSize.length > 0 ? parseInt(columnSize[index]) : defaultSize}
+                                key={index}>
                                 {childs.map(renderComponent)}
                             </Grid>
                         ))}

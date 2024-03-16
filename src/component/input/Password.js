@@ -48,33 +48,28 @@ const Password = props => {
     }, [value]);
 
     return (
-        <form>
-            <FormControl variant="outlined" fullWidth>
-                <Typography fontSize={12}>{label}</Typography>
-                <OutlinedInput
-                    autoComplete="on"
-                    disabled={disabled}
-                    endAdornment={
-                        <InputAdornment position="end">
-                            <IconButton
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end">
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
-                        </InputAdornment>
-                    }
-                    fullWidth
-                    name={name || 'password'}
-                    onBlur={blur}
-                    onChange={change}
-                    size="small"
-                    type={showPassword ? 'text' : 'password'}
-                    value={value || ''}
-                    variant="outlined"
-                />
-            </FormControl>
-        </form>
+        <FormControl variant="outlined" fullWidth>
+            <Typography fontSize={12}>{label}</Typography>
+            <OutlinedInput
+                autoComplete="on"
+                disabled={disabled}
+                endAdornment={
+                    <InputAdornment position="end">
+                        <IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end">
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                    </InputAdornment>
+                }
+                fullWidth
+                name={name || 'password'}
+                onBlur={blur}
+                onChange={change}
+                size="small"
+                type={showPassword ? 'text' : 'password'}
+                value={value || ''}
+                variant="outlined"
+            />
+        </FormControl>
     );
 };
 
