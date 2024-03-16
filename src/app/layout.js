@@ -6,7 +6,7 @@ import 'suneditor/dist/css/suneditor.min.css';
 import 'react-querybuilder/dist/query-builder.css';
 
 import {AlertProvider} from '@/context/AlertProvider';
-import {BuilderProvider} from '@/context/BuilderProvider';
+import {VarsProvider} from '@/context/VarsProvider';
 import {ToastProvider} from '@/context/ToastProvider';
 import ErrorProvider from '@/context/ErrorProvider';
 import {LoadingProvider} from '@/context/LoadingProvider';
@@ -30,7 +30,7 @@ export default function RootLayout({children}) {
                         <LoadingProvider>
                             <AlertProvider>
                                 <ToastProvider>
-                                    <BuilderProvider>{children}</BuilderProvider>
+                                    <VarsProvider>{children}</VarsProvider>
                                 </ToastProvider>
                             </AlertProvider>
                         </LoadingProvider>

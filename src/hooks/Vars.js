@@ -1,7 +1,7 @@
-import {useBuilder} from '@/context/BuilderProvider';
+import {useVars} from '@/context/VarsProvider';
 
 const Vars = () => {
-    const {vars, setVars} = useBuilder({});
+    const {vars, setVars} = useVars({});
 
     const removeAll = () => {
         setVars(null);
