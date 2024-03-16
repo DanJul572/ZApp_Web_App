@@ -13,19 +13,11 @@ const Comp = () => {
         setComp(newComp);
     };
 
-    const setAll = obj => {
-        setComp(obj);
-    };
-
     const get = name => {
         return comp ? comp[name] : null;
     };
 
-    const getAll = () => {
-        return comp;
-    };
-
-    return {get, getAll, set, removeAll, setAll};
+    return {get, set, removeAll};
 };
 
 export default Comp;

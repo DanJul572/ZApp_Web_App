@@ -18,6 +18,7 @@ import Label from './Label';
 import ModuleID from './ModuleID';
 import Name from './Name';
 import OnClick from './OnClick';
+import Open from './Open';
 import PageSettings from './PageSettings';
 import Position from './Position';
 import Size from './Size';
@@ -222,6 +223,12 @@ const Properties = props => {
                                 setContent={setContent}
                             />
                             <Disable
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <Open
                                 content={content}
                                 selected={selected}
                                 editComponent={editComponent}

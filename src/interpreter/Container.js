@@ -6,23 +6,16 @@ import Drawer from '@/component/container/Drawer';
 
 import CContainerType from '@/constant/CContainerType';
 
-import Comp from '@/hooks/Comp';
-
 import Runner from '@/runner';
 
 const Container = props => {
     const {type, section, properties, renderComponent, isBuilder} = props;
 
     const {getValues} = Runner();
-    const {get, set} = Comp();
 
     const color = properties.color ? properties.color.value : null;
     const label = getValues(properties.label, 'js');
-    const open = get(properties.name);
-
-    const closeDrawer = param => {
-        set(properties.name, param);
-    };
+    const open = getValues(properties.open, 'js');
 
     const content = () => {
         if (type === CContainerType.card.value) {
@@ -56,7 +49,7 @@ const Container = props => {
                 );
             } else {
                 return (
-                    <Drawer open={Boolean(open)} setOpen={closeDrawer}>
+                    <Drawer open={Boolean(open)}>
                         {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                     </Drawer>
                 );
