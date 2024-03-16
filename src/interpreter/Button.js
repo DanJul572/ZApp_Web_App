@@ -6,9 +6,9 @@ import MuiButton from '@/alias/MuiButton';
 import Runner from '@/runner';
 
 const Button = props => {
-    const {runFunction, getValues} = Runner();
+    const {type, properties, isBuilder} = props;
 
-    const {type, properties} = props;
+    const {runFunction, getValues} = Runner();
 
     const displayValue = type => {
         return properties.display && properties.display[type] ? properties.display[type].value : 'flex-start';
@@ -21,12 +21,18 @@ const Button = props => {
     const label = getValues(properties.label, 'js');
     const onClick = properties.onClick;
 
+    const click = () => {
+        if (!isBuilder) {
+            runFunction(onClick);
+        }
+    };
+
     const content = () => {
         if (type === CButtonType.button.value) {
             return (
                 <Box sx={display}>
                     <MuiButton
-                        onClick={() => runFunction(onClick)}
+                        onClick={click}
                         size="small"
                         variant="contained"
                         sx={{display: hidden ? 'none' : 'block'}}

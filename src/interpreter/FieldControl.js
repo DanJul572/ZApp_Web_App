@@ -18,7 +18,7 @@ import Vars from '@/hooks/Vars';
 import Runner from '@/runner';
 
 const FieldControl = props => {
-    const {type, properties} = props;
+    const {isBuilder, type, properties} = props;
 
     const {getValues} = Runner();
     const {set, get} = Vars();
@@ -27,8 +27,10 @@ const FieldControl = props => {
     const label = getValues(properties.label, 'js');
 
     const onChange = value => {
-        if (properties.name) {
-            set(properties.name, value);
+        if (!isBuilder) {
+            if (properties.name) {
+                set(properties.name, value);
+            }
         }
     };
 

@@ -68,7 +68,7 @@ const Interpreter = props => {
         } else if (group === CComponentGroupType.fieldControl.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <FieldControl type={type} properties={properties} />
+                    <FieldControl type={type} properties={properties} isBuilder={isBuilder} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.visualElement.value) {
@@ -92,7 +92,7 @@ const Interpreter = props => {
         } else if (group === CComponentGroupType.button.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <Button type={type} properties={properties} />
+                    <Button type={type} properties={properties} isBuilder={isBuilder} />
                 </Wraper>
             );
         }
