@@ -35,9 +35,16 @@ const Size = props => {
         const type = selected.type.value;
         const group = selected.group.value;
 
-        if (type === CContainerType.grid.value && group === CComponentGroupType.container.value) return true;
-        else if (type === CVisualElement.text.value && group === CComponentGroupType.visualElement.value) return true;
-        else return false;
+        if (
+            (type === CContainerType.grid.value || type === CContainerType.drawer.value) &&
+            group === CComponentGroupType.container.value
+        ) {
+            return true;
+        } else if (type === CVisualElement.text.value && group === CComponentGroupType.visualElement.value) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
     useEffect(() => {

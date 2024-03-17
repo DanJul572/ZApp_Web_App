@@ -16,6 +16,7 @@ const Container = props => {
     const color = properties.color ? properties.color.value : null;
     const label = getValues(properties.label, 'js');
     const open = getValues(properties.open, 'js');
+    const size = properties.size;
 
     const content = () => {
         if (type === CContainerType.card.value) {
@@ -49,7 +50,7 @@ const Container = props => {
                 );
             } else {
                 return (
-                    <Drawer open={Boolean(open)}>
+                    <Drawer open={Boolean(open)} size={size}>
                         {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                     </Drawer>
                 );

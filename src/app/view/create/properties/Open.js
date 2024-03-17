@@ -83,10 +83,10 @@ const Open = props => {
             <Tooltip arrow title={open.isBind ? 'Is Bindding' : null} placement="left">
                 <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                     <Toggle
-                        value={Boolean(open.value)}
+                        value={open.isBind ? false : Boolean(open.value)}
                         label="Open"
                         onChange={value => onChange(false, value)}
-                        opend={open.isBind}
+                        disabled={open.isBind}
                     />
                     <IconButton sx={{padding: 0}} size="small" onClick={() => setOpenForm(true)}>
                         <InsertLink fontSize="small" />

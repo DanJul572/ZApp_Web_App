@@ -216,6 +216,12 @@ const Properties = props => {
                                 editComponent={editComponent}
                                 setContent={setContent}
                             />
+                            <Size
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
                             <OnClick
                                 content={content}
                                 selected={selected}
@@ -235,12 +241,6 @@ const Properties = props => {
                                 setContent={setContent}
                             />
                             <Hidden
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Size
                                 content={content}
                                 selected={selected}
                                 editComponent={editComponent}
