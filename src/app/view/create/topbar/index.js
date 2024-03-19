@@ -142,7 +142,9 @@ const TopBar = props => {
             .finally(() => setLoading(false));
     };
 
-    const onApply = () => setOpen(false);
+    const onApply = () => {
+        setOpen(false);
+    };
 
     useEffect(() => {
         if (!id) {

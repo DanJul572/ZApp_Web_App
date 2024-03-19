@@ -7,9 +7,6 @@ import Grid from '@mui/material/Grid';
 
 import Component from './component';
 import Content from './content';
-// import Function from './function';
-// import Module from './module';
-// import Navigation from './navigation';
 import Properties from './properties';
 import TopBar from './topbar';
 
@@ -33,17 +30,6 @@ const Page = () => {
     const [content, setContent] = useState([]);
     const [selected, setSelected] = useState(null);
 
-    // const [activeNavigation, setActiveNavigation] = useState(navigationType.content);
-
-    /*
-    const activeContent = () => {
-        if (activeNavigation === navigationType.content)
-            return <Content content={content} selected={selected} setSelected={setSelected} />;
-        else if (activeNavigation === navigationType.function) return <Function />;
-        else if (activeNavigation === navigationType.module) return <Module />;
-    };
-    */
-
     return (
         <Empty>
             <TopBar
@@ -58,11 +44,6 @@ const Page = () => {
             <Grid container justifyContent="space-between" display="flex">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
                 <Grid item xs={8} marginX="17%">
-                    {/* <Navigation
-                        activeNavigation={activeNavigation}
-                        navigationType={navigationType}
-                        setActiveNavigation={setActiveNavigation}
-                    /> */}
                     <Content content={content} selected={selected} setSelected={setSelected} />
                 </Grid>
                 <Properties
