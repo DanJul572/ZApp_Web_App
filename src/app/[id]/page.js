@@ -42,7 +42,7 @@ const Page = props => {
         getContent();
     }, []);
 
-    return <Main>{content ? <Interpreter isBuilder={false} content={content} page={page} /> : <></>}</Main>;
+    return <Main>{content && <Interpreter isBuilder={false} content={content} page={page} />}</Main>;
 };
 
 export default Page;

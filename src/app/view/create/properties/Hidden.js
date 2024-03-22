@@ -74,47 +74,47 @@ const Hidden = props => {
         }
     }, [content, selected]);
 
-    return validComponent() ? (
-        <>
-            <Tooltip arrow title={hidden.isBind ? 'Is Bindding' : null} placement="left">
-                <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                    <Toggle
-                        value={Boolean(hidden.value)}
-                        label="Hidden"
-                        onChange={value => onChange(false, value)}
-                        hiddend={hidden.isBind}
-                    />
-                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                        <InsertLink fontSize="small" />
-                    </IconButton>
-                </Box>
-            </Tooltip>
-            <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>Hidden</DialogTitle>
-                <DialogContent>
-                    <Box width={500} paddingY={1}>
-                        <Code
-                            value={!hidden.isBind ? null : hidden.value}
-                            onChange={value => onChange(true, value)}
-                            lang="js"
+    return (
+        validComponent() && (
+            <Box>
+                <Tooltip arrow title={hidden.isBind ? 'Is Bindding' : null} placement="left">
+                    <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
+                        <Toggle
+                            value={Boolean(hidden.value)}
+                            label="Hidden"
+                            onChange={value => onChange(false, value)}
+                            hiddend={hidden.isBind}
                         />
+                        <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                            <InsertLink fontSize="small" />
+                        </IconButton>
                     </Box>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpen(false)} variant="outlined" size="small">
-                        Cancel
-                    </Button>
-                    <Button onClick={onRemove} variant="outlined" size="small">
-                        Remove
-                    </Button>
-                    <Button onClick={onApply} variant="contained" size="small">
-                        Apply
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
-    ) : (
-        <></>
+                </Tooltip>
+                <Dialog open={open} onClose={() => setOpen(false)}>
+                    <DialogTitle>Hidden</DialogTitle>
+                    <DialogContent>
+                        <Box width={500} paddingY={1}>
+                            <Code
+                                value={!hidden.isBind ? null : hidden.value}
+                                onChange={value => onChange(true, value)}
+                                lang="js"
+                            />
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                            Cancel
+                        </Button>
+                        <Button onClick={onRemove} variant="outlined" size="small">
+                            Remove
+                        </Button>
+                        <Button onClick={onApply} variant="contained" size="small">
+                            Apply
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </Box>
+        )
     );
 };
 

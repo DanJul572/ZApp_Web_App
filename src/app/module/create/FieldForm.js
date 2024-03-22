@@ -324,7 +324,7 @@ const FieldForm = props => {
     };
 
     return (
-        <>
+        <Box>
             <Table
                 action={action}
                 columnKey={'id'}
@@ -365,7 +365,7 @@ const FieldForm = props => {
                 cancelButton="Cancel"
                 onConfirm={deleteConfirmation}
             />
-        </>
+        </Box>
     );
 };
 

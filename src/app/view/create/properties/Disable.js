@@ -79,47 +79,47 @@ const Disable = props => {
         }
     }, [content, selected]);
 
-    return validComponent() ? (
-        <>
-            <Tooltip arrow title={disable.isBind ? 'Is Bindding' : null} placement="left">
-                <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                    <Toggle
-                        value={Boolean(disable.value)}
-                        label="Disable"
-                        onChange={value => onChange(false, value)}
-                        disabled={disable.isBind}
-                    />
-                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                        <InsertLink fontSize="small" />
-                    </IconButton>
-                </Box>
-            </Tooltip>
-            <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>Disable</DialogTitle>
-                <DialogContent>
-                    <Box width={500} paddingY={1}>
-                        <Code
-                            value={!disable.isBind ? null : disable.value}
-                            onChange={value => onChange(true, value)}
-                            lang="js"
+    return (
+        validComponent() && (
+            <Box>
+                <Tooltip arrow title={disable.isBind ? 'Is Bindding' : null} placement="left">
+                    <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
+                        <Toggle
+                            value={Boolean(disable.value)}
+                            label="Disable"
+                            onChange={value => onChange(false, value)}
+                            disabled={disable.isBind}
                         />
+                        <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                            <InsertLink fontSize="small" />
+                        </IconButton>
                     </Box>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpen(false)} variant="outlined" size="small">
-                        Cancel
-                    </Button>
-                    <Button onClick={onRemove} variant="outlined" size="small">
-                        Remove
-                    </Button>
-                    <Button onClick={onApply} variant="contained" size="small">
-                        Apply
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
-    ) : (
-        <></>
+                </Tooltip>
+                <Dialog open={open} onClose={() => setOpen(false)}>
+                    <DialogTitle>Disable</DialogTitle>
+                    <DialogContent>
+                        <Box width={500} paddingY={1}>
+                            <Code
+                                value={!disable.isBind ? null : disable.value}
+                                onChange={value => onChange(true, value)}
+                                lang="js"
+                            />
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                            Cancel
+                        </Button>
+                        <Button onClick={onRemove} variant="outlined" size="small">
+                            Remove
+                        </Button>
+                        <Button onClick={onApply} variant="contained" size="small">
+                            Apply
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </Box>
+        )
     );
 };
 

@@ -65,7 +65,7 @@ const Page = () => {
     };
 
     return (
-        <>
+        <Box>
             <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button variant="contained" size="small" onClick={onSave}>
                     Save
@@ -83,7 +83,7 @@ const Page = () => {
                 setModuleDescription={setModuleDescription}
             />
             <FieldForm fieldRows={fieldRows} setFieldRows={setFieldRows} />
-        </>
+        </Box>
     );
 };
 

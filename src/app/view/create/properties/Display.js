@@ -135,20 +135,20 @@ const Display = props => {
         }
     }, [selected]);
 
-    return validComponent() ? (
-        <Box paddingX={2}>
-            <Typography fontSize={12}>Display</Typography>
-            <Box marginTop={1} display="flex" justifyContent="space-between" alignItems="center">
-                {horizontal.map(poisiton)}
-            </Box>
-            {/*
+    return (
+        validComponent() && (
+            <Box paddingX={2}>
+                <Typography fontSize={12}>Display</Typography>
+                <Box marginTop={1} display="flex" justifyContent="space-between" alignItems="center">
+                    {horizontal.map(poisiton)}
+                </Box>
+                {/*
                 <Box marginTop={1} display="flex" justifyContent="space-between" alignItems="center">
                     {vertical.map(poisiton)}
                 </Box>
             */}
-        </Box>
-    ) : (
-        <></>
+            </Box>
+        )
     );
 };
 

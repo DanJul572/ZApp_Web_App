@@ -32,7 +32,8 @@ const Styles = props => {
 
         let group = selected.group.value;
 
-        if (group !== CComponentGroupType.container.value && group !== CComponentGroupType.visualElement.value) return false;
+        if (group !== CComponentGroupType.container.value && group !== CComponentGroupType.visualElement.value)
+            return false;
 
         return true;
     };
@@ -41,33 +42,33 @@ const Styles = props => {
         if (selected) setStyles(selected.properties.styles || null);
     }, [selected]);
 
-    return validComponent() ? (
-        <>
-            <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                <Typography fontSize={12}>Styles</Typography>
-                <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <InsertLink fontSize="small" />
-                </IconButton>
+    return (
+        validComponent() && (
+            <Box>
+                <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
+                    <Typography fontSize={12}>Styles</Typography>
+                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                        <InsertLink fontSize="small" />
+                    </IconButton>
+                </Box>
+                <Dialog open={open} onClose={() => setOpen(false)}>
+                    <DialogTitle>Styles</DialogTitle>
+                    <DialogContent>
+                        <Box width={500}>
+                            <Code value={styles} onChange={setStyles} lang="json" />
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                            Cancel
+                        </Button>
+                        <Button onClick={onApply} variant="contained" size="small">
+                            Apply
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </Box>
-            <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>Styles</DialogTitle>
-                <DialogContent>
-                    <Box width={500}>
-                        <Code value={styles} onChange={setStyles} lang="json" />
-                    </Box>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpen(false)} variant="outlined" size="small">
-                        Cancel
-                    </Button>
-                    <Button onClick={onApply} variant="contained" size="small">
-                        Apply
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
-    ) : (
-        <></>
+        )
     );
 };
 

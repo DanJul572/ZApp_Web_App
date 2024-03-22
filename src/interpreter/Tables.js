@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import Runner from '@/runner';
@@ -18,7 +19,7 @@ const Tables = props => {
     const moduleID = getValues(properties.moduleID, 'js');
     const actions = properties.actions;
 
-    const prop = {
+    const generalTableProps = {
         moduleID,
         actions,
         isBuilder,
@@ -27,16 +28,16 @@ const Tables = props => {
     const {
         columnKey,
         columns,
-        onConfirm,
         openConfirmDialog,
         rowCount,
         rows,
+        onConfirm,
         setFilter,
         setOpenConfirmDialog,
         setPage,
         setSelectedRow,
         setSort,
-    } = GeneralTable(prop);
+    } = GeneralTable(generalTableProps);
 
     const onCLickToolbarAction = action => {
         if (action.type === CActionType.insert.value) runFunction(action.onClick);
@@ -62,7 +63,7 @@ const Tables = props => {
             );
         } else if (type === CTableType.table.value && moduleID) {
             return (
-                <>
+                <Box>
                     <Table
                         action={actions}
                         columnKey={columnKey}
@@ -90,7 +91,7 @@ const Tables = props => {
                         cancelButton="Cancel"
                         onConfirm={onConfirm}
                     />
-                </>
+                </Box>
             );
         }
     };

@@ -19,17 +19,17 @@ const Identity = props => {
         return true;
     };
 
-    return validComponent() ? (
-        <>
-            <Box paddingX={2} display="flex" justifyContent="space-between">
-                <Typography fontSize={12}>{selected.id}</Typography>
-                <IconButton sx={{padding: 0}} size="small" onClick={onCoppy}>
-                    <ContentPaste fontSize="small" />
-                </IconButton>
+    return (
+        validComponent() && (
+            <Box>
+                <Box paddingX={2} display="flex" justifyContent="space-between">
+                    <Typography fontSize={12}>{selected.id}</Typography>
+                    <IconButton sx={{padding: 0}} size="small" onClick={onCoppy}>
+                        <ContentPaste fontSize="small" />
+                    </IconButton>
+                </Box>
             </Box>
-        </>
-    ) : (
-        <></>
+        )
     );
 };
 

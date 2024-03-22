@@ -78,47 +78,47 @@ const Open = props => {
         }
     }, [content, selected]);
 
-    return validComponent() ? (
-        <>
-            <Tooltip arrow title={open.isBind ? 'Is Bindding' : null} placement="left">
-                <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                    <Toggle
-                        value={open.isBind ? false : Boolean(open.value)}
-                        label="Open"
-                        onChange={value => onChange(false, value)}
-                        disabled={open.isBind}
-                    />
-                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpenForm(true)}>
-                        <InsertLink fontSize="small" />
-                    </IconButton>
-                </Box>
-            </Tooltip>
-            <Dialog open={openForm} onClose={() => setOpenForm(false)}>
-                <DialogTitle>Open</DialogTitle>
-                <DialogContent>
-                    <Box width={500} paddingY={1}>
-                        <Code
-                            value={!open.isBind ? null : open.value}
-                            onChange={value => onChange(true, value)}
-                            lang="js"
+    return (
+        validComponent() && (
+            <Box>
+                <Tooltip arrow title={open.isBind ? 'Is Bindding' : null} placement="left">
+                    <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
+                        <Toggle
+                            value={open.isBind ? false : Boolean(open.value)}
+                            label="Open"
+                            onChange={value => onChange(false, value)}
+                            disabled={open.isBind}
                         />
+                        <IconButton sx={{padding: 0}} size="small" onClick={() => setOpenForm(true)}>
+                            <InsertLink fontSize="small" />
+                        </IconButton>
                     </Box>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpenForm(false)} variant="outlined" size="small">
-                        Cancel
-                    </Button>
-                    <Button onClick={onRemove} variant="outlined" size="small">
-                        Remove
-                    </Button>
-                    <Button onClick={onApply} variant="contained" size="small">
-                        Apply
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
-    ) : (
-        <></>
+                </Tooltip>
+                <Dialog open={openForm} onClose={() => setOpenForm(false)}>
+                    <DialogTitle>Open</DialogTitle>
+                    <DialogContent>
+                        <Box width={500} paddingY={1}>
+                            <Code
+                                value={!open.isBind ? null : open.value}
+                                onChange={value => onChange(true, value)}
+                                lang="js"
+                            />
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setOpenForm(false)} variant="outlined" size="small">
+                            Cancel
+                        </Button>
+                        <Button onClick={onRemove} variant="outlined" size="small">
+                            Remove
+                        </Button>
+                        <Button onClick={onApply} variant="contained" size="small">
+                            Apply
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </Box>
+        )
     );
 };
 

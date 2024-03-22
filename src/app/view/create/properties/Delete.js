@@ -24,30 +24,30 @@ const Delete = props => {
         setOpen(false);
     };
 
-    return selected ? (
-        <>
-            <Box paddingX={2} display="flex" justifyContent="space-between">
-                <Typography fontSize={12}>{selected.type.label}</Typography>
-                <Box>
-                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                        <MuiDeleteIcon fontSize="small" />
-                    </IconButton>
-                    <IconButton sx={{padding: 0}} size="small" onClick={duplicateComponent}>
-                        <ContentCopy fontSize="small" />
-                    </IconButton>
+    return (
+        selected && (
+            <Box>
+                <Box paddingX={2} display="flex" justifyContent="space-between">
+                    <Typography fontSize={12}>{selected.type.label}</Typography>
+                    <Box>
+                        <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                            <MuiDeleteIcon fontSize="small" />
+                        </IconButton>
+                        <IconButton sx={{padding: 0}} size="small" onClick={duplicateComponent}>
+                            <ContentCopy fontSize="small" />
+                        </IconButton>
+                    </Box>
                 </Box>
+                <Confirm
+                    open={open}
+                    title="Delete Component"
+                    text="Are you sure you want to delete this component ?"
+                    confirmButton="Delete"
+                    cancelButton="Cancel"
+                    onConfirm={onDelete}
+                />
             </Box>
-            <Confirm
-                open={open}
-                title="Delete Component"
-                text="Are you sure you want to delete this component ?"
-                confirmButton="Delete"
-                cancelButton="Cancel"
-                onConfirm={onDelete}
-            />
-        </>
-    ) : (
-        <></>
+        )
     );
 };
 

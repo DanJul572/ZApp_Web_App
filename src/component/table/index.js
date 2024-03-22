@@ -214,39 +214,40 @@ const Table = props => {
         if (enableRowSelection && onSelect) onSelect(Object.keys(rowSelection));
     }, [rowSelection]);
 
-    return newColumns && newColumns.length > 0 ? (
-        <>
-            <MaterialReactTable table={table} />
-            {enableAdvanceFilter && (
-                <AdvanceFilter
-                    columns={columns}
-                    enableAdvanceFilter={enableAdvanceFilter}
-                    format={advanceFilterFormat}
-                    onAdvanceFilter={onAdvanceFilter}
-                    openAdvanceFilterDialog={openAdvanceFilterDialog}
-                    setOpenAdvanceFilterDialog={setOpenAdvanceFilterDialog}
-                />
-            )}
-            {enableExport && (
-                <ExportDialog
-                    table={table}
-                    columns={columns}
-                    openExportDialog={openExportDialog}
-                    setOpenExportDialog={setOpenExportDialog}
-                />
-            )}
-            {rowCustomAction.length > 0 && (
-                <RowCustomActionDialog
-                    openRowCustomActionDialog={openRowCustomActionDialog}
-                    setOpenRowCustomActionDialog={setOpenRowCustomActionDialog}
-                    rowCustomAction={rowCustomAction}
-                    rowClicked={rowClicked}
-                    onClickRowAction={onClickRowAction}
-                />
-            )}
-        </>
-    ) : (
-        <></>
+    return (
+        newColumns &&
+        newColumns.length > 0 && (
+            <Box>
+                <MaterialReactTable table={table} />
+                {enableAdvanceFilter && (
+                    <AdvanceFilter
+                        columns={columns}
+                        enableAdvanceFilter={enableAdvanceFilter}
+                        format={advanceFilterFormat}
+                        onAdvanceFilter={onAdvanceFilter}
+                        openAdvanceFilterDialog={openAdvanceFilterDialog}
+                        setOpenAdvanceFilterDialog={setOpenAdvanceFilterDialog}
+                    />
+                )}
+                {enableExport && (
+                    <ExportDialog
+                        table={table}
+                        columns={columns}
+                        openExportDialog={openExportDialog}
+                        setOpenExportDialog={setOpenExportDialog}
+                    />
+                )}
+                {rowCustomAction.length > 0 && (
+                    <RowCustomActionDialog
+                        openRowCustomActionDialog={openRowCustomActionDialog}
+                        setOpenRowCustomActionDialog={setOpenRowCustomActionDialog}
+                        rowCustomAction={rowCustomAction}
+                        rowClicked={rowClicked}
+                        onClickRowAction={onClickRowAction}
+                    />
+                )}
+            </Box>
+        )
     );
 };
 

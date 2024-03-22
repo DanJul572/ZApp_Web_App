@@ -42,33 +42,33 @@ const Name = props => {
         if (selected) setName(selected.properties.name || null);
     }, [selected]);
 
-    return validComponent() ? (
-        <>
-            <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                <Typography fontSize={12}>Name</Typography>
-                <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <ShortTextOutlined fontSize="small" />
-                </IconButton>
+    return (
+        validComponent() && (
+            <Box>
+                <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
+                    <Typography fontSize={12}>Name</Typography>
+                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                        <ShortTextOutlined fontSize="small" />
+                    </IconButton>
+                </Box>
+                <Dialog open={open} onClose={() => setOpen(false)}>
+                    <DialogTitle>Name</DialogTitle>
+                    <DialogContent>
+                        <Box width={500} paddingY={1}>
+                            <ShortText value={name} onChange={setName} />
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                            Cancel
+                        </Button>
+                        <Button onClick={onApply} variant="contained" size="small">
+                            Apply
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </Box>
-            <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>Name</DialogTitle>
-                <DialogContent>
-                    <Box width={500} paddingY={1}>
-                        <ShortText value={name} onChange={setName} />
-                    </Box>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpen(false)} variant="outlined" size="small">
-                        Cancel
-                    </Button>
-                    <Button onClick={onApply} variant="contained" size="small">
-                        Apply
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
-    ) : (
-        <></>
+        )
     );
 };
 

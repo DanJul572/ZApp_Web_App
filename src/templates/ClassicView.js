@@ -1,5 +1,7 @@
 'use client';
 
+import Box from '@mui/material/Box';
+
 import Confirm from '@/component/dialog/Confirm';
 import Table from '@/component/table';
 
@@ -22,7 +24,7 @@ const ClassicView = props => {
     } = GeneralTable(props);
 
     return (
-        <>
+        <Box>
             <Table
                 action={actions}
                 columnKey={columnKey}
@@ -50,7 +52,7 @@ const ClassicView = props => {
                 cancelButton="Cancel"
                 onConfirm={onConfirm}
             />
-        </>
+        </Box>
     );
 };
 

@@ -67,37 +67,37 @@ const Position = props => {
         setRowIndex(null);
     }, [selected]);
 
-    return selected ? (
-        <>
-            <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                <Typography fontSize={12}>Position</Typography>
-                <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <ShortTextOutlined fontSize="small" />
-                </IconButton>
-            </Box>
-            <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>Position</DialogTitle>
-                <DialogContent>
-                    <Box display="flex" flexDirection="column" gap={1} paddingY={1}>
-                        <ShortText label="Container ID" value={containerID} onChange={setContainerID} />
-                        <Box display="flex" gap={1}>
-                            <Number label="Column" value={columnIndex} onChange={setColumnIndex} />
-                            <Number label="Row" value={rowIndex} onChange={setRowIndex} />
+    return (
+        selected && (
+            <Box>
+                <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
+                    <Typography fontSize={12}>Position</Typography>
+                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                        <ShortTextOutlined fontSize="small" />
+                    </IconButton>
+                </Box>
+                <Dialog open={open} onClose={() => setOpen(false)}>
+                    <DialogTitle>Position</DialogTitle>
+                    <DialogContent>
+                        <Box display="flex" flexDirection="column" gap={1} paddingY={1}>
+                            <ShortText label="Container ID" value={containerID} onChange={setContainerID} />
+                            <Box display="flex" gap={1}>
+                                <Number label="Column" value={columnIndex} onChange={setColumnIndex} />
+                                <Number label="Row" value={rowIndex} onChange={setRowIndex} />
+                            </Box>
                         </Box>
-                    </Box>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpen(false)} variant="outlined" size="small">
-                        Cancel
-                    </Button>
-                    <Button onClick={onMove} variant="contained" size="small">
-                        Apply
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
-    ) : (
-        <></>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                            Cancel
+                        </Button>
+                        <Button onClick={onMove} variant="contained" size="small">
+                            Apply
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </Box>
+        )
     );
 };
 

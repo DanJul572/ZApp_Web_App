@@ -42,33 +42,33 @@ const ModuleID = props => {
         if (selected) setModuleID(selected.properties.moduleID || null);
     }, [selected]);
 
-    return validComponent() ? (
-        <>
-            <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                <Typography fontSize={12}>Module ID</Typography>
-                <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <InsertLink fontSize="small" />
-                </IconButton>
+    return (
+        validComponent() && (
+            <Box>
+                <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
+                    <Typography fontSize={12}>Module ID</Typography>
+                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                        <InsertLink fontSize="small" />
+                    </IconButton>
+                </Box>
+                <Dialog open={open} onClose={() => setOpen(false)}>
+                    <DialogTitle>ModuleID</DialogTitle>
+                    <DialogContent>
+                        <Box width={500}>
+                            <Code value={moduleID} onChange={setModuleID} lang="js" />
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                            Cancel
+                        </Button>
+                        <Button onClick={onApply} variant="contained" size="small">
+                            Apply
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </Box>
-            <Dialog open={open} onClose={() => setOpen(false)}>
-                <DialogTitle>ModuleID</DialogTitle>
-                <DialogContent>
-                    <Box width={500}>
-                        <Code value={moduleID} onChange={setModuleID} lang="js" />
-                    </Box>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpen(false)} variant="outlined" size="small">
-                        Cancel
-                    </Button>
-                    <Button onClick={onApply} variant="contained" size="small">
-                        Apply
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
-    ) : (
-        <></>
+        )
     );
 };
 

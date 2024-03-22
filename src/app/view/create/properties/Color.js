@@ -93,14 +93,14 @@ const Color = props => {
         );
     };
 
-    return validComponent() ? (
-        <Box paddingX={2}>
-            <Box display="flex" justifyContent="space-between" alignItems="center" gap={2} marginTop={1}>
-                {colors.map(component)}
+    return (
+        validComponent() && (
+            <Box paddingX={2}>
+                <Box display="flex" justifyContent="space-between" alignItems="center" gap={2} marginTop={1}>
+                    {colors.map(component)}
+                </Box>
             </Box>
-        </Box>
-    ) : (
-        <></>
+        )
     );
 };
 

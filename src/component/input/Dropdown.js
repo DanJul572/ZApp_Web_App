@@ -50,10 +50,10 @@ const Dropdown = props => {
 
     const renderInput = params => {
         return (
-            <>
+            <Box>
                 <Typography fontSize={12}>{label}</Typography>
                 <TextField {...params} error={error.status} helperText={error.message} />
-            </>
+            </Box>
         );
     };
 

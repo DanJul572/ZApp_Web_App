@@ -93,60 +93,60 @@ const TableAction = props => {
         if (selected) setSelectedAction(selected.properties.actions || []);
     }, [selected, content]);
 
-    return validComponent() ? (
-        <>
-            <Box paddingX={2}>
-                <Typography fontSize={12} marginBottom={1}>
-                    Actions
-                </Typography>
-                <Divider />
-                <Box>
-                    {actions.map(action => {
-                        return (
-                            <Box
-                                display="flex"
-                                justifyContent="space-between"
-                                alignItems="center"
-                                key={action.type}
-                                marginTop={1}>
-                                <Toggle
-                                    value={Boolean(checkAction(action))}
-                                    label={action.label}
-                                    onChange={() => changeActions(action, true)}
-                                />
-                                {action.type !== CActionType.delete.value && (
-                                    <IconButton
-                                        sx={{padding: 0}}
-                                        size="small"
-                                        onClick={() => setOpen(getValue(action))}
-                                        disabled={!Boolean(checkAction(action))}>
-                                        <InsertLink fontSize="small" />
-                                    </IconButton>
-                                )}
-                            </Box>
-                        );
-                    })}
-                </Box>
-            </Box>
-            <Dialog open={Boolean(open)} onClose={() => setOpen(false)}>
-                <DialogTitle>{open.label}</DialogTitle>
-                <DialogContent>
-                    <Box width={500}>
-                        <Code value={open.onClick} onChange={changeOnClick} lang="js" />
+    return (
+        validComponent() && (
+            <Box>
+                <Box paddingX={2}>
+                    <Typography fontSize={12} marginBottom={1}>
+                        Actions
+                    </Typography>
+                    <Divider />
+                    <Box>
+                        {actions.map(action => {
+                            return (
+                                <Box
+                                    display="flex"
+                                    justifyContent="space-between"
+                                    alignItems="center"
+                                    key={action.type}
+                                    marginTop={1}>
+                                    <Toggle
+                                        value={Boolean(checkAction(action))}
+                                        label={action.label}
+                                        onChange={() => changeActions(action, true)}
+                                    />
+                                    {action.type !== CActionType.delete.value && (
+                                        <IconButton
+                                            sx={{padding: 0}}
+                                            size="small"
+                                            onClick={() => setOpen(getValue(action))}
+                                            disabled={!Boolean(checkAction(action))}>
+                                            <InsertLink fontSize="small" />
+                                        </IconButton>
+                                    )}
+                                </Box>
+                            );
+                        })}
                     </Box>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpen(false)} variant="outlined" size="small">
-                        Cancel
-                    </Button>
-                    <Button onClick={applyOnClick} variant="contained" size="small">
-                        Apply
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
-    ) : (
-        <></>
+                </Box>
+                <Dialog open={Boolean(open)} onClose={() => setOpen(false)}>
+                    <DialogTitle>{open.label}</DialogTitle>
+                    <DialogContent>
+                        <Box width={500}>
+                            <Code value={open.onClick} onChange={changeOnClick} lang="js" />
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                            Cancel
+                        </Button>
+                        <Button onClick={applyOnClick} variant="contained" size="small">
+                            Apply
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </Box>
+        )
     );
 };
 
