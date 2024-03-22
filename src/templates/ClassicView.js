@@ -1,8 +1,9 @@
 'use client';
 
 import Confirm from '@/component/dialog/Confirm';
-import GeneralTable from '@/hooks/GeneralTable';
 import Table from '@/component/table';
+
+import GeneralTable from '@/hooks/GeneralTable';
 
 const ClassicView = props => {
     const {
