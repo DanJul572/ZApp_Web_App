@@ -158,7 +158,7 @@ const TopBar = props => {
         <Box>
             <Box
                 sx={{
-                    position: 'sticky',
+                    position: 'fixed',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -169,6 +169,7 @@ const TopBar = props => {
                     top: 0,
                     right: 0,
                     left: 0,
+                    backgroundColor: theme.palette.background.default,
                 }}>
                 <Box display="flex" alignItems="center" gap={1}>
                     <IconButton size="small" sx={{padding: 0}} onClick={() => push('/view')}>

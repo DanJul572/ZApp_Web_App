@@ -3,7 +3,7 @@ import {forwardRef} from 'react';
 import {alpha, styled} from '@mui/material/styles';
 import useTheme from '@mui/material/styles/useTheme';
 
-import {TreeView} from '@mui/x-tree-view/TreeView';
+import {SimpleTreeView} from '@mui/x-tree-view/SimpleTreeView';
 import {TreeItem, treeItemClasses} from '@mui/x-tree-view/TreeItem';
 
 import Folder from '@mui/icons-material/Folder';
@@ -14,9 +14,9 @@ const CustomTreeItem = forwardRef((props, ref) => <TreeItem {...props} ref={ref}
 CustomTreeItem.displayName = 'CustomTreeItem';
 
 const StyledTreeItem = styled(CustomTreeItem)(({theme}) => ({
-    [`& .${treeItemClasses.group}`]: {
-        marginLeft: 15,
-        paddingLeft: 18,
+    [`& .${treeItemClasses.groupTransition}`]: {
+        marginLeft: 10,
+        paddingLeft: 10,
         borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
     },
     [`& .${treeItemClasses.label}`]: {
@@ -43,24 +43,40 @@ const Tree = props => {
     const menuList = menu => {
         if (menu.child) {
             return (
-                <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} onClick={() => clickParent(menu)}>
+                <StyledTreeItem key={menu.id} itemId={menu.id} label={menu.label} onClick={() => clickParent(menu)}>
                     {menu.child.map(child => menuList(child))}
                 </StyledTreeItem>
             );
         } else {
-            return <StyledTreeItem key={menu.id} nodeId={menu.id} label={menu.label} onClick={() => onChildClick(menu)} />;
+            return (
+                <StyledTreeItem key={menu.id} itemId={menu.id} label={menu.label} onClick={() => onChildClick(menu)} />
+            );
         }
     };
 
+    const ExpandIcon = props => {
+        return <Folder {...props} sx={{opacity: 0.8, color: theme.palette.primary.main}} />;
+    };
+
+    const CollapseIcon = props => {
+        return <FolderOpen {...props} sx={{opacity: 0.8, color: theme.palette.primary.main}} />;
+    };
+
+    const EndIcon = props => {
+        return <InsertDriveFileOutlined {...props} sx={{opacity: 0.3, color: theme.palette.primary.main}} />;
+    };
+
     return (
-        <TreeView
+        <SimpleTreeView
             aria-label="customized"
-            defaultCollapseIcon={<FolderOpen sx={{color: theme.palette.primary.main}} />}
-            defaultEndIcon={<InsertDriveFileOutlined sx={{color: theme.palette.primary.main}} />}
-            defaultExpandIcon={<Folder sx={{color: theme.palette.primary.main}} />}
+            slots={{
+                expandIcon: ExpandIcon,
+                collapseIcon: CollapseIcon,
+                endIcon: EndIcon,
+            }}
             sx={{overflowX: 'hidden'}}>
             {list && list.length > 0 && list.map(menu => menuList(menu))}
-        </TreeView>
+        </SimpleTreeView>
     );
 };
 

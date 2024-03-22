@@ -43,7 +43,7 @@ const Page = () => {
             />
             <Grid container justifyContent="space-between" display="flex">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
-                <Grid item xs={8} marginX="17%">
+                <Grid item xs={8} marginX={35} marginTop={8}>
                     <Content content={content} selected={selected} setSelected={setSelected} />
                 </Grid>
                 <Properties
