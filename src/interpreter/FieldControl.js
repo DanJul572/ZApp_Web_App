@@ -25,6 +25,7 @@ const FieldControl = props => {
 
     const disabled = !Boolean(properties.name) || getValues(properties.disable, 'js');
     const label = getValues(properties.label, 'js');
+    const hidden = getValues(properties.hidden, 'js');
 
     const onChange = value => {
         if (!isBuilder) {
@@ -34,138 +35,59 @@ const FieldControl = props => {
         }
     };
 
+    const comProps = {
+        value: get(properties.name) || null,
+        onChange: onChange,
+        disabled: disabled,
+        label: label || null,
+    };
+
     const content = () => {
-        if (type === CInputType.shortText.value)
-            return (
-                <ShortText
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    label={label || null}
-                />
-            );
-
-        if (type === CInputType.longText.value)
-            return (
-                <LongText
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    rows={4}
-                    label={label || null}
-                />
-            );
-
-        if (type === CInputType.number.value)
-            return (
-                <Number
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    label={label || null}
-                />
-            );
-
-        if (type === CInputType.toggle.value)
-            return (
-                <Toggle
-                    disabled={disabled}
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    label={label || null}
-                />
-            );
-
-        if (type === CInputType.dropdown.value)
-            return (
-                <Dropdown
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    options={[]}
-                    disabled={disabled}
-                    label={label || null}
-                />
-            );
-
-        if (type === CInputType.date.value)
-            return (
-                <Date
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    label={label || null}
-                />
-            );
-
-        if (type === CInputType.time.value)
-            return (
-                <Time
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    label={label || null}
-                />
-            );
-
-        if (type === CInputType.file.value)
-            return (
-                <File
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    label={label || null}
-                />
-            );
-
-        if (type === CInputType.richText.value)
-            return (
-                <RichText
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    label={label || null}
-                />
-            );
-
-        if (type === CInputType.radio.value)
-            return (
-                <Radio
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    label={label || null}
-                    options={[
-                        {label: 'Value 1', value: 1},
-                        {label: 'Value 2', value: 2},
-                        {label: 'Value 3', value: 3},
-                    ]}
-                />
-            );
-
-        if (type === CInputType.checkbox.value)
-            return (
-                <Checkbox
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    label={label || null}
-                    options={[
-                        {label: 'Value 1', value: 1},
-                        {label: 'Value 2', value: 2},
-                        {label: 'Value 3', value: 3},
-                    ]}
-                />
-            );
-
-        if (type === CInputType.datetime.value)
-            return (
-                <Datetime
-                    value={get(properties.name) || null}
-                    onChange={onChange}
-                    disabled={disabled}
-                    label={label || null}
-                />
-            );
+        if (!hidden) {
+            if (type === CInputType.shortText.value) {
+                return <ShortText {...comProps} />;
+            } else if (type === CInputType.longText.value) {
+                return <LongText {...comProps} rows={4} />;
+            } else if (type === CInputType.number.value) {
+                return <Number {...comProps} />;
+            } else if (type === CInputType.toggle.value) {
+                return <Toggle {...comProps} />;
+            } else if (type === CInputType.dropdown.value) {
+                return <Dropdown {...comProps} options={[]} />;
+            } else if (type === CInputType.date.value) {
+                return <Date {...comProps} />;
+            } else if (type === CInputType.time.value) {
+                return <Time {...comProps} />;
+            } else if (type === CInputType.file.value) {
+                return <File {...comProps} />;
+            } else if (type === CInputType.richText.value) {
+                return <RichText {...comProps} />;
+            } else if (type === CInputType.radio.value) {
+                return (
+                    <Radio
+                        {...comProps}
+                        options={[
+                            {label: 'Value 1', value: 1},
+                            {label: 'Value 2', value: 2},
+                            {label: 'Value 3', value: 3},
+                        ]}
+                    />
+                );
+            } else if (type === CInputType.checkbox.value) {
+                return (
+                    <Checkbox
+                        {...comProps}
+                        options={[
+                            {label: 'Value 1', value: 1},
+                            {label: 'Value 2', value: 2},
+                            {label: 'Value 3', value: 3},
+                        ]}
+                    />
+                );
+            } else if (type === CInputType.datetime.value) {
+                return <Datetime {...comProps} />;
+            }
+        }
     };
 
     return content();

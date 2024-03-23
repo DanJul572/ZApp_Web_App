@@ -156,6 +156,13 @@ const Properties = props => {
         return content;
     };
 
+    const compProps = {
+        content: content,
+        selected: selected,
+        editComponent: editComponent,
+        setContent: setContent,
+    };
+
     return (
         <Grid
             borderLeft={1}
@@ -191,92 +198,20 @@ const Properties = props => {
                                 setSelected={setSelected}
                                 duplicateComponent={duplicateComponent}
                             />
-                            <Position
-                                editComponent={editComponent}
-                                content={content}
-                                deleteComponent={deleteComponent}
-                                selected={selected}
-                                setContent={setContent}
-                                setSelected={setSelected}
-                            />
-                            <ModuleID
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Name
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Label
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Size
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <OnClick
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Disable
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Open
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Hidden
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Display
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <TextDecoration
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Anchor
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <Color
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
-                            <TableAction
-                                content={content}
-                                selected={selected}
-                                editComponent={editComponent}
-                                setContent={setContent}
-                            />
+                            <Position {...compProps} deleteComponent={deleteComponent} setSelected={setSelected} />
+                            <ModuleID {...compProps} />
+                            <Name {...compProps} />
+                            <Label {...compProps} />
+                            <Size {...compProps} />
+                            <OnClick {...compProps} />
+                            <Disable {...compProps} />
+                            <Open {...compProps} />
+                            <Hidden {...compProps} />
+                            <Display {...compProps} />
+                            <TextDecoration {...compProps} />
+                            <Anchor {...compProps} />
+                            <Color {...compProps} />
+                            <TableAction {...compProps} />
                         </Box>
                     </CustomTabPanel>
                 </Box>

@@ -62,9 +62,11 @@ const Hidden = props => {
     const validComponent = () => {
         if (!selected) return false;
 
-        let group = selected.group.value;
-        if (group !== CComponentGroupType.button.value) return false;
-        return true;
+        const group = selected.group.value;
+
+        if (group === CComponentGroupType.button.value) return true;
+        else if (group === CComponentGroupType.fieldControl.value) return true;
+        return false;
     };
 
     useEffect(() => {
@@ -80,10 +82,10 @@ const Hidden = props => {
                 <Tooltip arrow title={hidden.isBind ? 'Is Bindding' : null} placement="left">
                     <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                         <Toggle
-                            value={Boolean(hidden.value)}
+                            value={hidden.isBind ? false : hidden.value}
                             label="Hidden"
                             onChange={value => onChange(false, value)}
-                            hiddend={hidden.isBind}
+                            disabled={hidden.isBind}
                         />
                         <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                             <InsertLink fontSize="small" />

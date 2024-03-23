@@ -28,20 +28,21 @@ const Button = props => {
     };
 
     const content = () => {
-        if (type === CButtonType.button.value) {
-            return (
-                <Box sx={display}>
-                    <MuiButton
-                        onClick={click}
-                        size="small"
-                        variant="contained"
-                        sx={{display: hidden ? 'none' : 'block'}}
-                        disabled={Boolean(disable)}
-                        color={color}>
-                        {label || CButtonType.button.label}
-                    </MuiButton>
-                </Box>
-            );
+        if (!hidden) {
+            if (type === CButtonType.button.value) {
+                return (
+                    <Box sx={display}>
+                        <MuiButton
+                            onClick={click}
+                            size="small"
+                            variant="contained"
+                            disabled={Boolean(disable)}
+                            color={color}>
+                            {label || CButtonType.button.label}
+                        </MuiButton>
+                    </Box>
+                );
+            }
         }
     };
 
