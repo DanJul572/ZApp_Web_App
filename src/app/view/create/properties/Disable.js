@@ -62,15 +62,11 @@ const Disable = props => {
     const validComponent = () => {
         if (!selected) return false;
 
-        let group = selected.group.value;
+        const group = selected.group.value;
 
-        if (group === CComponentGroupType.button.value) {
-            return true;
-        } else if (group === CComponentGroupType.fieldControl.value) {
-            return true;
-        } else {
-            return false;
-        }
+        if (group === CComponentGroupType.button.value) return true;
+        else if (group === CComponentGroupType.fieldControl.value) return true;
+        else return false;
     };
 
     useEffect(() => {
@@ -86,7 +82,7 @@ const Disable = props => {
                 <Tooltip arrow title={disable.isBind ? 'Is Bindding' : null} placement="left">
                     <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                         <Toggle
-                            value={Boolean(disable.value)}
+                            value={disable.isBind ? false : disable.value}
                             label="Disable"
                             onChange={value => onChange(false, value)}
                             disabled={disable.isBind}
