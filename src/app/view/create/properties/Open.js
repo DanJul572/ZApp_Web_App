@@ -7,12 +7,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 
 import InsertLink from '@mui/icons-material/InsertLink';
 
 import Code from '@/component/input/Code';
-import Toggle from '@/component/input/Toggle';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CContainerType from '@/constant/CContainerType';
@@ -26,24 +25,21 @@ const Open = props => {
         value: null,
     });
 
+    const callChangeProperties = val => {
+        const newContent = editComponent('open', val, content);
+        setContent([...newContent]);
+    };
+
+    const onChange = value => {
+        setOpen({
+            isBind: true,
+            value: value,
+        });
+    };
+
     const onApply = () => {
         callChangeProperties(open);
         setOpenForm(false);
-    };
-
-    const onChange = (isBind, value) => {
-        if (isBind) {
-            setOpen({
-                isBind: true,
-                value: value,
-            });
-        } else {
-            const temValue = {
-                isBind: false,
-                value: value,
-            };
-            callChangeProperties(temValue);
-        }
     };
 
     const onRemove = () => {
@@ -53,11 +49,6 @@ const Open = props => {
         };
         callChangeProperties(temValue);
         setOpenForm(false);
-    };
-
-    const callChangeProperties = val => {
-        const newContent = editComponent('open', val, content);
-        setContent([...newContent]);
     };
 
     const validComponent = () => {
@@ -81,28 +72,17 @@ const Open = props => {
     return (
         validComponent() && (
             <Box>
-                <Tooltip arrow title={open.isBind ? 'Is Bindding' : null} placement="left">
-                    <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                        <Toggle
-                            value={open.isBind ? false : Boolean(open.value)}
-                            label="Open"
-                            onChange={value => onChange(false, value)}
-                            disabled={open.isBind}
-                        />
-                        <IconButton sx={{padding: 0}} size="small" onClick={() => setOpenForm(true)}>
-                            <InsertLink fontSize="small" />
-                        </IconButton>
-                    </Box>
-                </Tooltip>
+                <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
+                    <Typography fontSize={12}>Open</Typography>
+                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpenForm(true)}>
+                        <InsertLink fontSize="small" />
+                    </IconButton>
+                </Box>
                 <Dialog open={openForm} onClose={() => setOpenForm(false)}>
                     <DialogTitle>Open</DialogTitle>
                     <DialogContent>
                         <Box width={500} paddingY={1}>
-                            <Code
-                                value={!open.isBind ? null : open.value}
-                                onChange={value => onChange(true, value)}
-                                lang="js"
-                            />
+                            <Code value={!open.isBind ? null : open.value} onChange={onChange} lang="js" />
                         </Box>
                     </DialogContent>
                     <DialogActions>
