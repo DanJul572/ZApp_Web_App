@@ -23,20 +23,7 @@ const TextDecoration = props => {
         underline: false,
     });
 
-    const items = [
-        {
-            name: 'Bold',
-            value: 'bold',
-        },
-        {
-            name: 'Italic',
-            value: 'italic',
-        },
-        {
-            name: 'Undeline',
-            value: 'underline',
-        },
-    ];
+    const items = ['bold', 'italic', 'underline'];
 
     const onApply = param => {
         const newDecoration = {
@@ -44,7 +31,7 @@ const TextDecoration = props => {
             italic: decoration.italic,
             underline: decoration.underline,
         };
-        newDecoration[param.value] = !newDecoration[param.value];
+        newDecoration[param] = !newDecoration[param];
 
         const newContent = editComponent('textDecoration', newDecoration, content);
 
@@ -53,13 +40,13 @@ const TextDecoration = props => {
     };
 
     const isActive = param => {
-        return Boolean(decoration[param.value]);
+        return Boolean(decoration[param]);
     };
 
     const icon = value => {
-        if (value.name === 'Bold') {
+        if (value === 'bold') {
             return <FormatBold sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
-        } else if (value.name === 'Italic') {
+        } else if (value === 'italic') {
             return <FormatItalic sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
         } else {
             return <FormatUnderlined sx={{fontSize: 15, color: isActive(value) ? primaryColor : fontColor}} />;
