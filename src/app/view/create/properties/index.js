@@ -8,6 +8,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import grey from '@mui/material/colors/grey';
 
+import Anchor from './Anchor';
 import Color from './Color';
 import Delete from './Delete';
 import Disable from './Disable';
@@ -252,13 +253,19 @@ const Properties = props => {
                                 editComponent={editComponent}
                                 setContent={setContent}
                             />
-                            <Color
+                            <TextDecoration
                                 content={content}
                                 selected={selected}
                                 editComponent={editComponent}
                                 setContent={setContent}
                             />
-                            <TextDecoration
+                            <Anchor
+                                content={content}
+                                selected={selected}
+                                editComponent={editComponent}
+                                setContent={setContent}
+                            />
+                            <Color
                                 content={content}
                                 selected={selected}
                                 editComponent={editComponent}

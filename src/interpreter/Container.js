@@ -13,6 +13,7 @@ const Container = props => {
 
     const {getValues} = Runner();
 
+    const anchor = properties.anchor;
     const color = properties.color ? properties.color.value : null;
     const label = getValues(properties.label, 'js');
     const open = getValues(properties.open, 'js');
@@ -54,7 +55,7 @@ const Container = props => {
                 );
             } else {
                 return (
-                    <Drawer open={Boolean(open)} size={size}>
+                    <Drawer anchor={anchor} open={Boolean(open)} size={size}>
                         {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                     </Drawer>
                 );

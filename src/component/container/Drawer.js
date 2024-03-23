@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import MuiDrawer from '@/alias/MuiDrawer';
 
 const Drawer = props => {
-    const {open, children, setOpen, size} = props;
+    const {anchor, open, children, setOpen, size} = props;
 
     const onOpen = () => {
         if (setOpen) {
@@ -11,9 +11,16 @@ const Drawer = props => {
         }
     };
 
+    const drawerSize = {};
+    if (anchor && (anchor === 'top' || anchor === 'bottom')) {
+        drawerSize.height = parseInt(size) || 750;
+    } else {
+        drawerSize.width = parseInt(size) || 750;
+    }
+
     return (
-        <MuiDrawer open={open} anchor="right" onClose={onOpen}>
-            <Box padding={2} width={parseInt(size) || 750}>
+        <MuiDrawer open={open} onClose={onOpen} anchor={anchor || 'right'}>
+            <Box padding={2} {...drawerSize}>
                 {children}
             </Box>
         </MuiDrawer>
