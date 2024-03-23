@@ -63,12 +63,13 @@ const Disable = props => {
         if (!selected) return false;
 
         let group = selected.group.value;
+
         if (group === CComponentGroupType.button.value) {
-            return false;
+            return true;
         } else if (group === CComponentGroupType.fieldControl.value) {
             return true;
         } else {
-            return true;
+            return false;
         }
     };
 
