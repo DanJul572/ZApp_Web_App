@@ -22,7 +22,7 @@ const VisualElement = props => {
 
     const content = () => {
         if (type === CVisualElement.divider.value) {
-            return <Divider />;
+            return <Divider sx={{backgroundColor: color}} />;
         } else if (type === CVisualElement.text.value) {
             return (
                 <Typography

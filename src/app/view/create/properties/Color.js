@@ -7,7 +7,6 @@ import grey from '@mui/material/colors/grey';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CContainerType from '@/constant/CContainerType';
-import CVisualElement from '@/constant/CVisualElementType';
 
 const Color = props => {
     const {content, selected, editComponent, setContent} = props;
@@ -62,13 +61,11 @@ const Color = props => {
         let group = selected.group.value;
         let type = selected.type.value;
 
-        if (group === CComponentGroupType.container.value && type !== CContainerType.collapse.value) return false;
-        else if (group === CComponentGroupType.chart.value) return false;
-        else if (group === CComponentGroupType.fieldControl.value) return false;
-        else if (group === CComponentGroupType.table.value) return false;
-        else if (group === CComponentGroupType.visualElement.value && type !== CVisualElement.text.value) return false;
-
-        return true;
+        if (group === CComponentGroupType.container.value && type === CContainerType.collapse.value) return true;
+        else if (group === CComponentGroupType.container.value && type === CContainerType.card.value) return true;
+        else if (group === CComponentGroupType.visualElement.value) return true;
+        else if (group === CComponentGroupType.button.value) return true;
+        else return false;
     };
 
     useEffect(() => {

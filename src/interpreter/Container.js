@@ -20,7 +20,11 @@ const Container = props => {
 
     const content = () => {
         if (type === CContainerType.card.value) {
-            return <Card>{section && section.length > 0 && section.map(childs => childs.map(renderComponent))}</Card>;
+            return (
+                <Card color={color}>
+                    {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
+                </Card>
+            );
         } else if (type === CContainerType.grid.value) {
             let columnSize = properties.size ? properties.size.split(',') : [];
             let defaultSize = 12 / (section.length > 0 ? section.length : 1);
