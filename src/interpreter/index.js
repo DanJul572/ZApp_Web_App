@@ -23,7 +23,7 @@ const Interpreter = props => {
     const {isBuilder, content, page, selected, setSelected} = props;
 
     const Wraper = ({children, component}) => {
-        if (!isBuilder) return <Box padding={1}>{children}</Box>;
+        if (!isBuilder) return <Box marginBottom={1}>{children}</Box>;
 
         return (
             <Box

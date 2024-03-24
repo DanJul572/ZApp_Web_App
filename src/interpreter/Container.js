@@ -14,17 +14,19 @@ const Container = props => {
     const {getValues} = Runner();
 
     const anchor = properties.anchor;
+    const border = parseInt(properties.border);
     const color = properties.color ? properties.color.value : null;
     const display = properties.display;
     const flex = Boolean(properties.flex);
     const label = getValues(properties.label, 'js');
     const open = getValues(properties.open, 'js');
+    const padding = parseInt(properties.padding);
     const size = properties.size;
 
     const content = () => {
         if (type === CContainerType.card.value) {
             return (
-                <Card color={color} flex={flex} display={display}>
+                <Card color={color} flex={flex} display={display} border={border} padding={padding}>
                     {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                 </Card>
             );

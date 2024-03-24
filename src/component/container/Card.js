@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
 
 const Card = props => {
-    const {color, flex, display, children} = props;
+    const {color, flex, display, children, padding = 1, border = 1} = props;
 
     const justifyContent = display && display.horizontal ? display.horizontal.value : 'flex-start';
 
@@ -10,11 +10,14 @@ const Card = props => {
     if (flex) {
         comProps.display = 'flex';
         comProps.justifyContent = justifyContent;
+        comProps.gap = 1;
     }
 
     return (
-        <Box border={1} borderColor={color || grey[300]} borderRadius={1} padding={1}>
-            <Box {...comProps}>{children}</Box>
+        <Box border={border} borderColor={color || grey[300]} borderRadius={1}>
+            <Box {...comProps} padding={padding}>
+                {children}
+            </Box>
         </Box>
     );
 };

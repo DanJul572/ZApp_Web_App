@@ -9,6 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import grey from '@mui/material/colors/grey';
 
 import Anchor from './Anchor';
+import Border from './Border';
 import Color from './Color';
 import Delete from './Delete';
 import Disable from './Disable';
@@ -21,6 +22,7 @@ import ModuleID from './ModuleID';
 import Name from './Name';
 import OnClick from './OnClick';
 import Open from './Open';
+import Padding from './Padding';
 import PageSettings from './PageSettings';
 import Position from './Position';
 import Size from './Size';
@@ -204,6 +206,8 @@ const Properties = props => {
                             <Name {...compProps} />
                             <Label {...compProps} />
                             <Size {...compProps} />
+                            <Border {...compProps} />
+                            <Padding {...compProps} />
                             <OnClick {...compProps} />
                             <Disable {...compProps} />
                             <Open {...compProps} />
