@@ -43,7 +43,7 @@ const Topbar = () => {
             <Typography variant="h6" noWrap component="div">
                 ZApp
             </Typography>
-            <IconButton size="small" onClick={logout}>
+            <IconButton size="small" onClick={logout} color="inherit">
                 <Logout fontSize="small" />
             </IconButton>
         </Box>
