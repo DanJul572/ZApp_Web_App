@@ -13,6 +13,7 @@ import Color from './Color';
 import Delete from './Delete';
 import Disable from './Disable';
 import Display from './Display';
+import Flex from './Flex';
 import Hidden from './Hidden';
 import Identity from './Identity';
 import Label from './Label';
@@ -207,6 +208,7 @@ const Properties = props => {
                             <Disable {...compProps} />
                             <Open {...compProps} />
                             <Hidden {...compProps} />
+                            <Flex {...compProps} />
                             <Display {...compProps} />
                             <TextDecoration {...compProps} />
                             <Anchor {...compProps} />

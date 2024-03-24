@@ -15,6 +15,7 @@ import AlignVerticalTop from '@mui/icons-material/AlignVerticalTop';
 */
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CContainerType from '@/constant/CContainerType';
 
 const Display = props => {
     const {content, selected, editComponent, setContent} = props;
@@ -81,10 +82,11 @@ const Display = props => {
         if (!selected) return false;
 
         let group = selected.group.value;
+        let type = selected.type.value;
 
-        if (group !== CComponentGroupType.button.value) return false;
-
-        return true;
+        if (group === CComponentGroupType.button.value) return true;
+        else if (group === CComponentGroupType.container.value && type === CContainerType.card.value) return true;
+        else return false;
     };
 
     const isActive = value => Boolean(display ? display[value.type] && display[value.type].name === value.name : false);

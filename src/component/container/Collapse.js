@@ -12,15 +12,13 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import MuiCollapse from '@/alias/MuiCollapse';
 
 const Collapse = props => {
-    const {children, label, sx, color} = props;
+    const {children, label, color} = props;
 
     const theme = useTheme();
 
     const [open, setOpen] = useState(true);
 
     const finalColor = color || theme.palette.primary.main;
-
-    const getStyles = () => (sx ? {...sx, padding: 1} : {padding: 1});
 
     return (
         <Box border={1} borderColor={finalColor} borderRadius={1}>
@@ -47,7 +45,7 @@ const Collapse = props => {
                     )}
                 </IconButton>
             </Box>
-            <MuiCollapse in={open} sx={getStyles()}>
+            <MuiCollapse in={open} sx={{padding: 1}}>
                 {children}
             </MuiCollapse>
         </Box>
