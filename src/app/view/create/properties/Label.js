@@ -35,11 +35,11 @@ const Label = props => {
         let group = selected.group.value;
         let type = selected.type.value;
 
-        if (group === CComponentGroupType.container.value && type !== CContainerType.collapse.value) return false;
-        if (group === CComponentGroupType.table.value || group === CComponentGroupType.chart.value) return false;
-        if (group === CComponentGroupType.visualElement.value && type === CVisualElement.divider.value) return false;
-
-        return true;
+        if (group === CComponentGroupType.container.value && type === CContainerType.collapse.value) return true;
+        if (group === CComponentGroupType.container.value && type === CContainerType.tab.value) return true;
+        else if (group === CComponentGroupType.chart.value) return true;
+        else if (group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value) return true;
+        else return false;
     };
 
     useEffect(() => {

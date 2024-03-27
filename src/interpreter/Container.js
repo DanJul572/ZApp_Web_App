@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import Card from '@/component/container/Card';
 import Collapse from '@/component/container/Collapse';
 import Drawer from '@/component/container/Drawer';
+import Tab from '@/component/container/Tab';
 
 import CContainerType from '@/constant/CContainerType';
 
@@ -64,6 +65,8 @@ const Container = props => {
                     </Drawer>
                 );
             }
+        } else if (type === CContainerType.tab.value) {
+            return <Tab renderComponent={renderComponent} label={label} section={section} />;
         }
     };
 

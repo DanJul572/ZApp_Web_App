@@ -15,6 +15,10 @@ const CContainerType = {
         value: 4,
         label: 'Drawer',
     },
+    tab: {
+        value: 5,
+        label: 'Tab',
+    },
 };
 
 export default CContainerType;
