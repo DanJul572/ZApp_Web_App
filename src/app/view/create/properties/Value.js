@@ -12,19 +12,16 @@ import Typography from '@mui/material/Typography';
 
 import Code from '@/component/input/Code';
 
-import CChartType from '@/constant/CChartType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
-import CContainerType from '@/constant/CContainerType';
-import CVisualElement from '@/constant/CVisualElementType';
 
-const Label = props => {
+const Value = props => {
     const {content, selected, editComponent, setContent} = props;
 
     const [open, setOpen] = useState(false);
-    const [label, setLabel] = useState();
+    const [value, setValue] = useState();
 
     const onApply = () => {
-        let newContent = editComponent('label', label, content);
+        let newContent = editComponent('value', value, content);
 
         setContent([...newContent]);
         setOpen(false);
@@ -34,33 +31,29 @@ const Label = props => {
         if (!selected) return false;
 
         let group = selected.group.value;
-        let type = selected.type.value;
 
-        if (group === CComponentGroupType.container.value && type === CContainerType.collapse.value) return true;
-        else if (group === CComponentGroupType.container.value && type === CContainerType.tab.value) return true;
-        else if (group === CComponentGroupType.chart.value && type !== CChartType.pie.value) return true;
-        else if (group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value) return true;
+        if (group === CComponentGroupType.chart.value) return true;
         else return false;
     };
 
     useEffect(() => {
-        if (selected) setLabel(selected.properties.label || null);
+        if (selected) setValue(selected.properties.value || null);
     }, [selected]);
 
     return (
         validComponent() && (
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography fontSize={12}>Label</Typography>
+                    <Typography fontSize={12}>Value</Typography>
                     <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                         <InsertLink fontSize="small" />
                     </IconButton>
                 </Box>
                 <Dialog open={open} onClose={() => setOpen(false)}>
-                    <DialogTitle>Label</DialogTitle>
+                    <DialogTitle>Value</DialogTitle>
                     <DialogContent>
                         <Box width={500}>
-                            <Code value={label} onChange={setLabel} lang="js" />
+                            <Code value={value} onChange={setValue} lang="js" />
                         </Box>
                     </DialogContent>
                     <DialogActions>
@@ -77,4 +70,4 @@ const Label = props => {
     );
 };
 
-export default Label;
+export default Value;

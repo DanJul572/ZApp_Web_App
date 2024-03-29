@@ -85,7 +85,7 @@ const Interpreter = props => {
         } else if (group === CComponentGroupType.chart.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <Chart type={type} />
+                    <Chart type={type} properties={properties} />
                 </Wraper>
             );
         } else if (group === CComponentGroupType.button.value) {

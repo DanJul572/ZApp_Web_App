@@ -28,6 +28,7 @@ import Position from './Position';
 import Size from './Size';
 import TableAction from './TableAction';
 import TextDecoration from './TextDecoration';
+import Value from './Value';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
@@ -205,6 +206,7 @@ const Properties = props => {
                             <ModuleID {...compProps} />
                             <Name {...compProps} />
                             <Label {...compProps} />
+                            <Value {...compProps} />
                             <Size {...compProps} />
                             <Border {...compProps} />
                             <Padding {...compProps} />

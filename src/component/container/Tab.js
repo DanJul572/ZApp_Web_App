@@ -45,14 +45,16 @@ const Tab = props => {
         setValue(newValue);
     };
 
+    const component = (item, index) => {
+        return <MuiTab key={index} label={item} {...a11yProps(index)} />;
+    };
+
     const header = () => {
         if (Array.isArray(label)) {
             return (
                 <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
                     <Tabs value={value} onChange={handleChange}>
-                        {label &&
-                            label.length > 0 &&
-                            label.map((item, index) => <MuiTab key={index} label={item} {...a11yProps(index)} colo />)}
+                        {label && label.length > 0 && label.map(component)}
                     </Tabs>
                 </Box>
             );
