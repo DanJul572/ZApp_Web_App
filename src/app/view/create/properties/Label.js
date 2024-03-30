@@ -40,6 +40,8 @@ const Label = props => {
         else if (group === CComponentGroupType.container.value && type === CContainerType.tab.value) return true;
         else if (group === CComponentGroupType.chart.value && type !== CChartType.pie.value) return true;
         else if (group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value) return true;
+        else if (group === CComponentGroupType.fieldControl.value) return true;
+        else if (group === CComponentGroupType.button.value) return true;
         else return false;
     };
 

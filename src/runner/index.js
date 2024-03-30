@@ -1,5 +1,6 @@
 import Hooks from '@/hooks';
 import Custom from '@/hooks/custom';
+import Script from '@/hooks/Script';
 
 const Runner = () => {
     // eslint-disable-next-line no-unused-vars
@@ -7,6 +8,16 @@ const Runner = () => {
 
     // eslint-disable-next-line no-unused-vars
     const ZCustom = Custom();
+
+    // eslint-disable-next-line no-unused-vars
+    const ZScript = (id, isOne = false, obj = null) => {
+        const result = Script({id}).val;
+        if (isOne) {
+            return result ? result[0][obj] : false;
+        }
+
+        return result;
+    };
 
     // eslint-disable-next-line no-unused-vars
     const runFunction = (func, param) => {

@@ -8,6 +8,7 @@ const CModuleID = {
     menus: 7,
     users: 8,
     tokens: 9,
+    scripts: 18,
 };
 
 export default CModuleID;
