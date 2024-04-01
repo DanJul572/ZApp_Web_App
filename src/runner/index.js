@@ -10,12 +10,11 @@ const Runner = () => {
     const ZCustom = Custom();
 
     // eslint-disable-next-line no-unused-vars
-    const ZScript = (id, isOne = false, obj = null) => {
+    const ZSQL = (id, isOne = false, obj = null) => {
         const result = Script({id}).val;
         if (isOne) {
-            return result ? result[0][obj] : false;
+            return result ? result[0][obj].toString() : false;
         }
-
         return result;
     };
 

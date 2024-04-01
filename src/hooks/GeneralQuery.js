@@ -1,7 +1,7 @@
 import Request from './Request';
 
 const GeneralQuery = () => {
-    const {post} = Request();
+    const {get, post} = Request();
 
     const create = body => {
         return post('/general/create', body);
@@ -15,7 +15,11 @@ const GeneralQuery = () => {
         return post('/general/detail', body);
     };
 
-    return {create, detail, update};
+    const sql = id => {
+        return get('/script/run', {id});
+    };
+
+    return {create, detail, update, sql};
 };
 
 export default GeneralQuery;
