@@ -525,10 +525,10 @@
     "@react-spring/shared" "~9.7.3"
     "@react-spring/types" "~9.7.3"
 
-"@reduxjs/toolkit@^2.2.1":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-2.2.2.tgz#952fc8f8315d7274e28f6e4608b7ec66fce7e94e"
-  integrity sha512-454GZrEx3G6QSYwIx9ROaso1HR6sTH8qyZBe3KEsdWVGU3ayV8jYCwdaEJV3vl9V6+pi3GRl+7Xl7AeDna6qwQ==
+"@reduxjs/toolkit@^2.2.2":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-2.2.3.tgz#5ce71cbf162f98c5dafb49bd3f1e11c5486ab9c4"
+  integrity sha512-76dll9EnJXg4EVcI5YNxZA/9hSAmZsFqzMmNRHvIlzw2WS/twfcVX3ysYrWGJMClwEmChQFC4yRq74tn6fdzRA==
   dependencies:
     immer "^10.0.3"
     redux "^5.0.1"
@@ -3095,12 +3095,12 @@ react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-react-querybuilder@^7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/react-querybuilder/-/react-querybuilder-7.0.2.tgz#d4858edcd6b4bb0d05c1af85bb358845ecc1f06a"
-  integrity sha512-5q4uFF1pxN3F5Nvrr7Ywlt8neaIg0M+SWDZy04pCZcu3x/H/3qZfaVbckZEvJJq4dnsR3VJRmtKJXlgn9ejAVg==
+react-querybuilder@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/react-querybuilder/-/react-querybuilder-7.1.0.tgz#820e4bd7e399f4f9d9c16124bfc21177c637ac78"
+  integrity sha512-Gk0jYKcP9/qtJDToSwHRmVodSnzyDRVqf0A5R8rFloKutL+7YxOQNWN0CVf2Puq7arQUYCGQtZ9ux4yLM0ouZw==
   dependencies:
-    "@reduxjs/toolkit" "^2.2.1"
+    "@reduxjs/toolkit" "^2.2.2"
     clsx "^2.1.0"
     immer "^10.0.4"
     numeric-quantity "^2.0.1"

@@ -12,6 +12,8 @@ import Request from '@/hooks/Request';
 import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';
 
+import CApiUrl from '@/constant/CApiUrl';
+
 const Sidebar = () => {
     const {push} = useRouter();
     const {get} = Request();
@@ -27,7 +29,7 @@ const Sidebar = () => {
     };
 
     const onLoad = () => {
-        get('/general/menu').then(res => {
+        get(CApiUrl.general.menu).then(res => {
             setList(res.tree);
             setCookie('tree', res.tree);
         });

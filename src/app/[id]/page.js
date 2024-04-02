@@ -7,6 +7,7 @@ import Main from '@/layout/Main';
 
 import Request from '@/hooks/Request';
 
+import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 
 const Page = props => {
@@ -22,7 +23,7 @@ const Page = props => {
             moduleId: CModuleID.views,
             rowId: params.id,
         };
-        post('/general/detail', body)
+        post(CApiUrl.general.detail, body)
             .then(res => {
                 if (res) {
                     const content = res.content;

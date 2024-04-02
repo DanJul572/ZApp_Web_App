@@ -7,6 +7,7 @@ import {useLoading} from '@/context/LoadingProvider';
 import Request from '@/hooks/Request';
 
 import CActionType from '@/constant/CActionType';
+import CApiUrl from '@/constant/CApiUrl';
 
 const GeneralTable = props => {
     const {moduleID, actions, isBuilder} = props;
@@ -34,7 +35,7 @@ const GeneralTable = props => {
             id: moduleID,
         };
 
-        post('/general/columns', body)
+        post(CApiUrl.general.columns, body)
             .then(res => {
                 const columnKey = res.find(column => column.identity);
                 setColumnKey(columnKey.accessorKey);
@@ -62,7 +63,7 @@ const GeneralTable = props => {
             sort: sort,
         };
 
-        post('/general/rows', body)
+        post(CApiUrl.general.rows, body)
             .then(res => {
                 setRows(res.rows);
                 setRowCount(res.count);

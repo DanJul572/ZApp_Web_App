@@ -31,7 +31,7 @@
         "next": "^14.1.4",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-querybuilder": "^7.0.2",
+        "react-querybuilder": "^7.1.0",
         "suneditor": "^2.45.1",
         "suneditor-react": "^3.6.1",
         "typescript": "^5.4.3",

@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
+import CApiUrl from '@/constant/CApiUrl';
+
 import Request from '@/hooks/Request';
 
 const Dropdown = props => {
@@ -23,7 +25,7 @@ const Dropdown = props => {
     const [newOptions, setNewOptions] = useState([]);
 
     const getOptions = () => {
-        post('/general/options', {id: id}).then(res => {
+        post(CApiUrl.general.options, {id: id}).then(res => {
             setNewOptions(res);
         });
     };

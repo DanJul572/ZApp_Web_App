@@ -20,6 +20,7 @@ import ShortText from '@/component/input/ShortText';
 
 import Request from '@/hooks/Request';
 
+import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
 
 const Page = () => {
@@ -41,7 +42,7 @@ const Page = () => {
             password: password,
         };
 
-        post('/auth/login', body, false)
+        post(CApiUrl.auth.login, body, false)
             .then(res => {
                 setCookie('token', res.accessToken);
                 push('/module');

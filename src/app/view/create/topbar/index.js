@@ -19,6 +19,7 @@ import useTheme from '@mui/material/styles/useTheme';
 
 import Number from '@/component/input/Number';
 
+import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 
 import Request from '@/hooks/Request';
@@ -125,7 +126,7 @@ const TopBar = props => {
             rowId: id,
         };
 
-        post('/general/detail', body)
+        post(CApiUrl.general.detail, body)
             .then(res => {
                 setModuleId(res.moduleId);
                 setContent(res.content);

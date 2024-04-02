@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 
 import Request from './Request';
 
+import CApiUrl from '@/constant/CApiUrl';
+
 const Script = props => {
     const {id} = props;
 
@@ -11,7 +13,7 @@ const Script = props => {
 
     const getVal = () => {
         if (id) {
-            get('/script/run', {id})
+            get(CApiUrl.script.run, {id})
                 .then(res => {
                     setVal(res);
                 })

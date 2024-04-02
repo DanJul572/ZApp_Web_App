@@ -26,6 +26,7 @@ import Dropdown from '@/component/input/Dropdown';
 import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';
 
+import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 
 import Request from '@/hooks/Request';
@@ -111,7 +112,7 @@ const Page = () => {
             rowId: id,
         };
 
-        post('/general/detail', body)
+        post(CApiUrl.general.detail, body)
             .then(res => {
                 setLabel(res.label);
                 setRoleId(res.roleId);

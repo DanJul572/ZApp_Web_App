@@ -13,6 +13,8 @@ import Request from '@/hooks/Request';
 
 import auth from '@/helper/auth';
 
+import CApiUrl from '@/constant/CApiUrl';
+
 const Topbar = () => {
     const {post} = Request();
 
@@ -23,7 +25,7 @@ const Topbar = () => {
     const logout = () => {
         setLoading(true);
 
-        post('/auth/logout')
+        post(CApiUrl.auth.logout)
             .then(() => {
                 auth.logout();
                 push('/login');

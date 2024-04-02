@@ -12,6 +12,8 @@ import ModuleForm from './ModuleForm';
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
 
+import CApiUrl from '@/constant/CApiUrl';
+
 import Request from '@/hooks/Request';
 
 const Page = () => {
@@ -45,7 +47,7 @@ const Page = () => {
             fields: fields,
         };
 
-        post('/module/create', data)
+        post(CApiUrl.module.create, data)
             .then(res => {
                 setAlert({
                     status: true,
