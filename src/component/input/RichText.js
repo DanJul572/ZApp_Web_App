@@ -13,7 +13,25 @@ const RichText = props => {
     return (
         <Box>
             <Typography fontSize={12}>{label}</Typography>
-            <SunEditor defaultValue={defaultValue} disable={disabled} onChange={onChange} />
+            <SunEditor
+                setOptions={{
+                    buttonList: [
+                        ['font', 'fontSize', 'formatBlock'],
+                        ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
+                        ['align', 'horizontalRule', 'list', 'table'],
+                        ['fontColor', 'hiliteColor'],
+                        ['undo', 'redo'],
+                        ['removeFormat'],
+                        ['outdent', 'indent'],
+                        ['link', 'image'],
+                        ['preview', 'print'],
+                        ['fullScreen', 'showBlocks', 'codeView'],
+                    ],
+                }}
+                defaultValue={defaultValue}
+                disable={disabled}
+                onChange={onChange}
+            />
         </Box>
     );
 };
