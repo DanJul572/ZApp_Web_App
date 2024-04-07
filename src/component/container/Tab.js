@@ -37,7 +37,7 @@ function a11yProps(index) {
 }
 
 const Tab = props => {
-    const {label, section, renderComponent} = props;
+    const {label, contents} = props;
 
     const [value, setValue] = useState(0);
 
@@ -64,10 +64,10 @@ const Tab = props => {
     };
 
     const content = () => {
-        if (section && section.length > 0) {
-            return section.map((childs, index) => (
+        if (contents && contents.length > 0) {
+            return contents.map((content, index) => (
                 <CustomTabPanel key={index} value={value} index={index}>
-                    {childs.map(renderComponent)}
+                    {content}
                 </CustomTabPanel>
             ));
         }
