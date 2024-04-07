@@ -10,15 +10,15 @@
         "prepare": "husky install"
     },
     "dependencies": {
-        "@babel/runtime": "^7.24.1",
+        "@babel/runtime": "^7.24.4",
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
-        "@mui/icons-material": "^5.15.14",
-        "@mui/material": "^5.15.14",
-        "@mui/system": "^5.15.14",
-        "@mui/x-charts": "^7.1.0",
-        "@mui/x-date-pickers": "^7.1.0",
-        "@mui/x-tree-view": "^7.1.0",
+        "@mui/icons-material": "^5.15.15",
+        "@mui/material": "^5.15.15",
+        "@mui/system": "^5.15.15",
+        "@mui/x-charts": "^7.1.1",
+        "@mui/x-date-pickers": "^7.1.1",
+        "@mui/x-tree-view": "^7.1.1",
         "@uiw/react-textarea-code-editor": "^3.0.2",
         "axios": "^1.6.8",
         "cookies-next": "^4.1.1",
@@ -34,7 +34,7 @@
         "react-querybuilder": "^7.1.0",
         "suneditor": "^2.45.1",
         "suneditor-react": "^3.6.1",
-        "typescript": "^5.4.3",
+        "typescript": "^5.4.4",
         "uuid": "^9.0.1"
     },
     "devDependencies": {

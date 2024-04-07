@@ -2,15 +2,19 @@ import {useEffect} from 'react';
 
 import Box from '@mui/material/Box';
 
+import Alert from '@/hooks/Alert';
+import Comp from '@/hooks/Comp';
 import Runner from '@/runner';
 import Vars from '@/hooks/Vars';
-import Alert from '@/hooks/Alert';
 
 const Page = props => {
     const {page, isBuilder, children} = props;
+
     const {runFunction} = Runner();
-    const {removeAll} = Vars();
     const {hideAlert} = Alert();
+
+    const vars = Vars();
+    const comp = Comp();
 
     useEffect(() => {
         if (!isBuilder) {
@@ -19,7 +23,8 @@ const Page = props => {
             }
         }
         return () => {
-            removeAll();
+            vars.removeAll();
+            comp.removeAll();
             hideAlert();
         };
     }, []);
