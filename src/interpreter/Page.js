@@ -4,8 +4,9 @@ import Box from '@mui/material/Box';
 
 import Alert from '@/hooks/Alert';
 import Comp from '@/hooks/Comp';
-import Runner from '@/runner';
 import Vars from '@/hooks/Vars';
+
+import Runner from '@/runner';
 
 const Page = props => {
     const {page, isBuilder, children} = props;
