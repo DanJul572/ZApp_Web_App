@@ -80,7 +80,6 @@ const FieldForm = props => {
     const action = [
         {
             type: CActionType.delete.value,
-            path: '/',
         },
     ];
 

@@ -2,8 +2,9 @@
 
 import ClassicView from '@/templates/ClassicView';
 
-import CModuleID from '@/constant/CModuleID';
 import CActionType from '@/constant/CActionType';
+import CApiUrl from '@/constant/CApiUrl';
+import CModuleID from '@/constant/CModuleID';
 
 const Page = () => {
     const actions = [
@@ -17,7 +18,7 @@ const Page = () => {
         },
         {
             type: CActionType.delete.value,
-            api: '/module/delete',
+            api: CApiUrl.module.delete,
         },
     ];
 

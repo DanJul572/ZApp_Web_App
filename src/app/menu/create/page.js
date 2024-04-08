@@ -161,7 +161,7 @@ const Page = () => {
     };
 
     const onSave = () => {
-        const url = id ? '/general/update' : '/general/create';
+        const url = id ? CApiUrl.general.update : CApiUrl.general.create;
         const body = {
             moduleId: CModuleID.menus,
             data: {

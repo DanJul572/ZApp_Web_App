@@ -87,7 +87,7 @@ const TopBar = props => {
     const onSave = () => {
         setLoading(true);
 
-        const url = id ? '/general/update' : '/general/create';
+        const url = id ? CApiUrl.general.update : CApiUrl.general.create;
         const body = {
             moduleId: CModuleID.views,
             data: {

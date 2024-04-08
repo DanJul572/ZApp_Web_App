@@ -89,7 +89,7 @@ const GeneralTable = props => {
         };
 
         const action = actions.find(action => action.type === CActionType.delete.value);
-        const url = action.api || '/general/delete';
+        const url = action.api || CApiUrl.general.delete;
 
         post(url, body)
             .then(res => {

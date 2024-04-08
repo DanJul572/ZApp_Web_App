@@ -15,6 +15,7 @@ const CApiUrl = {
     },
     module: {
         create: '/module/create',
+        delete: '/module/delete',
     },
     script: {
         run: '/script/run',
