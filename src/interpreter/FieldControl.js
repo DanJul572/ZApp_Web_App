@@ -9,6 +9,7 @@ import Number from '@/component/input/Number';
 import Radio from '@/component/input/Radio';
 import RichText from '@/component/input/RichText';
 import ShortText from '@/component/input/ShortText';
+import Slider from '@/component/input/Slider';
 import Time from '@/component/input/Time';
 import Toggle from '@/component/input/Toggle';
 
@@ -23,6 +24,7 @@ const FieldControl = props => {
     const {getValues} = Runner();
     const {set, get} = Vars();
 
+    const color = properties.color ? properties.color.name : 'primary';
     const disabled = !Boolean(properties.name) || getValues(properties.disable, 'js');
     const label = getValues(properties.label, 'js');
     const hidden = getValues(properties.hidden, 'js');
@@ -86,6 +88,8 @@ const FieldControl = props => {
                 );
             } else if (type === CInputType.datetime.value) {
                 return <Datetime {...comProps} />;
+            } else if (type === CInputType.slider.value) {
+                return <Slider {...comProps} color={color} />;
             }
         }
     };

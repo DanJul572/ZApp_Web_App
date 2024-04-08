@@ -1,14 +1,14 @@
 const CModuleID = {
-    modules: 1,
-    roles: 2,
-    inputTypes: 3,
     dataTypes: 4,
     fields: 5,
-    views: 6,
+    inputTypes: 3,
     menus: 7,
-    users: 8,
-    tokens: 9,
+    modules: 1,
+    roles: 2,
     scripts: 18,
+    tokens: 9,
+    users: 8,
+    views: 6,
 };
 
 export default CModuleID;

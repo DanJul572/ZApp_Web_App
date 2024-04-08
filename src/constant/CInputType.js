@@ -55,6 +55,10 @@ const CInputType = {
         value: 14,
         label: 'Password',
     },
+    slider: {
+        value: 15,
+        label: 'Slider',
+    },
 };
 
 export default CInputType;
