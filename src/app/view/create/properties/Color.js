@@ -5,6 +5,7 @@ import useTheme from '@mui/material/styles/useTheme';
 
 import grey from '@mui/material/colors/grey';
 
+import CButtonType from '@/constant/CButtonType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CContainerType from '@/constant/CContainerType';
 import CInputType from '@/constant/CInputType';
@@ -66,7 +67,7 @@ const Color = props => {
         else if (group === CComponentGroupType.container.value && type === CContainerType.card.value) return true;
         else if (group === CComponentGroupType.fieldControl.value && type === CInputType.slider.value) return true;
         else if (group === CComponentGroupType.visualElement.value) return true;
-        else if (group === CComponentGroupType.button.value) return true;
+        else if (group === CComponentGroupType.button.value && type === CButtonType.button.value) return true;
         else return false;
     };
 

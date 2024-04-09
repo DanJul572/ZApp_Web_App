@@ -1,7 +1,9 @@
 import Box from '@mui/material/Box';
-import CButtonType from '@/constant/CButtonType';
+import Link from '@mui/material/Link';
 
 import MuiButton from '@/alias/MuiButton';
+
+import CButtonType from '@/constant/CButtonType';
 
 import Runner from '@/runner';
 
@@ -40,6 +42,14 @@ const Button = props => {
                             color={color}>
                             {label || CButtonType.button.label}
                         </MuiButton>
+                    </Box>
+                );
+            } else if (type === CButtonType.link.value) {
+                return (
+                    <Box sx={display}>
+                        <Link href="#" underline="always">
+                            {label || CButtonType.link.label}
+                        </Link>
                     </Box>
                 );
             }

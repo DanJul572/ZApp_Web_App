@@ -14,6 +14,7 @@ import InsertLink from '@mui/icons-material/InsertLink';
 import Code from '@/component/input/Code';
 import Toggle from '@/component/input/Toggle';
 
+import CButtonType from '@/constant/CButtonType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
 const Disable = props => {
@@ -63,8 +64,9 @@ const Disable = props => {
         if (!selected) return false;
 
         const group = selected.group.value;
+        const type = selected.type.value;
 
-        if (group === CComponentGroupType.button.value) return true;
+        if (group === CComponentGroupType.button.value && type === CButtonType.button.value) return true;
         else if (group === CComponentGroupType.fieldControl.value) return true;
         else return false;
     };
