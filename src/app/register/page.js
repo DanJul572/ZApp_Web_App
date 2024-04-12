@@ -20,6 +20,7 @@ import ShortText from '@/component/input/ShortText';
 import Request from '@/hooks/Request';
 
 import CApiUrl from '@/constant/CApiUrl';
+import CFieldID from '@/constant/CFieldID';
 import CTheme from '@/constant/CTheme';
 import Dropdown from '@/component/input/Dropdown';
 
@@ -87,7 +88,7 @@ const Page = () => {
                 <Box marginBottom={3} display="flex" flexDirection="column" gap={1}>
                     <ShortText label="Name" value={name} onChange={setName} />
                     <ShortText label="Email" value={email} onChange={setEmail} />
-                    <Dropdown label="Role" value={roleId} onChange={setRoleId} id={40} />
+                    <Dropdown label="Role" value={roleId} onChange={setRoleId} id={CFieldID.users.roleId} />
                     <Box display="flex" gap={1}>
                         <Password label="Password" name="password" value={password} onChange={setPassword} />
                         <Password label="Repeat Password" value={confirmPassword} onChange={setConfirmPassword} />

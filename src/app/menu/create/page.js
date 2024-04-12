@@ -27,6 +27,7 @@ import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';
 
 import CApiUrl from '@/constant/CApiUrl';
+import CFieldID from '@/constant/CFieldID';
 import CModuleID from '@/constant/CModuleID';
 
 import Request from '@/hooks/Request';
@@ -200,7 +201,7 @@ const Page = () => {
         <Box>
             <Box gap={2} display="flex" flexDirection="column" marginBottom={2}>
                 <ShortText value={label} label="Label" onChange={setLabel} />
-                <Dropdown value={roleId} label="Role" onChange={setRoleId} id={35} />
+                <Dropdown value={roleId} label="Role" onChange={setRoleId} id={CFieldID.menus.roleId} />
             </Box>
             <Box border={1} borderColor={grey[300]} borderRadius={1}>
                 <Box display="flex" gap={1} alignItems="center" padding={1} justifyContent="space-between">
