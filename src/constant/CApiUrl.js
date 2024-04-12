@@ -2,6 +2,7 @@ const CApiUrl = {
     auth: {
         login: '/auth/login',
         logout: '/auth/logout',
+        register: '/auth/register',
     },
     general: {
         columns: '/general/columns',

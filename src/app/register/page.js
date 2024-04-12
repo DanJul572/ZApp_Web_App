@@ -1,0 +1,112 @@
+'use client';
+
+import {useState} from 'react';
+import {useRouter} from 'next/navigation';
+
+import {useLoading} from '@/context/LoadingProvider';
+import {useToast} from '@/context/ToastProvider';
+
+import Link from 'next/link';
+
+import createTheme from '@mui/material/styles/createTheme';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import grey from '@mui/material/colors/grey';
+
+import Password from '@/component/input/Password';
+import ShortText from '@/component/input/ShortText';
+
+import Request from '@/hooks/Request';
+
+import CApiUrl from '@/constant/CApiUrl';
+import CTheme from '@/constant/CTheme';
+import Dropdown from '@/component/input/Dropdown';
+
+const Page = () => {
+    const theme = createTheme(CTheme);
+    const {post} = Request();
+
+    const {push} = useRouter();
+    const {setLoading} = useLoading();
+    const {setToast} = useToast();
+
+    const [name, setName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [confirmPassword, setConfirmPassword] = useState(null);
+    const [roleId, setRoleId] = useState(null);
+
+    const onSignIn = () => {
+        setLoading(true);
+
+        const body = {
+            name: name,
+            email: email,
+            password: password,
+            roleId: roleId,
+        };
+
+        post(CApiUrl.auth.register, body, false)
+            .then(() => {
+                setToast({
+                    status: true,
+                    type: 'success',
+                    message: 'Success',
+                });
+                push('/login');
+            })
+            .catch(err => {
+                setToast({
+                    status: true,
+                    type: 'error',
+                    message: err,
+                });
+            })
+            .finally(() => setLoading(false));
+    };
+
+    return (
+        <Box
+            position="absolute"
+            top={0}
+            left={0}
+            right={0}
+            bottom={0}
+            display="flex"
+            justifyContent="center"
+            alignItems="center">
+            <Box
+                width={450}
+                border={1}
+                borderColor={grey[300]}
+                borderRadius={1}
+                padding={2}
+                display="flex"
+                flexDirection="column">
+                <Box marginBottom={3} display="flex" flexDirection="column" gap={1}>
+                    <ShortText label="Name" value={name} onChange={setName} />
+                    <ShortText label="Email" value={email} onChange={setEmail} />
+                    <Dropdown label="Role" value={roleId} onChange={setRoleId} id={40} />
+                    <Box display="flex" gap={1}>
+                        <Password label="Password" name="password" value={password} onChange={setPassword} />
+                        <Password label="Repeat Password" value={confirmPassword} onChange={setConfirmPassword} />
+                    </Box>
+                </Box>
+                <Button variant="contained" onClick={onSignIn}>
+                    SIGN IN
+                </Button>
+                <Box display="flex" justifyContent="flex-end" marginTop={2}>
+                    <Typography sx={{fontSize: 'small'}}>
+                        Have An Account ?{' '}
+                        <Link href="/login" style={{color: theme.palette.primary.main}}>
+                            Login
+                        </Link>
+                    </Typography>
+                </Box>
+            </Box>
+        </Box>
+    );
+};
+
+export default Page;

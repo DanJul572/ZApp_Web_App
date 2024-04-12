@@ -25,7 +25,7 @@ const Dropdown = props => {
     const [newOptions, setNewOptions] = useState([]);
 
     const getOptions = () => {
-        post(CApiUrl.general.options, {id: id}).then(res => {
+        post(CApiUrl.general.options, {id: id}, false).then(res => {
             setNewOptions(res);
         });
     };
