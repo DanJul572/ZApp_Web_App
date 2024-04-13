@@ -140,7 +140,6 @@ const GeneralTable = props => {
         if (!isBuilder) {
             getColumns();
         }
-        return () => setAlert(null);
     }, []);
 
     return {
