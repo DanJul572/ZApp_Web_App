@@ -1,5 +1,5 @@
 import Hooks from '@/hooks';
-import Custom from '@/hooks/custom';
+import Builder from '@/builder';
 import Script from '@/hooks/Script';
 
 const Runner = () => {
@@ -7,7 +7,7 @@ const Runner = () => {
     const ZApp = Hooks();
 
     // eslint-disable-next-line no-unused-vars
-    const ZCustom = Custom();
+    const ZBuilder = Builder();
 
     // eslint-disable-next-line no-unused-vars
     const ZSQL = (id, isOne = false, obj = null) => {
