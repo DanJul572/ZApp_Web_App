@@ -9,7 +9,7 @@ import Request from '@/hooks/Request';
 import CActionType from '@/constant/CActionType';
 import CApiUrl from '@/constant/CApiUrl';
 
-const GeneralTable = props => {
+const TableFunction = props => {
     const {moduleID, actions, isBuilder} = props;
 
     const {post} = Request();
@@ -159,4 +159,4 @@ const GeneralTable = props => {
     };
 };
 
-export default GeneralTable;
+export default TableFunction;

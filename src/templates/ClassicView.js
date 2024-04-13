@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Confirm from '@/component/dialog/Confirm';
 import Table from '@/component/table';
 
-import GeneralTable from '@/hooks/GeneralTable';
+import TableFunction from '@/hooks/TableFunction';
 
 const ClassicView = props => {
     const {
@@ -21,7 +21,7 @@ const ClassicView = props => {
         setFilter,
         setPage,
         setSort,
-    } = GeneralTable(props);
+    } = TableFunction(props);
 
     return (
         <Box>

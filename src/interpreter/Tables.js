@@ -9,7 +9,7 @@ import Table from '@/component/table';
 import CActionType from '@/constant/CActionType';
 import CTableType from '@/constant/CTableType';
 
-import GeneralTable from '@/hooks/GeneralTable';
+import TableFunction from '@/hooks/TableFunction';
 
 const Tables = props => {
     const {type, properties, isBuilder} = props;
@@ -19,7 +19,7 @@ const Tables = props => {
     const moduleID = getValues(properties.moduleID, 'js');
     const actions = properties.actions;
 
-    const generalTableProps = {
+    const tableProps = {
         moduleID,
         actions,
         isBuilder,
@@ -37,7 +37,7 @@ const Tables = props => {
         setPage,
         setSelectedRow,
         setSort,
-    } = GeneralTable(generalTableProps);
+    } = TableFunction(tableProps);
 
     const onCLickToolbarAction = action => {
         if (action.type === CActionType.insert.value) runFunction(action.onClick);

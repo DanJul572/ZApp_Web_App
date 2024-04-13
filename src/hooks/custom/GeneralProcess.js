@@ -9,7 +9,7 @@ const GeneralProcess = () => {
         const id = ZApp.Parameter.get(key);
 
         if (!id) {
-            ZApp.GeneralQuery.create({
+            ZApp.Api.create({
                 moduleId: moduleId,
                 data: ZApp.Vars.getAll(),
             })
@@ -27,7 +27,7 @@ const GeneralProcess = () => {
                     ZApp.Loader.hideLoading();
                 });
         } else {
-            ZApp.GeneralQuery.update({
+            ZApp.Api.update({
                 moduleId: moduleId,
                 rowId: id,
                 data: ZApp.Vars.getAll(),
@@ -52,7 +52,7 @@ const GeneralProcess = () => {
         const id = ZApp.Parameter.get(key);
         if (id) {
             ZApp.Loader.showLoading();
-            ZApp.GeneralQuery.detail({
+            ZApp.Api.detail({
                 moduleId: moduleId,
                 rowId: id,
             })

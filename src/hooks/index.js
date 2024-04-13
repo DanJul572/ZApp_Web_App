@@ -1,6 +1,6 @@
 import Alert from './Alert';
+import Api from './Api';
 import Comp from './Comp';
-import GeneralQuery from './GeneralQuery';
 import Loader from './Loader';
 import Parameter from './Parameter';
 import Redirect from './Redirect';
@@ -10,8 +10,8 @@ import Vars from './Vars';
 const Hooks = () => {
     return {
         Alert: Alert(),
+        Api: Api(),
         Comp: Comp(),
-        GeneralQuery: GeneralQuery(),
         Loader: Loader(),
         Parameter: Parameter(),
         Redirect: Redirect(),

@@ -2,7 +2,7 @@ import CApiUrl from '@/constant/CApiUrl';
 
 import Request from './Request';
 
-const GeneralQuery = () => {
+const Api = () => {
     const {get, post} = Request();
 
     const create = body => {
@@ -24,4 +24,4 @@ const GeneralQuery = () => {
     return {create, detail, update, sql};
 };
 
-export default GeneralQuery;
+export default Api;
