@@ -32,7 +32,7 @@
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-querybuilder": "^7.1.0",
-        "suneditor": "^2.45.1",
+        "suneditor": "^2.46.0",
         "suneditor-react": "^3.6.1",
         "typescript": "^5.4.5",
         "uuid": "^9.0.1"
