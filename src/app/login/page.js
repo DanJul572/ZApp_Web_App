@@ -45,7 +45,7 @@ const Page = () => {
         post(CApiUrl.auth.login, body, false)
             .then(res => {
                 setCookie('token', res.accessToken);
-                push('/module');
+                push(res.afterLogin);
             })
             .catch(err => {
                 setToast({

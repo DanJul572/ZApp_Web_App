@@ -42,6 +42,7 @@ const Page = () => {
 
     const [label, setLabel] = useState(null);
     const [roleId, setRoleId] = useState(null);
+    const [afterLogin, setAfterLogin] = useState(null);
     const [list, setList] = useState([]);
     const [activeMenuId, setActiveMenuId] = useState(null);
     const [activeMenuLabel, setActiveMenuLabel] = useState(null);
@@ -56,7 +57,7 @@ const Page = () => {
         down: 5,
     };
 
-    const getNewMenu = () => {
+    const generateNewMenu = () => {
         return {
             id: uuidv4(),
             label: 'New Item',
@@ -118,6 +119,7 @@ const Page = () => {
                 setLabel(res.label);
                 setRoleId(res.roleId);
                 setList(res.tree);
+                setAfterLogin(res.afterLogin);
             })
             .catch(err => {
                 setAlert({
@@ -141,12 +143,12 @@ const Page = () => {
     };
 
     const onAddRootMenu = () => {
-        const menu = getNewMenu();
+        const menu = generateNewMenu();
         setList([...list, menu]);
     };
 
     const onAdd = () => {
-        const menu = getNewMenu();
+        const menu = generateNewMenu();
         const result = changeMenuItem([...list], actionType.add, menu);
         setList(result);
     };
@@ -169,6 +171,7 @@ const Page = () => {
                 label: label,
                 tree: JSON.stringify(list),
                 roleId: roleId,
+                afterLogin: afterLogin,
             },
         };
 
@@ -202,6 +205,7 @@ const Page = () => {
             <Box gap={2} display="flex" flexDirection="column" marginBottom={2}>
                 <ShortText value={label} label="Label" onChange={setLabel} />
                 <Dropdown value={roleId} label="Role" onChange={setRoleId} id={CFieldID.menus.roleId} />
+                <ShortText value={afterLogin} label="After Login" onChange={setAfterLogin} />
             </Box>
             <Box border={1} borderColor={grey[300]} borderRadius={1}>
                 <Box display="flex" gap={1} alignItems="center" padding={1} justifyContent="space-between">
