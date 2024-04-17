@@ -3,7 +3,6 @@ import {useState} from 'react';
 import {v4 as uuidv4} from 'uuid';
 
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import grey from '@mui/material/colors/grey';
@@ -168,18 +167,16 @@ const Properties = props => {
     };
 
     return (
-        <Grid
+        <Box
             borderLeft={1}
             borderColor={grey[300]}
             bottom={0}
-            item
             marginTop={8}
             overflow="auto"
             position="fixed"
             right={0}
             top={0}
-            width={500}
-            xs={2}>
+            width={350}>
             {activeNavigation === navigationType.content && (
                 <Box sx={{width: '100%'}}>
                     <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
@@ -224,7 +221,7 @@ const Properties = props => {
                     </CustomTabPanel>
                 </Box>
             )}
-        </Grid>
+        </Box>
     );
 };
 

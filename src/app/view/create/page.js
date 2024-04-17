@@ -3,7 +3,7 @@
 import {useState} from 'react';
 import {useSearchParams} from 'next/navigation';
 
-import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
 import Component from './component';
 import Content from './content';
@@ -41,11 +41,11 @@ const Page = () => {
                 setPage={setPage}
                 id={id}
             />
-            <Grid container justifyContent="space-between" display="flex">
+            <Box container>
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
-                <Grid item xs={8} marginX={35} marginTop={8}>
+                <Box marginX={45} marginTop={8}>
                     <Content content={content} selected={selected} setSelected={setSelected} />
-                </Grid>
+                </Box>
                 <Properties
                     activeNavigation={activeNavigation}
                     content={content}
@@ -58,7 +58,7 @@ const Page = () => {
                     setPage={setPage}
                     setSelected={setSelected}
                 />
-            </Grid>
+            </Box>
         </Empty>
     );
 };

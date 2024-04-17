@@ -7,7 +7,6 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
-import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import Typography from '@mui/material/Typography';
@@ -123,18 +122,16 @@ const Component = props => {
     }, []);
 
     return (
-        <Grid
+        <Box
             borderRight={1}
             borderColor={grey[300]}
             bottom={0}
-            item
             left={0}
             marginTop={8}
             overflow="auto"
             position="fixed"
             top={0}
-            width={500}
-            xs={2}>
+            width={350}>
             <Box paddingTop={2}>
                 {componentList.length > 0 &&
                     componentList.map((group, index) => (
@@ -169,7 +166,7 @@ const Component = props => {
                         </List>
                     ))}
             </Box>
-        </Grid>
+        </Box>
     );
 };
 

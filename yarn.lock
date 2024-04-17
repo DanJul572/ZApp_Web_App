@@ -3122,10 +3122,10 @@ react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-react-querybuilder@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/react-querybuilder/-/react-querybuilder-7.1.0.tgz#820e4bd7e399f4f9d9c16124bfc21177c637ac78"
-  integrity sha512-Gk0jYKcP9/qtJDToSwHRmVodSnzyDRVqf0A5R8rFloKutL+7YxOQNWN0CVf2Puq7arQUYCGQtZ9ux4yLM0ouZw==
+react-querybuilder@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/react-querybuilder/-/react-querybuilder-7.2.0.tgz#891c8dec9b1256db02c8d198ae5f50ea67665d97"
+  integrity sha512-66MtxaA+ogLnFzU4oztvJbI6t8/JM37X433QC40ff3190MblN6GTupmMHpnGPckiwH3sUVAqaXptR4b466TE4w==
   dependencies:
     "@reduxjs/toolkit" "^2.2.2"
     clsx "^2.1.0"
