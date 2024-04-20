@@ -10,7 +10,7 @@ const ModuleForm = props => {
 
     return (
         <Box marginY={2} border={1} padding={2} borderRadius={1} borderColor={grey[300]}>
-            <Grid container spacing={2}>
+            <Grid container="true" spacing={2}>
                 <Grid item display="flex" flexDirection="column" gap={2} xs={6}>
                     <ShortText
                         label="Module Name"

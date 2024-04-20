@@ -41,7 +41,7 @@ const Page = () => {
                 setPage={setPage}
                 id={id}
             />
-            <Box container>
+            <Box container="true">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
                 <Box marginX={45} marginTop={8}>
                     <Content content={content} selected={selected} setSelected={setSelected} />

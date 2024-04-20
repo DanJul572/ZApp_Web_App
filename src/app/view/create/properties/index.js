@@ -13,6 +13,7 @@ import Color from './Color';
 import Delete from './Delete';
 import Disable from './Disable';
 import Display from './Display';
+import FieldID from './FieldID';
 import Flex from './Flex';
 import Hidden from './Hidden';
 import Identity from './Identity';
@@ -201,6 +202,7 @@ const Properties = props => {
                             />
                             <Position {...compProps} deleteComponent={deleteComponent} setSelected={setSelected} />
                             <ModuleID {...compProps} />
+                            <FieldID {...compProps} />
                             <Name {...compProps} />
                             <Label {...compProps} />
                             <Value {...compProps} />

@@ -14,15 +14,16 @@ import Typography from '@mui/material/Typography';
 import Code from '@/component/input/Code';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CInputType from '@/constant/CInputType';
 
-const ModuleID = props => {
+const FieldId = props => {
     const {content, selected, editComponent, setContent} = props;
 
     const [open, setOpen] = useState(false);
-    const [moduleID, setModuleID] = useState();
+    const [fieldId, setfieldId] = useState();
 
     const onApply = () => {
-        let newContent = editComponent('moduleID', moduleID, content);
+        let newContent = editComponent('fieldId', fieldId, content);
 
         setContent([...newContent]);
         setOpen(false);
@@ -32,30 +33,31 @@ const ModuleID = props => {
         if (!selected) return false;
 
         let group = selected.group.value;
+        let type = selected.type.value;
 
-        if (group === CComponentGroupType.table.value) return true;
+        if (group === CComponentGroupType.fieldControl.value && type === CInputType.dropdown.value) return true;
 
         return false;
     };
 
     useEffect(() => {
-        if (selected) setModuleID(selected.properties.moduleID || null);
+        if (selected) setfieldId(selected.properties.fieldId || null);
     }, [selected]);
 
     return (
         validComponent() && (
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography fontSize={12}>Module ID</Typography>
+                    <Typography fontSize={12}>Field ID</Typography>
                     <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                         <InsertLink fontSize="small" />
                     </IconButton>
                 </Box>
                 <Dialog open={open} onClose={() => setOpen(false)}>
-                    <DialogTitle>Module ID</DialogTitle>
+                    <DialogTitle>Field ID</DialogTitle>
                     <DialogContent>
                         <Box width={500}>
-                            <Code value={moduleID} onChange={setModuleID} lang="js" />
+                            <Code value={fieldId} onChange={setfieldId} lang="js" />
                         </Box>
                     </DialogContent>
                     <DialogActions>
@@ -72,4 +74,4 @@ const ModuleID = props => {
     );
 };
 
-export default ModuleID;
+export default FieldId;

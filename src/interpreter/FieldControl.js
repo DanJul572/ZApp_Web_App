@@ -28,6 +28,7 @@ const FieldControl = props => {
     const disabled = !Boolean(properties.name) || getValues(properties.disable, 'js');
     const label = getValues(properties.label, 'js');
     const hidden = getValues(properties.hidden, 'js');
+    const fieldID = getValues(properties.fieldId, 'js');
 
     const onChange = value => {
         if (!isBuilder) {
@@ -55,7 +56,8 @@ const FieldControl = props => {
             } else if (type === CInputType.toggle.value) {
                 return <Toggle {...comProps} />;
             } else if (type === CInputType.dropdown.value) {
-                return <Dropdown {...comProps} options={[]} />;
+                if (!isBuilder) comProps.id = fieldID;
+                return <Dropdown {...comProps} />;
             } else if (type === CInputType.date.value) {
                 return <Date {...comProps} />;
             } else if (type === CInputType.time.value) {
