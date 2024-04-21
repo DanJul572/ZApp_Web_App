@@ -1,6 +1,6 @@
 const theme = {
     palette: {
-        mode: process.env.theme,
+        mode: 'dark',
         primary: {
             light: '#ab06c4',
             main: '#9705ad',

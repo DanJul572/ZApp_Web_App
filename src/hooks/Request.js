@@ -26,7 +26,7 @@ const Request = () => {
         }
 
         return new Promise((resolve, reject) => {
-            url = process.env.apiUrl + url;
+            url = process.env.NEXT_PUBLIC_ENV_API_URL + url;
             const config = {
                 params: params,
                 headers: headers,
@@ -55,7 +55,7 @@ const Request = () => {
         }
 
         return new Promise((resolve, reject) => {
-            url = process.env.apiUrl + url;
+            url = process.env.NEXT_PUBLIC_ENV_API_URL + url;
 
             axios
                 .post(url, body, {
