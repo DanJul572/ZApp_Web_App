@@ -1,23 +1,30 @@
-import CDateTimeFormat from '@/constant/CDateTimeFormat';
-import CInputType from '@/constant/CInputType';
 import dayjs from 'dayjs';
 
+import isValidValue from './isValidValue';
+
+import CDateTimeFormat from '@/constant/CDateTimeFormat';
+import CInputType from '@/constant/CInputType';
+
 const dataDisplay = (type, value) => {
-    if (type === CInputType.code.value) return value ? 'Code' : '';
+    if (type === CInputType.code.value) return isValidValue(value) ? 'Code' : '';
 
-    if (type === CInputType.date.value) return value ? dayjs(value).format(CDateTimeFormat.date.display) : '';
+    if (type === CInputType.date.value)
+        return isValidValue(value) ? dayjs(value).format(CDateTimeFormat.date.display) : '';
 
-    if (type === CInputType.datetime.value) return value ? dayjs(value).format(CDateTimeFormat.datetime.display) : '';
+    if (type === CInputType.datetime.value)
+        return isValidValue(value) ? dayjs(value).format(CDateTimeFormat.datetime.display) : '';
 
-    if (type === CInputType.file.value) return value ? 'File' : '';
+    if (type === CInputType.file.value) return isValidValue(value) ? 'File' : '';
 
-    if (type === CInputType.richText.value) return value ? 'HTML' : '';
+    if (type === CInputType.richText.value) return isValidValue(value) ? 'HTML' : '';
 
-    if (type === CInputType.time.value) return value ? dayjs(value).format(CDateTimeFormat.time.display) : '';
+    if (type === CInputType.time.value)
+        return isValidValue(value) ? dayjs(value).format(CDateTimeFormat.time.display) : '';
 
-    if (type === CInputType.toggle.value) return value ? 'Yes' : 'No';
+    if (type === CInputType.toggle.value) return isValidValue(value) ? 'Yes' : 'No';
 
-    if (type === CInputType.number.value) return value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '';
+    if (type === CInputType.number.value)
+        return isValidValue(value) ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '';
 
     return value;
 };
