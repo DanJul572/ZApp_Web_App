@@ -56,14 +56,14 @@ const TableFunction = props => {
     const getRows = () => {
         setLoading(true);
 
-        const param = {
+        const body = {
             id: moduleID,
             page: page,
             filter: filter,
             sort: sort,
         };
 
-        get(CApiUrl.general.rows, param)
+        post(CApiUrl.general.rows, body)
             .then(res => {
                 setRows(res.rows);
                 setRowCount(res.count);
