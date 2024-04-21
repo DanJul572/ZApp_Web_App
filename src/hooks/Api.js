@@ -13,8 +13,8 @@ const Api = () => {
         return post(CApiUrl.general.update, body);
     };
 
-    const detail = body => {
-        return post(CApiUrl.general.detail, body);
+    const detail = param => {
+        return get(CApiUrl.general.detail, param);
     };
 
     const sql = id => {

@@ -12,7 +12,7 @@ import CApiUrl from '@/constant/CApiUrl';
 const TableFunction = props => {
     const {moduleID, actions, isBuilder} = props;
 
-    const {post} = Request();
+    const {post, get} = Request();
 
     const {push} = useRouter();
     const {setAlert} = useAlert();
@@ -31,11 +31,11 @@ const TableFunction = props => {
     const getColumns = () => {
         setLoading(true);
 
-        const body = {
+        const param = {
             id: moduleID,
         };
 
-        post(CApiUrl.general.columns, body)
+        get(CApiUrl.general.columns, param)
             .then(res => {
                 const columnKey = res.find(column => column.identity);
                 setColumnKey(columnKey.accessorKey);
@@ -56,14 +56,14 @@ const TableFunction = props => {
     const getRows = () => {
         setLoading(true);
 
-        const body = {
+        const param = {
             id: moduleID,
             page: page,
             filter: filter,
             sort: sort,
         };
 
-        post(CApiUrl.general.rows, body)
+        get(CApiUrl.general.rows, param)
             .then(res => {
                 setRows(res.rows);
                 setRowCount(res.count);

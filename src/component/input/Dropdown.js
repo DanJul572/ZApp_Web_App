@@ -16,7 +16,7 @@ import Request from '@/hooks/Request';
 const Dropdown = props => {
     const {label, onChange, options, value, rules, group, name, disabled, id} = props;
 
-    const {post} = Request();
+    const {get} = Request();
 
     const {setError, clearError} = useContext(ErrorContext);
     const error = validator(rules, value ? value.toString() : '');
@@ -25,7 +25,7 @@ const Dropdown = props => {
     const [newOptions, setNewOptions] = useState([]);
 
     const getOptions = () => {
-        post(CApiUrl.general.options, {id: id}, false).then(res => {
+        get(CApiUrl.general.options, {id: id}, false).then(res => {
             setNewOptions(res);
         });
     };

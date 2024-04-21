@@ -13,17 +13,17 @@ import CModuleID from '@/constant/CModuleID';
 const Page = props => {
     const {params} = props;
 
-    const {post} = Request();
+    const {get} = Request();
 
     const [content, setContent] = useState(null);
     const [page, setPage] = useState(null);
 
     const getContent = () => {
-        const body = {
+        const param = {
             moduleId: CModuleID.views,
             rowId: params.id,
         };
-        post(CApiUrl.general.detail, body)
+        get(CApiUrl.general.detail, param)
             .then(res => {
                 if (res) {
                     const content = res.content;

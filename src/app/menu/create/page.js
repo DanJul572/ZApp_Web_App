@@ -33,7 +33,7 @@ import CModuleID from '@/constant/CModuleID';
 import Request from '@/hooks/Request';
 
 const Page = () => {
-    const {post} = Request();
+    const {post, get} = Request();
 
     const {push} = useRouter();
     const searchParams = useSearchParams();
@@ -114,7 +114,7 @@ const Page = () => {
             rowId: id,
         };
 
-        post(CApiUrl.general.detail, body)
+        get(CApiUrl.general.detail, body)
             .then(res => {
                 setLabel(res.label);
                 setRoleId(res.roleId);

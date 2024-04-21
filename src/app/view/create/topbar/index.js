@@ -121,12 +121,12 @@ const TopBar = props => {
     const onLoad = () => {
         setLoading(true);
 
-        const body = {
+        const param = {
             moduleId: CModuleID.views,
             rowId: id,
         };
 
-        post(CApiUrl.general.detail, body)
+        get(CApiUrl.general.detail, param)
             .then(res => {
                 setModuleId(res.moduleId);
                 setContent(res.content);
