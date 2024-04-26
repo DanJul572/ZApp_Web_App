@@ -1,5 +1,7 @@
 'use client';
 
+import {useEffect} from 'react';
+
 import Alert from '@/component/alert';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,6 +11,8 @@ import Toolbar from '@mui/material/Toolbar';
 
 import createTheme from '@mui/material/styles/createTheme';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
+
+import Translator from '@/hooks/Translator';
 
 import Loading from '@/component/loading';
 import Toast from '@/component/toast';
@@ -20,6 +24,11 @@ import Topbar from './Topbar';
 
 export default function Main({children}) {
     const theme = createTheme(CTheme);
+    const {init} = Translator();
+
+    useEffect(() => {
+        init();
+    }, []);
 
     return (
         <ThemeProvider theme={theme}>

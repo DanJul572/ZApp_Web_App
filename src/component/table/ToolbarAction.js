@@ -1,10 +1,14 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
+import Translator from '@/hooks/Translator';
+
 import CActionType from '@/constant/CActionType';
 
 const ToolbarAction = props => {
     const {action, onClickToolbarAction, toolbarCustomAction, isSupportAddAction} = props;
+
+    const {t} = Translator();
 
     const insertAction = action.find(action => action.type === CActionType.insert.value);
 
@@ -18,7 +22,7 @@ const ToolbarAction = props => {
             }}>
             {isSupportAddAction && (
                 <Button onClick={() => onClickToolbarAction(insertAction)} variant="contained" size="small">
-                    Create New Data
+                    {t('addNewData')}
                 </Button>
             )}
             {toolbarCustomAction.map((action, index) => (
