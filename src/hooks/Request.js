@@ -5,7 +5,7 @@ import {useRouter} from 'next/navigation';
 import auth from '../helper/auth';
 
 const Request = () => {
-    const apiUrl = apiUrl || 'http://127.0.0.1:8080/api';
+    const apiUrl = process.env.NEXT_PUBLIC_ENV_API_URL || 'http://127.0.0.1:8080/api';
     const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -27,13 +27,12 @@ const Request = () => {
         }
 
         return new Promise((resolve, reject) => {
-            url = apiUrl + url;
             const config = {
                 params: params,
                 headers: headers,
             };
             axios
-                .get(url, config)
+                .get(apiUrl + url, config)
                 .then(res => resolve(res.data))
                 .catch(error => {
                     const message = error.response ? error.response.data : error.message;
@@ -56,10 +55,8 @@ const Request = () => {
         }
 
         return new Promise((resolve, reject) => {
-            url = apiUrl + url;
-
             axios
-                .post(url, body, {
+                .post(apiUrl + url, body, {
                     headers: headers,
                 })
                 .then(res => resolve(res.data))
