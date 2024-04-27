@@ -5,6 +5,7 @@ import {useRouter} from 'next/navigation';
 import auth from '../helper/auth';
 
 const Request = () => {
+    const apiUrl = apiUrl || 'http://127.0.0.1:8080/api';
     const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -26,7 +27,7 @@ const Request = () => {
         }
 
         return new Promise((resolve, reject) => {
-            url = process.env.NEXT_PUBLIC_ENV_API_URL + url;
+            url = apiUrl + url;
             const config = {
                 params: params,
                 headers: headers,
@@ -55,7 +56,7 @@ const Request = () => {
         }
 
         return new Promise((resolve, reject) => {
-            url = process.env.NEXT_PUBLIC_ENV_API_URL + url;
+            url = apiUrl + url;
 
             axios
                 .post(url, body, {
