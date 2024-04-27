@@ -39,7 +39,7 @@ const VisuallyHiddenInput = styled('input')({
 const TopBar = props => {
     const {content, setContent, label, setLabel, page, setPage, id} = props;
 
-    const {post} = Request();
+    const {get, post} = Request();
 
     const {push} = useRouter();
     const {setLoading} = useLoading();

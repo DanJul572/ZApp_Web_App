@@ -6,7 +6,7 @@ import id from '@/language/id';
 const Translator = () => {
     const init = () => {
         i18next.init({
-            lng: process.env.NEXT_PUBLIC_ENV_LANGUAGE,
+            lng: process.env.NEXT_PUBLIC_ENV_LANGUAGE || 'en',
             debug: false,
             resources: {
                 en: {

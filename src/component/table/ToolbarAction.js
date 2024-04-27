@@ -22,7 +22,7 @@ const ToolbarAction = props => {
             }}>
             {isSupportAddAction && (
                 <Button onClick={() => onClickToolbarAction(insertAction)} variant="contained" size="small">
-                    {t('addNewData')}
+                    {t('add_new_data')}
                 </Button>
             )}
             {toolbarCustomAction.map((action, index) => (

@@ -1,6 +1,8 @@
 import Hooks from '@/hooks';
-import Builder from '@/builder';
 import Script from '@/hooks/Script';
+import Translator from '@/hooks/Translator';
+
+import Builder from '@/builder';
 
 const Runner = () => {
     // eslint-disable-next-line no-unused-vars
@@ -8,6 +10,9 @@ const Runner = () => {
 
     // eslint-disable-next-line no-unused-vars
     const ZBuilder = Builder();
+
+    // eslint-disable-next-line no-unused-vars
+    const ZTrans = Translator();
 
     // eslint-disable-next-line no-unused-vars
     const ZSQL = (id, isOne = false, obj = null) => {
