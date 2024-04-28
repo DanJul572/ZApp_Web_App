@@ -5,6 +5,7 @@ import Loader from './Loader';
 import Parameter from './Parameter';
 import Redirect from './Redirect';
 import Toaster from './Toaster';
+import Translator from './Translator';
 import Vars from './Vars';
 
 const Hooks = () => {
@@ -16,6 +17,7 @@ const Hooks = () => {
         Parameter: Parameter(),
         Redirect: Redirect(),
         Toaster: Toaster(),
+        Translator: Translator(),
         Vars: Vars(),
     };
 };
