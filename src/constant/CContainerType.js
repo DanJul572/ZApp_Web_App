@@ -19,6 +19,10 @@ const CContainerType = {
         value: 5,
         label: 'Tab',
     },
+    view: {
+        value: 6,
+        label: 'View',
+    },
 };
 
 export default CContainerType;

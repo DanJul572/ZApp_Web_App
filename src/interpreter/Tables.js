@@ -57,8 +57,8 @@ const Tables = props => {
     const content = () => {
         if (isBuilder) {
             return (
-                <Typography fontWeight="bold" textAlign="center">
-                    TABLE COMPONENT CANNOT SHOW IN BUILDER MODE.
+                <Typography fontSize="10" textAlign="center">
+                    TABLE COMPONENT CANNOT SHOW IN BUILDER MODE
                 </Typography>
             );
         } else if (type === CTableType.table.value && moduleID) {

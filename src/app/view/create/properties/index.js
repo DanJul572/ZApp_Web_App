@@ -29,6 +29,7 @@ import Size from './Size';
 import TableAction from './TableAction';
 import TextDecoration from './TextDecoration';
 import Value from './Value';
+import ViewID from './ViewID';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 
@@ -202,6 +203,7 @@ const Properties = props => {
                             />
                             <Position {...compProps} deleteComponent={deleteComponent} setSelected={setSelected} />
                             <ModuleID {...compProps} />
+                            <ViewID {...compProps} />
                             <FieldID {...compProps} />
                             <Name {...compProps} />
                             <Label {...compProps} />

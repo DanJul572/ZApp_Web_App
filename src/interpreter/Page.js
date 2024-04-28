@@ -1,7 +1,5 @@
 import {useEffect} from 'react';
 
-import Box from '@mui/material/Box';
-
 import Comp from '@/hooks/Comp';
 import Vars from '@/hooks/Vars';
 
@@ -27,7 +25,7 @@ const Page = props => {
         };
     }, []);
 
-    return <Box padding={1}>{children}</Box>;
+    return children;
 };
 
 export default Page;

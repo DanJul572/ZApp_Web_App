@@ -99,7 +99,7 @@ const Interpreter = props => {
 
     return (
         <Page isBuilder={isBuilder} page={page}>
-            {content && content.length > 0 && content.map(renderComponent)}
+            {content && content.length > 0 && Array.isArray(content) ? content.map(renderComponent) : content}
         </Page>
     );
 };
