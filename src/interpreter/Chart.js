@@ -7,9 +7,9 @@ import CChartType from '@/constant/CChartType';
 import Runner from '@/runner';
 
 const Chart = props => {
-    const {type, properties} = props;
+    const {type, properties, isBuilder} = props;
 
-    const {getValues} = Runner();
+    const {getValues} = Runner({isBuilder});
 
     const label = getValues(properties.label, 'js');
     const value = getValues(properties.value, 'js');

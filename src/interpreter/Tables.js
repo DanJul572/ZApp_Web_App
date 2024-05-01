@@ -14,7 +14,7 @@ import TableFunction from '@/hooks/TableFunction';
 const Tables = props => {
     const {type, properties, isBuilder} = props;
 
-    const {runFunction} = Runner();
+    const {runFunction} = Runner({isBuilder});
 
     const moduleID = properties.moduleID;
     const actions = properties.actions;

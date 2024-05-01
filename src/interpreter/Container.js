@@ -15,7 +15,7 @@ import Runner from '@/runner';
 const Container = props => {
     const {type, section, properties, renderComponent, isBuilder} = props;
 
-    const {getValues} = Runner();
+    const {getValues} = Runner({isBuilder});
 
     const anchor = properties.anchor;
     const border = parseInt(properties.border);

@@ -21,7 +21,7 @@ import Runner from '@/runner';
 const FieldControl = props => {
     const {isBuilder, type, properties} = props;
 
-    const {getValues} = Runner();
+    const {getValues} = Runner({isBuilder});
     const {set, get} = Vars();
 
     const color = properties.color ? properties.color.name : 'primary';

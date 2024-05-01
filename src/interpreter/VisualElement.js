@@ -7,10 +7,9 @@ import CVisualElement from '@/constant/CVisualElementType';
 import Runner from '@/runner';
 
 const VisualElement = props => {
-    const {getValues} = Runner();
+    const {type, properties, isBuilder} = props;
 
-    const {type, properties} = props;
-
+    const {getValues} = Runner({isBuilder});
     const theme = useTheme();
 
     const label = getValues(properties.label, 'js');

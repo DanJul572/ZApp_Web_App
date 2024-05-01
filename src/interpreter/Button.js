@@ -10,7 +10,7 @@ import Runner from '@/runner';
 const Button = props => {
     const {type, properties, isBuilder} = props;
 
-    const {runFunction, getValues} = Runner();
+    const {runFunction, getValues} = Runner({isBuilder});
 
     const displayValue = type => {
         return properties.display && properties.display[type] ? properties.display[type].value : 'flex-start';

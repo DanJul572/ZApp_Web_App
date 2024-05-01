@@ -8,7 +8,7 @@ import Runner from '@/runner';
 const Page = props => {
     const {page, isBuilder, children} = props;
 
-    const {runFunction} = Runner();
+    const {runFunction} = Runner({isBuilder});
 
     const vars = Vars();
     const comp = Comp();

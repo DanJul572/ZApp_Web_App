@@ -3,7 +3,9 @@ import Script from '@/hooks/Script';
 
 import Builder from '@/builder';
 
-const Runner = () => {
+const Runner = props => {
+    const {isBuilder} = props;
+
     // eslint-disable-next-line no-unused-vars
     const ZApp = Hooks();
 
@@ -12,11 +14,15 @@ const Runner = () => {
 
     // eslint-disable-next-line no-unused-vars
     const ZSQL = (id, isOne = false, obj = null) => {
-        const result = Script({id}).val;
-        if (isOne) {
-            return result ? result[0][obj].toString() : false;
+        if (!isBuilder) {
+            const result = Script({id}).val;
+            if (isOne) {
+                return result && result.length > 0 ? result[0][obj].toString() : 'Data is not found';
+            }
+            return result;
+        } else {
+            return 'ZQL cannot run in Builder Mode';
         }
-        return result;
     };
 
     // eslint-disable-next-line no-unused-vars
