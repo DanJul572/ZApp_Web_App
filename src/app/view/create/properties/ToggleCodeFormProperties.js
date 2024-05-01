@@ -14,26 +14,28 @@ import InsertLink from '@mui/icons-material/InsertLink';
 import Code from '@/component/input/Code';
 import Toggle from '@/component/input/Toggle';
 
-import CButtonType from '@/constant/CButtonType';
-import CComponentGroupType from '@/constant/CComponentGroupType';
+import isValidProperties from '@/helper/isValidProperties';
 
-const Disable = props => {
-    const {content, selected, editComponent, setContent} = props;
+const ToggleCodeFormProperties = props => {
+    const {content, selected, editComponent, setContent, label, name} = props;
+
+    const type = selected ? selected.type.value : false;
+    const group = selected ? selected.group.value : false;
 
     const [open, setOpen] = useState(false);
-    const [disable, setDisable] = useState({
+    const [value, setValue] = useState({
         isBind: false,
         value: null,
     });
 
     const onApply = () => {
-        callChangeProperties(disable);
+        callChangeProperties(value);
         setOpen(false);
     };
 
     const onChange = (isBind, value) => {
         if (isBind) {
-            setDisable({
+            setValue({
                 isBind: true,
                 value: value,
             });
@@ -56,38 +58,27 @@ const Disable = props => {
     };
 
     const callChangeProperties = val => {
-        const newContent = editComponent('disable', val, content);
+        const newContent = editComponent([name], val, content);
         setContent([...newContent]);
-    };
-
-    const validComponent = () => {
-        if (!selected) return false;
-
-        const group = selected.group.value;
-        const type = selected.type.value;
-
-        if (group === CComponentGroupType.button.value && type === CButtonType.button.value) return true;
-        else if (group === CComponentGroupType.fieldControl.value) return true;
-        else return false;
     };
 
     useEffect(() => {
         if (selected) {
-            const value = selected.properties.disable;
-            if (value) setDisable(value);
+            const value = selected.properties[name];
+            if (value) setValue(value);
         }
     }, [content, selected]);
 
     return (
-        validComponent() && (
+        isValidProperties(name, type, group) && (
             <Box>
-                <Tooltip arrow title={disable.isBind ? 'Is Bindding' : null} placement="left">
+                <Tooltip arrow title={value.isBind ? 'Is Bindding' : null} placement="left">
                     <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                         <Toggle
-                            value={disable.isBind ? false : disable.value}
-                            label="Disable"
+                            value={value.isBind ? false : value.value}
+                            label={label}
                             onChange={value => onChange(false, value)}
-                            disabled={disable.isBind}
+                            disabled={value.isBind}
                         />
                         <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                             <InsertLink fontSize="small" />
@@ -95,11 +86,11 @@ const Disable = props => {
                     </Box>
                 </Tooltip>
                 <Dialog open={open} onClose={() => setOpen(false)}>
-                    <DialogTitle>Disable</DialogTitle>
+                    <DialogTitle>{label}</DialogTitle>
                     <DialogContent>
                         <Box width={500} paddingY={1}>
                             <Code
-                                value={!disable.isBind ? null : disable.value}
+                                value={!value.isBind ? null : value.value}
                                 onChange={value => onChange(true, value)}
                                 lang="js"
                             />
@@ -122,4 +113,4 @@ const Disable = props => {
     );
 };
 
-export default Disable;
+export default ToggleCodeFormProperties;

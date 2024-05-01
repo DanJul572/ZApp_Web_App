@@ -28,7 +28,7 @@ const FieldControl = props => {
     const disabled = !Boolean(properties.name) || getValues(properties.disable, 'js');
     const label = getValues(properties.label, 'js');
     const hidden = getValues(properties.hidden, 'js');
-    const fieldID = getValues(properties.fieldId, 'js');
+    const fieldID = properties.fieldID;
 
     const onChange = value => {
         if (!isBuilder) {

@@ -12,44 +12,33 @@ import ShortTextOutlined from '@mui/icons-material/ShortTextOutlined';
 
 import ShortText from '@/component/input/ShortText';
 
-import CContainerType from '@/constant/CContainerType';
-import CComponentGroupType from '@/constant/CComponentGroupType';
+import isValidProperties from '@/helper/isValidProperties';
 
-const Padding = props => {
-    const {content, selected, editComponent, setContent} = props;
+const ShortTextForm = props => {
+    const {content, selected, editComponent, setContent, label, name} = props;
+
+    const type = selected ? selected.type.value : false;
+    const group = selected ? selected.group.value : false;
 
     const [open, setOpen] = useState(false);
-    const [padding, setPadding] = useState();
+    const [value, setValue] = useState();
 
     const onApply = () => {
-        let newContent = editComponent('padding', padding, content);
+        let newContent = editComponent(name, value, content);
 
         setContent([...newContent]);
         setOpen(false);
     };
 
-    const validComponent = () => {
-        if (!selected) return false;
-
-        const type = selected.type.value;
-        const group = selected.group.value;
-
-        if (type === CContainerType.card.value && group === CComponentGroupType.container.value) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-
     useEffect(() => {
-        if (selected) setPadding(selected.properties.padding || null);
+        if (selected) setValue(selected.properties[name] || null);
     }, [selected]);
 
     return (
-        validComponent() && (
+        isValidProperties(name, type, group) && (
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography fontSize={12}>Padding</Typography>
+                    <Typography fontSize={12}>{label}</Typography>
                     <IconButton sx={{padding: 0}} padding="small" onClick={() => setOpen(true)}>
                         <ShortTextOutlined fontSize="small" />
                     </IconButton>
@@ -57,7 +46,7 @@ const Padding = props => {
                 <Dialog open={open} onClose={() => setOpen(false)}>
                     <DialogContent>
                         <Box>
-                            <ShortText label="Padding" value={padding} onChange={setPadding} />
+                            <ShortText label={label} value={value} onChange={setValue} />
                         </Box>
                     </DialogContent>
                     <DialogActions>
@@ -74,4 +63,4 @@ const Padding = props => {
     );
 };
 
-export default Padding;
+export default ShortTextForm;

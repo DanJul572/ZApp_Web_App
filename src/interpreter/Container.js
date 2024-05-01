@@ -26,7 +26,7 @@ const Container = props => {
     const open = getValues(properties.open, 'js');
     const padding = parseInt(properties.padding);
     const size = properties.size;
-    const viewID = getValues(properties.viewID, 'js');
+    const viewID = properties.viewID;
 
     const contentProps = {
         params: {

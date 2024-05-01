@@ -8,30 +8,21 @@ import Tabs from '@mui/material/Tabs';
 import grey from '@mui/material/colors/grey';
 
 import Anchor from './Anchor';
-import Border from './Border';
+import CodeForm from './CodeForm';
 import Color from './Color';
 import Delete from './Delete';
-import Disable from './Disable';
 import Display from './Display';
-import FieldID from './FieldID';
 import Flex from './Flex';
-import Hidden from './Hidden';
 import Identity from './Identity';
-import Label from './Label';
-import ModuleID from './ModuleID';
-import Name from './Name';
-import OnClick from './OnClick';
-import Open from './Open';
-import Padding from './Padding';
 import PageSettings from './PageSettings';
 import Position from './Position';
-import Size from './Size';
+import ShortTextForm from './ShortTextForm';
 import TableAction from './TableAction';
 import TextDecoration from './TextDecoration';
-import Value from './Value';
-import ViewID from './ViewID';
+import ToggleCodeFormProperties from './ToggleCodeFormProperties';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CProperties from '@/constant/CProperties';
 
 const CustomTabPanel = props => {
     const {children, value, index, ...other} = props;
@@ -202,19 +193,32 @@ const Properties = props => {
                                 duplicateComponent={duplicateComponent}
                             />
                             <Position {...compProps} deleteComponent={deleteComponent} setSelected={setSelected} />
-                            <ModuleID {...compProps} />
-                            <ViewID {...compProps} />
-                            <FieldID {...compProps} />
-                            <Name {...compProps} />
-                            <Label {...compProps} />
-                            <Value {...compProps} />
-                            <Size {...compProps} />
-                            <Border {...compProps} />
-                            <Padding {...compProps} />
-                            <OnClick {...compProps} />
-                            <Disable {...compProps} />
-                            <Open {...compProps} />
-                            <Hidden {...compProps} />
+                            {CProperties.CShortTextFormProperties.map((property, index) => {
+                                return (
+                                    <ShortTextForm
+                                        key={index}
+                                        {...compProps}
+                                        label={property.label}
+                                        name={property.name}
+                                    />
+                                );
+                            })}
+                            {CProperties.CCodeFormProperties.map((property, index) => {
+                                return (
+                                    <CodeForm key={index} {...compProps} label={property.label} name={property.name} />
+                                );
+                            })}
+                            {CProperties.CToggleCodeFormProperties.map((property, index) => {
+                                return (
+                                    <ToggleCodeFormProperties
+                                        key={index}
+                                        {...compProps}
+                                        label={property.label}
+                                        name={property.name}
+                                    />
+                                );
+                            })}
+
                             <Flex {...compProps} />
                             <Display {...compProps} />
                             <TextDecoration {...compProps} />

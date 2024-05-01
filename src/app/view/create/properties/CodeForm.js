@@ -12,49 +12,42 @@ import Typography from '@mui/material/Typography';
 
 import Code from '@/component/input/Code';
 
-import CComponentGroupType from '@/constant/CComponentGroupType';
+import isValidProperties from '@/helper/isValidProperties';
 
-const OnClick = props => {
-    const {content, selected, editComponent, setContent} = props;
+const CodeForm = props => {
+    const {content, selected, editComponent, setContent, label, name} = props;
+
+    const type = selected ? selected.type.value : false;
+    const group = selected ? selected.group.value : false;
 
     const [open, setOpen] = useState(false);
-    const [onClick, setOnClick] = useState();
+    const [value, setValue] = useState();
 
     const onApply = () => {
-        let newContent = editComponent('onClick', onClick, content);
+        let newContent = editComponent(name, value, content);
 
         setContent([...newContent]);
         setOpen(false);
     };
 
-    const validComponent = () => {
-        if (!selected) return false;
-
-        let group = selected.group.value;
-
-        if (group !== CComponentGroupType.button.value) return false;
-
-        return true;
-    };
-
     useEffect(() => {
-        if (selected) setOnClick(selected.properties.onClick || null);
+        if (selected) setValue(selected.properties[name] || null);
     }, [selected]);
 
     return (
-        validComponent() && (
+        isValidProperties(name, type, group) && (
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography fontSize={12}>On Click</Typography>
+                    <Typography fontSize={12}>{label}</Typography>
                     <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
                         <InsertLink fontSize="small" />
                     </IconButton>
                 </Box>
                 <Dialog open={open} onClose={() => setOpen(false)}>
-                    <DialogTitle>On Click</DialogTitle>
+                    <DialogTitle>{label}</DialogTitle>
                     <DialogContent>
                         <Box width={500}>
-                            <Code value={onClick} onChange={setOnClick} lang="js" />
+                            <Code value={value} onChange={setValue} lang="js" />
                         </Box>
                     </DialogContent>
                     <DialogActions>
@@ -71,4 +64,4 @@ const OnClick = props => {
     );
 };
 
-export default OnClick;
+export default CodeForm;
