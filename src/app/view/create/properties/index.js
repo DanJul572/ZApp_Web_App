@@ -218,7 +218,6 @@ const Properties = props => {
                                     />
                                 );
                             })}
-
                             <Flex {...compProps} />
                             <Display {...compProps} />
                             <TextDecoration {...compProps} />
