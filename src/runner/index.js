@@ -35,7 +35,8 @@ const Runner = props => {
         }
     };
 
-    const getValues = (data, type) => {
+    // eslint-disable-next-line no-unused-vars
+    const getValues = (data, type, param = null) => {
         if (!data || !type) return null;
         try {
             if (typeof data === 'object') {

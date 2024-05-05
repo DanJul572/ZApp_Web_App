@@ -41,6 +41,8 @@ const isValidProperties = (property, type, group) => {
     } else if (property === 'hidden') {
         if (group === CComponentGroupType.button.value) return true;
         else if (group === CComponentGroupType.fieldControl.value) return true;
+    } else if (property === 'loop') {
+        if (group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value) return true;
     } else {
         return false;
     }

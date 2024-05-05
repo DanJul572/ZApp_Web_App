@@ -1,5 +1,9 @@
 const CShortTextFormProperties = [
     {
+        name: 'name',
+        label: 'Name',
+    },
+    {
         name: 'border',
         label: 'Border',
     },
@@ -8,16 +12,12 @@ const CShortTextFormProperties = [
         label: 'Padding',
     },
     {
-        name: 'moduleID',
-        label: 'Module ID',
-    },
-    {
-        name: 'name',
-        label: 'Name',
-    },
-    {
         name: 'size',
         label: 'Size',
+    },
+    {
+        name: 'moduleID',
+        label: 'Module ID',
     },
     {
         name: 'viewID',
@@ -35,12 +35,16 @@ const CCodeFormProperties = [
         label: 'Label',
     },
     {
+        name: 'onClick',
+        label: 'On Click',
+    },
+    {
         name: 'value',
         label: 'Value',
     },
     {
-        name: 'onClick',
-        label: 'On Click',
+        name: 'loop',
+        label: 'Loop',
     },
 ];
 
@@ -50,12 +54,12 @@ const CToggleCodeFormProperties = [
         label: 'Disable',
     },
     {
-        name: 'open',
-        label: 'Open',
-    },
-    {
         name: 'hidden',
         label: 'Hidden',
+    },
+    {
+        name: 'open',
+        label: 'Open',
     },
 ];
 
