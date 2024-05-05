@@ -27,7 +27,7 @@ const LongText = props => {
             <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             <TextField
                 variant="outlined"
-                size="small"
+                size={CTheme.field.size.value}
                 fullWidth
                 multiline
                 rows={rows}

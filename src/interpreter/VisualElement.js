@@ -21,7 +21,7 @@ const VisualElement = props => {
     const label = getValues(properties.label, 'js');
     const loop = getValues(properties.loop, 'js');
     const color = properties.color ? properties.color.value : theme.palette.text.primary;
-    const size = parseInt(properties.size) || 12;
+    const size = parseInt(properties.size) || CTheme.font.size.value;
     const bold = properties.textDecoration && properties.textDecoration.bold ? 'bold' : 'normal';
     const italic = properties.textDecoration && properties.textDecoration.italic ? 'italic' : 'normal';
     const underline = properties.textDecoration && properties.textDecoration.underline ? 'underline' : 'none';

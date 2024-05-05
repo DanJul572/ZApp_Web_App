@@ -5,6 +5,8 @@ import Grid from '@mui/material/Grid';
 import LongText from '@/component/input/LongText';
 import ShortText from '@/component/input/ShortText';
 
+import CTheme from '@/constant/CTheme';
+
 const ModuleForm = props => {
     const {moduleName, setModuleName, moduleLabel, setModuleLabel, moduleDescription, setModuleDescription} = props;
 
@@ -14,14 +16,14 @@ const ModuleForm = props => {
                 <Grid item display="flex" flexDirection="column" gap={2} xs={6}>
                     <ShortText
                         label="Module Name"
-                        size="small"
+                        size={CTheme.field.size.value}
                         onChange={setModuleName}
                         value={moduleName}
                         rules="required|field_name"
                     />
                     <ShortText
                         label="Module Label"
-                        size="small"
+                        size={CTheme.field.size.value}
                         onChange={setModuleLabel}
                         value={moduleLabel}
                         rules="required|start_numeric"
@@ -30,7 +32,7 @@ const ModuleForm = props => {
                 <Grid item xs={6}>
                     <LongText
                         label="Module Description"
-                        size="small"
+                        size={CTheme.field.size.value}
                         onChange={setModuleDescription}
                         value={moduleDescription}
                         rows={6}

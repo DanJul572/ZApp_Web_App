@@ -24,11 +24,11 @@ const Radio = props => {
                                 checked={value === option.value}
                                 disabled={disabled}
                                 onChange={e => onChange(e.target.value)}
-                                size="small"
+                                size={CTheme.field.size.value}
                             />
                         }
                         label={option.label}
-                        slotProps={{typography: {fontSize: 12}}}
+                        slotProps={{typography: {fontSize: CTheme.font.size.value}}}
                     />
                 ))}
             </RadioGroup>

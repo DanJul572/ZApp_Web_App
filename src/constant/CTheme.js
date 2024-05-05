@@ -38,6 +38,11 @@ const theme = {
             name: 'small',
         },
     },
+    field: {
+        size: {
+            name: 'small',
+        },
+    },
 };
 
 export default theme;

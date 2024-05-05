@@ -33,7 +33,7 @@ const File = props => {
                 helperText={error.message}
                 multiple={multiple}
                 onChange={onChange}
-                size="small"
+                size={CTheme.field.size.value}
                 value={value}
             />
         </Box>

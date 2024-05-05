@@ -47,7 +47,7 @@ const Date = props => {
                             error: error.status,
                             fullWidth: true,
                             helperText: error.message,
-                            size: 'small',
+                            size: CTheme.field.size.name,
                         },
                     }}
                 />
