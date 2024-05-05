@@ -18,7 +18,7 @@ const Alert = () => {
             <MuiAlert
                 severity={alert.type || 'success'}
                 action={
-                    <IconButton color="inherit" size="small" onClick={() => setAlert(false)}>
+                    <IconButton color="inherit" size={CTheme.button.size.name} onClick={() => setAlert(false)}>
                         <Close fontSize={CTheme.font.size.name} />
                     </IconButton>
                 }

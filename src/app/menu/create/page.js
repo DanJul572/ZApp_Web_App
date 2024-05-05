@@ -212,34 +212,46 @@ const Page = () => {
                 <Box display="flex" gap={1} alignItems="center" padding={1} justifyContent="space-between">
                     <Box>
                         <Tooltip arrow title="Move To Up">
-                            <IconButton size="small" onClick={() => onMove(actionType.up)}>
+                            <IconButton size={CTheme.button.size.name} onClick={() => onMove(actionType.up)}>
                                 <KeyboardArrowUp fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Move To Down">
-                            <IconButton size="small" onClick={() => onMove(actionType.down)}>
+                            <IconButton size={CTheme.button.size.name} onClick={() => onMove(actionType.down)}>
                                 <KeyboardArrowDown fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Add Root Menu">
-                            <IconButton size="small" color="success" variant="outlined" onClick={onAddRootMenu}>
+                            <IconButton
+                                size={CTheme.button.size.name}
+                                color="success"
+                                variant="outlined"
+                                onClick={onAddRootMenu}>
                                 <CreateNewFolder fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Add Sub Menu">
-                            <IconButton size="small" color="success" variant="outlined" onClick={onAdd}>
+                            <IconButton
+                                size={CTheme.button.size.name}
+                                color="success"
+                                variant="outlined"
+                                onClick={onAdd}>
                                 <NoteAdd fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Delete">
-                            <IconButton size="small" color="error" variant="outlined" onClick={onDelete}>
+                            <IconButton
+                                size={CTheme.button.size.name}
+                                color="error"
+                                variant="outlined"
+                                onClick={onDelete}>
                                 <Delete fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                     </Box>
                     <Box display="flex" gap={1} justifyContent="flex-end">
                         <Button
-                            size="small"
+                            size={CTheme.button.size.name}
                             color="success"
                             startIcon={<Save fontSize={CTheme.font.size.name} />}
                             variant="outlined"

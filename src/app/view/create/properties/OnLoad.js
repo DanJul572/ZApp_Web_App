@@ -36,7 +36,7 @@ const OnLoad = props => {
         <Box>
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Typography fontSize={CTheme.font.size.value}>On Load</Typography>
-                <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                <IconButton sx={{padding: 0}} size={CTheme.button.size.name} onClick={() => setOpen(true)}>
                     <InsertLink fontSize={CTheme.font.size.name} />
                 </IconButton>
             </Box>
@@ -48,10 +48,10 @@ const OnLoad = props => {
                     </Box>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                    <Button onClick={() => setOpen(false)} variant="outlined" size={CTheme.button.size.name}>
                         Cancel
                     </Button>
-                    <Button onClick={onApply} variant="contained" size="small">
+                    <Button onClick={onApply} variant="contained" size={CTheme.button.size.name}>
                         Apply
                     </Button>
                 </DialogActions>

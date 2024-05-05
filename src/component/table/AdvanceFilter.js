@@ -8,6 +8,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 
 import CInputType from '@/constant/CInputType';
+import CTheme from '@/constant/CTheme';
 
 const AdvanceFilter = props => {
     const {columns, format, onAdvanceFilter, openAdvanceFilterDialog, setOpenAdvanceFilterDialog} = props;
@@ -61,10 +62,13 @@ const AdvanceFilter = props => {
                 <QueryBuilder fields={fields} onQueryChange={query => setQuery(formatQuery(query, format))} />
             </DialogContent>
             <DialogActions>
-                <Button size="small" onClick={() => setOpenAdvanceFilterDialog(false)} variant="outlined">
+                <Button
+                    size={CTheme.button.size.name}
+                    onClick={() => setOpenAdvanceFilterDialog(false)}
+                    variant="outlined">
                     Cancel
                 </Button>
-                <Button onClick={() => onAdvanceFilter(query)} size="small" variant="contained">
+                <Button onClick={() => onAdvanceFilter(query)} size={CTheme.button.size.name} variant="contained">
                     Apply
                 </Button>
             </DialogActions>

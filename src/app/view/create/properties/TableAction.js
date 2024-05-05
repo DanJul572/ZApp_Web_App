@@ -119,7 +119,7 @@ const TableAction = props => {
                                     {action.type !== CActionType.delete.value && (
                                         <IconButton
                                             sx={{padding: 0}}
-                                            size="small"
+                                            size={CTheme.button.size.name}
                                             onClick={() => setOpen(getValue(action))}
                                             disabled={!Boolean(checkAction(action))}>
                                             <InsertLink fontSize={CTheme.font.size.name} />
@@ -138,10 +138,10 @@ const TableAction = props => {
                         </Box>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                        <Button onClick={() => setOpen(false)} variant="outlined" size={CTheme.button.size.name}>
                             Cancel
                         </Button>
-                        <Button onClick={applyOnClick} variant="contained" size="small">
+                        <Button onClick={applyOnClick} variant="contained" size={CTheme.button.size.name}>
                             Apply
                         </Button>
                     </DialogActions>

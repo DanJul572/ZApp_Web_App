@@ -13,6 +13,7 @@ import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
 
 import CApiUrl from '@/constant/CApiUrl';
+import CTheme from '@/constant/CTheme';
 
 import Request from '@/hooks/Request';
 
@@ -69,10 +70,10 @@ const Page = () => {
     return (
         <Box>
             <Box display="flex" justifyContent="flex-end" gap={2}>
-                <Button variant="contained" size="small" onClick={onSave}>
+                <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
                     Save
                 </Button>
-                <Button variant="outlined" size="small" onClick={onCancel}>
+                <Button variant="outlined" size={CTheme.button.size.name} onClick={onCancel}>
                     Cancel
                 </Button>
             </Box>

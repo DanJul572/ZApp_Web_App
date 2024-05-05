@@ -5,6 +5,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
+import CTheme from '@/constant/CTheme';
+
 const Confirm = props => {
     const {open, title, text, confirmButton, cancelButton, onConfirm} = props;
 
@@ -15,10 +17,10 @@ const Confirm = props => {
                 <DialogContentText>{text}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={() => onConfirm(false)} variant="outlined" size="small">
+                <Button onClick={() => onConfirm(false)} variant="outlined" size={CTheme.button.size.name}>
                     {cancelButton}
                 </Button>
-                <Button onClick={() => onConfirm(true)} variant="contained" size="small">
+                <Button onClick={() => onConfirm(true)} variant="contained" size={CTheme.button.size.name}>
                     {confirmButton}
                 </Button>
             </DialogActions>

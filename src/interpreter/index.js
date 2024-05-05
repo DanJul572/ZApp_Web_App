@@ -36,7 +36,7 @@ const Interpreter = props => {
                 borderRadius={1}>
                 {children}
                 <Tooltip arrow title={component.type.label} placement="left">
-                    <IconButton onClick={() => setSelected(component)} size="small" sx={{padding: 0}}>
+                    <IconButton onClick={() => setSelected(component)} size={CTheme.button.size.name} sx={{padding: 0}}>
                         <MoreHorizIcon fontSize={CTheme.font.size.name} />
                     </IconButton>
                 </Tooltip>

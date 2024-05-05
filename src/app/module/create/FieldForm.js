@@ -15,6 +15,8 @@ import ShortText from '@/component/input/ShortText';
 import Table from '@/component/table';
 import Toggle from '@/component/input/Toggle';
 
+import CTheme from '@/constant/CTheme';
+
 const FieldForm = props => {
     const {fieldRows, setFieldRows} = props;
 
@@ -336,10 +338,13 @@ const FieldForm = props => {
             <Drawer anchor="right" open={openFieldForm} onClose={() => setOpenFieldForm(false)}>
                 <Box padding={2}>
                     <Box display="flex" justifyContent="flex-end" gap={2} marginBottom={2}>
-                        <Button variant="contained" size="small" onClick={onSave}>
+                        <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
                             Add
                         </Button>
-                        <Button variant="outlined" size="small" onClick={() => setOpenFieldForm(false)}>
+                        <Button
+                            variant="outlined"
+                            size={CTheme.button.size.name}
+                            onClick={() => setOpenFieldForm(false)}>
                             Cancel
                         </Button>
                     </Box>

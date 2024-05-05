@@ -73,7 +73,7 @@ const Position = props => {
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                     <Typography fontSize={CTheme.font.size.value}>Position</Typography>
-                    <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                    <IconButton sx={{padding: 0}} size={CTheme.button.size.name} onClick={() => setOpen(true)}>
                         <ShortTextOutlined fontSize={CTheme.font.size.name} />
                     </IconButton>
                 </Box>
@@ -89,10 +89,10 @@ const Position = props => {
                         </Box>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => setOpen(false)} variant="outlined" size="small">
+                        <Button onClick={() => setOpen(false)} variant="outlined" size={CTheme.button.size.name}>
                             Cancel
                         </Button>
-                        <Button onClick={onMove} variant="contained" size="small">
+                        <Button onClick={onMove} variant="contained" size={CTheme.button.size.name}>
                             Apply
                         </Button>
                     </DialogActions>

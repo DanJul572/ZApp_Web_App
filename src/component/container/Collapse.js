@@ -41,7 +41,7 @@ const Collapse = props => {
                     onClick={() => {
                         setOpen(!open);
                     }}
-                    size="small"
+                    size={CTheme.button.size.name}
                     sx={{padding: 0}}>
                     {open ? (
                         <KeyboardArrowDown

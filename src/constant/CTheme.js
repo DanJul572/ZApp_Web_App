@@ -33,6 +33,11 @@ const theme = {
             name: 'small',
         },
     },
+    button: {
+        size: {
+            name: 'small',
+        },
+    },
 };
 
 export default theme;

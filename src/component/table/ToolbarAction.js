@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Translator from '@/hooks/Translator';
 
 import CActionType from '@/constant/CActionType';
+import CTheme from '@/constant/CActionType';
 
 const ToolbarAction = props => {
     const {action, onClickToolbarAction, toolbarCustomAction, isSupportAddAction} = props;
@@ -21,12 +22,19 @@ const ToolbarAction = props => {
                 flexWrap: 'wrap',
             }}>
             {isSupportAddAction && (
-                <Button onClick={() => onClickToolbarAction(insertAction)} variant="contained" size="small">
+                <Button
+                    onClick={() => onClickToolbarAction(insertAction)}
+                    variant="contained"
+                    size={CTheme.button.size.name}>
                     {t('add_new_data')}
                 </Button>
             )}
             {toolbarCustomAction.map((action, index) => (
-                <Button key={index} onClick={() => onClickToolbarAction(action)} variant="contained" size="small">
+                <Button
+                    key={index}
+                    onClick={() => onClickToolbarAction(action)}
+                    variant="contained"
+                    size={CTheme.button.size.name}>
                     {action.label}
                 </Button>
             ))}

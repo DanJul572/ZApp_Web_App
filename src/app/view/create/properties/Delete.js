@@ -32,10 +32,10 @@ const Delete = props => {
                 <Box paddingX={2} display="flex" justifyContent="space-between">
                     <Typography fontSize={CTheme.font.size.value}>{selected.type.label}</Typography>
                     <Box>
-                        <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
+                        <IconButton sx={{padding: 0}} size={CTheme.button.size.name} onClick={() => setOpen(true)}>
                             <MuiDeleteIcon fontSize={CTheme.font.size.name} />
                         </IconButton>
-                        <IconButton sx={{padding: 0}} size="small" onClick={duplicateComponent}>
+                        <IconButton sx={{padding: 0}} size={CTheme.button.size.name} onClick={duplicateComponent}>
                             <ContentCopy fontSize={CTheme.font.size.name} />
                         </IconButton>
                     </Box>

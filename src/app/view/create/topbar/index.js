@@ -174,31 +174,31 @@ const TopBar = props => {
                     backgroundColor: theme.palette.background.default,
                 }}>
                 <Box display="flex" alignItems="center" gap={1}>
-                    <IconButton size="small" sx={{padding: 0}} onClick={() => push('/view')}>
+                    <IconButton size={CTheme.button.size.name} sx={{padding: 0}} onClick={() => push('/view')}>
                         <ArrowBack fontSize={CTheme.font.size.name} sx={{color: theme.palette.text.primary}} />
                     </IconButton>
                     <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
                     <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
-                        <Button component="label" variant="outlined" size="small">
+                        <Button component="label" variant="outlined" size={CTheme.button.size.name}>
                             Upload
                             <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
                         </Button>
-                        <Button variant="outlined" size="small" onClick={onDownload}>
+                        <Button variant="outlined" size={CTheme.button.size.name} onClick={onDownload}>
                             Download
                         </Button>
                     </Box>
                     <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
-                        <Button variant="outlined" size="small" onClick={() => setOpen(true)}>
+                        <Button variant="outlined" size={CTheme.button.size.name} onClick={() => setOpen(true)}>
                             Connect
                         </Button>
                     </Box>
                     <Box display="flex" gap={1}>
-                        <Button variant="outlined" size="small">
+                        <Button variant="outlined" size={CTheme.button.size.name}>
                             Save As Draft
                         </Button>
-                        <Button variant="contained" size="small" onClick={onSave}>
+                        <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
                             Save
                         </Button>
                     </Box>
@@ -212,7 +212,7 @@ const TopBar = props => {
                     </Box>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={onApply} variant="contained" size="small">
+                    <Button onClick={onApply} variant="contained" size={CTheme.button.size.name}>
                         Apply
                     </Button>
                 </DialogActions>

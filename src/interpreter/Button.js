@@ -4,6 +4,7 @@ import Link from '@mui/material/Link';
 import MuiButton from '@/alias/MuiButton';
 
 import CButtonType from '@/constant/CButtonType';
+import CTheme from '@/constant/CTheme';
 
 import Runner from '@/runner';
 
@@ -36,7 +37,7 @@ const Button = props => {
                     <Box sx={display}>
                         <MuiButton
                             onClick={click}
-                            size="small"
+                            size={CTheme.button.size.name}
                             variant="contained"
                             disabled={Boolean(disable)}
                             color={color}>

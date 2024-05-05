@@ -39,7 +39,7 @@ const RowAction = props => {
                             row: row.original,
                         })
                     }
-                    size="small">
+                    size={CTheme.button.size.name}>
                     <Edit fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
@@ -51,7 +51,7 @@ const RowAction = props => {
                             row: row.original,
                         })
                     }
-                    size="small">
+                    size={CTheme.button.size.name}>
                     <Delete fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
@@ -63,12 +63,12 @@ const RowAction = props => {
                             row: row.original,
                         })
                     }
-                    size="small">
+                    size={CTheme.button.size.name}>
                     <Info fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
             {rowCustomAction.length > 0 && (
-                <IconButton onClick={onClickCustomAction} size="small">
+                <IconButton onClick={onClickCustomAction} size={CTheme.button.size.name}>
                     <Description fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}

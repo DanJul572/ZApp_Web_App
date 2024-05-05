@@ -11,6 +11,8 @@ import DialogContent from '@mui/material/DialogContent';
 
 import Dropdown from '@/component/input/Dropdown';
 
+import CTheme from '@/constant/CTheme';
+
 const ExportDialog = props => {
     const {openExportDialog, setOpenExportDialog, table} = props;
 
@@ -107,21 +109,21 @@ const ExportDialog = props => {
                     options={rowType}
                     onChange={setExportSelectionType}
                     value={exportSelectionType}
-                    size="small"
+                    size={CTheme.button.size.name}
                 />
                 <Dropdown
                     label="Extention"
                     options={extentionType}
                     onChange={setExportExtentionType}
                     value={exportExtentionType}
-                    size="small"
+                    size={CTheme.button.size.name}
                 />
             </DialogContent>
             <DialogActions>
-                <Button size="small" onClick={closeDialog}>
+                <Button size={CTheme.button.size.name} onClick={closeDialog}>
                     Cancel
                 </Button>
-                <Button size="small" onClick={handleExportRows} variant="contained">
+                <Button size={CTheme.button.size.name} onClick={handleExportRows} variant="contained">
                     Download
                 </Button>
             </DialogActions>

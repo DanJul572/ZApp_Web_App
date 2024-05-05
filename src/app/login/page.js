@@ -79,7 +79,7 @@ const Page = () => {
                     <ShortText label="Email" name="email" value={email} onChange={setEmail} />
                     <Password label="Password" name="password" value={password} onChange={setPassword} />
                 </Box>
-                <Button variant="contained" onClick={onLogin}>
+                <Button variant="contained" onClick={onLogin} size={CTheme.button.size.name}>
                     LOGIN
                 </Button>
                 <Box display="flex" justifyContent="flex-end" marginTop={2}>
