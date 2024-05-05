@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 
 import Code from '@/component/input/Code';
 
+import CTheme from '@/constant/CTheme';
+
 const OnLoad = props => {
     const {page, setPage} = props;
 
@@ -33,9 +35,9 @@ const OnLoad = props => {
     return (
         <Box>
             <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Typography fontSize={12}>On Load</Typography>
+                <Typography fontSize={CTheme.font.size.value}>On Load</Typography>
                 <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                    <InsertLink fontSize="small" />
+                    <InsertLink fontSize={CTheme.font.size.name} />
                 </IconButton>
             </Box>
             <Dialog open={open} onClose={() => setOpen(false)}>

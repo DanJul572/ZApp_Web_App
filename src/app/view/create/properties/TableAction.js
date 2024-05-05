@@ -17,6 +17,7 @@ import Toggle from '@/component/input/Toggle';
 
 import CActionType from '@/constant/CActionType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CTheme from '@/constant/CTheme';
 
 const TableAction = props => {
     const {content, selected, editComponent, setContent} = props;
@@ -97,7 +98,7 @@ const TableAction = props => {
         validComponent() && (
             <Box>
                 <Box paddingX={2}>
-                    <Typography fontSize={12} marginBottom={1}>
+                    <Typography fontSize={CTheme.font.size.value} marginBottom={1}>
                         Actions
                     </Typography>
                     <Divider />
@@ -121,7 +122,7 @@ const TableAction = props => {
                                             size="small"
                                             onClick={() => setOpen(getValue(action))}
                                             disabled={!Boolean(checkAction(action))}>
-                                            <InsertLink fontSize="small" />
+                                            <InsertLink fontSize={CTheme.font.size.name} />
                                         </IconButton>
                                     )}
                                 </Box>

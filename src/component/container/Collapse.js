@@ -11,6 +11,8 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 import MuiCollapse from '@/alias/MuiCollapse';
 
+import CTheme from '@/constant/CTheme';
+
 const Collapse = props => {
     const {children, label, color} = props;
 
@@ -29,7 +31,10 @@ const Collapse = props => {
                 justifyContent="space-between"
                 padding={1}
                 sx={{backgroundColor: finalColor}}>
-                <Typography fontSize={12} fontWeight="bold" color={theme.palette.getContrastText(finalColor)}>
+                <Typography
+                    fontSize={CTheme.font.size.value}
+                    fontWeight="bold"
+                    color={theme.palette.getContrastText(finalColor)}>
                     {label}
                 </Typography>
                 <IconButton
@@ -39,9 +44,12 @@ const Collapse = props => {
                     size="small"
                     sx={{padding: 0}}>
                     {open ? (
-                        <KeyboardArrowDown fontSize="small" sx={{color: theme.palette.getContrastText(finalColor)}} />
+                        <KeyboardArrowDown
+                            fontSize={CTheme.font.size.name}
+                            sx={{color: theme.palette.getContrastText(finalColor)}}
+                        />
                     ) : (
-                        <KeyboardArrowRight fontSize="small" />
+                        <KeyboardArrowRight fontSize={CTheme.font.size.name} />
                     )}
                 </IconButton>
             </Box>

@@ -18,6 +18,7 @@ import SmartButton from '@mui/icons-material/SmartButton';
 import TableChart from '@mui/icons-material/TableChart';
 import TextFields from '@mui/icons-material/TextFields';
 
+import CTheme from '@/constant/CTheme';
 import CButtonType from '@/constant/CButtonType';
 import CChartType from '@/constant/CChartType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
@@ -98,11 +99,12 @@ const Component = props => {
     };
 
     const icon = type => {
-        if (type === CComponentGroupType.button.value) return <SmartButton fontSize="small" />;
-        else if (type === CComponentGroupType.container.value) return <GridView fontSize="small" />;
-        else if (type === CComponentGroupType.chart.value) return <BarChart fontSize="small" />;
-        else if (type === CComponentGroupType.fieldControl.value) return <TextFields fontSize="small" />;
-        else if (type === CComponentGroupType.table.value) return <TableChart fontSize="small" />;
+        if (type === CComponentGroupType.button.value) return <SmartButton fontSize={CTheme.font.size.name} />;
+        else if (type === CComponentGroupType.container.value) return <GridView fontSize={CTheme.font.size.name} />;
+        else if (type === CComponentGroupType.chart.value) return <BarChart fontSize={CTheme.font.size.name} />;
+        else if (type === CComponentGroupType.fieldControl.value)
+            return <TextFields fontSize={CTheme.font.size.name} />;
+        else if (type === CComponentGroupType.table.value) return <TableChart fontSize={CTheme.font.size.name} />;
         else return <ShortTextOutlined />;
     };
 
@@ -144,11 +146,15 @@ const Component = props => {
                                 }}>
                                 <Box display="flex" gap={1} alignItems="center">
                                     {icon(group.value)}
-                                    <Typography fontSize={12} fontWeight="bold">
+                                    <Typography fontSize={CTheme.font.size.value} fontWeight="bold">
                                         {group.label}
                                     </Typography>
                                 </Box>
-                                {open[group.value] ? <ExpandLess fontSize="small" /> : <ExpandMore fontSize="small" />}
+                                {open[group.value] ? (
+                                    <ExpandLess fontSize={CTheme.font.size.name} />
+                                ) : (
+                                    <ExpandMore fontSize={CTheme.font.size.name} />
+                                )}
                             </ListItemButton>
                             <Collapse in={open[group.value]}>
                                 <List disablePadding>
@@ -156,7 +162,7 @@ const Component = props => {
                                         <ListItemButton
                                             key={index}
                                             onClick={() => handleSelected(groupTypeValue(group), component)}>
-                                            <Typography fontSize={12} sx={{marginLeft: 1}}>
+                                            <Typography fontSize={CTheme.font.size.value} sx={{marginLeft: 1}}>
                                                 {component.label}
                                             </Typography>
                                         </ListItemButton>

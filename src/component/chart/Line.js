@@ -3,13 +3,15 @@ import Typography from '@mui/material/Typography';
 
 import {LineChart} from '@mui/x-charts/LineChart';
 
+import CTheme from '@/constant/CTheme';
+
 const Line = props => {
     const {labels, values} = props;
 
     const renderChart = () => {
         if (!labels || !labels.length || !values || !values.length)
             return (
-                <Typography fontSize={12} fontWeight="bold">
+                <Typography fontSize={CTheme.font.size.value} fontWeight="bold">
                     Chart cannot be loaded.
                 </Typography>
             );

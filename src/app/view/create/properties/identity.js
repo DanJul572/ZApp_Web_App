@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CTheme from '@/constant/CTheme';
 
 const Identity = props => {
     const {selected} = props;
@@ -23,9 +24,9 @@ const Identity = props => {
         validComponent() && (
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between">
-                    <Typography fontSize={12}>{selected.id}</Typography>
+                    <Typography fontSize={CTheme.font.size.value}>{selected.id}</Typography>
                     <IconButton sx={{padding: 0}} size="small" onClick={onCoppy}>
-                        <ContentPaste fontSize="small" />
+                        <ContentPaste fontSize={CTheme.font.size.name} />
                     </IconButton>
                 </Box>
             </Box>

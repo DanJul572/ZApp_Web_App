@@ -29,6 +29,7 @@ import Tree from '@/component/tree';
 import CApiUrl from '@/constant/CApiUrl';
 import CFieldID from '@/constant/CFieldID';
 import CModuleID from '@/constant/CModuleID';
+import CTheme from '@/constant/CTheme';
 
 import Request from '@/hooks/Request';
 
@@ -212,27 +213,27 @@ const Page = () => {
                     <Box>
                         <Tooltip arrow title="Move To Up">
                             <IconButton size="small" onClick={() => onMove(actionType.up)}>
-                                <KeyboardArrowUp fontSize="small" />
+                                <KeyboardArrowUp fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Move To Down">
                             <IconButton size="small" onClick={() => onMove(actionType.down)}>
-                                <KeyboardArrowDown fontSize="small" />
+                                <KeyboardArrowDown fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Add Root Menu">
                             <IconButton size="small" color="success" variant="outlined" onClick={onAddRootMenu}>
-                                <CreateNewFolder fontSize="small" />
+                                <CreateNewFolder fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Add Sub Menu">
                             <IconButton size="small" color="success" variant="outlined" onClick={onAdd}>
-                                <NoteAdd fontSize="small" />
+                                <NoteAdd fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Delete">
                             <IconButton size="small" color="error" variant="outlined" onClick={onDelete}>
-                                <Delete fontSize="small" />
+                                <Delete fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                     </Box>
@@ -240,7 +241,7 @@ const Page = () => {
                         <Button
                             size="small"
                             color="success"
-                            startIcon={<Save fontSize="small" />}
+                            startIcon={<Save fontSize={CTheme.font.size.name} />}
                             variant="outlined"
                             onClick={onSave}>
                             <Typography>Save</Typography>

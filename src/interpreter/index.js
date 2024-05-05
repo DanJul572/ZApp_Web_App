@@ -7,6 +7,7 @@ import useTheme from '@mui/material/styles/useTheme';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CTheme from '@/constant/CTheme';
 
 import Button from './Button';
 import Chart from './Chart';
@@ -36,7 +37,7 @@ const Interpreter = props => {
                 {children}
                 <Tooltip arrow title={component.type.label} placement="left">
                     <IconButton onClick={() => setSelected(component)} size="small" sx={{padding: 0}}>
-                        <MoreHorizIcon fontSize="small" />
+                        <MoreHorizIcon fontSize={CTheme.font.size.name} />
                     </IconButton>
                 </Tooltip>
             </Box>

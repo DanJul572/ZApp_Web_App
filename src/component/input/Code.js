@@ -3,12 +3,14 @@ import Typography from '@mui/material/Typography';
 
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
+import CTheme from '@/constant/CTheme';
+
 const Code = props => {
     const {label, value, onChange, disabled, lang} = props;
 
     return (
         <Box>
-            <Typography fontSize={12}>{label}</Typography>
+            <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             <CodeEditor
                 data-color-mode="dark"
                 disabled={disabled}

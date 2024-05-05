@@ -2,12 +2,14 @@ import Box from '@mui/material/Box';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 
+import CTheme from '@/constant/CTheme';
+
 const Toggle = props => {
     const {label, onChange, value, disabled} = props;
 
     return (
         <Box>
-            <Typography fontSize={12}>{label}</Typography>
+            <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             <Switch
                 checked={Boolean(value)}
                 value={Boolean(value)}

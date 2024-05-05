@@ -8,6 +8,8 @@ import {MuiFileInput} from 'mui-file-input';
 import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
+import CTheme from '@/constant/CTheme';
+
 const File = props => {
     const {label, onChange, value, rules, name, group, disabled, multiple} = props;
 
@@ -23,7 +25,7 @@ const File = props => {
 
     return (
         <Box>
-            <Typography fontSize={12}>{label}</Typography>
+            <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             <MuiFileInput
                 disabled={disabled}
                 error={error.status}

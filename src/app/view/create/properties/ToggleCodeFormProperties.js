@@ -16,6 +16,8 @@ import Toggle from '@/component/input/Toggle';
 
 import isValidProperties from '@/helper/isValidProperties';
 
+import CTheme from '@/constant/CTheme';
+
 const ToggleCodeFormProperties = props => {
     const {content, selected, editComponent, setContent, label, name} = props;
 
@@ -81,7 +83,7 @@ const ToggleCodeFormProperties = props => {
                             disabled={value.isBind}
                         />
                         <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                            <InsertLink fontSize="small" />
+                            <InsertLink fontSize={CTheme.font.size.name} />
                         </IconButton>
                     </Box>
                 </Tooltip>

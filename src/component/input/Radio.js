@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 
 import MuiRadio from '@/alias/MuiRadio';
 
+import CTheme from '@/constant/CTheme';
+
 const Radio = props => {
     const {value, label, options, disabled, onChange} = props;
 
@@ -35,7 +37,7 @@ const Radio = props => {
 
     return (
         <Box>
-            <Typography fontSize={12}>{label}</Typography>
+            <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             {renderOptions()}
         </Box>
     );

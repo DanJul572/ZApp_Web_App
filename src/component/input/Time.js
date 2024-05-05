@@ -12,6 +12,7 @@ import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
 import CDateTimeFormat from '@/constant/CDateTimeFormat';
+import CTheme from '@/constant/CTheme';
 
 const Time = props => {
     const {label, onChange, value, rules, name, group, disabled} = props;
@@ -33,7 +34,7 @@ const Time = props => {
 
     return (
         <Box>
-            <Typography fontSize={12}>{label}</Typography>
+            <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <TimePicker
                     value={value ? dayjs(value) : null}

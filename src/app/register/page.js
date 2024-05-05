@@ -98,7 +98,7 @@ const Page = () => {
                     SIGN IN
                 </Button>
                 <Box display="flex" justifyContent="flex-end" marginTop={2}>
-                    <Typography sx={{fontSize: 'small'}}>
+                    <Typography fontSize={CTheme.font.size.value}>
                         Have An Account ?{' '}
                         <Link href="/login" style={{color: theme.palette.primary.main}}>
                             Login

@@ -8,6 +8,8 @@ import Typography from '@mui/material/Typography';
 
 import MuiTab from '@/alias/MuiTab';
 
+import CTheme from '@/constant/CTheme';
+
 const CustomTabPanel = props => {
     const {children, value, index, ...other} = props;
 
@@ -59,7 +61,7 @@ const Tab = props => {
                 </Box>
             );
         } else {
-            return <Typography fontSize={12}>Label is not valid.</Typography>;
+            return <Typography fontSize={CTheme.font.size.value}>Label is not valid.</Typography>;
         }
     };
 

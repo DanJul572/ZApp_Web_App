@@ -3,6 +3,8 @@ import Typography from '@mui/material/Typography';
 
 import dynamic from 'next/dynamic';
 
+import CTheme from '@/constant/CTheme';
+
 const SunEditor = dynamic(() => import('suneditor-react'), {
     ssr: false,
 });
@@ -12,7 +14,7 @@ const RichText = props => {
 
     return (
         <Box>
-            <Typography fontSize={12}>{label}</Typography>
+            <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             <SunEditor
                 setOptions={{
                     buttonList: [

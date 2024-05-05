@@ -7,10 +7,18 @@ import Edit from '@mui/icons-material/Edit';
 import Info from '@mui/icons-material/Info';
 
 import CActionType from '@/constant/CActionType';
+import CTheme from '@/constant/CTheme';
 
 const RowAction = props => {
-    const {onClickRowAction, action, row, isSupportRowAction, rowCustomAction, setOpenRowCustomActionDialog, setRowClicked} =
-        props;
+    const {
+        onClickRowAction,
+        action,
+        row,
+        isSupportRowAction,
+        rowCustomAction,
+        setOpenRowCustomActionDialog,
+        setRowClicked,
+    } = props;
 
     const onClickCustomAction = () => {
         setOpenRowCustomActionDialog(true);
@@ -32,7 +40,7 @@ const RowAction = props => {
                         })
                     }
                     size="small">
-                    <Edit fontSize="small" />
+                    <Edit fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
             {isSupportRowAction() && findAction('delete') && (
@@ -44,7 +52,7 @@ const RowAction = props => {
                         })
                     }
                     size="small">
-                    <Delete fontSize="small" />
+                    <Delete fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
             {isSupportRowAction() && findAction('detail') && (
@@ -56,12 +64,12 @@ const RowAction = props => {
                         })
                     }
                     size="small">
-                    <Info fontSize="small" />
+                    <Info fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
             {rowCustomAction.length > 0 && (
                 <IconButton onClick={onClickCustomAction} size="small">
-                    <Description fontSize="small" />
+                    <Description fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
         </Box>

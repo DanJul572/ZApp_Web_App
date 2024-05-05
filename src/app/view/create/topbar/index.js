@@ -21,6 +21,7 @@ import Number from '@/component/input/Number';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
+import CTheme from '@/constant/CTheme';
 
 import Request from '@/hooks/Request';
 
@@ -174,7 +175,7 @@ const TopBar = props => {
                 }}>
                 <Box display="flex" alignItems="center" gap={1}>
                     <IconButton size="small" sx={{padding: 0}} onClick={() => push('/view')}>
-                        <ArrowBack fontSize="small" sx={{color: theme.palette.text.primary}} />
+                        <ArrowBack fontSize={CTheme.font.size.name} sx={{color: theme.palette.text.primary}} />
                     </IconButton>
                     <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>

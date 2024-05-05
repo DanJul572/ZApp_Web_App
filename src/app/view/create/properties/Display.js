@@ -16,6 +16,7 @@ import AlignVerticalTop from '@mui/icons-material/AlignVerticalTop';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CContainerType from '@/constant/CContainerType';
+import CTheme from '@/constant/CTheme';
 
 const Display = props => {
     const {content, selected, editComponent, setContent} = props;
@@ -140,7 +141,7 @@ const Display = props => {
     return (
         validComponent() && (
             <Box paddingX={2}>
-                <Typography fontSize={12}>Display</Typography>
+                <Typography fontSize={CTheme.font.size.value}>Display</Typography>
                 <Box marginTop={1} display="flex" justifyContent="space-between" alignItems="center">
                     {horizontal.map(poisiton)}
                 </Box>

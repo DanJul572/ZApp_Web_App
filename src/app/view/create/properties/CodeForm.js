@@ -14,6 +14,8 @@ import Code from '@/component/input/Code';
 
 import isValidProperties from '@/helper/isValidProperties';
 
+import CTheme from '@/constant/CTheme';
+
 const CodeForm = props => {
     const {content, selected, editComponent, setContent, label, name} = props;
 
@@ -38,9 +40,9 @@ const CodeForm = props => {
         isValidProperties(name, type, group) && (
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography fontSize={12}>{label}</Typography>
+                    <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
                     <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                        <InsertLink fontSize="small" />
+                        <InsertLink fontSize={CTheme.font.size.name} />
                     </IconButton>
                 </Box>
                 <Dialog open={open} onClose={() => setOpen(false)}>

@@ -15,6 +15,7 @@ import Number from '@/component/input/Number';
 import ShortText from '@/component/input/ShortText';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CTheme from '@/constant/CTheme';
 
 const Position = props => {
     const {selected, content, setContent, setSelected, deleteComponent} = props;
@@ -71,9 +72,9 @@ const Position = props => {
         selected && (
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography fontSize={12}>Position</Typography>
+                    <Typography fontSize={CTheme.font.size.value}>Position</Typography>
                     <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                        <ShortTextOutlined fontSize="small" />
+                        <ShortTextOutlined fontSize={CTheme.font.size.name} />
                     </IconButton>
                 </Box>
                 <Dialog open={open} onClose={() => setOpen(false)}>

@@ -15,6 +15,8 @@ import Runner from '@/runner';
 
 import Page from './Page';
 
+import CTheme from '@/constant/CTheme';
+
 const Container = props => {
     const {type, section, properties, renderComponent, isBuilder} = props;
 
@@ -88,7 +90,7 @@ const Container = props => {
         } else if (type === CContainerType.view.value) {
             if (isBuilder) {
                 return (
-                    <Typography fontSize="10" textAlign="center">
+                    <Typography fontSize={CTheme.font.size.value} textAlign="center">
                         {t('empty_content')}
                     </Typography>
                 );

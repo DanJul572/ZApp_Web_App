@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
+import CTheme from '@/constant/CTheme';
+
 const ShortText = props => {
     const {label, onChange, value, rules, group, name, disabled, onBlur, placeholder} = props;
 
@@ -34,7 +36,7 @@ const ShortText = props => {
 
     return (
         <Box>
-            <Typography fontSize={12}>{label}</Typography>
+            <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             <TextField
                 disabled={disabled}
                 variant="outlined"

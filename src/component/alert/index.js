@@ -6,6 +6,8 @@ import MuiAlert from '@/alias/MuiAlert';
 
 import {useAlert} from '@/context/AlertProvider';
 
+import CTheme from '@/constant/CTheme';
+
 const Alert = () => {
     const {alert, setAlert} = useAlert();
 
@@ -17,7 +19,7 @@ const Alert = () => {
                 severity={alert.type || 'success'}
                 action={
                     <IconButton color="inherit" size="small" onClick={() => setAlert(false)}>
-                        <Close fontSize="small" />
+                        <Close fontSize={CTheme.font.size.name} />
                     </IconButton>
                 }
                 sx={{mb: 2}}>

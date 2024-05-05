@@ -11,6 +11,7 @@ import ArrowRight from '@mui/icons-material/ArrowRight';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CContainerType from '@/constant/CContainerType';
+import CTheme from '@/constant/CTheme';
 
 const Anchor = props => {
     const {content, selected, editComponent, setContent} = props;
@@ -83,7 +84,7 @@ const Anchor = props => {
     return (
         validComponent() && (
             <Box paddingX={2}>
-                <Typography fontSize={12}>Anchor</Typography>
+                <Typography fontSize={CTheme.font.size.value}>Anchor</Typography>
                 <Box marginTop={1} display="flex" justifyContent="space-between" alignItems="center">
                     {anchors.map(item)}
                 </Box>

@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 
 import MuiCheckbox from '@/alias/MuiCheckbox';
 
+import CTheme from '@/constant/CTheme';
+
 const Checkbox = props => {
     const {value, label, options, disabled, onChange} = props;
 
@@ -13,7 +15,7 @@ const Checkbox = props => {
     const setValues = val => {
         const deleteIndex = values.findIndex(value => value === val);
         deleteIndex >= 0 ? values.splice(deleteIndex, 1) : values.push(val);
-        
+
         onChange(values.join('|'));
     };
 
@@ -38,7 +40,7 @@ const Checkbox = props => {
                                 disabled={disabled}
                             />
                         }
-                        slotProps={{typography: {fontSize: 12}}}
+                        slotProps={{typography: {fontSize: CTheme.font.size.value}}}
                         label={option.label}
                     />
                 ))}
@@ -48,7 +50,7 @@ const Checkbox = props => {
 
     return (
         <Box>
-            <Typography fontSize={12}>{label}</Typography>
+            <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             {renderOptions()}
         </Box>
     );

@@ -3,13 +3,15 @@ import Typography from '@mui/material/Typography';
 
 import {PieChart} from '@mui/x-charts/PieChart';
 
+import CTheme from '@/constant/CTheme';
+
 const Pie = props => {
     const {values} = props;
 
     const renderChart = () => {
         if (!values || !values.length)
             return (
-                <Typography fontSize={12} fontWeight="bold">
+                <Typography fontSize={CTheme.font.size.value} fontWeight="bold">
                     Chart cannot be loaded.
                 </Typography>
             );

@@ -6,6 +6,7 @@ import Translator from '@/hooks/Translator';
 
 import Runner from '@/runner';
 
+import CTheme from '@/constant/CTheme';
 import CVisualElement from '@/constant/CVisualElementType';
 
 import MapLoop from './MapLoop';
@@ -49,7 +50,7 @@ const VisualElement = props => {
         } else if (type === CVisualElement.text.value) {
             if (Array.isArray(loop)) {
                 if (isBuilder) {
-                    return <Typography fontSize={10}>{t('empty_content')}</Typography>;
+                    return <Typography fontSize={CTheme.font.size.value}>{t('empty_content')}</Typography>;
                 } else {
                     return (
                         <MapLoop

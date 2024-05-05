@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+import CTheme from '@/constant/CTheme';
+
 const Password = props => {
     const {label, onChange, value, rules, group, name, disabled, onBlur} = props;
 
@@ -49,7 +51,7 @@ const Password = props => {
 
     return (
         <FormControl variant="outlined" fullWidth>
-            <Typography fontSize={12}>{label}</Typography>
+            <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             <OutlinedInput
                 autoComplete="on"
                 disabled={disabled}

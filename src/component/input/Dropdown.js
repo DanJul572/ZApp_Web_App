@@ -9,9 +9,10 @@ import Typography from '@mui/material/Typography';
 import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
-import CApiUrl from '@/constant/CApiUrl';
-
 import Request from '@/hooks/Request';
+
+import CApiUrl from '@/constant/CApiUrl';
+import CTheme from '@/constant/CTheme';
 
 const Dropdown = props => {
     const {label, onChange, options, value, rules, group, name, disabled, id} = props;
@@ -53,7 +54,7 @@ const Dropdown = props => {
     const renderInput = params => {
         return (
             <Box>
-                <Typography fontSize={12}>{label}</Typography>
+                <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
                 <TextField {...params} error={error.status} helperText={error.message} />
             </Box>
         );

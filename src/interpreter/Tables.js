@@ -8,6 +8,7 @@ import Table from '@/component/table';
 
 import CActionType from '@/constant/CActionType';
 import CTableType from '@/constant/CTableType';
+import CTheme from '@/constant/CTheme';
 
 import TableFunction from '@/hooks/TableFunction';
 
@@ -57,7 +58,7 @@ const Tables = props => {
     const content = () => {
         if (isBuilder) {
             return (
-                <Typography fontSize="10" textAlign="center">
+                <Typography fontSize={CTheme.font.size.value} textAlign="center">
                     TABLE COMPONENT CANNOT SHOW IN BUILDER MODE
                 </Typography>
             );

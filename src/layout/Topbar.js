@@ -14,6 +14,7 @@ import Request from '@/hooks/Request';
 import auth from '@/helper/auth';
 
 import CApiUrl from '@/constant/CApiUrl';
+import CTheme from '@/constant/CTheme';
 
 const Topbar = () => {
     const {post} = Request();
@@ -46,7 +47,7 @@ const Topbar = () => {
                 ZApp
             </Typography>
             <IconButton size="small" onClick={logout} color="inherit">
-                <Logout fontSize="small" />
+                <Logout fontSize={CTheme.font.size.name} />
             </IconButton>
         </Box>
     );

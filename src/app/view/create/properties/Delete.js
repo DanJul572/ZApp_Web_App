@@ -10,6 +10,8 @@ import Confirm from '@/component/dialog/Confirm';
 
 import MuiDeleteIcon from '@/alias/MuiDeleteIcon';
 
+import CTheme from '@/constant/CTheme';
+
 const Delete = props => {
     const {selected, content, setContent, setSelected, deleteComponent, duplicateComponent} = props;
 
@@ -28,13 +30,13 @@ const Delete = props => {
         selected && (
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between">
-                    <Typography fontSize={12}>{selected.type.label}</Typography>
+                    <Typography fontSize={CTheme.font.size.value}>{selected.type.label}</Typography>
                     <Box>
                         <IconButton sx={{padding: 0}} size="small" onClick={() => setOpen(true)}>
-                            <MuiDeleteIcon fontSize="small" />
+                            <MuiDeleteIcon fontSize={CTheme.font.size.name} />
                         </IconButton>
                         <IconButton sx={{padding: 0}} size="small" onClick={duplicateComponent}>
-                            <ContentCopy fontSize="small" />
+                            <ContentCopy fontSize={CTheme.font.size.name} />
                         </IconButton>
                     </Box>
                 </Box>
