@@ -27,6 +27,12 @@ const theme = {
             dark: '#388e3c',
         },
     },
+    font: {
+        size: {
+            value: 12,
+            name: 'small',
+        },
+    },
 };
 
 export default theme;

@@ -9,13 +9,17 @@ import Tab from '@/component/container/Tab';
 import CContainerType from '@/constant/CContainerType';
 
 import Content from '@/hooks/Content';
-import Page from './Page';
+import Translator from '@/hooks/Translator';
+
 import Runner from '@/runner';
+
+import Page from './Page';
 
 const Container = props => {
     const {type, section, properties, renderComponent, isBuilder} = props;
 
     const {getValues} = Runner({isBuilder});
+    const {t} = Translator();
 
     const anchor = properties.anchor;
     const border = parseInt(properties.border);
@@ -85,7 +89,7 @@ const Container = props => {
             if (isBuilder) {
                 return (
                     <Typography fontSize="10" textAlign="center">
-                        VIEW PAGE CANNOT SHOW IN BUILDER MODE
+                        {t('empty_content')}
                     </Typography>
                 );
             } else {

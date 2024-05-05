@@ -144,7 +144,7 @@ const Component = props => {
                                 }}>
                                 <Box display="flex" gap={1} alignItems="center">
                                     {icon(group.value)}
-                                    <Typography fontSize={11} fontWeight="bold">
+                                    <Typography fontSize={12} fontWeight="bold">
                                         {group.label}
                                     </Typography>
                                 </Box>
@@ -156,7 +156,7 @@ const Component = props => {
                                         <ListItemButton
                                             key={index}
                                             onClick={() => handleSelected(groupTypeValue(group), component)}>
-                                            <Typography fontSize={11} sx={{marginLeft: 1}}>
+                                            <Typography fontSize={12} sx={{marginLeft: 1}}>
                                                 {component.label}
                                             </Typography>
                                         </ListItemButton>
