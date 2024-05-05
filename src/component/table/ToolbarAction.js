@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Translator from '@/hooks/Translator';
 
 import CActionType from '@/constant/CActionType';
-import CTheme from '@/constant/CActionType';
+import CTheme from '@/constant/CTheme';
 
 const ToolbarAction = props => {
     const {action, onClickToolbarAction, toolbarCustomAction, isSupportAddAction} = props;
