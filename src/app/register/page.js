@@ -79,7 +79,7 @@ const Page = () => {
             alignItems="center">
             <Box
                 width={450}
-                border={1}
+                border={CTheme.border.size.value}
                 borderColor={grey[300]}
                 borderRadius={1}
                 padding={2}

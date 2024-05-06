@@ -54,7 +54,7 @@ const Tab = props => {
     const header = () => {
         if (Array.isArray(label)) {
             return (
-                <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+                <Box sx={{borderBottom: CTheme.border.size.value, borderColor: 'divider'}}>
                     <Tabs value={value} onChange={handleChange}>
                         {label && label.length > 0 && label.map(component)}
                     </Tabs>

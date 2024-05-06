@@ -1,8 +1,10 @@
 import Box from '@mui/material/Box';
 import grey from '@mui/material/colors/grey';
 
+import CTheme from '@/constant/CTheme';
+
 const Card = props => {
-    const {color, flex, display, children, padding = 1, border = 1} = props;
+    const {color, flex, display, children, padding, border} = props;
 
     const justifyContent = display && display.horizontal ? display.horizontal.value : 'flex-start';
 
@@ -14,8 +16,8 @@ const Card = props => {
     }
 
     return (
-        <Box border={border} borderColor={color || grey[300]} borderRadius={1}>
-            <Box {...comProps} padding={padding}>
+        <Box border={border || CTheme.border.size.value} borderColor={color || grey[300]} borderRadius={1}>
+            <Box {...comProps} padding={padding || 1}>
                 {children}
             </Box>
         </Box>

@@ -43,6 +43,11 @@ const theme = {
             name: 'small',
         },
     },
+    border: {
+        size: {
+            value: 1
+        }
+    }
 };
 
 export default theme;

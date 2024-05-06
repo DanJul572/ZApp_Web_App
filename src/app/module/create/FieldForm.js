@@ -306,7 +306,7 @@ const FieldForm = props => {
         return (
             <Box
                 marginY={2}
-                border={1}
+                border={CTheme.border.size.value}
                 padding={2}
                 borderRadius={1}
                 borderColor={grey[300]}

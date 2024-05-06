@@ -13,6 +13,7 @@ import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';
 
 import CApiUrl from '@/constant/CApiUrl';
+import CTheme from '@/constant/CTheme';
 
 const Sidebar = () => {
     const {push} = useRouter();
@@ -88,7 +89,7 @@ const Sidebar = () => {
                 bottom: 0,
                 left: 0,
                 paddingTop: 10,
-                borderRight: 1,
+                borderRight: CTheme.border.size.value,
                 borderColor: grey[300],
             }}>
             <Box paddingX={1} marginBottom={1}>

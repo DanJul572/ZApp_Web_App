@@ -9,6 +9,7 @@ import FormatUnderlined from '@mui/icons-material/FormatUnderlined';
 
 import CVisualElement from '@/constant/CVisualElementType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
+import CTheme from '@/constant/CTheme';
 
 const TextDecoration = props => {
     const {content, selected, editComponent, setContent} = props;
@@ -57,7 +58,7 @@ const TextDecoration = props => {
         return (
             <Box
                 key={index}
-                border={1}
+                border={CTheme.border.size.value}
                 borderRadius={1}
                 borderColor={isActive(decoration) ? primaryColor : fontColor}
                 width={25}

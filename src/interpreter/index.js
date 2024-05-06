@@ -29,7 +29,7 @@ const Interpreter = props => {
         return (
             <Box
                 key={component.id}
-                border={selected && component.id === selected.id ? 1 : 0}
+                border={selected && component.id === selected.id ? CTheme.border.size.value : 0}
                 borderColor={theme.palette.primary.main}
                 padding={1}
                 paddingBottom={0}

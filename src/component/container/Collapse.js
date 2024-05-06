@@ -23,9 +23,9 @@ const Collapse = props => {
     const finalColor = color || theme.palette.primary.main;
 
     return (
-        <Box border={1} borderColor={finalColor} borderRadius={1}>
+        <Box border={CTheme.border.size.value} borderColor={finalColor} borderRadius={1}>
             <Box
-                borderBottom={1}
+                borderBottom={CTheme.border.size.value}
                 borderColor={finalColor}
                 display="flex"
                 justifyContent="space-between"

@@ -111,7 +111,7 @@ const Display = props => {
         return (
             <Box
                 key={index}
-                border={1}
+                border={CTheme.border.size.value}
                 borderRadius={1}
                 borderColor={isActive(display) ? primaryColor : fontColor}
                 width={25}

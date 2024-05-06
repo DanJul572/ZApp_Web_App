@@ -23,6 +23,7 @@ import ToggleCodeFormProperties from './ToggleCodeFormProperties';
 
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CProperties from '@/constant/CProperties';
+import CTheme from '@/constant/CTheme';
 
 const CustomTabPanel = props => {
     const {children, value, index, ...other} = props;
@@ -161,7 +162,7 @@ const Properties = props => {
 
     return (
         <Box
-            borderLeft={1}
+            borderLeft={CTheme.border.size.value}
             borderColor={grey[300]}
             bottom={0}
             marginTop={8}
@@ -172,7 +173,7 @@ const Properties = props => {
             width={350}>
             {activeNavigation === navigationType.content && (
                 <Box sx={{width: '100%'}}>
-                    <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+                    <Box sx={{borderBottom: CTheme.border.size.value, borderColor: 'divider'}}>
                         <Tabs value={value} onChange={handleChange} centered>
                             <Tab label="Page" {...a11yProps(0)} />
                             <Tab label="Properties" {...a11yProps(1)} />

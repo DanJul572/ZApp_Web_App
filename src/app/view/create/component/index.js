@@ -125,7 +125,7 @@ const Component = props => {
 
     return (
         <Box
-            borderRight={1}
+            borderRight={CTheme.border.size.value}
             borderColor={grey[300]}
             bottom={0}
             left={0}

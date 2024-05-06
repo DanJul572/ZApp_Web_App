@@ -165,7 +165,7 @@ const TopBar = props => {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     padding: 2,
-                    borderBottom: 1,
+                    borderBottom: CTheme.border.size.value,
                     borderColor: grey[300],
                     zIndex: 2,
                     top: 0,
@@ -180,7 +180,7 @@ const TopBar = props => {
                     <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
-                    <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
+                    <Box display="flex" gap={1} borderRight={CTheme.border.size.value} borderColor={grey[300]} paddingRight={1}>
                         <Button component="label" variant="outlined" size={CTheme.button.size.name}>
                             Upload
                             <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
@@ -189,7 +189,7 @@ const TopBar = props => {
                             Download
                         </Button>
                     </Box>
-                    <Box display="flex" gap={1} borderRight={1} borderColor={grey[300]} paddingRight={1}>
+                    <Box display="flex" gap={1} borderRight={CTheme.border.size.value} borderColor={grey[300]} paddingRight={1}>
                         <Button variant="outlined" size={CTheme.button.size.name} onClick={() => setOpen(true)}>
                             Connect
                         </Button>

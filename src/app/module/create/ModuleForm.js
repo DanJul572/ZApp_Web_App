@@ -11,7 +11,7 @@ const ModuleForm = props => {
     const {moduleName, setModuleName, moduleLabel, setModuleLabel, moduleDescription, setModuleDescription} = props;
 
     return (
-        <Box marginY={2} border={1} padding={2} borderRadius={1} borderColor={grey[300]}>
+        <Box marginY={2} border={CTheme.border.size.value} padding={2} borderRadius={1} borderColor={grey[300]}>
             <Grid container="true" spacing={2}>
                 <Grid item display="flex" flexDirection="column" gap={2} xs={6}>
                     <ShortText

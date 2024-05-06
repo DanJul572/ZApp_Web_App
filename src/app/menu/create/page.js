@@ -208,7 +208,7 @@ const Page = () => {
                 <Dropdown value={roleId} label="Role" onChange={setRoleId} id={CFieldID.menus.roleId} />
                 <ShortText value={afterLogin} label="After Login" onChange={setAfterLogin} />
             </Box>
-            <Box border={1} borderColor={grey[300]} borderRadius={1}>
+            <Box border={CTheme.border.size.value} borderColor={grey[300]} borderRadius={1}>
                 <Box display="flex" gap={1} alignItems="center" padding={1} justifyContent="space-between">
                     <Box>
                         <Tooltip arrow title="Move To Up">
