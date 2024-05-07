@@ -15,7 +15,7 @@ const Toggle = props => {
                 value={Boolean(value)}
                 onChange={() => onChange(!value)}
                 disabled={disabled}
-                size={CTheme.field.size.value}
+                size={CTheme.field.size.name}
             />
         </Box>
     );

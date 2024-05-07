@@ -1,4 +1,4 @@
-import Hooks from '@/hooks';
+import Hooks from '@/hook';
 import Script from '@/hook/Script';
 
 import Builder from '@/builder';

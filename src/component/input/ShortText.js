@@ -40,7 +40,7 @@ const ShortText = props => {
             <TextField
                 disabled={disabled}
                 variant="outlined"
-                size={CTheme.field.size.value}
+                size={CTheme.field.size.name}
                 fullWidth
                 value={value || ''}
                 error={error.status}

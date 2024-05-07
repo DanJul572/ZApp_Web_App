@@ -16,14 +16,12 @@ const ModuleForm = props => {
                 <Grid item display="flex" flexDirection="column" gap={2} xs={6}>
                     <ShortText
                         label="Module Name"
-                        size={CTheme.field.size.value}
                         onChange={setModuleName}
                         value={moduleName}
                         rules="required|field_name"
                     />
                     <ShortText
                         label="Module Label"
-                        size={CTheme.field.size.value}
                         onChange={setModuleLabel}
                         value={moduleLabel}
                         rules="required|start_numeric"
@@ -32,7 +30,6 @@ const ModuleForm = props => {
                 <Grid item xs={6}>
                     <LongText
                         label="Module Description"
-                        size={CTheme.field.size.value}
                         onChange={setModuleDescription}
                         value={moduleDescription}
                         rows={6}

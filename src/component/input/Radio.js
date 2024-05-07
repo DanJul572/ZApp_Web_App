@@ -24,7 +24,7 @@ const Radio = props => {
                                 checked={value === option.value}
                                 disabled={disabled}
                                 onChange={e => onChange(e.target.value)}
-                                size={CTheme.field.size.value}
+                                size={CTheme.field.size.name}
                             />
                         }
                         label={option.label}

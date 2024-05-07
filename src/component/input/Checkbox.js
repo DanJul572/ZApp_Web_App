@@ -35,7 +35,7 @@ const Checkbox = props => {
                             <MuiCheckbox
                                 checked={checked(option.value)}
                                 value={option.value}
-                                size={CTheme.field.size.value}
+                                size={CTheme.field.size.name}
                                 onChange={e => setValues(e.target.value)}
                                 disabled={disabled}
                             />

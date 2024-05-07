@@ -1,4 +1,4 @@
-import Hooks from '../hooks';
+import Hooks from '../hook';
 
 const GeneralProcess = () => {
     const ZApp = Hooks();

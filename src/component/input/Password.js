@@ -66,7 +66,7 @@ const Password = props => {
                 name={name || 'password'}
                 onBlur={blur}
                 onChange={change}
-                size={CTheme.field.size.value}
+                size={CTheme.field.size.name}
                 type={showPassword ? 'text' : 'password'}
                 value={value || ''}
                 variant="outlined"

@@ -75,7 +75,7 @@ const Dropdown = props => {
                 onChange={(e, value) => onChange(value ? value.value : null)}
                 options={newOptions.length ? newOptions : []}
                 renderInput={params => renderInput(params)}
-                size={CTheme.field.size.value}
+                size={CTheme.field.size.name}
                 value={newValue}
                 renderOption={(props, option) => renderOptions(props, option)}
                 isOptionEqualToValue={(option, value) => option.value === value.value}
