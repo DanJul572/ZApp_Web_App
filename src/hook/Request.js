@@ -4,8 +4,10 @@ import {useRouter} from 'next/navigation';
 
 import auth from '../helper/auth';
 
+import CApiUrl from '@/constant/CApiUrl';
+
 const Request = () => {
-    const apiUrl = process.env.NEXT_PUBLIC_ENV_API_URL || 'http://127.0.0.1:8080/api';
+    const apiUrl = process.env.NEXT_PUBLIC_ENV_API_URL || CApiUrl.base;
     const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
