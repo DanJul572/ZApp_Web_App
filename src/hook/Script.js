@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react';
 
-import useRequest from './Request';
+import Request from './Request';
 
 import CApiUrl from '@/constant/CApiUrl';
 
 const Script = props => {
     const {id} = props;
 
-    const {get} = useRequest();
+    const {get} = Request();
 
     const [val, setVal] = useState(null);
 

@@ -23,7 +23,7 @@ import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
 
-import useRequest from '@/hook/Request';
+import Request from '@/hook/Request';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -40,8 +40,9 @@ const VisuallyHiddenInput = styled('input')({
 const TopBar = props => {
     const {content, setContent, label, setLabel, page, setPage, id} = props;
 
+    const {get, post} = Request();
+
     const {push} = useRouter();
-    const {get, post} = useRequest();
     const {setLoading} = useLoading();
     const {setToast} = useToast();
     const theme = useTheme();
@@ -179,12 +180,7 @@ const TopBar = props => {
                     <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
-                    <Box
-                        display="flex"
-                        gap={1}
-                        borderRight={CTheme.border.size.value}
-                        borderColor={grey[300]}
-                        paddingRight={1}>
+                    <Box display="flex" gap={1} borderRight={CTheme.border.size.value} borderColor={grey[300]} paddingRight={1}>
                         <Button component="label" variant="outlined" size={CTheme.button.size.name}>
                             Upload
                             <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
@@ -193,12 +189,7 @@ const TopBar = props => {
                             Download
                         </Button>
                     </Box>
-                    <Box
-                        display="flex"
-                        gap={1}
-                        borderRight={CTheme.border.size.value}
-                        borderColor={grey[300]}
-                        paddingRight={1}>
+                    <Box display="flex" gap={1} borderRight={CTheme.border.size.value} borderColor={grey[300]} paddingRight={1}>
                         <Button variant="outlined" size={CTheme.button.size.name} onClick={() => setOpen(true)}>
                             Connect
                         </Button>

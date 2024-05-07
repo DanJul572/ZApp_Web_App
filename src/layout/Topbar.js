@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 import Logout from '@mui/icons-material/Logout';
 
-import useRequest from '@/hook/Request';
+import Request from '@/hook/Request';
 
 import auth from '@/helper/auth';
 
@@ -17,7 +17,7 @@ import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
 
 const Topbar = () => {
-    const {post} = useRequest();
+    const {post} = Request();
 
     const {push} = useRouter();
     const {setToast} = useToast();

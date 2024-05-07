@@ -4,7 +4,7 @@ import {useRouter} from 'next/navigation';
 
 import auth from '../helper/auth';
 
-const useRequest = () => {
+const Request = () => {
     const apiUrl = process.env.NEXT_PUBLIC_ENV_API_URL || 'http://127.0.0.1:8080/api';
     const headers = {
         Accept: 'application/json',
@@ -78,4 +78,4 @@ const useRequest = () => {
     };
 };
 
-export default useRequest;
+export default Request;

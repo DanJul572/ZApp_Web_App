@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
-import useRequest from '@/hook/Request';
+import Request from '@/hook/Request';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
@@ -17,7 +17,7 @@ import CTheme from '@/constant/CTheme';
 const Dropdown = props => {
     const {label, onChange, options, value, rules, group, name, disabled, id} = props;
 
-    const {get} = useRequest();
+    const {get} = Request();
 
     const {setError, clearError} = useContext(ErrorContext);
     const error = validator(rules, value ? value.toString() : '');

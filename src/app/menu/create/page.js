@@ -31,11 +31,12 @@ import CFieldID from '@/constant/CFieldID';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
 
-import useRequest from '@/hook/Request';
+import Request from '@/hook/Request';
 
 const Page = () => {
+    const {post, get} = Request();
+
     const {push} = useRouter();
-    const {post, get} = useRequest();
     const searchParams = useSearchParams();
     const {setLoading} = useLoading();
     const {setAlert} = useAlert();

@@ -2,7 +2,7 @@
 
 import {useEffect, useState} from 'react';
 
-import useRequest from '@/hook/Request';
+import Request from '@/hook/Request';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
@@ -10,7 +10,7 @@ import CModuleID from '@/constant/CModuleID';
 const Content = props => {
     const {params, isBuilder} = props;
 
-    const {get} = useRequest();
+    const {get} = Request();
 
     const [content, setContent] = useState(null);
     const [page, setPage] = useState(null);

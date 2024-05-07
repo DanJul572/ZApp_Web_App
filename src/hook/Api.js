@@ -1,9 +1,9 @@
 import CApiUrl from '@/constant/CApiUrl';
 
-import useRequest from './Request';
+import Request from './Request';
 
 const Api = () => {
-    const {get, post} = useRequest();
+    const {get, post} = Request();
 
     const create = body => {
         return post(CApiUrl.general.create, body);
