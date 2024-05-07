@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
 
-import Request from '@/hook/Request';
+import useRequest from '@/hook/Request';
 
 import CActionType from '@/constant/CActionType';
 import CApiUrl from '@/constant/CApiUrl';
@@ -12,9 +12,8 @@ import CApiUrl from '@/constant/CApiUrl';
 const TableFunction = props => {
     const {moduleID, actions, isBuilder} = props;
 
-    const {post, get} = Request();
-
     const {push} = useRouter();
+    const {post, get} = useRequest();
     const {setAlert} = useAlert();
     const {setLoading} = useLoading();
 

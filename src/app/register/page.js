@@ -18,7 +18,7 @@ import Dropdown from '@/component/input/Dropdown';
 import Password from '@/component/input/Password';
 import ShortText from '@/component/input/ShortText';
 
-import Request from '@/hook/Request';
+import useRequest from '@/hook/Request';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CFieldID from '@/constant/CFieldID';
@@ -26,9 +26,9 @@ import CTheme from '@/constant/CTheme';
 
 const Page = () => {
     const theme = createTheme(CTheme);
-    const {post} = Request();
 
     const {push} = useRouter();
+    const {post} = useRequest();
     const {setLoading} = useLoading();
     const {setToast} = useToast();
 

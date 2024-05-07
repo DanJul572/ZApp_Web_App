@@ -15,12 +15,11 @@ import {useLoading} from '@/context/LoadingProvider';
 import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
 
-import Request from '@/hook/Request';
+import useRequest from '@/hook/Request';
 
 const Page = () => {
-    const {post} = Request();
-
     const {back, push} = useRouter();
+    const {post} = useRequest();
     const {setLoading} = useLoading();
     const {setAlert} = useAlert();
 

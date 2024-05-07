@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 import grey from '@mui/material/colors/grey';
 
-import Request from '@/hook/Request';
+import useRequest from '@/hook/Request';
 
 import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';
@@ -17,7 +17,7 @@ import CTheme from '@/constant/CTheme';
 
 const Sidebar = () => {
     const {push} = useRouter();
-    const {get} = Request();
+    const {get} = useRequest();
 
     const [list, setList] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
