@@ -8,8 +8,8 @@ import Tab from '@/component/container/Tab';
 
 import CContainerType from '@/constant/CContainerType';
 
-import Content from '@/hooks/Content';
-import Translator from '@/hooks/Translator';
+import Content from '@/hook/Content';
+import Translator from '@/hook/Translator';
 
 import Runner from '@/runner';
 

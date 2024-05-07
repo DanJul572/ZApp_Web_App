@@ -1,7 +1,7 @@
 'use client';
 
 import Main from '@/layout/Main';
-import ClassicView from '@/templates/ClassicView';
+import ClassicView from '@/template/ClassicView';
 
 import CModuleID from '@/constant/CModuleID';
 import CActionType from '@/constant/CActionType';

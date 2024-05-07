@@ -1,5 +1,5 @@
 import Hooks from '@/hooks';
-import Script from '@/hooks/Script';
+import Script from '@/hook/Script';
 
 import Builder from '@/builder';
 

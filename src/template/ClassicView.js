@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Confirm from '@/component/dialog/Confirm';
 import Table from '@/component/table';
 
-import TableFunction from '@/hooks/TableFunction';
+import TableFunction from '@/hook/TableFunction';
 
 const ClassicView = props => {
     const {

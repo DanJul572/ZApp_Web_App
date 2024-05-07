@@ -1,6 +1,6 @@
 'use client';
 
-import Content from '@/hooks/Content';
+import Content from '@/hook/Content';
 import Interpreter from '@/interpreter';
 import Main from '@/layout/Main';
 

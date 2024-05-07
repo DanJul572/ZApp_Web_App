@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 import Logout from '@mui/icons-material/Logout';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 import auth from '@/helper/auth';
 

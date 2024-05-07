@@ -18,7 +18,7 @@ import Dropdown from '@/component/input/Dropdown';
 import Password from '@/component/input/Password';
 import ShortText from '@/component/input/ShortText';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CFieldID from '@/constant/CFieldID';

@@ -7,7 +7,7 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import CssBaseline from '@mui/material/CssBaseline';
 import createTheme from '@mui/material/styles/createTheme';
 
-import Translator from '@/hooks/Translator';
+import Translator from '@/hook/Translator';
 
 import Loading from '@/component/loading';
 import Toast from '@/component/toast';

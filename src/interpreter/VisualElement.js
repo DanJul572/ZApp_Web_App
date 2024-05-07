@@ -2,7 +2,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import useTheme from '@mui/material/styles/useTheme';
 
-import Translator from '@/hooks/Translator';
+import Translator from '@/hook/Translator';
 
 import Runner from '@/runner';
 

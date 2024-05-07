@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 import grey from '@mui/material/colors/grey';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';

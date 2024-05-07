@@ -15,7 +15,7 @@ import {useLoading} from '@/context/LoadingProvider';
 import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 const Page = () => {
     const {post} = Request();

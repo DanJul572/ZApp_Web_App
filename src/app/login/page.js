@@ -18,7 +18,7 @@ import grey from '@mui/material/colors/grey';
 import Password from '@/component/input/Password';
 import ShortText from '@/component/input/ShortText';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';

@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 
-import Comp from '@/hooks/Comp';
-import Vars from '@/hooks/Vars';
+import Comp from '@/hook/Comp';
+import Vars from '@/hook/Vars';
 
 import Runner from '@/runner';
 

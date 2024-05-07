@@ -23,7 +23,7 @@ import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',

@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 import CActionType from '@/constant/CActionType';
 import CApiUrl from '@/constant/CApiUrl';

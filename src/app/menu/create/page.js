@@ -31,7 +31,7 @@ import CFieldID from '@/constant/CFieldID';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 const Page = () => {
     const {post, get} = Request();

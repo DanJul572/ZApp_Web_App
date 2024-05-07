@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import {ErrorContext} from '@/context/ErrorProvider';
 import {validator} from '@/helper/validator';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';

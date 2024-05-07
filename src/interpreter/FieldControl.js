@@ -15,7 +15,7 @@ import Toggle from '@/component/input/Toggle';
 
 import CInputType from '@/constant/CInputType';
 
-import Vars from '@/hooks/Vars';
+import Vars from '@/hook/Vars';
 import Runner from '@/runner';
 
 const FieldControl = props => {

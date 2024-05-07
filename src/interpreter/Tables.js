@@ -10,7 +10,7 @@ import CActionType from '@/constant/CActionType';
 import CTableType from '@/constant/CTableType';
 import CTheme from '@/constant/CTheme';
 
-import TableFunction from '@/hooks/TableFunction';
+import TableFunction from '@/hook/TableFunction';
 
 const Tables = props => {
     const {type, properties, isBuilder} = props;

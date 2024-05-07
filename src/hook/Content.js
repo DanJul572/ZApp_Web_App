@@ -2,7 +2,7 @@
 
 import {useEffect, useState} from 'react';
 
-import Request from '@/hooks/Request';
+import Request from '@/hook/Request';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
