@@ -12,10 +12,14 @@ import CTheme from '@/constant/CTheme';
 
 import TableFunction from '@/hook/TableFunction';
 
+import Translator from '@/hook/Translator';
+
 const Tables = props => {
     const {type, properties, isBuilder} = props;
 
     const {runFunction} = Runner({isBuilder});
+
+    const {t} = Translator();
 
     const moduleID = properties.moduleID;
     const actions = properties.actions;
@@ -59,7 +63,7 @@ const Tables = props => {
         if (isBuilder) {
             return (
                 <Typography fontSize={CTheme.font.size.value} textAlign="center">
-                    TABLE COMPONENT CANNOT SHOW IN BUILDER MODE
+                    {t('empty_content')}
                 </Typography>
             );
         } else if (type === CTableType.table.value && moduleID) {
@@ -86,10 +90,10 @@ const Tables = props => {
                     />
                     <Confirm
                         open={openConfirmDialog}
-                        title="Delete Data"
-                        text="Are you sure you want to delete this data ?"
-                        confirmButton="Delete"
-                        cancelButton="Cancel"
+                        title={t('delete_data')}
+                        text={t('confirm_delete')}
+                        confirmButton={t('delete')}
+                        cancelButton={t('cancel')}
                         onConfirm={onConfirm}
                     />
                 </Box>

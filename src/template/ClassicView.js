@@ -6,8 +6,11 @@ import Confirm from '@/component/dialog/Confirm';
 import Table from '@/component/table';
 
 import TableFunction from '@/hook/TableFunction';
+import Translator from '@/hook/Translator';
 
 const ClassicView = props => {
+    const {t} = Translator();
+
     const {
         actions,
         columnKey,
@@ -46,10 +49,10 @@ const ClassicView = props => {
             />
             <Confirm
                 open={openConfirmDialog}
-                title="Delete Data"
-                text="Are you sure you want to delete this data ?"
-                confirmButton="Delete"
-                cancelButton="Cancel"
+                title={t('delete_data')}
+                text={t('confirm_delete')}
+                confirmButton={t('delete')}
+                cancelButton={t('cancel')}
                 onConfirm={onConfirm}
             />
         </Box>

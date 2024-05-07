@@ -1,4 +1,8 @@
 {
     "add_new_data": "Tambah Data Baru",
+    "cancel": "Batal",
+    "confirm_delete": "Apakah anda yakin ingin mengahpus data ini ?",
+    "delete_data": "Delete Data",
+    "delete": "Hapus",
     "empty_content": "Konten tidak tersedia"
 }
