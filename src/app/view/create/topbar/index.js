@@ -19,11 +19,13 @@ import useTheme from '@mui/material/styles/useTheme';
 
 import Number from '@/component/input/Number';
 
+import {readJSONFile} from '@/helper/readFile';
+
+import Request from '@/hook/Request';
+
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
-
-import Request from '@/hook/Request';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -67,22 +69,12 @@ const TopBar = props => {
     };
 
     const onUpload = event => {
-        const selectedFile = event.target.files[0];
-        if (selectedFile && selectedFile.type === 'application/json') {
-            const reader = new FileReader();
-            reader.onload = e => {
-                try {
-                    const jsonContent = JSON.parse(e.target.result);
-                    setContent(jsonContent);
-                } catch (error) {
-                    console.error('Error parsing JSON file : ', error);
-                }
-            };
-            reader.readAsText(selectedFile);
-            event.target.value = null;
-        } else {
-            console.error('Invalid file type. Please choose a JSON file.');
-        }
+        readJSONFile(event)
+            .then(json => {
+                setContent(json);
+                event.target.value = null;
+            })
+            .catch(error => console.log(error));
     };
 
     const onSave = () => {
@@ -180,7 +172,12 @@ const TopBar = props => {
                     <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
-                    <Box display="flex" gap={1} borderRight={CTheme.border.size.value} borderColor={grey[300]} paddingRight={1}>
+                    <Box
+                        display="flex"
+                        gap={1}
+                        borderRight={CTheme.border.size.value}
+                        borderColor={grey[300]}
+                        paddingRight={1}>
                         <Button component="label" variant="outlined" size={CTheme.button.size.name}>
                             Upload
                             <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
@@ -189,7 +186,12 @@ const TopBar = props => {
                             Download
                         </Button>
                     </Box>
-                    <Box display="flex" gap={1} borderRight={CTheme.border.size.value} borderColor={grey[300]} paddingRight={1}>
+                    <Box
+                        display="flex"
+                        gap={1}
+                        borderRight={CTheme.border.size.value}
+                        borderColor={grey[300]}
+                        paddingRight={1}>
                         <Button variant="outlined" size={CTheme.button.size.name} onClick={() => setOpen(true)}>
                             Connect
                         </Button>

@@ -37,7 +37,8 @@
         "suneditor": "^2.46.2",
         "suneditor-react": "^3.6.1",
         "typescript": "^5.4.5",
-        "uuid": "^9.0.1"
+        "uuid": "^9.0.1",
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
     },
     "devDependencies": {
         "eslint": "^8.57.0",
