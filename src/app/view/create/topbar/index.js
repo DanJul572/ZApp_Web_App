@@ -14,7 +14,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import grey from '@mui/material/colors/grey';
-import styled from '@mui/material/styles/styled';
 import useTheme from '@mui/material/styles/useTheme';
 
 import Number from '@/component/input/Number';
@@ -27,18 +26,7 @@ import Translator from '@/hook/Translator';
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
-
-const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-});
+import Upload from '@/component/button/Upload';
 
 const TopBar = props => {
     const {content, setContent, label, setLabel, page, setPage, id} = props;
@@ -180,11 +168,7 @@ const TopBar = props => {
                         borderRight={CTheme.border.size.value}
                         borderColor={grey[300]}
                         paddingRight={1}>
-                        <Button component="label" variant="outlined" size={CTheme.button.size.name}>
-                            {t('upload')}
-
-                            <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
-                        </Button>
+                        <Upload label={t('upload')} onUpload={onUpload} type=".json" />
                         <Button variant="outlined" size={CTheme.button.size.name} onClick={onDownload}>
                             {t('download')}
                         </Button>
