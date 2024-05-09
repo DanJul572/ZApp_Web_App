@@ -5,6 +5,8 @@ import {MaterialReactTable, useMaterialReactTable} from 'material-react-table';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
+import Translator from '@/hook/Translator';
+
 import dataDisplay from '@/helper/dataDisplay';
 
 import AdvanceFilter from './AdvanceFilter';
@@ -49,6 +51,8 @@ const Table = props => {
         rows = [],
         toolbarCustomAction = [],
     } = props;
+
+    const {t} = Translator();
 
     const pageSize = 10;
     const pageIndex = 0;
@@ -177,6 +181,9 @@ const Table = props => {
         getRowId: row => row[columnKey],
         initialState: initialState,
         layoutMode: 'grid',
+        localization: {
+            actions: t('action'),
+        },
         manualFiltering: true,
         manualPagination: true,
         manualSorting: true,
