@@ -85,8 +85,7 @@ const Container = props => {
                 );
             }
         } else if (type === CContainerType.tab.value) {
-            const contents = section.map(childs => childs.map(renderComponent));
-            return <Tab contents={contents} label={label} section={section} />;
+            return <Tab label={label} items={section} render={childs => childs.map(renderComponent)} />;
         } else if (type === CContainerType.view.value) {
             if (isBuilder) {
                 return (
