@@ -32,9 +32,11 @@ import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
 
 import Request from '@/hook/Request';
+import Translator from '@/hook/Translator';
 
 const Page = () => {
     const {post, get} = Request();
+    const {t} = Translator();
 
     const {push} = useRouter();
     const searchParams = useSearchParams();
@@ -256,7 +258,7 @@ const Page = () => {
                             startIcon={<Save fontSize={CTheme.font.size.name} />}
                             variant="outlined"
                             onClick={onSave}>
-                            <Typography>Save</Typography>
+                            <Typography>{t('save')}</Typography>
                         </Button>
                     </Box>
                 </Box>

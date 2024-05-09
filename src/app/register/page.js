@@ -19,6 +19,7 @@ import Password from '@/component/input/Password';
 import ShortText from '@/component/input/ShortText';
 
 import Request from '@/hook/Request';
+import Translator from '@/hook/Translator';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CFieldID from '@/constant/CFieldID';
@@ -27,6 +28,7 @@ import CTheme from '@/constant/CTheme';
 const Page = () => {
     const theme = createTheme(CTheme);
     const {post} = Request();
+    const {t} = Translator();
 
     const {push} = useRouter();
     const {setLoading} = useLoading();
@@ -95,7 +97,7 @@ const Page = () => {
                     </Box>
                 </Box>
                 <Button variant="contained" onClick={onSignIn}>
-                    SIGN IN
+                    {t('signin')}
                 </Button>
                 <Box display="flex" justifyContent="flex-end" marginTop={2}>
                     <Typography fontSize={CTheme.font.size.value}>

@@ -17,8 +17,12 @@ import Toggle from '@/component/input/Toggle';
 
 import CTheme from '@/constant/CTheme';
 
+import Translator from '@/hook/Translator';
+
 const FieldForm = props => {
     const {fieldRows, setFieldRows} = props;
+
+    const {t} = Translator();
 
     const inputTypeOptions = Object.values(CInputType);
     const dataTypeOptions = Object.values(CDataType).filter(
@@ -339,13 +343,13 @@ const FieldForm = props => {
                 <Box padding={2}>
                     <Box display="flex" justifyContent="flex-end" gap={2} marginBottom={2}>
                         <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
-                            Add
+                            {t('add')}
                         </Button>
                         <Button
                             variant="outlined"
                             size={CTheme.button.size.name}
                             onClick={() => setOpenFieldForm(false)}>
-                            Cancel
+                            {t('cancel')}
                         </Button>
                     </Box>
                     <Box width={500} display="flex" flexDirection="column" gap={2}>

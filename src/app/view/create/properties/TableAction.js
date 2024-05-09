@@ -15,12 +15,16 @@ import Typography from '@mui/material/Typography';
 import Code from '@/component/input/Code';
 import Toggle from '@/component/input/Toggle';
 
+import Translator from '@/hook/Translator';
+
 import CActionType from '@/constant/CActionType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CTheme from '@/constant/CTheme';
 
 const TableAction = props => {
     const {content, selected, editComponent, setContent} = props;
+
+    const {t} = Translator();
 
     const [open, setOpen] = useState(false);
     const [selectedAction, setSelectedAction] = useState([]);
@@ -139,10 +143,10 @@ const TableAction = props => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={() => setOpen(false)} variant="outlined" size={CTheme.button.size.name}>
-                            Cancel
+                            {t('cancel')}
                         </Button>
                         <Button onClick={applyOnClick} variant="contained" size={CTheme.button.size.name}>
-                            Apply
+                            {t('apply')}
                         </Button>
                     </DialogActions>
                 </Dialog>

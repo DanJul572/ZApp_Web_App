@@ -12,12 +12,16 @@ import Typography from '@mui/material/Typography';
 
 import Code from '@/component/input/Code';
 
+import Translator from '@/hook/Translator';
+
 import isValidProperties from '@/helper/isValidProperties';
 
 import CTheme from '@/constant/CTheme';
 
 const CodeForm = props => {
     const {content, selected, editComponent, setContent, label, name} = props;
+
+    const {t} = Translator();
 
     const type = selected ? selected.type.value : false;
     const group = selected ? selected.group.value : false;
@@ -54,10 +58,10 @@ const CodeForm = props => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={() => setOpen(false)} variant="outlined" size={CTheme.button.size.name}>
-                            Cancel
+                            {t('cancel')}
                         </Button>
                         <Button onClick={onApply} variant="contained" size={CTheme.button.size.name}>
-                            Apply
+                            {t('apply')}
                         </Button>
                     </DialogActions>
                 </Dialog>

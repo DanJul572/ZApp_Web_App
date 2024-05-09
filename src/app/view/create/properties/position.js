@@ -14,11 +14,15 @@ import ShortTextOutlined from '@mui/icons-material/ShortTextOutlined';
 import Number from '@/component/input/Number';
 import ShortText from '@/component/input/ShortText';
 
+import Translator from '@/hook/Translator';
+
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CTheme from '@/constant/CTheme';
 
 const Position = props => {
     const {selected, content, setContent, setSelected, deleteComponent} = props;
+
+    const {t} = Translator();
 
     const [containerID, setContainerID] = useState(null);
     const [columnIndex, setColumnIndex] = useState(null);
@@ -90,10 +94,10 @@ const Position = props => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={() => setOpen(false)} variant="outlined" size={CTheme.button.size.name}>
-                            Cancel
+                            {t('cancel')}
                         </Button>
                         <Button onClick={onMove} variant="contained" size={CTheme.button.size.name}>
-                            Apply
+                            {t('apply')}
                         </Button>
                     </DialogActions>
                 </Dialog>

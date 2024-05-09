@@ -16,9 +16,11 @@ import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
 
 import Request from '@/hook/Request';
+import Translator from '@/hook/Translator';
 
 const Page = () => {
     const {post} = Request();
+    const {t} = Translator();
 
     const {back, push} = useRouter();
     const {setLoading} = useLoading();
@@ -71,10 +73,10 @@ const Page = () => {
         <Box>
             <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
-                    Save
+                    {t('save')}
                 </Button>
                 <Button variant="outlined" size={CTheme.button.size.name} onClick={onCancel}>
-                    Cancel
+                    {t('cancel')}
                 </Button>
             </Box>
             <ModuleForm

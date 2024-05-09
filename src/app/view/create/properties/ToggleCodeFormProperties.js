@@ -11,6 +11,8 @@ import Tooltip from '@mui/material/Tooltip';
 
 import InsertLink from '@mui/icons-material/InsertLink';
 
+import Translator from '@/hook/Translator';
+
 import Code from '@/component/input/Code';
 import Toggle from '@/component/input/Toggle';
 
@@ -20,6 +22,8 @@ import CTheme from '@/constant/CTheme';
 
 const ToggleCodeFormProperties = props => {
     const {content, selected, editComponent, setContent, label, name} = props;
+
+    const {t} = Translator();
 
     const type = selected ? selected.type.value : false;
     const group = selected ? selected.group.value : false;
@@ -100,13 +104,13 @@ const ToggleCodeFormProperties = props => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={() => setOpen(false)} variant="outlined" size={CTheme.button.size.name}>
-                            Cancel
+                            {t('cancel')}
                         </Button>
                         <Button onClick={onRemove} variant="outlined" size={CTheme.button.size.name}>
-                            Remove
+                            {t('delete')}
                         </Button>
                         <Button onClick={onApply} variant="contained" size={CTheme.button.size.name}>
-                            Apply
+                            {t('apply')}
                         </Button>
                     </DialogActions>
                 </Dialog>

@@ -7,11 +7,15 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 
+import Translator from '@/hook/Translator';
+
 import CInputType from '@/constant/CInputType';
 import CTheme from '@/constant/CTheme';
 
 const AdvanceFilter = props => {
     const {columns, format, onAdvanceFilter, openAdvanceFilterDialog, setOpenAdvanceFilterDialog} = props;
+
+    const {t} = Translator();
 
     const [query, setQuery] = useState(null);
     const [fields, setFields] = useState([]);
@@ -66,10 +70,10 @@ const AdvanceFilter = props => {
                     size={CTheme.button.size.name}
                     onClick={() => setOpenAdvanceFilterDialog(false)}
                     variant="outlined">
-                    Cancel
+                    {t('cancel')}
                 </Button>
                 <Button onClick={() => onAdvanceFilter(query)} size={CTheme.button.size.name} variant="contained">
-                    Apply
+                    {t('apply')}
                 </Button>
             </DialogActions>
         </Dialog>

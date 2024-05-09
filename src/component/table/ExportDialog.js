@@ -9,12 +9,16 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 
+import Translator from '@/hook/Translator';
+
 import Dropdown from '@/component/input/Dropdown';
 
 import CTheme from '@/constant/CTheme';
 
 const ExportDialog = props => {
     const {openExportDialog, setOpenExportDialog, table} = props;
+
+    const {t} = Translator();
 
     const rowType = [
         {value: 'selected', label: 'Selected'},
@@ -121,10 +125,10 @@ const ExportDialog = props => {
             </DialogContent>
             <DialogActions>
                 <Button size={CTheme.button.size.name} onClick={closeDialog}>
-                    Cancel
+                    {t('cancel')}
                 </Button>
                 <Button size={CTheme.button.size.name} onClick={handleExportRows} variant="contained">
-                    Download
+                    {t('download')}
                 </Button>
             </DialogActions>
         </Dialog>

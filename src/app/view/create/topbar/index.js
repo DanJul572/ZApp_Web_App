@@ -22,6 +22,7 @@ import Number from '@/component/input/Number';
 import {readJSONFile} from '@/helper/readFile';
 
 import Request from '@/hook/Request';
+import Translator from '@/hook/Translator';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
@@ -43,6 +44,7 @@ const TopBar = props => {
     const {content, setContent, label, setLabel, page, setPage, id} = props;
 
     const {get, post} = Request();
+    const {t} = Translator();
 
     const {push} = useRouter();
     const {setLoading} = useLoading();
@@ -179,29 +181,17 @@ const TopBar = props => {
                         borderColor={grey[300]}
                         paddingRight={1}>
                         <Button component="label" variant="outlined" size={CTheme.button.size.name}>
-                            Upload
+                            {t('upload')}
+
                             <VisuallyHiddenInput type="file" accept=".json" onChange={onUpload} />
                         </Button>
                         <Button variant="outlined" size={CTheme.button.size.name} onClick={onDownload}>
-                            Download
-                        </Button>
-                    </Box>
-                    <Box
-                        display="flex"
-                        gap={1}
-                        borderRight={CTheme.border.size.value}
-                        borderColor={grey[300]}
-                        paddingRight={1}>
-                        <Button variant="outlined" size={CTheme.button.size.name} onClick={() => setOpen(true)}>
-                            Connect
+                            {t('download')}
                         </Button>
                     </Box>
                     <Box display="flex" gap={1}>
-                        <Button variant="outlined" size={CTheme.button.size.name}>
-                            Save As Draft
-                        </Button>
                         <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
-                            Save
+                            {t('save')}
                         </Button>
                     </Box>
                 </Box>
@@ -215,7 +205,7 @@ const TopBar = props => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={onApply} variant="contained" size={CTheme.button.size.name}>
-                        Apply
+                        {t('apply')}
                     </Button>
                 </DialogActions>
             </Dialog>

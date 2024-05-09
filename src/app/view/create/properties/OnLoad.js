@@ -11,12 +11,16 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
+import Translator from '@/hook/Translator';
+
 import Code from '@/component/input/Code';
 
 import CTheme from '@/constant/CTheme';
 
 const OnLoad = props => {
     const {page, setPage} = props;
+
+    const {t} = Translator();
 
     const [open, setOpen] = useState(false);
     const [onLoad, setOnLoad] = useState(null);
@@ -49,10 +53,10 @@ const OnLoad = props => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpen(false)} variant="outlined" size={CTheme.button.size.name}>
-                        Cancel
+                        {t('cancel')}
                     </Button>
                     <Button onClick={onApply} variant="contained" size={CTheme.button.size.name}>
-                        Apply
+                        {t('apply')}
                     </Button>
                 </DialogActions>
             </Dialog>

@@ -19,13 +19,16 @@ import Password from '@/component/input/Password';
 import ShortText from '@/component/input/ShortText';
 
 import Request from '@/hook/Request';
+import Translator from '@/hook/Translator';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
 
 const Page = () => {
     const theme = createTheme(CTheme);
+
     const {post} = Request();
+    const {t} = Translator();
 
     const {push} = useRouter();
     const {setLoading} = useLoading();
@@ -80,7 +83,7 @@ const Page = () => {
                     <Password label="Password" name="password" value={password} onChange={setPassword} />
                 </Box>
                 <Button variant="contained" onClick={onLogin} size={CTheme.button.size.name}>
-                    LOGIN
+                    {t('login')}
                 </Button>
                 <Box display="flex" justifyContent="flex-end" marginTop={2}>
                     <Typography fontSize={CTheme.font.size.value}>
