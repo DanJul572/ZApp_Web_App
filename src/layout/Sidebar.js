@@ -30,7 +30,7 @@ const Sidebar = () => {
     };
 
     const onLoad = () => {
-        get(CApiUrl.general.menu).then(res => {
+        get(CApiUrl.common.menu).then(res => {
             setList(res.tree);
             setCookie('tree', res.tree);
         });

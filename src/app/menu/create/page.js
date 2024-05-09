@@ -115,7 +115,7 @@ const Page = () => {
             rowId: id,
         };
 
-        get(CApiUrl.general.detail, body)
+        get(CApiUrl.common.detail, body)
             .then(res => {
                 setLabel(res.label);
                 setRoleId(res.roleId);
@@ -165,7 +165,7 @@ const Page = () => {
     };
 
     const onSave = () => {
-        const url = id ? CApiUrl.general.update : CApiUrl.general.create;
+        const url = id ? CApiUrl.common.update : CApiUrl.common.create;
         const body = {
             moduleId: CModuleID.menus,
             data: {

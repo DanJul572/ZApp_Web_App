@@ -20,7 +20,7 @@ const Content = props => {
             moduleId: CModuleID.views,
             rowId: params.id,
         };
-        get(CApiUrl.general.detail, param)
+        get(CApiUrl.common.detail, param)
             .then(res => {
                 if (res) {
                     const content = res.content;

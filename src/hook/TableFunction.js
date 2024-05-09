@@ -35,7 +35,7 @@ const TableFunction = props => {
             id: moduleID,
         };
 
-        get(CApiUrl.general.columns, param)
+        get(CApiUrl.common.columns, param)
             .then(res => {
                 const columnKey = res.find(column => column.identity);
                 setColumnKey(columnKey.accessorKey);
@@ -63,7 +63,7 @@ const TableFunction = props => {
             sort: sort,
         };
 
-        post(CApiUrl.general.rows, body)
+        post(CApiUrl.common.rows, body)
             .then(res => {
                 setRows(res.rows);
                 setRowCount(res.count);
@@ -89,7 +89,7 @@ const TableFunction = props => {
         };
 
         const action = actions.find(action => action.type === CActionType.delete.value);
-        const url = action.api || CApiUrl.general.delete;
+        const url = action.api || CApiUrl.common.delete;
 
         post(url, body)
             .then(res => {

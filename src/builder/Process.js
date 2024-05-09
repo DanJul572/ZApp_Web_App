@@ -1,6 +1,6 @@
 import Hooks from '../hook';
 
-const GeneralProcess = () => {
+const Process = () => {
     const ZApp = Hooks();
 
     const createOrUpdate = (moduleId, key, path = null) => {
@@ -75,4 +75,4 @@ const GeneralProcess = () => {
     return {createOrUpdate, findOneAndSet};
 };
 
-export default GeneralProcess;
+export default Process;

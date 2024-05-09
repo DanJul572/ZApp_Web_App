@@ -6,15 +6,15 @@ const Api = () => {
     const {get, post} = Request();
 
     const create = body => {
-        return post(CApiUrl.general.create, body);
+        return post(CApiUrl.common.create, body);
     };
 
     const update = body => {
-        return post(CApiUrl.general.update, body);
+        return post(CApiUrl.common.update, body);
     };
 
     const detail = param => {
-        return get(CApiUrl.general.detail, param);
+        return get(CApiUrl.common.detail, param);
     };
 
     const sql = id => {

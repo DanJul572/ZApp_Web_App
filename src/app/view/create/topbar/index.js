@@ -80,7 +80,7 @@ const TopBar = props => {
     const onSave = () => {
         setLoading(true);
 
-        const url = id ? CApiUrl.general.update : CApiUrl.general.create;
+        const url = id ? CApiUrl.common.update : CApiUrl.common.create;
         const body = {
             moduleId: CModuleID.views,
             data: {
@@ -119,7 +119,7 @@ const TopBar = props => {
             rowId: id,
         };
 
-        get(CApiUrl.general.detail, param)
+        get(CApiUrl.common.detail, param)
             .then(res => {
                 setModuleId(res.moduleId);
                 setContent(res.content);
