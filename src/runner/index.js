@@ -1,10 +1,13 @@
 import Hooks from '@/hook';
 import Script from '@/hook/Script';
+import Translator from '@/hook/Translator';
 
 import Builder from '@/builder';
 
 const Runner = props => {
     const {isBuilder} = props;
+
+    const {t} = Translator();
 
     // eslint-disable-next-line no-unused-vars
     const ZApp = Hooks();
@@ -17,11 +20,12 @@ const Runner = props => {
         if (!isBuilder) {
             const result = Script({id}).val;
             if (isOne) {
-                return result && result.length > 0 ? result[0][obj].toString() : 'Data is not found';
+                return result && result.length > 0 ? result[0][obj].toString() : t('empty_content');
+            } else {
+                return result;
             }
-            return result;
         } else {
-            return 'ZQL cannot run in Builder Mode';
+            return t('empty_content');
         }
     };
 
