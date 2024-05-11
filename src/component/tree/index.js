@@ -55,15 +55,15 @@ const Tree = props => {
     };
 
     const ExpandIcon = props => {
-        return <Folder {...props} sx={{opacity: 0.8, color: theme.palette.primary.main}} />;
+        return <Folder {...props} sx={{color: theme.palette.primary.main}} />;
     };
 
     const CollapseIcon = props => {
-        return <FolderOpen {...props} sx={{opacity: 0.8, color: theme.palette.primary.main}} />;
+        return <FolderOpen {...props} sx={{color: theme.palette.primary.main}} />;
     };
 
     const EndIcon = props => {
-        return <InsertDriveFileOutlined {...props} sx={{opacity: 0.3, color: theme.palette.primary.main}} />;
+        return <InsertDriveFileOutlined {...props} sx={{color: theme.palette.primary.main}} />;
     };
 
     return (
