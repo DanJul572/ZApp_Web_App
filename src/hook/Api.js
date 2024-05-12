@@ -17,11 +17,7 @@ const Api = () => {
         return get(CApiUrl.common.detail, param);
     };
 
-    const sql = id => {
-        return get(CApiUrl.script.run, {id});
-    };
-
-    return {create, detail, update, sql};
+    return {create, detail, update};
 };
 
 export default Api;
