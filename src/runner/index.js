@@ -1,4 +1,4 @@
-import Hooks from '@/hook';
+import Caller from '@/caller';
 import Script from '@/hook/Script';
 
 import Builder from '@/builder';
@@ -6,7 +6,7 @@ import Builder from '@/builder';
 const Runner = props => {
     const {isBuilder} = props;
 
-    const ZApp = Hooks();
+    const ZApp = Caller();
 
     // eslint-disable-next-line no-unused-vars
     const ZBuilder = Builder();

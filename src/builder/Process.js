@@ -1,7 +1,7 @@
-import Hooks from '../hook';
+import Caller from '../caller';
 
 const Process = () => {
-    const ZApp = Hooks();
+    const ZApp = Caller();
 
     const createOrUpdate = (moduleId, key, path = null) => {
         ZApp.Loader.showLoading();
