@@ -19,7 +19,7 @@ const Drawer = props => {
     }
 
     return (
-        <MuiDrawer open={open} onClose={onOpen} anchor={anchor || 'right'}>
+        <MuiDrawer open={open} onClose={onOpen} anchor={anchor || 'right'} sx={{zIndex: 9998}}>
             <Box padding={2} {...drawerSize}>
                 {children}
             </Box>

@@ -5,12 +5,15 @@
     "apply": "Terapkan",
     "cancel": "Batal",
     "confirm_delete": "Apakah anda yakin ingin mengahpus data ini ?",
+    "conntect_to_module": "Koneksi Ke Modul",
     "delete_data": "Delete Data",
     "delete": "Hapus",
     "download": "Unduh",
     "empty_content": "Konten tidak tersedia",
     "login": "Masuk",
+    "preview": "Pratinjau",
     "save": "Simpan",
     "signin": "Daftar",
-    "upload": "Unggah"
+    "upload": "Unggah",
+    "view_builder": "Pembuat Tampilan"
 }

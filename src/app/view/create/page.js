@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 
 import Component from './component';
 import Content from './content';
+import Preview from './preview';
 import Properties from './properties';
 import TopBar from './topbar';
 
@@ -29,17 +30,19 @@ const Page = () => {
     const [page, setPage] = useState(null);
     const [content, setContent] = useState([]);
     const [selected, setSelected] = useState(null);
+    const [openPreview, setOpenPreview] = useState(false);
 
     return (
         <Empty>
             <TopBar
                 content={content}
-                setContent={setContent}
-                label={label}
-                setLabel={setLabel}
-                page={page}
-                setPage={setPage}
                 id={id}
+                label={label}
+                page={page}
+                setContent={setContent}
+                setLabel={setLabel}
+                setOpenPreview={setOpenPreview}
+                setPage={setPage}
             />
             <Box container="true">
                 <Component content={content} setContent={setContent} setSelected={setSelected} />
@@ -59,6 +62,7 @@ const Page = () => {
                     setSelected={setSelected}
                 />
             </Box>
+            <Preview open={openPreview} setOpen={setOpenPreview} content={content} page={page} />
         </Empty>
     );
 };

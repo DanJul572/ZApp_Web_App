@@ -37,7 +37,7 @@ const Content = props => {
     };
 
     useEffect(() => {
-        if (!isBuilder) {
+        if (!isBuilder && params.id) {
             getContent();
         }
     }, []);

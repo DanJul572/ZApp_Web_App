@@ -29,7 +29,7 @@ import CTheme from '@/constant/CTheme';
 import Upload from '@/component/button/Upload';
 
 const TopBar = props => {
-    const {content, setContent, label, setLabel, page, setPage, id} = props;
+    const {content, setContent, label, setLabel, page, setPage, id, setOpenPreview} = props;
 
     const {get, post} = Request();
     const {t} = Translator();
@@ -130,6 +130,10 @@ const TopBar = props => {
         setOpen(false);
     };
 
+    const onPreview = () => {
+        setOpenPreview(true);
+    };
+
     useEffect(() => {
         if (!id) {
             setOpen(true);
@@ -159,7 +163,7 @@ const TopBar = props => {
                     <IconButton size={CTheme.button.size.name} sx={{padding: 0}} onClick={() => push('/view')}>
                         <ArrowBack fontSize={CTheme.font.size.name} sx={{color: theme.palette.text.primary}} />
                     </IconButton>
-                    <Typography sx={{fontWeight: 'bold'}}>VIEW BUILDER</Typography>
+                    <Typography sx={{fontWeight: 'bold'}}>{t('view_builder')}</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
                     <Box
@@ -174,6 +178,9 @@ const TopBar = props => {
                         </Button>
                     </Box>
                     <Box display="flex" gap={1}>
+                        <Button variant="outlined" size={CTheme.button.size.name} onClick={onPreview}>
+                            {t('preview')}
+                        </Button>
                         <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
                             {t('save')}
                         </Button>
@@ -181,7 +188,7 @@ const TopBar = props => {
                 </Box>
             </Box>
             <Dialog open={open}>
-                <DialogTitle>Connect To Module</DialogTitle>
+                <DialogTitle>{t('conntect_to_module')}</DialogTitle>
                 <DialogContent>
                     <Box width={500}>
                         <Number value={moduleId} onChange={setModuleId} label="Module ID" />
