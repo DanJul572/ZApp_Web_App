@@ -49,7 +49,7 @@ const TopBar = props => {
         const a = document.createElement('a');
 
         a.href = url;
-        a.download = 'Views.json';
+        a.download = `${label}.json`;
 
         document.body.appendChild(a);
 
