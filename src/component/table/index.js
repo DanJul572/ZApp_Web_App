@@ -75,45 +75,28 @@ const Table = props => {
         columnPinning: columnPinning,
     };
 
+    const isSupportAddAction = action.find(item => item.type === CActionType.insert.value) ? true : false;
+    const isSupportRowAction = action.filter(item => item.type !== CActionType.insert.value).length > 0 ? true : false;
+
+    const muiBottomToolbarProps = !enablePagination && !onChangePage ? {style: {display: 'none'}} : false;
     const muiTableContainerProps = {sx: {maxHeight: '500px'}};
-
     const muiTablePaginationProps = {showRowsPerPage: false};
+    const muiTopToolbarProps = !isSupportAddAction && !toolbarCustomAction.length ? {style: {display: 'none'}} : false;
 
-    const newColumns = columns.map(column => {
-        column.Cell = ({cell}) => rowDisplay(cell, column.type);
+    const formattedColumns = columns.map(column => {
+        column.Cell = ({cell}) => dataDisplay(cell.getValue(), column.type);
         if (column.footer) column.Footer = () => columnFooter(column.footer);
         return column;
     });
 
-    const muiTopToolbarProps = () => {
-        if (!isSupportAddAction() && !toolbarCustomAction.length) return {style: {display: 'none'}};
-    };
-
-    const muiBottomToolbarProps = () => {
-        if (!enablePagination && !onChangePage) return {style: {display: 'none'}};
-    };
-
-    const rowDisplay = (cell, type) => {
-        const value = cell.getValue();
-        return dataDisplay(type, value);
-    };
-
-    const isSupportRowAction = () => {
-        return action.filter(item => item.type !== CActionType.insert.value).length > 0 ? true : false;
-    };
-
-    const isSupportAddAction = () => {
-        return action.find(item => item.type === CActionType.insert.value) ? true : false;
-    };
-
     const toolbarAction = () => {
-        if (!toolbarCustomAction.length && !isSupportAddAction()) return;
+        if (!toolbarCustomAction.length && !isSupportAddAction) return;
         return (
             <ToolbarAction
                 action={action}
                 onClickToolbarAction={onClickToolbarAction}
                 toolbarCustomAction={toolbarCustomAction}
-                isSupportAddAction={isSupportAddAction()}
+                isSupportAddAction={isSupportAddAction}
             />
         );
     };
@@ -152,7 +135,6 @@ const Table = props => {
 
     const columnFooter = footer => {
         if (!footer) return false;
-
         return (
             <Stack>
                 {footer.label} :<Box color="warning.main">{footer.value}</Box>
@@ -161,13 +143,13 @@ const Table = props => {
     };
 
     const table = useMaterialReactTable({
-        columns: newColumns,
+        columns: formattedColumns,
         data: rows,
         enableColumnActions: false,
         enableColumnFilters: enableFilter,
         enableColumnResizing: enableColumnResizing,
         enableDensityToggle: enableDensityToggle,
-        enableEditing: isSupportRowAction(),
+        enableEditing: isSupportRowAction,
         enableFilterMatchHighlighting: false,
         enableFullScreenToggle: enableFullScreenToggle,
         enableGlobalFilter: enableSearch,
@@ -187,10 +169,10 @@ const Table = props => {
         manualFiltering: true,
         manualPagination: true,
         manualSorting: true,
-        muiBottomToolbarProps: muiBottomToolbarProps(),
+        muiBottomToolbarProps: muiBottomToolbarProps,
         muiPaginationProps: muiTablePaginationProps,
         muiTableContainerProps: muiTableContainerProps,
-        muiTopToolbarProps: muiTopToolbarProps(),
+        muiTopToolbarProps: muiTopToolbarProps,
         onColumnFiltersChange: setColumnFilters,
         onGlobalFilterChange: onSearch,
         onPaginationChange: setPagination,
@@ -222,8 +204,8 @@ const Table = props => {
     }, [rowSelection]);
 
     return (
-        newColumns &&
-        newColumns.length > 0 && (
+        formattedColumns &&
+        formattedColumns.length > 0 && (
             <Box>
                 <MaterialReactTable table={table} />
                 {enableAdvanceFilter && (
