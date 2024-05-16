@@ -31,7 +31,7 @@ const RowAction = props => {
 
     return (
         <Box sx={{display: 'flex', alignItems: 'center'}}>
-            {isSupportRowAction() && findAction('update') && (
+            {isSupportRowAction && findAction('update') && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
@@ -43,7 +43,7 @@ const RowAction = props => {
                     <Edit fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
-            {isSupportRowAction() && findAction('delete') && (
+            {isSupportRowAction && findAction('delete') && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({
@@ -55,7 +55,7 @@ const RowAction = props => {
                     <Delete fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
-            {isSupportRowAction() && findAction('detail') && (
+            {isSupportRowAction && findAction('detail') && (
                 <IconButton
                     onClick={() =>
                         onClickRowAction({

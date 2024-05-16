@@ -84,7 +84,7 @@ const Table = props => {
     const muiTopToolbarProps = !isSupportAddAction && !toolbarCustomAction.length ? {style: {display: 'none'}} : false;
 
     const formattedColumns = columns.map(column => {
-        column.Cell = ({cell}) => dataDisplay(cell.getValue(), column.type);
+        column.Cell = ({cell}) => dataDisplay(column.type, cell.getValue());
         if (column.footer) column.Footer = () => columnFooter(column.footer);
         return column;
     });
