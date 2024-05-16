@@ -21,6 +21,8 @@ import TableAction from './TableAction';
 import TextDecoration from './TextDecoration';
 import ToggleCodeFormProperties from './ToggleCodeFormProperties';
 
+import Translator from '@/hook/Translator';
+
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CProperties from '@/constant/CProperties';
 import CTheme from '@/constant/CTheme';
@@ -66,6 +68,8 @@ const Properties = props => {
         activeNavigation,
         navigationType,
     } = props;
+
+    const {t} = Translator();
 
     const [value, setValue] = useState(0);
 
@@ -175,8 +179,8 @@ const Properties = props => {
                 <Box sx={{width: '100%'}}>
                     <Box sx={{borderBottom: CTheme.border.size.value, borderColor: 'divider'}}>
                         <Tabs value={value} onChange={handleChange} centered>
-                            <Tab label="Page" {...a11yProps(0)} />
-                            <Tab label="Properties" {...a11yProps(1)} />
+                            <Tab label={t('page')} {...a11yProps(0)} />
+                            <Tab label={t('property')} {...a11yProps(1)} />
                         </Tabs>
                     </Box>
                     <CustomTabPanel value={value} index={0}>
