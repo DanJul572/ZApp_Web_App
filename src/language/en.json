@@ -6,6 +6,7 @@
     "cancel": "Cancel",
     "confirm_delete": "Are you sure you want to delete this data ?",
     "conntect_to_module": "Connect To Module",
+    "content_is_loaded": "Content is loaded",
     "delete_data": "Delete Data",
     "delete": "Delete",
     "download": "Download",
@@ -16,6 +17,7 @@
     "property": "Property",
     "save": "Save",
     "signin": "Sign In",
+    "success_message": "Process is success",
     "upload": "Upload",
     "view_builder": "View Builder"
 }

@@ -3,16 +3,20 @@ import Typography from '@mui/material/Typography';
 
 import {LineChart} from '@mui/x-charts/LineChart';
 
+import Translator from '@/hook/Translator';
+
 import CTheme from '@/constant/CTheme';
 
 const Line = props => {
     const {labels, values} = props;
 
+    const {t} = Translator();
+
     const renderChart = () => {
         if (!labels || !labels.length || !values || !values.length)
             return (
                 <Typography fontSize={CTheme.font.size.value} fontWeight="bold">
-                    Chart cannot be loaded.
+                    {t('empty_content')}
                 </Typography>
             );
 

@@ -6,10 +6,14 @@ import MuiAlert from '@/alias/MuiAlert';
 
 import {useAlert} from '@/context/AlertProvider';
 
+import Translator from '@/hook/Translator';
+
 import CTheme from '@/constant/CTheme';
 
 const Alert = () => {
     const {alert, setAlert} = useAlert();
+
+    const {t} = Translator();
 
     const renderAlert = () => {
         if (!alert || !alert.status) return false;
@@ -23,7 +27,7 @@ const Alert = () => {
                     </IconButton>
                 }
                 sx={{mb: 2}}>
-                {alert.message || 'Process is success.'}
+                {alert.message || t('success_message')}
             </MuiAlert>
         );
     };

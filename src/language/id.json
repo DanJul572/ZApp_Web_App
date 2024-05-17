@@ -6,6 +6,7 @@
     "cancel": "Batal",
     "confirm_delete": "Apakah anda yakin ingin mengahpus data ini ?",
     "conntect_to_module": "Koneksi Ke Modul",
+    "content_is_loaded": "Konten telah dimuat",
     "delete_data": "Hapus Data",
     "delete": "Hapus",
     "download": "Unduh",
@@ -16,6 +17,7 @@
     "property": "Properti",
     "save": "Simpan",
     "signin": "Daftar",
+    "success_message": "Proses sudah berhasil",
     "upload": "Unggah",
     "view_builder": "Pembuat Tampilan"
 }

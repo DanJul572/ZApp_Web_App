@@ -3,16 +3,20 @@ import Container from '@mui/material/Container';
 
 import {BarChart} from '@mui/x-charts/BarChart';
 
+import Translator from '@/hook/Translator';
+
 import CTheme from '@/constant/CTheme';
 
 const Bar = props => {
     const {labels, values} = props;
 
+    const {t} = Translator();
+
     const renderChart = () => {
         if (!labels || !labels.length || !values || !values.length)
             return (
                 <Typography fontSize={CTheme.font.size.value} fontWeight="bold">
-                    Chart cannot be loaded.
+                    {t('empty_content')}
                 </Typography>
             );
 
