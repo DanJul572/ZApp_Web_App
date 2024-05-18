@@ -6,6 +6,7 @@ import Dropdown from '@/component/input/Dropdown';
 import File from '@/component/input/File';
 import LongText from '@/component/input/LongText';
 import Number from '@/component/input/Number';
+import Password from '@/component/input/Password';
 import Radio from '@/component/input/Radio';
 import RichText from '@/component/input/RichText';
 import ShortText from '@/component/input/ShortText';
@@ -92,6 +93,8 @@ const FieldControl = props => {
                 return <Datetime {...comProps} />;
             } else if (type === CInputType.slider.value) {
                 return <Slider {...comProps} color={color} />;
+            } else if (type === CInputType.password.value) {
+                return <Password {...comProps} color={color} />;
             }
         }
     };

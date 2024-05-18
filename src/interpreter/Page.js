@@ -6,7 +6,7 @@ import Vars from '@/hook/Vars';
 import Runner from '@/runner';
 
 const Page = props => {
-    const {page, isBuilder, children} = props;
+    const {page, isBuilder, children, isPreview} = props;
 
     const {runFunction} = Runner({isBuilder});
 
@@ -14,7 +14,7 @@ const Page = props => {
     const comp = Comp();
 
     useEffect(() => {
-        if (!isBuilder) {
+        if (!isBuilder && !isPreview) {
             if (page && page.onLoad) {
                 runFunction(page.onLoad);
             }

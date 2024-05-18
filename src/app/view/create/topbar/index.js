@@ -24,7 +24,9 @@ import Request from '@/hook/Request';
 import Translator from '@/hook/Translator';
 
 import {downloadJsonFile} from '@/helper/downloadFile';
+import generateContent from '@/helper/generateContent';
 
+import CActionType from '@/constant/CActionType';
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
@@ -124,6 +126,28 @@ const TopBar = props => {
         setOpenPreview(true);
     };
 
+    const onGenerate = () => {
+        setLoading(true);
+
+        const param = {
+            moduleId: moduleId,
+        };
+
+        get(CApiUrl.module.detail, param)
+            .then(res => {
+                const content = generateContent(res, CActionType.insert);
+                setContent(content);
+            })
+            .catch(err => {
+                setToast({
+                    status: true,
+                    type: 'error',
+                    message: err,
+                });
+            })
+            .finally(() => setLoading(false));
+    };
+
     useEffect(() => {
         if (!id) {
             setOpen(true);
@@ -165,6 +189,9 @@ const TopBar = props => {
                         <Upload label={t('upload')} onUpload={onUpload} type=".json" />
                         <Button variant="outlined" size={CTheme.button.size.name} onClick={onDownload}>
                             {t('download')}
+                        </Button>
+                        <Button variant="outlined" size={CTheme.button.size.name} onClick={onGenerate}>
+                            {t('generate')}
                         </Button>
                     </Box>
                     <Box display="flex" gap={1}>

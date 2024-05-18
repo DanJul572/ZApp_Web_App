@@ -21,7 +21,7 @@ import Page from './Page';
 const Interpreter = props => {
     const theme = useTheme();
 
-    const {isBuilder, content, page, selected, setSelected} = props;
+    const {isPreview, isBuilder, content, page, selected, setSelected} = props;
 
     const Wraper = ({children, component}) => {
         if (!isBuilder) return <Box marginBottom={1}>{children}</Box>;
@@ -99,7 +99,7 @@ const Interpreter = props => {
     };
 
     return (
-        <Page isBuilder={isBuilder} page={page}>
+        <Page isBuilder={isBuilder} page={page} isPreview={isPreview}>
             {content && content.length > 0 && Array.isArray(content) ? content.map(renderComponent) : content}
         </Page>
     );

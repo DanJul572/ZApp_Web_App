@@ -1,0 +1,81 @@
+import {v4 as uuidv4} from 'uuid';
+
+import CActionType from '@/constant/CActionType';
+import CButtonType from '@/constant/CButtonType';
+import CComponentGroupType from '@/constant/CComponentGroupType';
+import CInputType from '@/constant/CInputType';
+import CVisualElement from '@/constant/CVisualElementType';
+
+const getInputType = value => {
+    for (const key in CInputType) {
+        if (CInputType[key].value === value) {
+            return CInputType[key];
+        }
+    }
+    return null;
+};
+
+const getInertContent = module => {
+    const content = [];
+    const fields = module.fields.filter(field => field.id);
+
+    // Generate Title
+    content.push({
+        id: uuidv4(),
+        group: CComponentGroupType.visualElement,
+        type: CVisualElement.text,
+        properties: {
+            label: `"${module.label}"`,
+            size: 20,
+        },
+    });
+
+    // Generate Field
+    for (let index = 0; index < fields.length; index++) {
+        const field = fields[index];
+        const pushField = {
+            id: uuidv4(),
+            group: CComponentGroupType.fieldControl,
+            type: getInputType(field.inputType),
+            properties: {
+                label: `"${field.label}"`,
+                name: field.name,
+            },
+        };
+        if (
+            field.inputType === CInputType.checkbox.value ||
+            field.inputType === CInputType.dropdown.value ||
+            field.inputType === CInputType.radio.value
+        ) {
+            pushField.properties.fieldID = field.id;
+        }
+        content.push(pushField);
+    }
+
+    // Generate Button
+    content.push({
+        id: uuidv4(),
+        group: CComponentGroupType.button,
+        type: CButtonType.button,
+        properties: {
+            label: '"Insert"',
+            display: {
+                horizontal: {
+                    name: 'right',
+                    value: 'flex-end',
+                    type: 'horizontal',
+                },
+            },
+        },
+    });
+
+    return content;
+};
+
+const generateContent = (module, type) => {
+    if (type === CActionType.insert) {
+        return getInertContent(module);
+    }
+};
+
+export default generateContent;
