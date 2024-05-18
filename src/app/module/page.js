@@ -49,7 +49,16 @@ const Page = () => {
         get(CApiUrl.field.rows, param)
             .then(res => {
                 const reformatModule = {...module};
-                reformatModule.fields = res.filter(field => field.id);
+                delete reformatModule.createdAt;
+                delete reformatModule.updatedAt;
+                reformatModule.fields = res
+                    .filter(field => field.id)
+                    .map(field => {
+                        delete field.createdAt;
+                        delete field.updatedAt;
+
+                        return field;
+                    });
                 downloadJsonFile(reformatModule, module.label);
             })
             .catch(err => {

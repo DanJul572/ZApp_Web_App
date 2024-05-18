@@ -12,11 +12,15 @@ import ModuleForm from './ModuleForm';
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
 
-import CApiUrl from '@/constant/CApiUrl';
-import CTheme from '@/constant/CTheme';
-
 import Request from '@/hook/Request';
 import Translator from '@/hook/Translator';
+
+import {readJSONFile} from '@/helper/readFile';
+
+import Upload from '@/component/button/Upload';
+
+import CApiUrl from '@/constant/CApiUrl';
+import CTheme from '@/constant/CTheme';
 
 const Page = () => {
     const {post} = Request();
@@ -31,8 +35,20 @@ const Page = () => {
     const [moduleDescription, setModuleDescription] = useState(null);
     const [fieldRows, setFieldRows] = useState([]);
 
-    const onCancel = () => {
+    const onBack = () => {
         back();
+    };
+
+    const onUpload = event => {
+        readJSONFile(event)
+            .then(json => {
+                setModuleName(json.name);
+                setModuleLabel(json.label);
+                setModuleDescription(json.description);
+                setFieldRows(json.fields);
+                event.target.value = null;
+            })
+            .catch(error => console.log(error));
     };
 
     const onSave = () => {
@@ -71,12 +87,13 @@ const Page = () => {
 
     return (
         <Box>
-            <Box display="flex" justifyContent="flex-end" gap={2}>
+            <Box display="flex" justifyContent="flex-end" gap={1}>
+                <Button variant="outlined" size={CTheme.button.size.name} onClick={onBack}>
+                    {t('back')}
+                </Button>
+                <Upload label={t('upload')} onUpload={onUpload} type=".json" />
                 <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
                     {t('save')}
-                </Button>
-                <Button variant="outlined" size={CTheme.button.size.name} onClick={onCancel}>
-                    {t('cancel')}
                 </Button>
             </Box>
             <ModuleForm

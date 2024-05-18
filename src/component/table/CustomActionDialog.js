@@ -14,16 +14,20 @@ const RowCustomActionDialog = props => {
         setOpenRowCustomActionDialog,
     } = props;
 
+    const conClose = () => {
+        setOpenRowCustomActionDialog(false);
+    };
+
     const onCLickAction = action => {
         onClickRowCustomAction({
             action: action,
             row: rowClicked,
         });
-        setOpenRowCustomActionDialog(false);
+        conClose();
     };
 
     return (
-        <Dialog open={openRowCustomActionDialog}>
+        <Dialog open={openRowCustomActionDialog} onClose={conClose}>
             <DialogContent sx={{width: '20rem', padding: 0}}>
                 <List>
                     {rowCustomAction.map((action, index) => (
