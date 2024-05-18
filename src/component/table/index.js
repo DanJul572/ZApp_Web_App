@@ -41,6 +41,7 @@ const Table = props => {
         onAdvanceFilter,
         onChangePage,
         onClickRowAction,
+        onClickRowCustomAction,
         onClickToolbarAction,
         onFilter,
         onSearch,
@@ -228,11 +229,11 @@ const Table = props => {
                 )}
                 {rowCustomAction.length > 0 && (
                     <RowCustomActionDialog
+                        onClickRowCustomAction={onClickRowCustomAction}
                         openRowCustomActionDialog={openRowCustomActionDialog}
-                        setOpenRowCustomActionDialog={setOpenRowCustomActionDialog}
-                        rowCustomAction={rowCustomAction}
                         rowClicked={rowClicked}
-                        onClickRowAction={onClickRowAction}
+                        rowCustomAction={rowCustomAction}
+                        setOpenRowCustomActionDialog={setOpenRowCustomActionDialog}
                     />
                 )}
             </Box>

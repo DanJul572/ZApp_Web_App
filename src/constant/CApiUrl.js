@@ -19,6 +19,9 @@ const CApiUrl = {
         create: '/module/create',
         delete: '/module/delete',
     },
+    field: {
+        rows: '/field/rows',
+    },
     script: {
         run: '/script/run',
     },

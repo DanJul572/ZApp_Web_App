@@ -6,10 +6,16 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
 const RowCustomActionDialog = props => {
-    const {openRowCustomActionDialog, rowCustomAction, rowClicked, onClickRowAction, setOpenRowCustomActionDialog} = props;
+    const {
+        onClickRowCustomAction,
+        openRowCustomActionDialog,
+        rowClicked,
+        rowCustomAction,
+        setOpenRowCustomActionDialog,
+    } = props;
 
     const onCLickAction = action => {
-        onClickRowAction({
+        onClickRowCustomAction({
             action: action,
             row: rowClicked,
         });

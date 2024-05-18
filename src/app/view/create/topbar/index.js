@@ -23,6 +23,8 @@ import {readJSONFile} from '@/helper/readFile';
 import Request from '@/hook/Request';
 import Translator from '@/hook/Translator';
 
+import {downloadJsonFile} from '@/helper/downloadFile';
+
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
@@ -43,19 +45,7 @@ const TopBar = props => {
     const [moduleId, setModuleId] = useState(null);
 
     const onDownload = () => {
-        const jsonString = JSON.stringify(content, null, 2);
-        const blob = new Blob([jsonString], {type: 'application/json'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-
-        a.href = url;
-        a.download = `${label}.json`;
-
-        document.body.appendChild(a);
-
-        a.click();
-
-        document.body.removeChild(a);
+        downloadJsonFile(content, label);
     };
 
     const onUpload = event => {

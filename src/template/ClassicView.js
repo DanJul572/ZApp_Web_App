@@ -26,34 +26,38 @@ const ClassicView = props => {
         setSort,
     } = TableFunction(props);
 
+    const {rowCustomAction, onClickRowCustomAction} = props;
+
     return (
         <Box>
             <Table
                 action={actions}
                 columnKey={columnKey}
                 columns={columns}
-                enableRowSelection={true}
                 enableExport={true}
+                enableFilter={true}
                 enableHiding={true}
                 enablePagination={true}
-                enableFilter={true}
+                enableRowSelection={true}
                 enableSorting={true}
                 onChangePage={setPage}
-                onClickToolbarAction={onCLickToolbarAction}
                 onClickRowAction={onClickRowAction}
+                onClickRowCustomAction={onClickRowCustomAction}
+                onClickToolbarAction={onCLickToolbarAction}
                 onFilter={setFilter}
                 onSort={setSort}
                 pageIndex={0}
                 rowCount={rowCount}
+                rowCustomAction={rowCustomAction}
                 rows={rows}
             />
             <Confirm
-                open={openConfirmDialog}
-                title={t('delete_data')}
-                text={t('confirm_delete')}
-                confirmButton={t('delete')}
                 cancelButton={t('cancel')}
+                confirmButton={t('delete')}
                 onConfirm={onConfirm}
+                open={openConfirmDialog}
+                text={t('confirm_delete')}
+                title={t('delete_data')}
             />
         </Box>
     );
