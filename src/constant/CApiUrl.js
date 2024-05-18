@@ -16,6 +16,7 @@ const CApiUrl = {
         update: '/common/update',
     },
     module: {
+        detail: '/module/detail',
         create: '/module/create',
         delete: '/module/delete',
     },

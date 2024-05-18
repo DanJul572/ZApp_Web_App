@@ -2,9 +2,9 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 
 import Delete from '@mui/icons-material/Delete';
-import Description from '@mui/icons-material/Description';
 import Edit from '@mui/icons-material/Edit';
 import Info from '@mui/icons-material/Info';
+import Menu from '@mui/icons-material/Menu';
 
 import CActionType from '@/constant/CActionType';
 import CTheme from '@/constant/CTheme';
@@ -69,7 +69,7 @@ const RowAction = props => {
             )}
             {rowCustomAction.length > 0 && (
                 <IconButton onClick={onClickCustomAction} size={CTheme.button.size.name}>
-                    <Description fontSize={CTheme.font.size.name} />
+                    <Menu fontSize={CTheme.font.size.name} />
                 </IconButton>
             )}
         </Box>
