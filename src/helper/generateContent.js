@@ -74,7 +74,7 @@ const getInsertContent = module => {
     return content;
 };
 
-const getInvalidContent = () => {
+const generateInvalidContent = () => {
     const content = [];
 
     content.push({
@@ -92,9 +92,7 @@ const getInvalidContent = () => {
 const generateContent = (module, type) => {
     if (type === CActionType.insert.value) {
         return getInsertContent(module);
-    } else {
-        return getInvalidContent();
     }
 };
 
-export default generateContent;
+export {generateContent, generateInvalidContent};

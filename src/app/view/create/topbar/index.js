@@ -24,7 +24,7 @@ import Request from '@/hook/Request';
 import Translator from '@/hook/Translator';
 
 import {downloadJsonFile} from '@/helper/downloadFile';
-import generateContent from '@/helper/generateContent';
+import {generateContent, generateInvalidContent} from '@/helper/generateContent';
 
 import CActionType from '@/constant/CActionType';
 import CApiUrl from '@/constant/CApiUrl';
@@ -153,7 +153,12 @@ const TopBar = props => {
     };
 
     const onGenerate = item => {
-        getModule(item.value);
+        if (item.value === CActionType.insert.value) {
+            getModule(item.value);
+        } else {
+            const content = generateInvalidContent();
+            setContent(content);
+        }
     };
 
     useEffect(() => {
