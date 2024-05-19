@@ -11,6 +11,7 @@ import CInputType from '@/constant/CInputType';
 
 import Confirm from '@/component/dialog/Confirm';
 import Dropdown from '@/component/input/Dropdown';
+import Number from '@/component/input/Number';
 import ShortText from '@/component/input/ShortText';
 import Table from '@/component/table';
 import Toggle from '@/component/input/Toggle';
@@ -33,6 +34,7 @@ const FieldForm = props => {
     const [fieldName, setFieldName] = useState(null);
     const [fieldLabel, setFieldLabel] = useState(null);
     const [inputType, setInputType] = useState(null);
+    const [sequence, setSequence] = useState(null);
     const [fieldSettings, setFieldSettings] = useState({
         dataType: null,
         tableRef: null,
@@ -152,6 +154,7 @@ const FieldForm = props => {
             setFieldName(null);
             setFieldLabel(null);
             setInputType(null);
+            setSequence(null);
             clearFieldSettings();
             setOpenFieldForm(true);
         }
@@ -177,6 +180,7 @@ const FieldForm = props => {
             name: fieldName,
             label: fieldLabel,
             inputType: inputType,
+            sequence: sequence,
             dataType: fieldSettings.dataType,
             tableRef: fieldSettings.tableRef,
             tableRefKey: fieldSettings.tableRefKey,
@@ -361,6 +365,7 @@ const FieldForm = props => {
                             value={inputType}
                             onChange={onChangeInputType}
                         />
+                        <Number label="Sequence" value={sequence} onChange={setSequence} />
                     </Box>
                     {fieldSettingsComponent()}
                 </Box>
