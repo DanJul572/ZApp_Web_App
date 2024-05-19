@@ -31,6 +31,7 @@ import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
 import Upload from '@/component/button/Upload';
+import List from '@/component/dialog/List';
 
 const TopBar = props => {
     const {content, setContent, label, setLabel, page, setPage, id, setOpenPreview} = props;
@@ -43,8 +44,33 @@ const TopBar = props => {
     const {setToast} = useToast();
     const theme = useTheme();
 
+    const generateTypeList = [CActionType.insert, CActionType.update];
+
     const [open, setOpen] = useState(false);
+    const [openGenrateDialog, setOpenGenerateDialog] = useState(false);
     const [moduleId, setModuleId] = useState(null);
+
+    const getModule = type => {
+        setLoading(true);
+
+        const param = {
+            moduleId: moduleId,
+        };
+
+        get(CApiUrl.module.detail, param)
+            .then(res => {
+                const content = generateContent(res, type);
+                setContent(content);
+            })
+            .catch(err => {
+                setToast({
+                    status: true,
+                    type: 'error',
+                    message: err,
+                });
+            })
+            .finally(() => setLoading(false));
+    };
 
     const onDownload = () => {
         downloadJsonFile(content, label);
@@ -126,26 +152,8 @@ const TopBar = props => {
         setOpenPreview(true);
     };
 
-    const onGenerate = () => {
-        setLoading(true);
-
-        const param = {
-            moduleId: moduleId,
-        };
-
-        get(CApiUrl.module.detail, param)
-            .then(res => {
-                const content = generateContent(res, CActionType.insert);
-                setContent(content);
-            })
-            .catch(err => {
-                setToast({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
-            })
-            .finally(() => setLoading(false));
+    const onGenerate = item => {
+        getModule(item.value);
     };
 
     useEffect(() => {
@@ -190,7 +198,10 @@ const TopBar = props => {
                         <Button variant="outlined" size={CTheme.button.size.name} onClick={onDownload}>
                             {t('download')}
                         </Button>
-                        <Button variant="outlined" size={CTheme.button.size.name} onClick={onGenerate}>
+                        <Button
+                            variant="outlined"
+                            size={CTheme.button.size.name}
+                            onClick={() => setOpenGenerateDialog(true)}>
                             {t('generate')}
                         </Button>
                     </Box>
@@ -217,6 +228,12 @@ const TopBar = props => {
                     </Button>
                 </DialogActions>
             </Dialog>
+            <List
+                items={generateTypeList}
+                onSelected={onGenerate}
+                open={openGenrateDialog}
+                setOpen={setOpenGenerateDialog}
+            />
         </Box>
     );
 };

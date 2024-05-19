@@ -15,7 +15,7 @@ const getInputType = value => {
     return null;
 };
 
-const getInertContent = module => {
+const getInsertContent = module => {
     const content = [];
     const fields = module.fields.filter(field => field.id);
 
@@ -33,23 +33,25 @@ const getInertContent = module => {
     // Generate Field
     for (let index = 0; index < fields.length; index++) {
         const field = fields[index];
-        const pushField = {
-            id: uuidv4(),
-            group: CComponentGroupType.fieldControl,
-            type: getInputType(field.inputType),
-            properties: {
-                label: `"${field.label}"`,
-                name: field.name,
-            },
-        };
-        if (
-            field.inputType === CInputType.checkbox.value ||
-            field.inputType === CInputType.dropdown.value ||
-            field.inputType === CInputType.radio.value
-        ) {
-            pushField.properties.fieldID = field.id;
+        if (!field.autoIncrement) {
+            const pushField = {
+                id: uuidv4(),
+                group: CComponentGroupType.fieldControl,
+                type: getInputType(field.inputType),
+                properties: {
+                    label: `"${field.label}"`,
+                    name: field.name,
+                },
+            };
+            if (
+                field.inputType === CInputType.checkbox.value ||
+                field.inputType === CInputType.dropdown.value ||
+                field.inputType === CInputType.radio.value
+            ) {
+                pushField.properties.fieldID = field.id;
+            }
+            content.push(pushField);
         }
-        content.push(pushField);
     }
 
     // Generate Button
@@ -72,9 +74,26 @@ const getInertContent = module => {
     return content;
 };
 
+const getInvalidContent = () => {
+    const content = [];
+
+    content.push({
+        id: uuidv4(),
+        group: CComponentGroupType.visualElement,
+        type: CVisualElement.text,
+        properties: {
+            label: `"Content is not avalaible"`,
+            size: 20,
+        },
+    });
+    return content;
+};
+
 const generateContent = (module, type) => {
-    if (type === CActionType.insert) {
-        return getInertContent(module);
+    if (type === CActionType.insert.value) {
+        return getInsertContent(module);
+    } else {
+        return getInvalidContent();
     }
 };
 
