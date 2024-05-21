@@ -12,7 +12,6 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
 import grey from '@mui/material/colors/grey';
 
 import CreateNewFolder from '@mui/icons-material/CreateNewFolder';
@@ -20,11 +19,11 @@ import Delete from '@mui/icons-material/Delete';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUp from '@mui/icons-material/KeyboardArrowUp';
 import NoteAdd from '@mui/icons-material/NoteAdd';
-import Save from '@mui/icons-material/Save';
 
 import Dropdown from '@/component/input/Dropdown';
 import ShortText from '@/component/input/ShortText';
 import Tree from '@/component/tree';
+import Upload from '@/component/button/Upload';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CFieldID from '@/constant/CFieldID';
@@ -34,11 +33,14 @@ import CTheme from '@/constant/CTheme';
 import Request from '@/hook/Request';
 import Translator from '@/hook/Translator';
 
+import {downloadJsonFile} from '@/helper/downloadFile';
+import {readJSONFile} from '@/helper/readFile';
+
 const Page = () => {
     const {post, get} = Request();
     const {t} = Translator();
 
-    const {push} = useRouter();
+    const {push, back} = useRouter();
     const searchParams = useSearchParams();
     const {setLoading} = useLoading();
     const {setAlert} = useAlert();
@@ -166,6 +168,10 @@ const Page = () => {
         setList(result);
     };
 
+    const onBack = () => {
+        back();
+    };
+
     const onSave = () => {
         const url = id ? CApiUrl.common.update : CApiUrl.common.create;
         const body = {
@@ -199,19 +205,57 @@ const Page = () => {
             .finally(() => setLoading(false));
     };
 
+    const onDownload = () => {
+        const menu = {
+            label: label,
+            roleId: roleId,
+            afterLogin: afterLogin,
+            list: list,
+        };
+        downloadJsonFile(menu, label);
+    };
+
+    const onUpload = event => {
+        readJSONFile(event)
+            .then(json => {
+                setLabel(json.label);
+                setRoleId(json.roleId);
+                setAfterLogin(json.afterLogin);
+                setList(json.list);
+                event.target.value = null;
+            })
+            .catch(error => console.log(error));
+    };
+
     useEffect(() => {
         if (id) onLoad();
     }, []);
 
     return (
         <Box>
-            <Box gap={2} display="flex" flexDirection="column" marginBottom={2}>
-                <ShortText value={label} label="Label" onChange={setLabel} />
-                <Dropdown value={roleId} label="Role" onChange={setRoleId} id={CFieldID.menus.roleId} />
-                <ShortText value={afterLogin} label="After Login" onChange={setAfterLogin} />
+            <Box display="flex" justifyContent="flex-end" gap={1}>
+                <Box borderRight={1} borderColor={grey[300]} paddingRight={1} display="flex" gap={1}>
+                    <Upload label={t('upload')} onUpload={onUpload} type=".json" />
+                    <Button variant="outlined" size={CTheme.button.size.name} onClick={onDownload}>
+                        {t('download')}
+                    </Button>
+                </Box>
+                <Box display="flex" gap={1}>
+                    <Button variant="outlined" size={CTheme.button.size.name} onClick={onBack}>
+                        {t('back')}
+                    </Button>
+                    <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
+                        {t('save')}
+                    </Button>
+                </Box>
             </Box>
-            <Box border={CTheme.border.size.value} borderColor={grey[300]} borderRadius={1}>
-                <Box display="flex" gap={1} alignItems="center" padding={1} justifyContent="space-between">
+            <Box>
+                <Box gap={2} display="flex" flexDirection="column" marginBottom={2}>
+                    <ShortText value={label} label="Label" onChange={setLabel} />
+                    <Dropdown value={roleId} label="Role" onChange={setRoleId} id={CFieldID.menus.roleId} />
+                    <ShortText value={afterLogin} label="After Login" onChange={setAfterLogin} />
+                </Box>
+                <Box border={CTheme.border.size.value} borderColor={grey[300]} borderRadius={1}>
                     <Box>
                         <Tooltip arrow title="Move To Up">
                             <IconButton size={CTheme.button.size.name} onClick={() => onMove(actionType.up)}>
@@ -251,30 +295,20 @@ const Page = () => {
                             </IconButton>
                         </Tooltip>
                     </Box>
-                    <Box display="flex" gap={1} justifyContent="flex-end">
-                        <Button
-                            size={CTheme.button.size.name}
-                            color="success"
-                            startIcon={<Save fontSize={CTheme.font.size.name} />}
-                            variant="outlined"
-                            onClick={onSave}>
-                            <Typography>{t('save')}</Typography>
-                        </Button>
-                    </Box>
-                </Box>
-                <Divider sx={{backgroundColor: grey[300]}} />
-                <Box padding={1} gap={2} display="flex">
-                    <Box flex={1}>
-                        <Tree list={list} onParentClick={onClick} onChildClick={onClick} />
-                    </Box>
-                    <Box display="flex" flexDirection="column" gap={2} flex={1}>
-                        <ShortText
-                            value={activeMenuLabel}
-                            label="Label"
-                            onChange={setActiveMenuLabel}
-                            onBlur={onEdit}
-                        />
-                        <ShortText value={activeMenuUrl} label="URL" onChange={setActiveMenuUrl} onBlur={onEdit} />
+                    <Divider sx={{backgroundColor: grey[300]}} />
+                    <Box padding={1} gap={2} display="flex">
+                        <Box flex={1}>
+                            <Tree list={list} onParentClick={onClick} onChildClick={onClick} />
+                        </Box>
+                        <Box display="flex" flexDirection="column" gap={2} flex={1}>
+                            <ShortText
+                                value={activeMenuLabel}
+                                label="Label"
+                                onChange={setActiveMenuLabel}
+                                onBlur={onEdit}
+                            />
+                            <ShortText value={activeMenuUrl} label="URL" onChange={setActiveMenuUrl} onBlur={onEdit} />
+                        </Box>
                     </Box>
                 </Box>
             </Box>
