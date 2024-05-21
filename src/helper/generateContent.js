@@ -6,7 +6,7 @@ import CComponentGroupType from '@/constant/CComponentGroupType';
 import CInputType from '@/constant/CInputType';
 import CVisualElement from '@/constant/CVisualElementType';
 
-const getInputType = value => {
+const getInputTypeValue = value => {
     for (const key in CInputType) {
         if (CInputType[key].value === value) {
             return CInputType[key];
@@ -37,7 +37,7 @@ const getInsertContent = module => {
             const pushField = {
                 id: uuidv4(),
                 group: CComponentGroupType.fieldControl,
-                type: getInputType(field.inputType),
+                type: getInputTypeValue(field.inputType),
                 properties: {
                     label: `"${field.label}"`,
                     name: field.name,
