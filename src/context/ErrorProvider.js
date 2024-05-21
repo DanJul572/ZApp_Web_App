@@ -1,4 +1,5 @@
 'use client';
+
 import {createContext, useState} from 'react';
 
 export const ErrorContext = createContext();
@@ -32,8 +33,7 @@ export default function ErrorProvider({children}) {
     const groupError = groups => {
         for (let index = 0; index < groups.length; index++) {
             const group = groups[index];
-
-            if (errors[group] && Object.keys(errors[group]).length) return true;
+            return errors[group] && Object.keys(errors[group]).length ? true : false;
         }
     };
 

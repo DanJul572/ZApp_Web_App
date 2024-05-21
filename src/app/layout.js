@@ -6,11 +6,11 @@ import 'suneditor/dist/css/suneditor.min.css';
 import 'react-querybuilder/dist/query-builder.css';
 
 import {AlertProvider} from '@/context/AlertProvider';
-import {VarsProvider} from '@/context/VarsProvider';
-import {ToastProvider} from '@/context/ToastProvider';
-import ErrorProvider from '@/context/ErrorProvider';
-import {LoadingProvider} from '@/context/LoadingProvider';
 import {ComponentProvider} from '@/context/ComponentProvider';
+import {LoadingProvider} from '@/context/LoadingProvider';
+import {ToastProvider} from '@/context/ToastProvider';
+import {VarsProvider} from '@/context/VarsProvider';
+import ErrorProvider from '@/context/ErrorProvider';
 
 const roboto = Roboto({
     weight: '400',
