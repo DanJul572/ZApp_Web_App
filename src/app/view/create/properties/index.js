@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import {useState} from 'react';
+import PropTypes from 'prop-types';
 import {v4 as uuidv4} from 'uuid';
 
 import Box from '@mui/material/Box';
@@ -33,10 +33,10 @@ const CustomTabPanel = props => {
 
     return (
         <div
-            role="tabpanel"
+            aria-labelledby={`properties-tab-${index}`}
             hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
+            id={`properties-tabpanel-${index}`}
+            role="tabpanel"
             {...other}>
             {value === index && children}
         </div>
@@ -111,7 +111,7 @@ const Properties = props => {
     };
 
     const duplicateComponent = () => {
-        const cloneComponent = structuredClone(selected);
+        const cloneComponent = {...selected};
         const newComponent = changeComponentID(cloneComponent);
         const newContent = duplicateProcess(content, newComponent);
         setContent([...newContent]);
@@ -202,8 +202,8 @@ const Properties = props => {
                             {CProperties.CShortTextFormProperties.map((property, index) => {
                                 return (
                                     <ShortTextForm
-                                        key={index}
                                         {...compProps}
+                                        key={index}
                                         label={property.label}
                                         name={property.name}
                                     />
@@ -211,14 +211,14 @@ const Properties = props => {
                             })}
                             {CProperties.CCodeFormProperties.map((property, index) => {
                                 return (
-                                    <CodeForm key={index} {...compProps} label={property.label} name={property.name} />
+                                    <CodeForm {...compProps} key={index} label={property.label} name={property.name} />
                                 );
                             })}
                             {CProperties.CToggleCodeFormProperties.map((property, index) => {
                                 return (
                                     <ToggleCodeFormProperties
-                                        key={index}
                                         {...compProps}
+                                        key={index}
                                         label={property.label}
                                         name={property.name}
                                     />
