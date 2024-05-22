@@ -7,19 +7,20 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import grey from '@mui/material/colors/grey';
 
-import Anchor from './Anchor';
-import CodeForm from './CodeForm';
-import Color from './Color';
-import Delete from './Delete';
-import Display from './Display';
-import Flex from './Flex';
-import Identity from './Identity';
-import PageSettings from './PageSettings';
-import Position from './Position';
-import ShortTextForm from './ShortTextForm';
-import TableAction from './TableAction';
-import TextDecoration from './TextDecoration';
-import ToggleCodeFormProperties from './ToggleCodeFormProperties';
+import Anchor from './single/Anchor';
+import Color from './single/Color';
+import Delete from './single/Delete';
+import Display from './single/Display';
+import Flex from './single/Flex';
+import Identity from './single/Identity';
+import PageSettings from './single/PageSettings';
+import Position from './single/Position';
+import TableAction from './single/TableAction';
+import TextDecoration from './single/TextDecoration';
+
+import CodeForm from './common/CodeForm';
+import ShortTextForm from './common/ShortTextForm';
+import ToggleCodeFormProperties from './common/ToggleCodeFormProperties';
 
 import Translator from '@/hook/Translator';
 
