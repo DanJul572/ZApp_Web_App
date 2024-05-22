@@ -51,8 +51,8 @@ const Container = props => {
                 </Card>
             );
         } else if (type === CContainerType.grid.value) {
-            let columnSize = properties.size ? properties.size.split(',') : [];
-            let defaultSize = 12 / (section.length > 0 ? section.length : 1);
+            const columnSize = properties.size ? properties.size.split(',') : [];
+            const defaultSize = 12 / (section.length > 0 ? section.length : 1);
             return (
                 <Grid container>
                     {section &&
