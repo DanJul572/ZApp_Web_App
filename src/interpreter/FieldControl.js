@@ -26,9 +26,9 @@ const FieldControl = props => {
     const {set, get} = Vars();
 
     const color = properties.color ? properties.color.name : 'primary';
-    const disabled = !Boolean(properties.name) || getValues(properties.disable, 'js');
-    const label = getValues(properties.label, 'js');
-    const hidden = getValues(properties.hidden, 'js');
+    const disabled = !Boolean(properties.name) || Boolean(getValues(properties.disable));
+    const label = getValues(properties.label);
+    const hidden = getValues(properties.hidden);
     const fieldID = properties.fieldID;
 
     const onChange = value => {

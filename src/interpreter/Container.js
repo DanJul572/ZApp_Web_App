@@ -28,8 +28,8 @@ const Container = props => {
     const color = properties.color ? properties.color.value : null;
     const display = properties.display;
     const flex = Boolean(properties.flex);
-    const label = getValues(properties.label, 'js');
-    const open = getValues(properties.open, 'js');
+    const label = getValues(properties.label);
+    const open = getValues(properties.open);
     const padding = parseInt(properties.padding);
     const size = properties.size;
     const viewID = properties.viewID;

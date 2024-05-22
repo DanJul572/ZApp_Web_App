@@ -11,8 +11,8 @@ const Chart = props => {
 
     const {getValues} = Runner({isBuilder});
 
-    const label = getValues(properties.label, 'js');
-    const value = getValues(properties.value, 'js');
+    const label = getValues(properties.label);
+    const value = getValues(properties.value);
 
     const content = () => {
         if (type === CChartType.bar.value) {

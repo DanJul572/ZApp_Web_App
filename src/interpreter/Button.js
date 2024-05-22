@@ -18,10 +18,10 @@ const Button = props => {
     };
 
     const color = properties.color ? properties.color.name : 'primary';
-    const disable = getValues(properties.disable, 'js');
+    const disable = getValues(properties.disable);
     const display = {display: 'flex', flexDirection: 'column', alignItems: displayValue('horizontal')};
-    const hidden = getValues(properties.hidden, 'js');
-    const label = getValues(properties.label, 'js');
+    const hidden = getValues(properties.hidden);
+    const label = getValues(properties.label);
     const onClick = properties.onClick;
 
     const click = () => {

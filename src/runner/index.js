@@ -36,20 +36,17 @@ const Runner = props => {
     };
 
     // eslint-disable-next-line no-unused-vars
-    const getValues = (data, type, param = null) => {
-        if (!data || !type) return null;
+    const getValues = (data, param = null) => {
+        if (!data) return null;
         try {
             if (typeof data === 'object') {
                 if (!data.isBind) return data.value;
-                if (type === 'json') return data.value ? JSON.parse(data.value) : {};
                 return data.value ? eval(data.value) : null;
             } else {
-                if (type === 'json') return data ? JSON.parse(data) : {};
                 return data ? eval(data) : null;
             }
         } catch (error) {
             console.log(`Error : ${error.message}`);
-            return type === 'json' ? {} : null;
         }
     };
 

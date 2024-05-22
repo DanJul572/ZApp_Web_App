@@ -18,8 +18,8 @@ const VisualElement = props => {
     const {t} = Translator();
     const theme = useTheme();
 
-    const label = getValues(properties.label, 'js');
-    const loop = getValues(properties.loop, 'js');
+    const label = getValues(properties.label);
+    const loop = getValues(properties.loop);
     const color = properties.color ? properties.color.value : theme.palette.text.primary;
     const size = parseInt(properties.size) || CTheme.font.size.value;
     const bold = properties.textDecoration && properties.textDecoration.bold ? 'bold' : 'normal';
@@ -48,14 +48,17 @@ const VisualElement = props => {
         if (type === CVisualElement.divider.value) {
             return <Divider sx={{backgroundColor: color}} />;
         } else if (type === CVisualElement.text.value) {
-            if (Array.isArray(loop)) {
+            if (loop && Array.isArray(loop)) {
                 if (isBuilder) {
                     return <Typography fontSize={CTheme.font.size.value}>{t('empty_content')}</Typography>;
                 } else {
                     return (
                         <MapLoop
                             items={loop}
-                            render={(item, index) => textComponent(getValues(properties.label, 'js', item), index)}
+                            render={(item, index) => {
+                                const label = getValues(properties.label, item);
+                                return textComponent(label, index);
+                            }}
                         />
                     );
                 }
