@@ -193,10 +193,10 @@ const Properties = props => {
                             <Delete
                                 content={content}
                                 deleteComponent={deleteComponent}
+                                duplicateComponent={duplicateComponent}
                                 selected={selected}
                                 setContent={setContent}
                                 setSelected={setSelected}
-                                duplicateComponent={duplicateComponent}
                             />
                             <Position {...compProps} deleteComponent={deleteComponent} setSelected={setSelected} />
                             {CProperties.CShortTextFormProperties.map((property, index) => {
