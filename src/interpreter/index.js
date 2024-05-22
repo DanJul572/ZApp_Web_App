@@ -25,7 +25,6 @@ const Interpreter = props => {
 
     const Wraper = ({children, component}) => {
         if (!isBuilder) return <Box marginBottom={1}>{children}</Box>;
-
         return (
             <Box
                 key={component.id}
@@ -50,7 +49,6 @@ const Interpreter = props => {
         let type = component.type.value;
         let section = component.section;
         let properties = component.properties;
-        let parse = {};
 
         if (group === CComponentGroupType.container.value) {
             return (
@@ -60,7 +58,6 @@ const Interpreter = props => {
                         section={section}
                         properties={properties}
                         renderComponent={renderComponent}
-                        parse={parse}
                         isBuilder={isBuilder}
                     />
                 </Wraper>
