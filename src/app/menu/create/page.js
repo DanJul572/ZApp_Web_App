@@ -258,19 +258,25 @@ const Page = () => {
                 <Box border={CTheme.border.size.value} borderColor={grey[300]} borderRadius={1}>
                     <Box>
                         <Tooltip arrow title="Move To Up">
-                            <IconButton size={CTheme.button.size.name} onClick={() => onMove(actionType.up)}>
+                            <IconButton
+                                size={CTheme.button.size.name}
+                                color="primary"
+                                onClick={() => onMove(actionType.up)}>
                                 <KeyboardArrowUp fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Move To Down">
-                            <IconButton size={CTheme.button.size.name} onClick={() => onMove(actionType.down)}>
+                            <IconButton
+                                size={CTheme.button.size.name}
+                                color="primary"
+                                onClick={() => onMove(actionType.down)}>
                                 <KeyboardArrowDown fontSize={CTheme.font.size.name} />
                             </IconButton>
                         </Tooltip>
                         <Tooltip arrow title="Add Root Menu">
                             <IconButton
                                 size={CTheme.button.size.name}
-                                color="success"
+                                color="primary"
                                 variant="outlined"
                                 onClick={onAddRootMenu}>
                                 <CreateNewFolder fontSize={CTheme.font.size.name} />
@@ -279,7 +285,7 @@ const Page = () => {
                         <Tooltip arrow title="Add Sub Menu">
                             <IconButton
                                 size={CTheme.button.size.name}
-                                color="success"
+                                color="primary"
                                 variant="outlined"
                                 onClick={onAdd}>
                                 <NoteAdd fontSize={CTheme.font.size.name} />
@@ -288,7 +294,7 @@ const Page = () => {
                         <Tooltip arrow title="Delete">
                             <IconButton
                                 size={CTheme.button.size.name}
-                                color="error"
+                                color="primary"
                                 variant="outlined"
                                 onClick={onDelete}>
                                 <Delete fontSize={CTheme.font.size.name} />
