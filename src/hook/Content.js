@@ -2,7 +2,7 @@
 
 import {useEffect, useState} from 'react';
 
-import Request from '@/hook/Request';
+import Request from './Request';
 import Translator from './Translator';
 
 import CApiUrl from '@/constant/CApiUrl';
