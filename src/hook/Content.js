@@ -3,6 +3,7 @@
 import {useEffect, useState} from 'react';
 
 import Request from '@/hook/Request';
+import Translator from './Translator';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
@@ -11,6 +12,7 @@ const Content = props => {
     const {params, isBuilder} = props;
 
     const {get} = Request();
+    const {t} = Translator();
 
     const [content, setContent] = useState(null);
     const [page, setPage] = useState(null);
@@ -28,11 +30,11 @@ const Content = props => {
                     setContent(content);
                     setPage(page);
                 } else {
-                    setContent('View is not found.');
+                    setContent(t('empty_content'));
                 }
             })
             .catch(err => {
-                setContent(`Error : ${err}`);
+                setContent(err);
             });
     };
 
