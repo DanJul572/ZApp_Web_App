@@ -367,10 +367,10 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
-"@mui/x-charts@^7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@mui/x-charts/-/x-charts-7.5.0.tgz#1229254a075d74b9830c9ce9fd37b0cdadc2611c"
-  integrity sha512-paWplffe+pNgiK3NFKl9zklzA72oRcvIuq2LsDxaMAl7JoUMEmgX7IMpc6SLPy9e3XM1XRpSbkJ4wXITlP8J5A==
+"@mui/x-charts@^7.5.1":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@mui/x-charts/-/x-charts-7.5.1.tgz#e5f5266dcdf47b8c65ace3a9165db52462f2aefd"
+  integrity sha512-8vMQyJL13cGXMbp+gm2QdABzFuOpP4hxEa/o6nL3ZpVNp7hja6h9F5bc0FNGR8h/eRN+4+swDnrEebnR0w4cbA==
   dependencies:
     "@babel/runtime" "^7.24.5"
     "@mui/base" "^5.0.0-beta.40"
@@ -386,10 +386,10 @@
     d3-shape "^3.2.0"
     prop-types "^15.8.1"
 
-"@mui/x-date-pickers@^7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-7.5.0.tgz#3d1ce784079e874196007f853108183a5660a1b8"
-  integrity sha512-azm9AX36/XzllKtfyHn8u8iYDsxf425/LacP4oVaCeQQgIasajSRFxU/g8vxpNWwgTuzIeWwKjj8cvTc/2UBAw==
+"@mui/x-date-pickers@^7.5.1":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-7.5.1.tgz#cc92567ef70cdbf76fffbd750c7fcc6577ce5f35"
+  integrity sha512-O3K2pewxk5u9mK8PG0+xgIOAn+GSBRWHtU0ZbzaqCjS8ZbxNT2OhkI0aXqp/W2ECVwxYaGjwtjl3ypQIdqRvjw==
   dependencies:
     "@babel/runtime" "^7.24.5"
     "@mui/base" "^5.0.0-beta.40"
@@ -400,10 +400,10 @@
     prop-types "^15.8.1"
     react-transition-group "^4.4.5"
 
-"@mui/x-tree-view@^7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@mui/x-tree-view/-/x-tree-view-7.5.0.tgz#9d4669b49ffe3e13dfe81860a24cb8738f31bc65"
-  integrity sha512-Oy+awMPMN8M6QE6fzKwrQSG/7Rh0sEDvEc7TyENP7h75J2LPy5qqztCgRTlliEG1/Iq+aC4yFoIsJnEUH+M4gw==
+"@mui/x-tree-view@^7.5.1":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@mui/x-tree-view/-/x-tree-view-7.5.1.tgz#e0f3b06acf15a1748ea4748a0cf2317c025aafc0"
+  integrity sha512-b4Lfclg1Lpa+kSs305snl/xFG5yOxq3/oVZEyPIseg8oOfl0r79UKqCIdO2iQqQydjUsUMbLtnR9TFypxlwCbQ==
   dependencies:
     "@babel/runtime" "^7.24.5"
     "@mui/base" "^5.0.0-beta.40"
