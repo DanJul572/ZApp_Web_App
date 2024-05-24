@@ -18,7 +18,7 @@ const Vars = () => {
     };
 
     const get = name => {
-        return vars ? vars[name] : null;
+        return vars && vars[name] ? vars[name] : null;
     };
 
     const getAll = () => {

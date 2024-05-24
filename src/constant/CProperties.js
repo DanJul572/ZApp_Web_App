@@ -46,6 +46,10 @@ const CCodeFormProperties = [
         name: 'loop',
         label: 'Loop',
     },
+    {
+        name: 'filter',
+        label: 'Filter',
+    },
 ];
 
 const CToggleCodeFormProperties = [

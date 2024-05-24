@@ -1,5 +1,5 @@
-import {useRouter} from 'next/navigation';
 import {useEffect, useState} from 'react';
+import {useRouter} from 'next/navigation';
 
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
@@ -10,7 +10,7 @@ import CActionType from '@/constant/CActionType';
 import CApiUrl from '@/constant/CApiUrl';
 
 const TableFunction = props => {
-    const {moduleID, actions, isBuilder} = props;
+    const {moduleID, actions, isBuilder, defaultFilter} = props;
 
     const {post, get} = Request();
 
@@ -61,6 +61,7 @@ const TableFunction = props => {
             page: page,
             filter: filter,
             sort: sort,
+            defaultFilter: defaultFilter || [],
         };
 
         post(CApiUrl.common.rows, body)

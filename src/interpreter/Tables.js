@@ -17,26 +17,28 @@ import Translator from '@/hook/Translator';
 const Tables = props => {
     const {type, properties, isBuilder} = props;
 
-    const {runFunction} = Runner({isBuilder});
+    const {getValues, runFunction} = Runner({isBuilder});
 
     const {t} = Translator();
 
-    const moduleID = properties.moduleID;
     const actions = properties.actions;
+    const defaultFilter = getValues(properties.filter);
+    const moduleID = properties.moduleID;
 
     const tableProps = {
         moduleID,
         actions,
         isBuilder,
+        defaultFilter,
     };
 
     const {
         columnKey,
         columns,
+        onConfirm,
         openConfirmDialog,
         rowCount,
         rows,
-        onConfirm,
         setFilter,
         setOpenConfirmDialog,
         setPage,

@@ -13,6 +13,8 @@ const isPaddingValid = (type, group) =>
 
 const isModuleIDValid = group => group === CComponentGroupType.table.value;
 
+const isFilterValid = group => group === CComponentGroupType.table.value;
+
 const isNameValid = group => group === CComponentGroupType.fieldControl.value;
 
 const isSizeValid = (type, group) =>
@@ -59,6 +61,8 @@ const isValidProperties = (property, type, group) => {
             return isPaddingValid(type, group);
         case 'moduleID':
             return isModuleIDValid(group);
+        case 'filter':
+            return isFilterValid(group);
         case 'name':
             return isNameValid(group);
         case 'size':

@@ -1,7 +1,7 @@
-import Caller from '@/caller';
-import Script from '@/hook/Script';
-
 import Builder from '@/builder';
+import Caller from '@/caller';
+
+import Script from '@/hook/Script';
 
 const Runner = props => {
     const {isBuilder} = props;

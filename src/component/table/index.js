@@ -82,7 +82,6 @@ const Table = props => {
     const muiBottomToolbarProps = !enablePagination && !onChangePage ? {style: {display: 'none'}} : false;
     const muiTableContainerProps = {sx: {maxHeight: '500px'}};
     const muiTablePaginationProps = {showRowsPerPage: false};
-    const muiTopToolbarProps = !isSupportAddAction && !toolbarCustomAction.length ? {style: {display: 'none'}} : false;
 
     const formattedColumns = columns.map(column => {
         column.Cell = ({cell}) => dataDisplay(column.type, cell.getValue());
@@ -173,7 +172,6 @@ const Table = props => {
         muiBottomToolbarProps: muiBottomToolbarProps,
         muiPaginationProps: muiTablePaginationProps,
         muiTableContainerProps: muiTableContainerProps,
-        muiTopToolbarProps: muiTopToolbarProps,
         onColumnFiltersChange: setColumnFilters,
         onGlobalFilterChange: onSearch,
         onPaginationChange: setPagination,
