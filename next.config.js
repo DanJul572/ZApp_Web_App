@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    cacheHandler: require.resolve('./cache-handler.js'),
-    cacheMaxMemorySize: 0,
+    webpack: (config, {buildId, dev, isServer, defaultLoaders, nextRuntime, webpack}) => {
+        if (config.cache && !dev) {
+            config.cache = Object.freeze({
+                type: 'memory',
+            });
+            config.cache.maxMemoryGenerations = 0;
+        }
+        // Important: return the modified config
+        return config;
+    },
 };
 
 module.exports = nextConfig;
