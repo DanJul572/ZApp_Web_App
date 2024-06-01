@@ -1,4 +1,5 @@
 import Bar from '@/component/chart/Bar';
+import Gauge from '@/component/chart/Gaude';
 import Line from '@/component/chart/Line';
 import Pie from '@/component/chart/Pie';
 
@@ -21,6 +22,8 @@ const Chart = props => {
             return <Line labels={label} values={value} />;
         } else if (type === CChartType.pie.value) {
             return <Pie values={value} />;
+        } else if (type === CChartType.gauge.value) {
+            return <Gauge value={value} />;
         }
     };
 

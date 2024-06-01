@@ -11,6 +11,10 @@ const CChartType = {
         value: 3,
         label: 'Pie',
     },
+    gauge: {
+        value: 4,
+        label: 'Gauge',
+    },
 };
 
 export default CChartType;

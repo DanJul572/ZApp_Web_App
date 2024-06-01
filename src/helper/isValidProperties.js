@@ -31,7 +31,8 @@ const isFieldIDValid = (type, group) =>
 const isLabelValid = (type, group) =>
     (group === CComponentGroupType.container.value && type === CContainerType.collapse.value) ||
     (group === CComponentGroupType.container.value && type === CContainerType.tab.value) ||
-    (group === CComponentGroupType.chart.value && type !== CChartType.pie.value) ||
+    (group === CComponentGroupType.chart.value && type === CChartType.bar.value) ||
+    (group === CComponentGroupType.chart.value && type === CChartType.line.value) ||
     (group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value) ||
     group === CComponentGroupType.fieldControl.value ||
     group === CComponentGroupType.button.value;
