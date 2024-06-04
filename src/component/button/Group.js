@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
 const Group = props => {
-    const {items, size, variant, onClick, color} = props;
+    const {color, items, onClick, size, variant} = props;
 
     const handleClick = item => {
         if (onClick) {
@@ -19,8 +19,8 @@ const Group = props => {
                         <Button
                             color={color || 'primary'}
                             key={index}
-                            size={size || 'small'}
-                            onClick={() => handleClick(item)}>
+                            onClick={() => handleClick(item)}
+                            size={size || 'small'}>
                             {item.label}
                         </Button>
                     );
