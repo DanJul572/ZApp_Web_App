@@ -50,6 +50,10 @@ const CCodeFormProperties = [
         name: 'filter',
         label: 'Filter',
     },
+    {
+        name: 'items',
+        label: 'Items',
+    },
 ];
 
 const CToggleCodeFormProperties = [

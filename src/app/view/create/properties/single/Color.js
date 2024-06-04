@@ -66,8 +66,9 @@ const Color = props => {
         if (group === CComponentGroupType.container.value && type === CContainerType.collapse.value) return true;
         else if (group === CComponentGroupType.container.value && type === CContainerType.card.value) return true;
         else if (group === CComponentGroupType.fieldControl.value && type === CInputType.slider.value) return true;
-        else if (group === CComponentGroupType.visualElement.value) return true;
         else if (group === CComponentGroupType.button.value && type === CButtonType.button.value) return true;
+        else if (group === CComponentGroupType.button.value && type === CButtonType.group.value) return true;
+        else if (group === CComponentGroupType.visualElement.value) return true;
         else return false;
     };
 

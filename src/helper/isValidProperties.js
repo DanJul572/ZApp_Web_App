@@ -34,8 +34,8 @@ const isLabelValid = (type, group) =>
     (group === CComponentGroupType.chart.value && type === CChartType.bar.value) ||
     (group === CComponentGroupType.chart.value && type === CChartType.line.value) ||
     (group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value) ||
-    group === CComponentGroupType.fieldControl.value ||
-    group === CComponentGroupType.button.value;
+    (group === CComponentGroupType.button.value && type !== CButtonType.group.value) ||
+    group === CComponentGroupType.fieldControl.value;
 
 const isValueValid = group => group === CComponentGroupType.chart.value;
 
@@ -53,6 +53,8 @@ const isHiddenValid = group =>
 
 const isLoopValid = (type, group) =>
     group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value;
+
+const isItemsValid = (type, group) => group === CComponentGroupType.button.value && type === CButtonType.group.value;
 
 const isValidProperties = (property, type, group) => {
     switch (property) {
@@ -86,6 +88,8 @@ const isValidProperties = (property, type, group) => {
             return isHiddenValid(group);
         case 'loop':
             return isLoopValid(type, group);
+        case 'items':
+            return isItemsValid(type, group);
         default:
             return false;
     }

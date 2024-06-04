@@ -7,6 +7,10 @@ const CButtonType = {
         value: 2,
         label: 'Link',
     },
+    group: {
+        value: 3,
+        label: 'Group',
+    },
 };
 
 export default CButtonType;

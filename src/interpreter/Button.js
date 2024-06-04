@@ -3,6 +3,8 @@ import Link from '@mui/material/Link';
 
 import MuiButton from '@/alias/MuiButton';
 
+import Group from '@/component/button/Group';
+
 import CButtonType from '@/constant/CButtonType';
 import CTheme from '@/constant/CTheme';
 
@@ -21,6 +23,7 @@ const Button = props => {
     const disable = getValues(properties.disable);
     const display = {display: 'flex', flexDirection: 'column', alignItems: displayValue('horizontal')};
     const hidden = getValues(properties.hidden);
+    const items = getValues(properties.items);
     const label = getValues(properties.label);
     const onClick = properties.onClick;
 
@@ -51,6 +54,12 @@ const Button = props => {
                         <Link href="#" underline="always">
                             {label || CButtonType.link.label}
                         </Link>
+                    </Box>
+                );
+            } else if (type === CButtonType.group.value) {
+                return (
+                    <Box sx={display}>
+                        <Group items={items} onClick={item => runFunction(onClick, item)} color={color} />
                     </Box>
                 );
             }
