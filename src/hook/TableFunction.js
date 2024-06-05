@@ -20,6 +20,7 @@ const TableFunction = props => {
 
     const [columns, setColumns] = useState([]);
     const [page, setPage] = useState(1);
+    const [advanceFilter, setAdvanceFilter] = useState(null);
     const [filter, setFilter] = useState([]);
     const [sort, setSort] = useState([]);
     const [rows, setRows] = useState([]);
@@ -59,6 +60,7 @@ const TableFunction = props => {
         const body = {
             id: moduleID,
             page: page,
+            advanceFilter: advanceFilter,
             filter: filter,
             sort: sort,
             defaultFilter: defaultFilter || [],
@@ -135,7 +137,7 @@ const TableFunction = props => {
         if (columns && columns.length > 0) {
             getRows();
         }
-    }, [columns, page, filter, sort]);
+    }, [columns, page, filter, sort, advanceFilter]);
 
     useEffect(() => {
         if (!isBuilder) {
@@ -152,6 +154,7 @@ const TableFunction = props => {
         openConfirmDialog,
         rowCount,
         rows,
+        setAdvanceFilter,
         setFilter,
         setOpenConfirmDialog,
         setPage,

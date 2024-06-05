@@ -21,7 +21,6 @@ import CActionType from '@/constant/CActionType';
 const Table = props => {
     const {
         action = [],
-        advanceFilterFormat = 'sql',
         columnKey,
         columnPinning = {},
         columns = [],
@@ -211,7 +210,6 @@ const Table = props => {
                     <AdvanceFilter
                         columns={columns}
                         enableAdvanceFilter={enableAdvanceFilter}
-                        format={advanceFilterFormat}
                         onAdvanceFilter={onAdvanceFilter}
                         openAdvanceFilterDialog={openAdvanceFilterDialog}
                         setOpenAdvanceFilterDialog={setOpenAdvanceFilterDialog}

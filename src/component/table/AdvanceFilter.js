@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-import {QueryBuilder, formatQuery} from 'react-querybuilder';
+import {QueryBuilder} from 'react-querybuilder';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -13,7 +13,7 @@ import CInputType from '@/constant/CInputType';
 import CTheme from '@/constant/CTheme';
 
 const AdvanceFilter = props => {
-    const {columns, format, onAdvanceFilter, openAdvanceFilterDialog, setOpenAdvanceFilterDialog} = props;
+    const {columns, onAdvanceFilter, openAdvanceFilterDialog, setOpenAdvanceFilterDialog} = props;
 
     const {t} = Translator();
 
@@ -47,6 +47,13 @@ const AdvanceFilter = props => {
         ];
     };
 
+    const onAply = () => {
+        if (onAdvanceFilter) {
+            onAdvanceFilter(query);
+        }
+        setOpenAdvanceFilterDialog(false);
+    };
+
     useEffect(() => {
         const newFields = columns.map(column => {
             return {
@@ -63,7 +70,7 @@ const AdvanceFilter = props => {
     return (
         <Dialog open={openAdvanceFilterDialog}>
             <DialogContent>
-                <QueryBuilder fields={fields} onQueryChange={query => setQuery(formatQuery(query, format))} />
+                <QueryBuilder fields={fields} onQueryChange={setQuery} />
             </DialogContent>
             <DialogActions>
                 <Button
@@ -72,7 +79,7 @@ const AdvanceFilter = props => {
                     variant="outlined">
                     {t('cancel')}
                 </Button>
-                <Button onClick={() => onAdvanceFilter(query)} size={CTheme.button.size.name} variant="contained">
+                <Button onClick={onAply} size={CTheme.button.size.name} variant="contained">
                     {t('apply')}
                 </Button>
             </DialogActions>

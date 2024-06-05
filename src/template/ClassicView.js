@@ -21,6 +21,7 @@ const ClassicView = props => {
         openConfirmDialog,
         rowCount,
         rows,
+        setAdvanceFilter,
         setFilter,
         setPage,
         setSort,
@@ -34,12 +35,14 @@ const ClassicView = props => {
                 action={actions}
                 columnKey={columnKey}
                 columns={columns}
+                enableAdvanceFilter={true}
                 enableExport={true}
                 enableFilter={true}
                 enableHiding={true}
                 enablePagination={true}
                 enableRowSelection={true}
                 enableSorting={true}
+                onAdvanceFilter={setAdvanceFilter}
                 onChangePage={setPage}
                 onClickRowAction={onClickRowAction}
                 onClickRowCustomAction={onClickRowCustomAction}
