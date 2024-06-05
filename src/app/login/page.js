@@ -74,7 +74,7 @@ const Page = () => {
                 width={450}
                 border={CTheme.border.size.value}
                 borderColor={grey[300]}
-                borderRadius={1}
+                borderRadius={2}
                 padding={2}
                 display="flex"
                 flexDirection="column">
@@ -87,9 +87,9 @@ const Page = () => {
                 </Button>
                 <Box display="flex" justifyContent="flex-end" marginTop={2}>
                     <Typography fontSize={CTheme.font.size.value}>
-                        Don't Have An Account ?{' '}
-                        <Link href="/register" style={{color: theme.palette.primary.main}}>
-                            Register
+                        {t("don't_have_an_account")}
+                        <Link href="/register" style={{color: theme.palette.primary.main, marginLeft: 3}}>
+                            {t('register')}
                         </Link>
                     </Typography>
                 </Box>
