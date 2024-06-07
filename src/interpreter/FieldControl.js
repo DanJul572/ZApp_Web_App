@@ -1,4 +1,5 @@
 import Checkbox from '@/component/input/Checkbox';
+import Code from '@/component/input/Code';
 import Date from '@/component/input/Date';
 import Datetime from '@/component/input/Datetime';
 
@@ -95,6 +96,8 @@ const FieldControl = props => {
                 return <Slider {...comProps} color={color} />;
             } else if (type === CInputType.password.value) {
                 return <Password {...comProps} color={color} />;
+            } else if (type === CInputType.code.value) {
+                return <Code {...comProps} withOptions={true} />;
             }
         }
     };

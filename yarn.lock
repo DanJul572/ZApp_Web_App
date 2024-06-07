@@ -360,10 +360,10 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
-"@mui/x-charts@^7.6.1":
-  version "7.6.1"
-  resolved "https://registry.yarnpkg.com/@mui/x-charts/-/x-charts-7.6.1.tgz#0c18f36d72ad585dc82e122ac81712b69ed5de3d"
-  integrity sha512-LuAVQX4lzhmsqk2NRdWCP+aQZ8kRwG7KOy8ulf8hR5NI5J1VsiOtH41J+qgV3uAC6hDMWL7fTgffrRDFTMci/g==
+"@mui/x-charts@^7.6.2":
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/@mui/x-charts/-/x-charts-7.6.2.tgz#2611c0c4a4ab86663573e46de47af078107964ec"
+  integrity sha512-oG22NRno1+HSLV/9jVLThnHAKN4g+MXOO6GqaQxN9LM0hjt1tgRsrNAlfcJndmj/dVwqFtynkFB5qWnTEBZs7Q==
   dependencies:
     "@babel/runtime" "^7.24.6"
     "@mui/base" "^5.0.0-beta.40"
@@ -379,10 +379,10 @@
     d3-shape "^3.2.0"
     prop-types "^15.8.1"
 
-"@mui/x-date-pickers@^7.6.1":
-  version "7.6.1"
-  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-7.6.1.tgz#39aab46e785f885c19d324e637d7312ded6f636d"
-  integrity sha512-erSq5cnOUyBgBmpHnMxIit5yhT3bl/lOaNZKpObvJtvEJetvNA9xWQ7dz/J/AufLzDuvThjusuRD0y+GmeXtiw==
+"@mui/x-date-pickers@^7.6.2":
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-7.6.2.tgz#361ab64ecce2f2b8d3ce57cbda4e3c5acc4aed02"
+  integrity sha512-9e5qO76eLvjiEm7Yt4HNR1jqGFia7vnZYbhi4Tw/xQ32emMKYLUzXZLhQNtb1wa7SwHWxXcPJOkIEmvQgEvaqQ==
   dependencies:
     "@babel/runtime" "^7.24.6"
     "@mui/base" "^5.0.0-beta.40"
@@ -393,10 +393,10 @@
     prop-types "^15.8.1"
     react-transition-group "^4.4.5"
 
-"@mui/x-tree-view@^7.6.1":
-  version "7.6.1"
-  resolved "https://registry.yarnpkg.com/@mui/x-tree-view/-/x-tree-view-7.6.1.tgz#c824bc9845d6b40ca5e72f0c89e86d5f58552417"
-  integrity sha512-FR8GUTMG0GgStHj+TDs2UzTln6SeWcGdVj62CAcQGVW61RpVRvPgBhYH3+g0SVtps6FYQxe/pvi83eLwMWW0Fw==
+"@mui/x-tree-view@^7.6.2":
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/@mui/x-tree-view/-/x-tree-view-7.6.2.tgz#bc8fe46b2971539ec43056ae12a3805d15c13d92"
+  integrity sha512-0LBoKUQvMzNzJN7UmGqGV4A3NpRxB8liPrjQMfkbI6LrXBbDlqyEdJWRseK1RzxYxTfH71HqW9Z3E2wS62P1Sg==
   dependencies:
     "@babel/runtime" "^7.24.6"
     "@mui/base" "^5.0.0-beta.40"
@@ -3126,10 +3126,10 @@ react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-react-querybuilder@^7.4.1:
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/react-querybuilder/-/react-querybuilder-7.4.1.tgz#0637a79ccd5fdaae26f97410547a023f9e83388d"
-  integrity sha512-5nChW5aenYJMiF5Cpk01Ni5w28jo/afLsuWDOJuDXBtjkWCo+G5cY3lgx/xmajw5Dh869FG/cqPXwLypgPpNeA==
+react-querybuilder@^7.4.3:
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/react-querybuilder/-/react-querybuilder-7.4.3.tgz#03906b3b4604373bc962fef3ad5829014a2b1a94"
+  integrity sha512-cRsDDb9ZagNdvNzmhaOCz4jddRQ2qDZzROq8FTPqcC/R12CvegBpSNNMNIZIhGsWzZhKXIpDI+EMWHNZQixrpg==
   dependencies:
     "@reduxjs/toolkit" "^2.2.5"
     clsx "^2.1.1"

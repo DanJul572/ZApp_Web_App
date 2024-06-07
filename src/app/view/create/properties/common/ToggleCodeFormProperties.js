@@ -98,7 +98,6 @@ const ToggleCodeFormProperties = props => {
                             <Code
                                 value={!value.isBind ? null : value.value}
                                 onChange={value => onChange(true, value)}
-                                lang="js"
                             />
                         </Box>
                     </DialogContent>

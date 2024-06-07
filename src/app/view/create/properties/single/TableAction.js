@@ -138,7 +138,7 @@ const TableAction = props => {
                     <DialogTitle>{open.label}</DialogTitle>
                     <DialogContent>
                         <Box width={500}>
-                            <Code value={open.onClick} onChange={changeOnClick} lang="js" />
+                            <Code value={open.onClick} onChange={changeOnClick} />
                         </Box>
                     </DialogContent>
                     <DialogActions>

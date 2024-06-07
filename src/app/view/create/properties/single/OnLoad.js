@@ -48,7 +48,7 @@ const OnLoad = props => {
                 <DialogTitle>On Load</DialogTitle>
                 <DialogContent>
                     <Box width={500}>
-                        <Code value={onLoad} onChange={setOnLoad} lang="js" />
+                        <Code value={onLoad} onChange={setOnLoad} />
                     </Box>
                 </DialogContent>
                 <DialogActions>

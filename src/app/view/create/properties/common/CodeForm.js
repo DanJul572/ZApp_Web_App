@@ -53,7 +53,7 @@ const CodeForm = props => {
                     <DialogTitle>{label}</DialogTitle>
                     <DialogContent>
                         <Box width={500}>
-                            <Code value={value} onChange={setValue} lang="js" />
+                            <Code value={value} onChange={setValue} />
                         </Box>
                     </DialogContent>
                     <DialogActions>
