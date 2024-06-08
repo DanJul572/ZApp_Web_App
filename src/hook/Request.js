@@ -10,7 +10,6 @@ const Request = () => {
     const apiUrl = process.env.NEXT_PUBLIC_ENV_API_URL || CApiUrl.base;
     const headers = {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
     };
 
     const {push} = useRouter();
@@ -48,7 +47,7 @@ const Request = () => {
         });
     };
 
-    const post = (url, body, withAuth = true) => {
+    const post = (url, body, withAuth = true, files = []) => {
         if (withAuth) {
             const token = getCookie('token');
             if (token) {
@@ -56,9 +55,18 @@ const Request = () => {
             }
         }
 
+        const formData = new FormData();
+
+        if (files && files.length > 0) {
+            for (let i = 0; i < files.length; i++) {
+                formData.append('files', files[i].file, files[i].file.id);
+            }
+        }
+        formData.append('data', JSON.stringify(body));
+
         return new Promise((resolve, reject) => {
             axios
-                .post(apiUrl + url, body, {
+                .post(apiUrl + url, formData, {
                     headers: headers,
                 })
                 .then(res => resolve(res.data))

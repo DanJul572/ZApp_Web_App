@@ -10,13 +10,15 @@ import Translator from '@/hook/Translator';
 import dataDisplay from '@/helper/dataDisplay';
 
 import AdvanceFilter from './AdvanceFilter';
-import RowCustomActionDialog from './CustomActionDialog';
+import Download from './Download';
 import ExportDialog from './ExportDialog';
 import RowAction from './RowAction';
+import RowCustomActionDialog from './CustomActionDialog';
 import ToolbarAction from './ToolbarAction';
 import ToolBarComponent from './ToolbarComponent';
 
 import CActionType from '@/constant/CActionType';
+import CInputType from '@/constant/CInputType';
 
 const Table = props => {
     const {
@@ -83,7 +85,13 @@ const Table = props => {
     const muiTablePaginationProps = {showRowsPerPage: false};
 
     const formattedColumns = columns.map(column => {
-        column.Cell = ({cell}) => dataDisplay(column.type, cell.getValue());
+        column.Cell = function OrderItems({cell}) {
+            if (column.type !== CInputType.file.value) {
+                return dataDisplay(column.type, cell.getValue());
+            } else {
+                return <Download label={cell.getValue()} />;
+            }
+        };
         if (column.footer) column.Footer = () => columnFooter(column.footer);
         return column;
     });

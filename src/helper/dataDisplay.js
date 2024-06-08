@@ -14,8 +14,6 @@ const dataDisplay = (type, value) => {
     if (type === CInputType.datetime.value)
         return isValidValue(value) ? dayjs(value).format(CDateTimeFormat.datetime.display) : '';
 
-    if (type === CInputType.file.value) return isValidValue(value) ? 'File' : '';
-
     if (type === CInputType.richText.value) return isValidValue(value) ? 'HTML' : '';
 
     if (type === CInputType.time.value)

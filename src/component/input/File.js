@@ -1,40 +1,53 @@
-import {useContext, useEffect} from 'react';
+import {v4 as uuidv4} from 'uuid';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import {MuiFileInput} from 'mui-file-input';
 
-import {ErrorContext} from '@/context/ErrorProvider';
-import {validator} from '@/helper/validator';
+import {useFiles} from '@/context/FilesProvider';
 
 import CTheme from '@/constant/CTheme';
 
 const File = props => {
-    const {label, onChange, value, rules, name, group, disabled, multiple} = props;
+    const {label, onChange, name, disabled, multiple} = props;
 
-    const {setError, clearError} = useContext(ErrorContext);
+    const {files, setFiles} = useFiles();
 
-    const error = validator(rules, value ? value : '');
+    const value = files && files.length > 0 ? files.find(file => file.name === name) : null;
 
-    useEffect(() => {
-        if (!group && !name) return;
-        if (!error.status) return clearError(group, name);
-        setError(group, name, error.message);
-    }, [value]);
+    const handleChange = file => {
+        const id = `${uuidv4()}_${file.name}`;
+        const newFile = {
+            name: name,
+            file: file,
+        };
+        setFiles(prevFiles => {
+            const existingFileIndex = prevFiles.findIndex(file => file.name === newFile.name);
+            if (existingFileIndex !== -1) {
+                const updatedFiles = [...prevFiles];
+                updatedFiles[existingFileIndex] = newFile;
+                return updatedFiles;
+            } else {
+                return [...prevFiles, newFile];
+            }
+        });
+
+        if (onChange) {
+            onChange(id);
+        }
+    };
 
     return (
         <Box>
             <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
             <MuiFileInput
                 disabled={disabled}
-                error={error.status}
                 fullWidth
-                helperText={error.message}
                 multiple={multiple}
-                onChange={onChange}
+                onChange={handleChange}
                 size={CTheme.field.size.name}
-                value={value}
+                value={value && value.file ? value.file : null}
             />
         </Box>
     );

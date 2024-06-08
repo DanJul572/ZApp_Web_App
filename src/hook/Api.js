@@ -1,12 +1,15 @@
 import CApiUrl from '@/constant/CApiUrl';
 
+import {useFiles} from '@/context/FilesProvider';
+
 import Request from './Request';
 
 const Api = () => {
     const {get, post} = Request();
+    const {files} = useFiles();
 
     const create = body => {
-        return post(CApiUrl.common.create, body);
+        return post(CApiUrl.common.create, body, true, files);
     };
 
     const update = body => {

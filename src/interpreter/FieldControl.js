@@ -26,22 +26,23 @@ const FieldControl = props => {
     const {getValues} = Runner({isBuilder});
     const {set, get} = Vars();
 
+    const name = properties.name;
     const color = properties.color ? properties.color.name : 'primary';
-    const disabled = !Boolean(properties.name) || Boolean(getValues(properties.disable));
+    const disabled = !Boolean(name) || Boolean(getValues(properties.disable));
     const label = getValues(properties.label);
     const hidden = getValues(properties.hidden);
     const fieldID = properties.fieldID;
 
     const onChange = value => {
         if (!isBuilder) {
-            if (properties.name) {
-                set(properties.name, value);
+            if (name) {
+                set(name, value);
             }
         }
     };
 
     const comProps = {
-        value: get(properties.name) || null,
+        value: get(name) || null,
         onChange: onChange,
         disabled: disabled,
         label: label || null,
@@ -65,7 +66,7 @@ const FieldControl = props => {
             } else if (type === CInputType.time.value) {
                 return <Time {...comProps} />;
             } else if (type === CInputType.file.value) {
-                return <File {...comProps} />;
+                return <File {...comProps} name={name} />;
             } else if (type === CInputType.richText.value) {
                 return <RichText {...comProps} />;
             } else if (type === CInputType.radio.value) {

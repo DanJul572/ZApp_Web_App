@@ -3,6 +3,8 @@ import {useEffect} from 'react';
 import Comp from '@/hook/Comp';
 import Vars from '@/hook/Vars';
 
+import {useFiles} from '@/context/FilesProvider';
+
 import Runner from '@/runner';
 
 const Page = props => {
@@ -10,6 +12,7 @@ const Page = props => {
 
     const {runFunction} = Runner({isBuilder});
 
+    const {setFiles} = useFiles();
     const vars = Vars();
     const comp = Comp();
 
@@ -22,6 +25,7 @@ const Page = props => {
         return () => {
             vars.removeAll();
             comp.removeAll();
+            setFiles([]);
         };
     }, []);
 

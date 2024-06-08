@@ -26,6 +26,9 @@ const CApiUrl = {
     script: {
         run: '/script/run',
     },
+    files: {
+        download: '/files/download',
+    },
 };
 
 export default CApiUrl;
