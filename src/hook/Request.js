@@ -59,7 +59,7 @@ const Request = () => {
 
         if (files && files.length > 0) {
             for (let i = 0; i < files.length; i++) {
-                formData.append('files', files[i].file, files[i].file.id);
+                formData.append('files', files[i].file, files[i].id);
             }
         }
         formData.append('data', JSON.stringify(body));

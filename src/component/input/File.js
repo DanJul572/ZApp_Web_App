@@ -19,6 +19,7 @@ const File = props => {
     const handleChange = file => {
         const id = `${uuidv4()}_${file.name}`;
         const newFile = {
+            id: id,
             name: name,
             file: file,
         };
