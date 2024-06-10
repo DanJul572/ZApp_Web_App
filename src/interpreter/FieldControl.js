@@ -17,14 +17,17 @@ import Toggle from '@/component/input/Toggle';
 
 import CInputType from '@/constant/CInputType';
 
+import Comp from '@/hook/Comp';
 import Vars from '@/hook/Vars';
+
 import Runner from '@/runner';
 
 const FieldControl = props => {
     const {isBuilder, type, properties} = props;
 
     const {getValues} = Runner({isBuilder});
-    const {set, get} = Vars();
+    const VarsHook = Vars();
+    const CompHook = Comp();
 
     const name = properties.name;
     const color = properties.color ? properties.color.name : 'primary';
@@ -36,13 +39,13 @@ const FieldControl = props => {
     const onChange = value => {
         if (!isBuilder) {
             if (name) {
-                set(name, value);
+                VarsHook.set(name, value);
             }
         }
     };
 
     const comProps = {
-        value: get(name) || null,
+        value: VarsHook.get(name) || null,
         onChange: onChange,
         disabled: disabled,
         label: label || null,
@@ -66,7 +69,7 @@ const FieldControl = props => {
             } else if (type === CInputType.time.value) {
                 return <Time {...comProps} />;
             } else if (type === CInputType.file.value) {
-                return <File {...comProps} name={name} />;
+                return <File {...comProps} name={name} existingValue={CompHook.get(name)} />;
             } else if (type === CInputType.richText.value) {
                 return <RichText {...comProps} />;
             } else if (type === CInputType.radio.value) {

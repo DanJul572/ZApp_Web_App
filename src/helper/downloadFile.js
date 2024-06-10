@@ -12,31 +12,37 @@ const downloadJsonFile = (content, label) => {
     a.click();
 
     document.body.removeChild(a);
-};
-
-const downloadFileFromBuffer = (bufferData, fileName) => {
-    // Create a Blob from the buffer data
-    const blob = new Blob([bufferData], {type: 'application/octet-stream'});
-
-    // Create a URL for the Blob
-    const url = URL.createObjectURL(blob);
-
-    // Create an anchor element and set its href attribute to the Blob URL
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = fileName;
-
-    // Append the anchor to the body (necessary for Firefox)
-    document.body.appendChild(a);
-
-    // Programmatically click the anchor to trigger the download
-    a.click();
-
-    // Remove the anchor from the body
-    document.body.removeChild(a);
-
-    // Revoke the Blob URL to free up resources
     URL.revokeObjectURL(url);
 };
 
-export {downloadJsonFile, downloadFileFromBuffer};
+const downloadFileFromBuffer = (bufferData, fileName, type) => {
+    const blob = new Blob([bufferData], {type: type});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+
+    a.href = url;
+    a.download = fileName;
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+};
+
+function downloadFile(file) {
+    const url = URL.createObjectURL(file);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = file.name;
+
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
+export {downloadJsonFile, downloadFileFromBuffer, downloadFile};

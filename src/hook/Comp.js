@@ -7,6 +7,10 @@ const Comp = () => {
         setComp(null);
     };
 
+    const setAll = obj => {
+        setComp(obj);
+    };
+
     const set = (name, value) => {
         const newComp = {...comp};
         newComp[name] = value;
@@ -17,7 +21,7 @@ const Comp = () => {
         return comp ? comp[name] : null;
     };
 
-    return {get, set, removeAll};
+    return {get, set, removeAll, setAll};
 };
 
 export default Comp;
