@@ -102,7 +102,7 @@ const File = props => {
                     value={fileContent && fileContent.file ? fileContent.file : null}
                     clearIconButtonProps={{
                         title: t('delete'),
-                        children: <Close fontSize="small" />,
+                        children: <Close fontSize={CTheme.font.size.name} />,
                     }}
                 />
             </Box>
