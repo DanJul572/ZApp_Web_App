@@ -22,13 +22,13 @@ import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
 
 const File = props => {
-    const {label, onChange, name, disabled, existingValue} = props;
+    const {label, onChange, name, disabled, fileName} = props;
 
     const {get} = Request();
     const {t} = Translator();
     const {file, setFile} = useFile();
 
-    const value = file && file.length > 0 ? file.find(file => file.name === name) : null;
+    const fileContent = file && file.length > 0 ? file.find(file => file.name === name) : null;
 
     const handleChange = file => {
         if (file) {
@@ -68,11 +68,11 @@ const File = props => {
     };
 
     const handleDownload = () => {
-        downloadFile(value.file);
+        downloadFile(fileContent.file);
     };
 
     const getFile = () => {
-        get(CApiUrl.file.download, {name: existingValue})
+        get(CApiUrl.file.download, {name: fileName})
             .then(res => {
                 if (res) {
                     handleChange(getFileFromBuffer(res));
@@ -84,10 +84,10 @@ const File = props => {
     };
 
     useEffect(() => {
-        if (existingValue) {
+        if (fileName) {
             getFile();
         }
-    }, [existingValue]);
+    }, [fileName]);
 
     return (
         <Box display="flex" alignItems="center">
@@ -99,7 +99,7 @@ const File = props => {
                     multiple={false}
                     onChange={handleChange}
                     size={CTheme.field.size.name}
-                    value={value && value.file ? value.file : null}
+                    value={fileContent && fileContent.file ? fileContent.file : null}
                     clearIconButtonProps={{
                         title: t('delete'),
                         children: <Close fontSize="small" />,

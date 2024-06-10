@@ -69,7 +69,7 @@ const FieldControl = props => {
             } else if (type === CInputType.time.value) {
                 return <Time {...comProps} />;
             } else if (type === CInputType.file.value) {
-                return <File {...comProps} name={name} existingValue={CompHook.get(name)} />;
+                return <File {...comProps} name={name} fileName={CompHook.get(name)} />;
             } else if (type === CInputType.richText.value) {
                 return <RichText {...comProps} />;
             } else if (type === CInputType.radio.value) {
