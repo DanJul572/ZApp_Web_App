@@ -67,7 +67,7 @@ const Process = () => {
                     delete res[key];
 
                     ZApp.Vars.setAll(res);
-                    ZApp.Comp.setAll(res);
+                    ZApp.Comp.set('tempData', res);
                 })
                 .catch(err => {
                     ZApp.Alert.showErrorAlert(err);

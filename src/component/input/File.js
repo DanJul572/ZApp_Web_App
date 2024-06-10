@@ -22,7 +22,7 @@ import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
 
 const File = props => {
-    const {label, onChange, name, disabled, fileName} = props;
+    const {label, onChange, name, disabled, value} = props;
 
     const {get} = Request();
     const {t} = Translator();
@@ -72,7 +72,7 @@ const File = props => {
     };
 
     const getFile = () => {
-        get(CApiUrl.file.download, {name: fileName})
+        get(CApiUrl.file.download, {name: value})
             .then(res => {
                 if (res) {
                     handleChange(getFileFromBuffer(res));
@@ -84,10 +84,10 @@ const File = props => {
     };
 
     useEffect(() => {
-        if (fileName) {
+        if (value) {
             getFile();
         }
-    }, [fileName]);
+    }, [value]);
 
     return (
         <Box display="flex" alignItems="center">
