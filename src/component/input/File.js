@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Close from '@mui/icons-material/Close';
 import Download from '@mui/icons-material/Download';
 
-import {useFiles} from '@/context/FilesProvider';
+import {useFile} from '@/context/FileProvider';
 
 import {downloadFile} from '@/helper/downloadFile';
 import {getFileFromBuffer} from '@/helper/readFile';
@@ -26,7 +26,7 @@ const File = props => {
 
     const {get} = Request();
     const {t} = Translator();
-    const {files, setFiles} = useFiles();
+    const {files, setFile} = useFile();
 
     const value = files && files.length > 0 ? files.find(file => file.name === name) : null;
 
@@ -38,7 +38,7 @@ const File = props => {
                 name: name,
                 file: file,
             };
-            setFiles(prevFiles => {
+            setFile(prevFiles => {
                 const existingFileIndex = prevFiles.findIndex(file => file.name === newFile.name);
                 if (existingFileIndex !== -1) {
                     const updatedFiles = [...prevFiles];
@@ -52,7 +52,7 @@ const File = props => {
                 onChange(id);
             }
         } else {
-            setFiles(prevFiles => {
+            setFile(prevFiles => {
                 const existingFileIndex = prevFiles.findIndex(file => file.name === name);
                 if (existingFileIndex !== -1) {
                     const updatedFiles = [...prevFiles];

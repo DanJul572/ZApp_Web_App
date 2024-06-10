@@ -1,11 +1,11 @@
-import {useFiles} from '@/context/FilesProvider';
+import {useFile} from '@/context/FileProvider';
 
 import Caller from '../caller';
 
 const Process = () => {
     const ZApp = Caller();
 
-    const {setFiles} = useFiles();
+    const {setFile} = useFile();
 
     const createOrUpdate = (moduleId, key, path = null) => {
         ZApp.Loader.showLoading();
@@ -20,7 +20,7 @@ const Process = () => {
                 .then(res => {
                     ZApp.Alert.showSuccessAlert(res);
                     ZApp.Vars.removeAll();
-                    setFiles([]);
+                    setFile([]);
                     ZApp.Loader.hideLoading();
 
                     if (path) {
