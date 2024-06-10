@@ -15,7 +15,7 @@ const Download = ({label}) => {
     const {get} = Request();
 
     const onDownload = () => {
-        get(CApiUrl.files.download, {name: label})
+        get(CApiUrl.file.download, {name: label})
             .then(res => {
                 const bufferFormat = new Uint8Array(res.data.data);
                 downloadFileFromBuffer(bufferFormat, extractFileNames(label), res.data.type);

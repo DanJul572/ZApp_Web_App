@@ -26,9 +26,9 @@ const File = props => {
 
     const {get} = Request();
     const {t} = Translator();
-    const {files, setFile} = useFile();
+    const {file, setFile} = useFile();
 
-    const value = files && files.length > 0 ? files.find(file => file.name === name) : null;
+    const value = file && file.length > 0 ? file.find(file => file.name === name) : null;
 
     const handleChange = file => {
         if (file) {
@@ -72,7 +72,7 @@ const File = props => {
     };
 
     const getFile = () => {
-        get(CApiUrl.files.download, {name: existingValue})
+        get(CApiUrl.file.download, {name: existingValue})
             .then(res => {
                 if (res) {
                     handleChange(getFileFromBuffer(res));

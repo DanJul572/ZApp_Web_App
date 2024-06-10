@@ -26,8 +26,8 @@ const CApiUrl = {
     script: {
         run: '/script/run',
     },
-    files: {
-        download: '/files/download',
+    file: {
+        download: '/file/download',
     },
 };
 
