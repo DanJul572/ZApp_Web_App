@@ -36,6 +36,7 @@ const ClassicView = props => {
                 columnKey={columnKey}
                 columns={columns}
                 enableAdvanceFilter={true}
+                enableColumnResizing={true}
                 enableExport={true}
                 enableFilter={true}
                 enableHiding={true}
