@@ -11,10 +11,10 @@ import CTheme from '@/constant/CTheme';
 
 const RowAction = props => {
     const {
-        onClickRowAction,
         action,
-        row,
         isSupportRowAction,
+        onClickRowAction,
+        row,
         rowCustomAction,
         setOpenRowCustomActionDialog,
         setRowClicked,

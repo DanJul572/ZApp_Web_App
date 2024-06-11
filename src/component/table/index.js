@@ -133,7 +133,6 @@ const Table = props => {
                 action={action}
                 row={row}
                 isSupportRowAction={isSupportRowAction}
-                columnKey={columnKey}
                 rowCustomAction={rowCustomAction}
                 setOpenRowCustomActionDialog={setOpenRowCustomActionDialog}
                 setRowClicked={setRowClicked}

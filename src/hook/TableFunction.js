@@ -148,6 +148,7 @@ const TableFunction = props => {
     return {
         actions,
         columns,
+        columnKey,
         onClickRowAction,
         onCLickToolbarAction,
         onConfirm,
