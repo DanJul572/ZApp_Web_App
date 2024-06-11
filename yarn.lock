@@ -3062,10 +3062,10 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prettier@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.3.1.tgz#e68935518dd90bb7ec4821ba970e68f8de16e1ac"
-  integrity sha512-7CAwy5dRsxs8PHXT3twixW9/OEll8MLE0VRPCJyl7CkS6VHGPSlsVaWTiASPTyGyYRyApxlaWTzwUxVNrhcwDg==
+prettier@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.3.2.tgz#03ff86dc7c835f2d2559ee76876a3914cec4a90a"
+  integrity sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==
 
 pretty-bytes@^6.1.1:
   version "6.1.1"
@@ -3126,10 +3126,10 @@ react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-react-querybuilder@^7.4.3:
-  version "7.4.3"
-  resolved "https://registry.yarnpkg.com/react-querybuilder/-/react-querybuilder-7.4.3.tgz#03906b3b4604373bc962fef3ad5829014a2b1a94"
-  integrity sha512-cRsDDb9ZagNdvNzmhaOCz4jddRQ2qDZzROq8FTPqcC/R12CvegBpSNNMNIZIhGsWzZhKXIpDI+EMWHNZQixrpg==
+react-querybuilder@^7.4.4:
+  version "7.4.4"
+  resolved "https://registry.yarnpkg.com/react-querybuilder/-/react-querybuilder-7.4.4.tgz#9bc21537cf64dee84f7eed3a0827930410cb7811"
+  integrity sha512-rpFbshDRpndQOdLNXRlnP6B0QP5y/3U6/yR0c0LIagPc5xmc8L+kSJSEg4CyKRf/g9avDxMabUQwleCSanGIIg==
   dependencies:
     "@reduxjs/toolkit" "^2.2.5"
     clsx "^2.1.1"
