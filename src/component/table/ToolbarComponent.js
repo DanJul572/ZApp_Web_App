@@ -1,4 +1,5 @@
-import {Download, Storage} from '@mui/icons-material';
+import Download from '@mui/icons-material/Download';
+import Storage from '@mui/icons-material/Storage';
 
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';

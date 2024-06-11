@@ -63,6 +63,7 @@ const Table = props => {
         pageIndex: pageIndex,
         pageSize: pageSize,
     });
+    const [advanceFilter, setAdvanceFilter] = useState(null);
     const [columnFilters, setColumnFilters] = useState([]);
     const [sorting, setSorting] = useState([]);
     const [rowSelection, setRowSelection] = useState([]);
@@ -72,9 +73,9 @@ const Table = props => {
     const [rowClicked, setRowClicked] = useState(null);
 
     const initialState = {
+        columnPinning: columnPinning,
         density: 'compact',
         pagination: pagination,
-        columnPinning: columnPinning,
     };
 
     const isSupportAddAction = action.find(item => item.type === CActionType.insert.value) ? true : false;
@@ -216,10 +217,12 @@ const Table = props => {
                 <MaterialReactTable table={table} />
                 {enableAdvanceFilter && (
                     <AdvanceFilter
+                        advanceFilter={advanceFilter}
                         columns={columns}
                         enableAdvanceFilter={enableAdvanceFilter}
                         onAdvanceFilter={onAdvanceFilter}
                         openAdvanceFilterDialog={openAdvanceFilterDialog}
+                        setAdvanceFilter={setAdvanceFilter}
                         setOpenAdvanceFilterDialog={setOpenAdvanceFilterDialog}
                     />
                 )}

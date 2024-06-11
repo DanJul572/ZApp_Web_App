@@ -13,11 +13,17 @@ import CInputType from '@/constant/CInputType';
 import CTheme from '@/constant/CTheme';
 
 const AdvanceFilter = props => {
-    const {columns, onAdvanceFilter, openAdvanceFilterDialog, setOpenAdvanceFilterDialog} = props;
+    const {
+        advanceFilter,
+        columns,
+        onAdvanceFilter,
+        openAdvanceFilterDialog,
+        setAdvanceFilter,
+        setOpenAdvanceFilterDialog,
+    } = props;
 
     const {t} = Translator();
 
-    const [query, setQuery] = useState(null);
     const [fields, setFields] = useState([]);
 
     const inputType = type => {
@@ -49,7 +55,7 @@ const AdvanceFilter = props => {
 
     const onAply = () => {
         if (onAdvanceFilter) {
-            onAdvanceFilter(query);
+            onAdvanceFilter(advanceFilter);
         }
         setOpenAdvanceFilterDialog(false);
     };
@@ -70,7 +76,7 @@ const AdvanceFilter = props => {
     return (
         <Dialog open={openAdvanceFilterDialog}>
             <DialogContent>
-                <QueryBuilder fields={fields} onQueryChange={setQuery} />
+                <QueryBuilder fields={fields} onQueryChange={setAdvanceFilter} defaultQuery={advanceFilter} />
             </DialogContent>
             <DialogActions>
                 <Button
