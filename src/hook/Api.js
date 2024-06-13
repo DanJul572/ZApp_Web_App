@@ -13,7 +13,7 @@ const Api = () => {
     };
 
     const update = body => {
-        return post(CApiUrl.common.update, body);
+        return post(CApiUrl.common.update, body, true, file);
     };
 
     const detail = param => {

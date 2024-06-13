@@ -106,9 +106,11 @@ const File = props => {
                     }}
                 />
             </Box>
-            <IconButton size={CTheme.button.size.name} onClick={handleDownload}>
-                <Download />
-            </IconButton>
+            {fileContent && (
+                <IconButton size={CTheme.button.size.name} onClick={handleDownload}>
+                    <Download />
+                </IconButton>
+            )}
         </Box>
     );
 };

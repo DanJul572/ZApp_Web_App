@@ -20,8 +20,8 @@ const Process = () => {
                 .then(res => {
                     ZApp.Alert.showSuccessAlert(res);
                     ZApp.Vars.removeAll();
-                    setFile([]);
                     ZApp.Loader.hideLoading();
+                    setFile([]);
 
                     if (path) {
                         ZApp.Redirect.internal(path);
@@ -41,6 +41,7 @@ const Process = () => {
                     ZApp.Alert.showSuccessAlert(res);
                     ZApp.Vars.removeAll();
                     ZApp.Loader.hideLoading();
+                    setFile([]);
 
                     if (path) {
                         ZApp.Redirect.internal(path);
