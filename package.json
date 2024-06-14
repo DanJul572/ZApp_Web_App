@@ -14,12 +14,12 @@
         "@babel/runtime": "^7.24.7",
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
-        "@mui/icons-material": "^5.15.19",
-        "@mui/material": "^5.15.19",
-        "@mui/system": "^5.15.15",
-        "@mui/x-charts": "^7.6.2",
-        "@mui/x-date-pickers": "^7.6.2",
-        "@mui/x-tree-view": "^7.6.2",
+        "@mui/icons-material": "^5.15.20",
+        "@mui/material": "^5.15.20",
+        "@mui/system": "^5.15.20",
+        "@mui/x-charts": "^7.7.0",
+        "@mui/x-date-pickers": "^7.7.0",
+        "@mui/x-tree-view": "^7.7.0",
         "@uiw/react-textarea-code-editor": "^3.0.2",
         "axios": "^1.7.2",
         "cookies-next": "^4.2.1",
@@ -37,8 +37,7 @@
         "suneditor": "^2.46.3",
         "suneditor-react": "^3.6.1",
         "typescript": "^5.4.5",
-        "uuid": "^10.0.0",
-        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
+        "uuid": "^10.0.0"
     },
     "devDependencies": {
         "eslint": "^8.57.0",

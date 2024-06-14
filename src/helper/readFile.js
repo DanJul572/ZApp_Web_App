@@ -1,5 +1,3 @@
-import * as XLSX from 'xlsx';
-
 const readJSONFile = event => {
     return new Promise((resolve, reject) => {
         const file = event.target.files[0];
@@ -22,36 +20,6 @@ const readJSONFile = event => {
     });
 };
 
-function readExcelFile(event) {
-    return new Promise((resolve, reject) => {
-        const file = event.target.files[0];
-        if (!file) {
-            reject('No file selected');
-            return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = e => {
-            try {
-                const data = e.target.result;
-                const workbook = XLSX.read(data, {type: 'buffer'});
-                const worksheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[worksheetName];
-                const jsonData = XLSX.utils.sheet_to_json(worksheet);
-                resolve(jsonData);
-            } catch (error) {
-                reject(error);
-            }
-        };
-
-        reader.onerror = error => {
-            reject(error);
-        };
-
-        reader.readAsArrayBuffer(file);
-    });
-}
-
 const extractFileNames = fileName => {
     if (fileName) {
         const underscoreIndex = fileName.indexOf('_');
@@ -72,4 +40,4 @@ const getFileFromBuffer = data => {
     return file;
 };
 
-export {readJSONFile, readExcelFile, extractFileNames, getFileFromBuffer};
+export {readJSONFile, extractFileNames, getFileFromBuffer};
