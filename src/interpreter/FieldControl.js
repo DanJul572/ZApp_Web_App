@@ -9,6 +9,7 @@ import LongText from '@/component/input/LongText';
 import Number from '@/component/input/Number';
 import Password from '@/component/input/Password';
 import Radio from '@/component/input/Radio';
+import Ratings from '@/component/input/Ratings';
 import RichText from '@/component/input/RichText';
 import ShortText from '@/component/input/ShortText';
 import Slider from '@/component/input/Slider';
@@ -55,25 +56,43 @@ const FieldControl = props => {
         if (!hidden) {
             if (type === CInputType.shortText.value) {
                 return <ShortText {...comProps} />;
-            } else if (type === CInputType.longText.value) {
+            }
+
+            if (type === CInputType.longText.value) {
                 return <LongText {...comProps} rows={4} />;
-            } else if (type === CInputType.number.value) {
+            }
+
+            if (type === CInputType.number.value) {
                 return <Number {...comProps} />;
-            } else if (type === CInputType.toggle.value) {
+            }
+
+            if (type === CInputType.toggle.value) {
                 return <Toggle {...comProps} />;
-            } else if (type === CInputType.dropdown.value) {
+            }
+
+            if (type === CInputType.dropdown.value) {
                 if (!isBuilder) comProps.id = fieldID;
                 return <Dropdown {...comProps} />;
-            } else if (type === CInputType.date.value) {
+            }
+
+            if (type === CInputType.date.value) {
                 return <Date {...comProps} />;
-            } else if (type === CInputType.time.value) {
+            }
+
+            if (type === CInputType.time.value) {
                 return <Time {...comProps} />;
-            } else if (type === CInputType.file.value) {
+            }
+
+            if (type === CInputType.file.value) {
                 const tempFileName = CompHook.get('tempData') ? CompHook.get('tempData')[name] : null;
                 return <File {...comProps} name={name} value={tempFileName} />;
-            } else if (type === CInputType.richText.value) {
+            }
+
+            if (type === CInputType.richText.value) {
                 return <RichText {...comProps} />;
-            } else if (type === CInputType.radio.value) {
+            }
+
+            if (type === CInputType.radio.value) {
                 return (
                     <Radio
                         {...comProps}
@@ -84,7 +103,9 @@ const FieldControl = props => {
                         ]}
                     />
                 );
-            } else if (type === CInputType.checkbox.value) {
+            }
+
+            if (type === CInputType.checkbox.value) {
                 return (
                     <Checkbox
                         {...comProps}
@@ -95,14 +116,26 @@ const FieldControl = props => {
                         ]}
                     />
                 );
-            } else if (type === CInputType.datetime.value) {
+            }
+
+            if (type === CInputType.datetime.value) {
                 return <Datetime {...comProps} />;
-            } else if (type === CInputType.slider.value) {
+            }
+
+            if (type === CInputType.slider.value) {
                 return <Slider {...comProps} color={color} />;
-            } else if (type === CInputType.password.value) {
+            }
+
+            if (type === CInputType.password.value) {
                 return <Password {...comProps} color={color} />;
-            } else if (type === CInputType.code.value) {
+            }
+
+            if (type === CInputType.code.value) {
                 return <Code {...comProps} withOptions={true} />;
+            }
+
+            if (type === CInputType.ratings.value) {
+                return <Ratings {...comProps} />;
             }
         }
     };

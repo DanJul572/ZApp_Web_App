@@ -59,6 +59,10 @@ const CInputType = {
         value: 15,
         label: 'Slider',
     },
+    ratings: {
+        value: 16,
+        label: 'Ratings',
+    },
 };
 
 export default CInputType;
