@@ -7,16 +7,10 @@ import {useToast} from '@/context/ToastProvider';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import grey from '@mui/material/colors/grey';
 import useTheme from '@mui/material/styles/useTheme';
-
-import Number from '@/component/input/Number';
 
 import {readJSONFile} from '@/helper/readFile';
 
@@ -26,15 +20,29 @@ import Translator from '@/hook/Translator';
 import {downloadJsonFile} from '@/helper/downloadFile';
 import {generateContent, generateInvalidContent} from '@/helper/generateContent';
 
+import Confirm from '@/component/dialog/Confirm';
+import List from '@/component/dialog/List';
+import Upload from '@/component/button/Upload';
+
 import CActionType from '@/constant/CActionType';
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 import CTheme from '@/constant/CTheme';
-import Upload from '@/component/button/Upload';
-import List from '@/component/dialog/List';
 
 const TopBar = props => {
-    const {content, setContent, label, setLabel, page, setPage, id, setOpenPreview} = props;
+    const {
+        content,
+        getViewOptions,
+        label,
+        moduleId,
+        page,
+        setContent,
+        setLabel,
+        setOpenPreview,
+        setPage,
+        setViewId,
+        viewId,
+    } = props;
 
     const {get, post} = Request();
     const {t} = Translator();
@@ -46,9 +54,15 @@ const TopBar = props => {
 
     const generateTypeList = [CActionType.insert, CActionType.update];
 
-    const [open, setOpen] = useState(false);
+    const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
     const [openGenrateDialog, setOpenGenerateDialog] = useState(false);
-    const [moduleId, setModuleId] = useState(null);
+
+    const clearContent = () => {
+        setContent([]);
+        setViewId(null);
+        setLabel(null);
+        setPage(null);
+    };
 
     const getModule = type => {
         setLoading(true);
@@ -88,7 +102,7 @@ const TopBar = props => {
     const onSave = () => {
         setLoading(true);
 
-        const url = id ? CApiUrl.common.update : CApiUrl.common.create;
+        const url = viewId ? CApiUrl.common.update : CApiUrl.common.create;
         const body = {
             moduleId: CModuleID.views,
             data: {
@@ -99,7 +113,7 @@ const TopBar = props => {
             },
         };
 
-        if (id) body.rowId = id;
+        if (viewId) body.rowId = viewId;
 
         post(url, body)
             .then(res => {
@@ -108,6 +122,9 @@ const TopBar = props => {
                     type: 'success',
                     message: res,
                 });
+                if (!viewId) {
+                    getViewOptions();
+                }
             })
             .catch(err => {
                 setToast({
@@ -124,12 +141,11 @@ const TopBar = props => {
 
         const param = {
             moduleId: CModuleID.views,
-            rowId: id,
+            rowId: viewId,
         };
 
         get(CApiUrl.common.detail, param)
             .then(res => {
-                setModuleId(res.moduleId);
                 setContent(res.content);
                 setLabel(res.label);
                 setPage(res.page);
@@ -144,8 +160,27 @@ const TopBar = props => {
             .finally(() => setLoading(false));
     };
 
-    const onApply = () => {
-        setOpen(false);
+    const onDelete = confirm => {
+        if (confirm) {
+            const body = {
+                moduleId: CModuleID.views,
+                id: viewId,
+            };
+            post(CApiUrl.common.delete, body)
+                .then(() => {
+                    clearContent();
+                    getViewOptions();
+                })
+                .catch(err => {
+                    setToast({
+                        status: true,
+                        type: 'error',
+                        message: err,
+                    });
+                })
+                .finally(() => setLoading(false));
+        }
+        setOpenConfirmDialog(false);
     };
 
     const onPreview = () => {
@@ -162,12 +197,13 @@ const TopBar = props => {
     };
 
     useEffect(() => {
-        if (!id) {
-            setOpen(true);
-        } else {
+        console.log('viewId', viewId);
+        if (viewId) {
             onLoad();
+        } else {
+            clearContent();
         }
-    }, []);
+    }, [viewId]);
 
     return (
         <Box>
@@ -214,25 +250,25 @@ const TopBar = props => {
                         <Button variant="outlined" size={CTheme.button.size.name} onClick={onPreview}>
                             {t('preview')}
                         </Button>
+                        {viewId && (
+                            <Button variant="contained" size={CTheme.button.size.name} onClick={setOpenConfirmDialog}>
+                                {t('delete')}
+                            </Button>
+                        )}
                         <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
                             {t('save')}
                         </Button>
                     </Box>
                 </Box>
             </Box>
-            <Dialog open={open}>
-                <DialogTitle>{t('conntect_to_module')}</DialogTitle>
-                <DialogContent>
-                    <Box width={500}>
-                        <Number value={moduleId} onChange={setModuleId} label="Module ID" />
-                    </Box>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={onApply} variant="contained" size={CTheme.button.size.name}>
-                        {t('apply')}
-                    </Button>
-                </DialogActions>
-            </Dialog>
+            <Confirm
+                open={openConfirmDialog}
+                title={t('delete_data')}
+                text={t('confirm_delete')}
+                confirmButton={t('delete')}
+                cancelButton={t('cancel')}
+                onConfirm={onDelete}
+            />
             <List
                 items={generateTypeList}
                 onSelected={onGenerate}

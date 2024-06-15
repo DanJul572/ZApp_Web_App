@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useSearchParams} from 'next/navigation';
 
 import Box from '@mui/material/Box';
@@ -12,9 +12,14 @@ import Properties from './properties';
 import TopBar from './topbar';
 
 import Empty from '@/layout/Empty';
+import Request from '@/hook/Request';
+
+import CApiUrl from '@/constant/CApiUrl';
 
 const Page = () => {
     const searchParams = useSearchParams();
+
+    const {get} = Request();
 
     const navigationType = {
         content: 'content',
@@ -24,28 +29,54 @@ const Page = () => {
         module: 'module',
     };
     const activeNavigation = navigationType.content;
-    const id = searchParams.get('id');
+    const moduleId = searchParams.get('id');
 
-    const [label, setLabel] = useState(null);
-    const [page, setPage] = useState(null);
     const [content, setContent] = useState([]);
-    const [selected, setSelected] = useState(null);
+    const [label, setLabel] = useState(null);
     const [openPreview, setOpenPreview] = useState(false);
+    const [page, setPage] = useState(null);
+    const [selected, setSelected] = useState(null);
+    const [viewId, setViewId] = useState(null);
+    const [viewOptions, setviewOptions] = useState(null);
+
+    const getViewOptions = () => {
+        get(CApiUrl.view.options, {moduleId: moduleId})
+            .then(res => {
+                setviewOptions(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+    useEffect(() => {
+        getViewOptions();
+    }, []);
 
     return (
         <Empty>
             <TopBar
                 content={content}
-                id={id}
+                getViewOptions={getViewOptions}
                 label={label}
+                moduleId={moduleId}
                 page={page}
                 setContent={setContent}
                 setLabel={setLabel}
                 setOpenPreview={setOpenPreview}
                 setPage={setPage}
+                setViewId={setViewId}
+                viewId={viewId}
             />
             <Box container="true">
-                <Component content={content} setContent={setContent} setSelected={setSelected} />
+                <Component
+                    content={content}
+                    setContent={setContent}
+                    setSelected={setSelected}
+                    setViewId={setViewId}
+                    viewId={viewId}
+                    viewOptions={viewOptions}
+                />
                 <Box marginX={45} marginTop={8} paddingTop={1}>
                     <Content content={content} selected={selected} setSelected={setSelected} />
                 </Box>

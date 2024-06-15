@@ -37,12 +37,12 @@ const Dropdown = props => {
         } else {
             setNewOptions(options || []);
         }
-    }, []);
+    }, [options]);
 
     useEffect(() => {
         const val = newOptions.find(option => option.value === value);
         setNewValue(val || null);
-    }, [value]);
+    }, [newOptions, value]);
 
     useEffect(() => {
         if (!group && !name) return;

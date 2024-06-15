@@ -1,5 +1,7 @@
 'use client';
 
+import Typography from '@mui/material/Typography';
+
 import Main from '@/layout/Main';
 import ClassicView from '@/template/ClassicView';
 
@@ -12,18 +14,14 @@ const Page = () => {
             type: CActionType.update.value,
             path: '/view/create',
         },
-        {
-            type: CActionType.insert.value,
-            path: '/view/create',
-        },
-        {
-            type: CActionType.delete.value,
-        },
     ];
 
     return (
         <Main>
-            <ClassicView moduleID={CModuleID.views} actions={actions} />
+            <Typography fontSize={20} fontWeight="bold">
+                Views
+            </Typography>
+            <ClassicView moduleID={CModuleID.modules} actions={actions} />
         </Main>
     );
 };

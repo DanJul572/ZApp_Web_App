@@ -27,8 +27,10 @@ import CInputType from '@/constant/CInputType';
 import CTableType from '@/constant/CTableType';
 import CVisualElement from '@/constant/CVisualElementType';
 
+import ViewList from '../views';
+
 const Component = props => {
-    const {content, setContent, setSelected} = props;
+    const {viewId, content, setContent, setSelected, setViewId, viewOptions} = props;
 
     const [componentList, setComponentList] = useState([]);
     const [open, setOpen] = useState({});
@@ -98,13 +100,27 @@ const Component = props => {
     };
 
     const icon = type => {
-        if (type === CComponentGroupType.button.value) return <SmartButton fontSize={CTheme.font.size.name} />;
-        else if (type === CComponentGroupType.container.value) return <GridView fontSize={CTheme.font.size.name} />;
-        else if (type === CComponentGroupType.chart.value) return <BarChart fontSize={CTheme.font.size.name} />;
-        else if (type === CComponentGroupType.fieldControl.value)
+        if (type === CComponentGroupType.button.value) {
+            return <SmartButton fontSize={CTheme.font.size.name} />;
+        }
+
+        if (type === CComponentGroupType.container.value) {
+            return <GridView fontSize={CTheme.font.size.name} />;
+        }
+
+        if (type === CComponentGroupType.chart.value) {
+            return <BarChart fontSize={CTheme.font.size.name} />;
+        }
+
+        if (type === CComponentGroupType.fieldControl.value) {
             return <TextFields fontSize={CTheme.font.size.name} />;
-        else if (type === CComponentGroupType.table.value) return <TableChart fontSize={CTheme.font.size.name} />;
-        else return <ShortTextOutlined />;
+        }
+
+        if (type === CComponentGroupType.table.value) {
+            return <TableChart fontSize={CTheme.font.size.name} />;
+        }
+
+        return <ShortTextOutlined />;
     };
 
     useEffect(() => {
@@ -133,6 +149,7 @@ const Component = props => {
             position="fixed"
             top={0}
             width={350}>
+            <ViewList viewId={viewId} setViewId={setViewId} viewOptions={viewOptions} />
             <Box paddingTop={2}>
                 {componentList.length > 0 &&
                     componentList.map((group, index) => (

@@ -23,6 +23,9 @@ const CApiUrl = {
     field: {
         rows: '/field/rows',
     },
+    view: {
+        options: '/view/options',
+    },
     script: {
         run: '/script/run',
     },
