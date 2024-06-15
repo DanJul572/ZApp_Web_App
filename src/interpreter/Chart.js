@@ -18,11 +18,17 @@ const Chart = props => {
     const content = () => {
         if (type === CChartType.bar.value) {
             return <Bar labels={label} values={value} />;
-        } else if (type === CChartType.line.value) {
+        }
+
+        if (type === CChartType.line.value) {
             return <Line labels={label} values={value} />;
-        } else if (type === CChartType.pie.value) {
+        }
+
+        if (type === CChartType.pie.value) {
             return <Pie values={value} />;
-        } else if (type === CChartType.gauge.value) {
+        }
+
+        if (type === CChartType.gauge.value) {
             return <Gauge value={value} />;
         }
     };

@@ -50,7 +50,9 @@ const Container = props => {
                     {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                 </Card>
             );
-        } else if (type === CContainerType.grid.value) {
+        }
+
+        if (type === CContainerType.grid.value) {
             const columnSize = properties.size ? properties.size.split(',') : [];
             const defaultSize = 12 / (section.length > 0 ? section.length : 1);
             return (
@@ -66,13 +68,17 @@ const Container = props => {
                         ))}
                 </Grid>
             );
-        } else if (type === CContainerType.collapse.value) {
+        }
+
+        if (type === CContainerType.collapse.value) {
             return (
                 <Collapse label={label || CContainerType.collapse.label} color={color}>
                     {section && section.length > 0 && section.map(childs => childs.map(renderComponent))}
                 </Collapse>
             );
-        } else if (type === CContainerType.drawer.value) {
+        }
+
+        if (type === CContainerType.drawer.value) {
             if (isBuilder) {
                 return (
                     <Card>{section && section.length > 0 && section.map(childs => childs.map(renderComponent))}</Card>
@@ -84,9 +90,13 @@ const Container = props => {
                     </Drawer>
                 );
             }
-        } else if (type === CContainerType.tab.value) {
+        }
+
+        if (type === CContainerType.tab.value) {
             return <Tab label={label} items={section} render={childs => childs.map(renderComponent)} />;
-        } else if (type === CContainerType.view.value) {
+        }
+
+        if (type === CContainerType.view.value) {
             if (isBuilder) {
                 return (
                     <Typography fontSize={CTheme.font.size.value} textAlign="center">

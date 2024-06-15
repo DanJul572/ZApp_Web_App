@@ -62,31 +62,41 @@ const Interpreter = props => {
                     />
                 </Wraper>
             );
-        } else if (group === CComponentGroupType.fieldControl.value) {
+        }
+
+        if (group === CComponentGroupType.fieldControl.value) {
             return (
                 <Wraper key={id} component={component}>
                     <FieldControl type={type} properties={properties} isBuilder={isBuilder} />
                 </Wraper>
             );
-        } else if (group === CComponentGroupType.visualElement.value) {
+        }
+
+        if (group === CComponentGroupType.visualElement.value) {
             return (
                 <Wraper key={id} component={component}>
                     <VisualElement type={type} properties={properties} isBuilder={isBuilder} />
                 </Wraper>
             );
-        } else if (group === CComponentGroupType.table.value) {
+        }
+
+        if (group === CComponentGroupType.table.value) {
             return (
                 <Wraper key={id} component={component}>
                     <Tables type={type} properties={properties} isBuilder={isBuilder} />
                 </Wraper>
             );
-        } else if (group === CComponentGroupType.chart.value) {
+        }
+
+        if (group === CComponentGroupType.chart.value) {
             return (
                 <Wraper key={id} component={component}>
                     <Chart type={type} properties={properties} isBuilder={isBuilder} />
                 </Wraper>
             );
-        } else if (group === CComponentGroupType.button.value) {
+        }
+
+        if (group === CComponentGroupType.button.value) {
             return (
                 <Wraper key={id} component={component}>
                     <Button type={type} properties={properties} isBuilder={isBuilder} />

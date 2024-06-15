@@ -48,7 +48,9 @@ const Button = props => {
                         </MuiButton>
                     </Box>
                 );
-            } else if (type === CButtonType.link.value) {
+            }
+
+            if (type === CButtonType.link.value) {
                 return (
                     <Box sx={display}>
                         <Link href="#" underline="always">
@@ -56,7 +58,9 @@ const Button = props => {
                         </Link>
                     </Box>
                 );
-            } else if (type === CButtonType.group.value) {
+            }
+
+            if (type === CButtonType.group.value) {
                 return (
                     <Box sx={display}>
                         <Group items={items} onClick={item => runFunction(onClick, item)} color={color} />

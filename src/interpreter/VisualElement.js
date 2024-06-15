@@ -47,7 +47,9 @@ const VisualElement = props => {
     const content = () => {
         if (type === CVisualElement.divider.value) {
             return <Divider sx={{backgroundColor: color}} />;
-        } else if (type === CVisualElement.text.value) {
+        }
+
+        if (type === CVisualElement.text.value) {
             if (loop && Array.isArray(loop)) {
                 if (isBuilder) {
                     return <Typography fontSize={CTheme.font.size.value}>{t('empty_content')}</Typography>;
