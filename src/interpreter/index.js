@@ -25,14 +25,15 @@ const Interpreter = props => {
 
     const Wraper = ({children, component}) => {
         if (!isBuilder) return <Box marginBottom={1}>{children}</Box>;
+        const selectedBorder = selected && component.id === selected.id ? CTheme.border.size.value : 0;
         return (
             <Box
-                key={component.id}
-                border={selected && component.id === selected.id ? CTheme.border.size.value : 0}
+                border={selectedBorder}
                 borderColor={theme.palette.primary.main}
+                borderRadius={1}
+                key={component.id}
                 padding={1}
-                paddingBottom={0}
-                borderRadius={1}>
+                paddingBottom={0}>
                 {children}
                 <Tooltip arrow title={component.type.label} placement="left">
                     <IconButton onClick={() => setSelected(component)} size={CTheme.button.size.name} sx={{padding: 0}}>
@@ -54,11 +55,11 @@ const Interpreter = props => {
             return (
                 <Wraper key={id} component={component}>
                     <Container
-                        type={type}
-                        section={section}
+                        isBuilder={isBuilder}
                         properties={properties}
                         renderComponent={renderComponent}
-                        isBuilder={isBuilder}
+                        section={section}
+                        type={type}
                     />
                 </Wraper>
             );

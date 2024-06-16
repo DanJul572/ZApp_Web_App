@@ -53,17 +53,17 @@ const VisualElement = props => {
             if (loop && Array.isArray(loop)) {
                 if (isBuilder) {
                     return <Typography fontSize={CTheme.font.size.value}>{t('empty_content')}</Typography>;
-                } else {
-                    return (
-                        <MapLoop
-                            items={loop}
-                            render={(item, index) => {
-                                const label = getValues(properties.label, item);
-                                return textComponent(label, index);
-                            }}
-                        />
-                    );
                 }
+
+                return (
+                    <MapLoop
+                        items={loop}
+                        render={(item, index) => {
+                            const label = getValues(properties.label, item);
+                            return textComponent(label, index);
+                        }}
+                    />
+                );
             } else {
                 return textComponent(label);
             }

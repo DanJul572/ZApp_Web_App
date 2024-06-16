@@ -92,12 +92,12 @@ const Tables = props => {
                         rows={rows}
                     />
                     <Confirm
-                        open={openConfirmDialog}
-                        title={t('delete_data')}
-                        text={t('confirm_delete')}
-                        confirmButton={t('delete')}
                         cancelButton={t('cancel')}
+                        confirmButton={t('delete')}
                         onConfirm={onConfirm}
+                        open={openConfirmDialog}
+                        text={t('confirm_delete')}
+                        title={t('delete_data')}
                     />
                 </Box>
             );

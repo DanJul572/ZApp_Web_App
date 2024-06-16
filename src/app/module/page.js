@@ -81,10 +81,10 @@ const Page = () => {
 
     return (
         <ClassicView
-            moduleID={CModuleID.modules}
             actions={actions}
-            rowCustomAction={rowCustomAction}
+            moduleID={CModuleID.modules}
             onClickRowCustomAction={onClickRowCustomAction}
+            rowCustomAction={rowCustomAction}
         />
     );
 };

@@ -103,15 +103,13 @@ const Container = props => {
                         {t('empty_content')}
                     </Typography>
                 );
-            } else {
-                return (
-                    <Page isBuilder={isBuilder} page={page}>
-                        {content && content.length > 0 && Array.isArray(content)
-                            ? content.map(renderComponent)
-                            : content}
-                    </Page>
-                );
             }
+
+            return (
+                <Page isBuilder={isBuilder} page={page}>
+                    {content && content.length > 0 && Array.isArray(content) ? content.map(renderComponent) : content}
+                </Page>
+            );
         }
     };
 

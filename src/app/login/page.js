@@ -62,22 +62,22 @@ const Page = () => {
 
     return (
         <Box
-            position="absolute"
-            top={0}
-            left={0}
-            right={0}
+            alignItems="center"
             bottom={0}
             display="flex"
             justifyContent="center"
-            alignItems="center">
+            left={0}
+            position="absolute"
+            right={0}
+            top={0}>
             <Box
-                width={450}
                 border={CTheme.border.size.value}
                 borderColor={grey[300]}
                 borderRadius={2}
-                padding={2}
                 display="flex"
-                flexDirection="column">
+                flexDirection="column"
+                padding={2}
+                width={450}>
                 <Box marginBottom={3} display="flex" flexDirection="column" gap={1}>
                     <ShortText label="Email" name="email" value={email} onChange={setEmail} />
                     <Password label="Password" name="password" value={password} onChange={setPassword} />

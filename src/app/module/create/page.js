@@ -97,12 +97,12 @@ const Page = () => {
                 </Button>
             </Box>
             <ModuleForm
-                moduleName={moduleName}
-                setModuleName={setModuleName}
-                moduleLabel={moduleLabel}
-                setModuleLabel={setModuleLabel}
                 moduleDescription={moduleDescription}
+                moduleLabel={moduleLabel}
+                moduleName={moduleName}
                 setModuleDescription={setModuleDescription}
+                setModuleLabel={setModuleLabel}
+                setModuleName={setModuleName}
             />
             <FieldForm fieldRows={fieldRows} setFieldRows={setFieldRows} />
         </Box>

@@ -82,15 +82,15 @@ const Sidebar = () => {
     return (
         <Box
             sx={{
-                width: 300,
-                overflowY: 'auto',
-                position: 'fixed',
-                top: 0,
+                borderColor: grey[300],
+                borderRight: CTheme.border.size.value,
                 bottom: 0,
                 left: 0,
+                overflowY: 'auto',
                 paddingTop: 10,
-                borderRight: CTheme.border.size.value,
-                borderColor: grey[300],
+                position: 'fixed',
+                top: 0,
+                width: 300,
             }}>
             <Box paddingX={1} marginBottom={1}>
                 <ShortText value={searchTerm} onChange={setSearchTerm} placeholder="Search..." />

@@ -340,8 +340,8 @@ const FieldForm = props => {
                 columns={columns}
                 onClickRowAction={onClickRowAction}
                 onClickToolbarAction={onClickToolbarAction}
-                toolbarCustomAction={toolbarCustomAction}
                 rows={fieldRows}
+                toolbarCustomAction={toolbarCustomAction}
             />
             <Drawer anchor="right" open={openFieldForm} onClose={() => setOpenFieldForm(false)}>
                 <Box padding={2}>
@@ -350,9 +350,9 @@ const FieldForm = props => {
                             {t('add')}
                         </Button>
                         <Button
-                            variant="outlined"
+                            onClick={() => setOpenFieldForm(false)}
                             size={CTheme.button.size.name}
-                            onClick={() => setOpenFieldForm(false)}>
+                            variant="outlined">
                             {t('cancel')}
                         </Button>
                     </Box>
@@ -361,9 +361,9 @@ const FieldForm = props => {
                         <ShortText label="Label" value={fieldLabel} onChange={setFieldLabel} />
                         <Dropdown
                             label="Input Type"
+                            onChange={onChangeInputType}
                             options={inputTypeOptions}
                             value={inputType}
-                            onChange={onChangeInputType}
                         />
                         <Number label="Sequence" value={sequence} onChange={setSequence} />
                     </Box>
@@ -371,12 +371,12 @@ const FieldForm = props => {
                 </Box>
             </Drawer>
             <Confirm
-                open={openConfirmDialog}
-                title="Delete Field"
-                text="Are you sure you want to delete this field ?"
-                confirmButton="Delete"
                 cancelButton="Cancel"
+                confirmButton="Delete"
                 onConfirm={deleteConfirmation}
+                open={openConfirmDialog}
+                text="Are you sure you want to delete this field ?"
+                title="Delete Field"
             />
         </Box>
     );
