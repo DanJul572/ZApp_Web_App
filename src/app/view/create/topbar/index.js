@@ -53,6 +53,7 @@ const TopBar = props => {
     const theme = useTheme();
 
     const generateTypeList = [CActionType.insert, CActionType.update];
+    const hasContent = content && content.length > 0;
 
     const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
     const [openGenrateDialog, setOpenGenerateDialog] = useState(false);
@@ -232,13 +233,15 @@ const TopBar = props => {
                     <Box
                         display="flex"
                         gap={1}
-                        borderRight={CTheme.border.size.value}
+                        borderRight={hasContent ? CTheme.border.size.value : 0}
                         borderColor={grey[300]}
                         paddingRight={1}>
                         <Upload label={t('upload')} onUpload={onUpload} type=".json" />
-                        <Button variant="outlined" size={CTheme.button.size.name} onClick={onDownload}>
-                            {t('download')}
-                        </Button>
+                        {hasContent && (
+                            <Button variant="outlined" size={CTheme.button.size.name} onClick={onDownload}>
+                                {t('download')}
+                            </Button>
+                        )}
                         <Button
                             variant="outlined"
                             size={CTheme.button.size.name}
@@ -247,17 +250,21 @@ const TopBar = props => {
                         </Button>
                     </Box>
                     <Box display="flex" gap={1}>
-                        <Button variant="outlined" size={CTheme.button.size.name} onClick={onPreview}>
-                            {t('preview')}
-                        </Button>
+                        {hasContent && (
+                            <Button variant="outlined" size={CTheme.button.size.name} onClick={onPreview}>
+                                {t('preview')}
+                            </Button>
+                        )}
                         {viewId && (
                             <Button variant="contained" size={CTheme.button.size.name} onClick={setOpenConfirmDialog}>
                                 {t('delete')}
                             </Button>
                         )}
-                        <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
-                            {t('save')}
-                        </Button>
+                        {hasContent && (
+                            <Button variant="contained" size={CTheme.button.size.name} onClick={onSave}>
+                                {t('save')}
+                            </Button>
+                        )}
                     </Box>
                 </Box>
             </Box>
