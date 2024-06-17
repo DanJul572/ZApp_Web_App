@@ -13,10 +13,10 @@ import Button from './Button';
 import Chart from './Chart';
 import Container from './Container';
 import FieldControl from './FieldControl';
-import Tables from './Tables';
+import Table from './Table';
 import VisualElement from './VisualElement';
 
-import Page from './Page';
+import Page from './shared/Page';
 
 const Interpreter = props => {
     const theme = useTheme();
@@ -84,7 +84,7 @@ const Interpreter = props => {
         if (group === CComponentGroupType.table.value) {
             return (
                 <Wraper key={id} component={component}>
-                    <Tables type={type} properties={properties} isBuilder={isBuilder} />
+                    <Table type={type} properties={properties} isBuilder={isBuilder} />
                 </Wraper>
             );
         }

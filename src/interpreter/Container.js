@@ -13,7 +13,7 @@ import Translator from '@/hook/Translator';
 
 import Runner from '@/runner';
 
-import Page from './Page';
+import Page from './shared/Page';
 
 import CTheme from '@/constant/CTheme';
 

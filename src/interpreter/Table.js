@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography';
 import Runner from '@/runner';
 
 import Confirm from '@/component/dialog/Confirm';
-import Table from '@/component/table';
 
 import CActionType from '@/constant/CActionType';
 import CTableType from '@/constant/CTableType';
@@ -14,7 +13,9 @@ import TableFunction from '@/hook/TableFunction';
 
 import Translator from '@/hook/Translator';
 
-const Tables = props => {
+import ZTable from '@/alias/ZTable';
+
+const Table = props => {
     const {type, properties, isBuilder} = props;
 
     const {getValues, runFunction} = Runner({isBuilder});
@@ -71,7 +72,7 @@ const Tables = props => {
         } else if (type === CTableType.table.value && moduleID) {
             return (
                 <Box>
-                    <Table
+                    <ZTable
                         action={actions}
                         columnKey={columnKey}
                         columns={columns}
@@ -107,4 +108,4 @@ const Tables = props => {
     return content();
 };
 
-export default Tables;
+export default Table;

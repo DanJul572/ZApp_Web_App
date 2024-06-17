@@ -9,7 +9,7 @@ import Runner from '@/runner';
 import CTheme from '@/constant/CTheme';
 import CVisualElement from '@/constant/CVisualElementType';
 
-import MapLoop from './MapLoop';
+import MapLoop from './shared/MapLoop';
 
 const VisualElement = props => {
     const {type, properties, isBuilder} = props;
