@@ -3,6 +3,9 @@
 import {useAlert} from '@/context/AlertProvider';
 import {useLoading} from '@/context/LoadingProvider';
 
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 import Request from '@/hook/Request';
 import Translator from '@/hook/Translator';
 
@@ -80,12 +83,17 @@ const Page = () => {
     };
 
     return (
-        <ClassicView
-            actions={actions}
-            moduleID={CModuleID.modules}
-            onClickRowCustomAction={onClickRowCustomAction}
-            rowCustomAction={rowCustomAction}
-        />
+        <Box>
+            <Typography fontSize={20} fontWeight="bold">
+                Modules
+            </Typography>
+            <ClassicView
+                actions={actions}
+                moduleID={CModuleID.modules}
+                onClickRowCustomAction={onClickRowCustomAction}
+                rowCustomAction={rowCustomAction}
+            />
+        </Box>
     );
 };
 

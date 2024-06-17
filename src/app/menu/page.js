@@ -1,5 +1,8 @@
 'use client';
 
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 import ClassicView from '@/template/ClassicView';
 
 import CModuleID from '@/constant/CModuleID';
@@ -20,7 +23,14 @@ const Page = () => {
         },
     ];
 
-    return <ClassicView moduleID={CModuleID.menus} actions={actions} />;
+    return (
+        <Box>
+            <Typography fontSize={20} fontWeight="bold">
+                Menus
+            </Typography>
+            <ClassicView moduleID={CModuleID.menus} actions={actions} />
+        </Box>
+    );
 };
 
 export default Page;
