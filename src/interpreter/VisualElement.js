@@ -11,6 +11,22 @@ import CVisualElement from '@/constant/CVisualElementType';
 
 import MapLoop from './shared/MapLoop';
 
+const Text = (props, key = null) => {
+    return (
+        <Typography
+            fontSize={props.size}
+            key={key}
+            sx={{
+                color: props.color,
+                fontStyle: props.italic,
+                fontWeight: props.bold,
+                textDecoration: props.underline,
+            }}>
+            {props.label}
+        </Typography>
+    );
+};
+
 const VisualElement = props => {
     const {type, properties, isBuilder} = props;
 
@@ -26,47 +42,35 @@ const VisualElement = props => {
     const italic = properties.textDecoration && properties.textDecoration.italic ? 'italic' : 'normal';
     const underline = properties.textDecoration && properties.textDecoration.underline ? 'underline' : 'none';
 
-    const textComponent = (label, key = null) => {
-        const prop = {};
-        if (key) prop.key = key;
-        return (
-            <Typography
-                {...prop}
-                sx={{
-                    color: color,
-                    fontWeight: bold,
-                    fontStyle: italic,
-                    textDecoration: underline,
-                }}
-                fontSize={size}>
-                {label}
-            </Typography>
-        );
-    };
-
     const content = () => {
         if (type === CVisualElement.divider.value) {
             return <Divider sx={{backgroundColor: color}} />;
         }
 
         if (type === CVisualElement.text.value) {
+            const props = {
+                bold,
+                color,
+                italic,
+                size,
+                underline,
+            };
             if (loop && Array.isArray(loop)) {
                 if (isBuilder) {
                     return <Typography fontSize={CTheme.font.size.value}>{t('empty_content')}</Typography>;
                 }
-
                 return (
                     <MapLoop
                         items={loop}
                         render={(item, index) => {
-                            const label = getValues(properties.label, item);
-                            return textComponent(label, index);
+                            props.label = getValues(properties.label, item);
+                            return Text(props, index);
                         }}
                     />
                 );
-            } else {
-                return textComponent(label);
             }
+            props.label = label;
+            return Text(props);
         }
     };
 

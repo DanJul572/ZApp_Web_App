@@ -198,7 +198,6 @@ const TopBar = props => {
     };
 
     useEffect(() => {
-        console.log('viewId', viewId);
         if (viewId) {
             onLoad();
         } else {
