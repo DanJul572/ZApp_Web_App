@@ -76,7 +76,7 @@ const ToggleCodeFormProperties = props => {
     }, [content, selected]);
 
     return (
-        isValidProperties(name, type, group) && (
+        isValidProperties(name, group, type) && (
             <Box>
                 <Tooltip arrow title={value.isBind ? 'Is Bindding' : null} placement="left">
                     <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">

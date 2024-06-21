@@ -1,103 +1,21 @@
-import CButtonType from '@/constant/CButtonType';
-import CChartType from '@/constant/CChartType';
-import CComponentGroupType from '@/constant/CComponentGroupType';
-import CContainerType from '@/constant/CContainerType';
-import CInputType from '@/constant/CInputType';
-import CVisualElement from '@/constant/CVisualElementType';
+import CValidProperty from '@/constant/CValidProperty';
 
-const isBorderValid = (type, group) =>
-    type === CContainerType.card.value && group === CComponentGroupType.container.value;
-
-const isPaddingValid = (type, group) =>
-    type === CContainerType.card.value && group === CComponentGroupType.container.value;
-
-const isModuleIDValid = group => group === CComponentGroupType.table.value;
-
-const isFilterValid = group => group === CComponentGroupType.table.value;
-
-const isNameValid = group => group === CComponentGroupType.fieldControl.value;
-
-const isSizeValid = (type, group) =>
-    (type === CContainerType.grid.value && group === CComponentGroupType.container.value) ||
-    (type === CContainerType.drawer.value && group === CComponentGroupType.container.value) ||
-    (type === CVisualElement.text.value && group === CComponentGroupType.visualElement.value);
-
-const isViewIDValid = (type, group) =>
-    group === CComponentGroupType.container.value && type === CContainerType.view.value;
-
-const isFieldIDValid = (type, group) =>
-    group === CComponentGroupType.fieldControl.value && type === CInputType.dropdown.value;
-
-const isLabelValid = (type, group) =>
-    (group === CComponentGroupType.container.value && type === CContainerType.collapse.value) ||
-    (group === CComponentGroupType.container.value && type === CContainerType.tab.value) ||
-    (group === CComponentGroupType.chart.value && type === CChartType.bar.value) ||
-    (group === CComponentGroupType.chart.value && type === CChartType.line.value) ||
-    (group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value) ||
-    (group === CComponentGroupType.button.value && type !== CButtonType.group.value) ||
-    group === CComponentGroupType.fieldControl.value;
-
-const isValueValid = group => group === CComponentGroupType.chart.value;
-
-const isOnClickValid = group => group === CComponentGroupType.button.value;
-
-const isDisableValid = (type, group) =>
-    (group === CComponentGroupType.button.value && type === CButtonType.button.value) ||
-    group === CComponentGroupType.fieldControl.value;
-
-const isOpenValid = (type, group) =>
-    group === CComponentGroupType.container.value && type === CContainerType.drawer.value;
-
-const isHiddenValid = group =>
-    group === CComponentGroupType.button.value || group === CComponentGroupType.fieldControl.value;
-
-const isMultipleValid = (type, group) =>
-    group === CComponentGroupType.fieldControl.value && type === CInputType.dropdown.value;
-
-const isLoopValid = (type, group) =>
-    group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value;
-
-const isItemsValid = (type, group) => group === CComponentGroupType.button.value && type === CButtonType.group.value;
-
-const isValidProperties = (property, type, group) => {
-    switch (property) {
-        case 'border':
-            return isBorderValid(type, group);
-        case 'padding':
-            return isPaddingValid(type, group);
-        case 'moduleID':
-            return isModuleIDValid(group);
-        case 'filter':
-            return isFilterValid(group);
-        case 'name':
-            return isNameValid(group);
-        case 'size':
-            return isSizeValid(type, group);
-        case 'viewID':
-            return isViewIDValid(type, group);
-        case 'fieldID':
-            return isFieldIDValid(type, group);
-        case 'label':
-            return isLabelValid(type, group);
-        case 'value':
-            return isValueValid(group);
-        case 'onClick':
-            return isOnClickValid(group);
-        case 'disable':
-            return isDisableValid(type, group);
-        case 'open':
-            return isOpenValid(type, group);
-        case 'hidden':
-            return isHiddenValid(group);
-        case 'multiple':
-            return isMultipleValid(type, group);
-        case 'loop':
-            return isLoopValid(type, group);
-        case 'items':
-            return isItemsValid(type, group);
-        default:
-            return false;
+const isValidProperties = (name, group, type) => {
+    if (!name || !group || !type) {
+        return false;
     }
+
+    const validate = CValidProperty[name];
+
+    if (!validate || !validate[group]) {
+        return false;
+    }
+
+    if (Array.isArray(validate[group])) {
+        return validate[group].includes(type);
+    }
+
+    return validate[group];
 };
 
 export default isValidProperties;

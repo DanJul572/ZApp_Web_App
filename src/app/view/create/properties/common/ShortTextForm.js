@@ -41,7 +41,7 @@ const ShortTextForm = props => {
     }, [selected]);
 
     return (
-        isValidProperties(name, type, group) && (
+        isValidProperties(name, group, type) && (
             <Box>
                 <Box paddingX={2} display="flex" justifyContent="space-between" alignItems="center">
                     <Typography fontSize={CTheme.font.size.value}>{label}</Typography>
