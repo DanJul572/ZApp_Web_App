@@ -51,6 +51,9 @@ const isOpenValid = (type, group) =>
 const isHiddenValid = group =>
     group === CComponentGroupType.button.value || group === CComponentGroupType.fieldControl.value;
 
+const isMultipleValid = (type, group) =>
+    group === CComponentGroupType.fieldControl.value && type === CInputType.dropdown.value
+
 const isLoopValid = (type, group) =>
     group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value;
 
@@ -86,6 +89,8 @@ const isValidProperties = (property, type, group) => {
             return isOpenValid(type, group);
         case 'hidden':
             return isHiddenValid(group);
+        case 'multiple':
+            return isMultipleValid(type, group);
         case 'loop':
             return isLoopValid(type, group);
         case 'items':

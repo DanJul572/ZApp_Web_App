@@ -69,6 +69,10 @@ const CToggleCodeFormProperties = [
         name: 'open',
         label: 'Open',
     },
+    {
+        name: 'multiple',
+        label: 'Multiple',
+    },
 ];
 
 const CProperties = {

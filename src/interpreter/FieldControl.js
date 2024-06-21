@@ -35,6 +35,7 @@ const FieldControl = props => {
     const disabled = !Boolean(name) || Boolean(getValues(properties.disable));
     const label = getValues(properties.label);
     const hidden = getValues(properties.hidden);
+    const multiple = getValues(properties.multiple);
     const fieldID = properties.fieldID;
 
     const onChange = value => {
@@ -72,7 +73,7 @@ const FieldControl = props => {
 
             if (type === CInputType.dropdown.value) {
                 if (!isBuilder) comProps.id = fieldID;
-                return <Dropdown {...comProps} />;
+                return <Dropdown {...comProps} multiple={multiple} />;
             }
 
             if (type === CInputType.date.value) {
