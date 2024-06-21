@@ -223,8 +223,12 @@ const TopBar = props => {
                     backgroundColor: theme.palette.background.default,
                 }}>
                 <Box display="flex" alignItems="center" gap={1}>
-                    <IconButton size={CTheme.button.size.name} sx={{padding: 0}} onClick={() => push('/view')}>
-                        <ArrowBack fontSize={CTheme.font.size.name} sx={{color: theme.palette.text.primary}} />
+                    <IconButton
+                        size={CTheme.button.size.name}
+                        sx={{padding: 0}}
+                        color="primary"
+                        onClick={() => push('/view')}>
+                        <ArrowBack fontSize={CTheme.font.size.name} sx={{color: theme.palette.primary.main}} />
                     </IconButton>
                     <Typography sx={{fontWeight: 'bold'}}>{t('view_builder')}</Typography>
                 </Box>

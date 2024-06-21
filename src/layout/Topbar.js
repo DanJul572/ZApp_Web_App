@@ -43,7 +43,7 @@ const Topbar = () => {
 
     return (
         <Box display="flex" justifyContent="space-between" alignItems="center" padding={2}>
-            <Typography variant="h6" noWrap component="div">
+            <Typography variant="h6" noWrap component="div" sx={{color: CTheme.palette.primary.main}}>
                 ZApp
             </Typography>
             <IconButton size={CTheme.button.size.name} onClick={logout} color="inherit">

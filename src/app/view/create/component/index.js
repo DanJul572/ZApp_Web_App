@@ -12,9 +12,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Typography from '@mui/material/Typography';
 
 import BarChart from '@mui/icons-material/BarChart';
-import GridView from '@mui/icons-material/GridView';
 import ShortTextOutlined from '@mui/icons-material/ShortTextOutlined';
 import SmartButton from '@mui/icons-material/SmartButton';
+import SpaceDashboard from '@mui/icons-material/SpaceDashboard';
 import TableChart from '@mui/icons-material/TableChart';
 import TextFields from '@mui/icons-material/TextFields';
 
@@ -101,26 +101,26 @@ const Component = props => {
 
     const icon = type => {
         if (type === CComponentGroupType.button.value) {
-            return <SmartButton fontSize={CTheme.font.size.name} />;
+            return <SmartButton fontSize={CTheme.font.size.name} color="primary" />;
         }
 
         if (type === CComponentGroupType.container.value) {
-            return <GridView fontSize={CTheme.font.size.name} />;
+            return <SpaceDashboard fontSize={CTheme.font.size.name} color="primary" />;
         }
 
         if (type === CComponentGroupType.chart.value) {
-            return <BarChart fontSize={CTheme.font.size.name} />;
+            return <BarChart fontSize={CTheme.font.size.name} color="primary" />;
         }
 
         if (type === CComponentGroupType.fieldControl.value) {
-            return <TextFields fontSize={CTheme.font.size.name} />;
+            return <ShortTextOutlined fontSize={CTheme.font.size.name} color="primary" />;
         }
 
         if (type === CComponentGroupType.table.value) {
-            return <TableChart fontSize={CTheme.font.size.name} />;
+            return <TableChart fontSize={CTheme.font.size.name} color="primary" />;
         }
 
-        return <ShortTextOutlined />;
+        return <TextFields fontSize={CTheme.font.size.name} color="primary" />;
     };
 
     useEffect(() => {
@@ -167,9 +167,9 @@ const Component = props => {
                                     </Typography>
                                 </Box>
                                 {open[group.value] ? (
-                                    <ExpandLess fontSize={CTheme.font.size.name} />
+                                    <ExpandLess fontSize={CTheme.font.size.name} color="primary" />
                                 ) : (
-                                    <ExpandMore fontSize={CTheme.font.size.name} />
+                                    <ExpandMore fontSize={CTheme.font.size.name} color="primary" />
                                 )}
                             </ListItemButton>
                             <Collapse in={open[group.value]}>
