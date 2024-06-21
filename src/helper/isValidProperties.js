@@ -52,7 +52,7 @@ const isHiddenValid = group =>
     group === CComponentGroupType.button.value || group === CComponentGroupType.fieldControl.value;
 
 const isMultipleValid = (type, group) =>
-    group === CComponentGroupType.fieldControl.value && type === CInputType.dropdown.value
+    group === CComponentGroupType.fieldControl.value && type === CInputType.dropdown.value;
 
 const isLoopValid = (type, group) =>
     group === CComponentGroupType.visualElement.value && type === CVisualElement.text.value;
