@@ -33,7 +33,7 @@ const CValidProperty = {
         [CComponentGroupType.fieldControl.value]: [CInputType.dropdown.value],
     },
     label: {
-        [CComponentGroupType.button.value]: true,
+        [CComponentGroupType.button.value]: [CButtonType.button.value, CButtonType.link.value],
         [CComponentGroupType.chart.value]: [CChartType.bar.value, CChartType.line.value],
         [CComponentGroupType.container.value]: [CContainerType.collapse.value, CContainerType.tab.value],
         [CComponentGroupType.fieldControl.value]: true,
