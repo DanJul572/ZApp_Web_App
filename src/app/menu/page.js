@@ -5,8 +5,9 @@ import Typography from '@mui/material/Typography';
 
 import ClassicView from '@/template/ClassicView';
 
-import CModuleID from '@/constant/CModuleID';
 import CActionType from '@/constant/CActionType';
+import CModuleID from '@/constant/CModuleID';
+import CTheme from '@/constant/CTheme';
 
 const Page = () => {
     const actions = [
@@ -25,7 +26,7 @@ const Page = () => {
 
     return (
         <Box>
-            <Typography fontSize={20} fontWeight="bold">
+            <Typography fontSize={20} fontWeight="bold" color={CTheme.palette.primary.main}>
                 Menus
             </Typography>
             <ClassicView moduleID={CModuleID.menus} actions={actions} />

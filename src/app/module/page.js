@@ -16,6 +16,7 @@ import ClassicView from '@/template/ClassicView';
 import CActionType from '@/constant/CActionType';
 import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
+import CTheme from '@/constant/CTheme';
 
 const Page = () => {
     const {get} = Request();
@@ -84,7 +85,7 @@ const Page = () => {
 
     return (
         <Box>
-            <Typography fontSize={20} fontWeight="bold">
+            <Typography fontSize={20} fontWeight="bold" color={CTheme.palette.primary.main}>
                 Modules
             </Typography>
             <ClassicView
