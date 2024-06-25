@@ -370,13 +370,14 @@ const FieldForm = props => {
                     {fieldSettingsComponent()}
                 </Box>
             </Drawer>
+
             <Confirm
-                cancelButton="Cancel"
-                confirmButton="Delete"
+                cancelButton={t('cancel')}
+                confirmButton={t('delete')}
                 onConfirm={deleteConfirmation}
                 open={openConfirmDialog}
-                text="Are you sure you want to delete this field ?"
-                title="Delete Field"
+                text={t('confirm_delete')}
+                title={t('delete_data')}
             />
         </Box>
     );

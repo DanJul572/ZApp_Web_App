@@ -10,10 +10,14 @@ import Confirm from '@/component/dialog/Confirm';
 
 import MuiDeleteIcon from '@/alias/MuiDeleteIcon';
 
+import Translator from '@/hook/Translator';
+
 import CTheme from '@/constant/CTheme';
 
 const Delete = props => {
     const {selected, content, setContent, setSelected, deleteComponent, duplicateComponent} = props;
+
+    const {t} = Translator();
 
     const [open, setOpen] = useState(false);
 
@@ -41,12 +45,12 @@ const Delete = props => {
                     </Box>
                 </Box>
                 <Confirm
-                    open={open}
-                    title="Delete Component"
-                    text="Are you sure you want to delete this component ?"
-                    confirmButton="Delete"
-                    cancelButton="Cancel"
+                    cancelButton={t('cancel')}
+                    confirmButton={t('delete')}
                     onConfirm={onDelete}
+                    open={open}
+                    text={t('confirm_delete')}
+                    title={t('delete_data')}
                 />
             </Box>
         )

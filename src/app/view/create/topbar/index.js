@@ -272,12 +272,12 @@ const TopBar = props => {
                 </Box>
             </Box>
             <Confirm
-                open={openConfirmDialog}
-                title={t('delete_data')}
-                text={t('confirm_delete')}
-                confirmButton={t('delete')}
                 cancelButton={t('cancel')}
+                confirmButton={t('delete')}
                 onConfirm={onDelete}
+                open={openConfirmDialog}
+                text={t('confirm_delete')}
+                title={t('delete_data')}
             />
             <List
                 items={generateTypeList}
