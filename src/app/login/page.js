@@ -13,7 +13,6 @@ import createTheme from '@mui/material/styles/createTheme';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import grey from '@mui/material/colors/grey';
 
 import Password from '@/component/input/Password';
 import ShortText from '@/component/input/ShortText';
@@ -72,7 +71,7 @@ const Page = () => {
             top={0}>
             <Box
                 border={CTheme.border.size.value}
-                borderColor={grey[300]}
+                borderColor={CTheme.palette.primary.main}
                 borderRadius={2}
                 display="flex"
                 flexDirection="column"

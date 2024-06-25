@@ -10,6 +10,8 @@ import Folder from '@mui/icons-material/Folder';
 import FolderOpen from '@mui/icons-material/FolderOpen';
 import InsertDriveFileOutlined from '@mui/icons-material/InsertDriveFileOutlined';
 
+import {useExpandedMenu} from '@/context/ExpandedMenuProvider';
+
 const CustomTreeItem = forwardRef((props, ref) => <TreeItem {...props} ref={ref} />);
 CustomTreeItem.displayName = 'CustomTreeItem';
 
@@ -29,8 +31,16 @@ const Tree = props => {
     const {onChildClick, onParentClick, list} = props;
 
     const theme = useTheme();
+    const {expandedMenu, setExpandedMenu} = useExpandedMenu();
 
     const clickParent = menu => {
+        if (!expandedMenu.includes(menu.id)) {
+            setExpandedMenu([...expandedMenu, menu.id]);
+        } else {
+            const expanded = [...expandedMenu].filter(item => item !== menu.id);
+            setExpandedMenu(expanded);
+        }
+
         if (onParentClick) {
             onParentClick({
                 id: menu.id,
@@ -74,7 +84,8 @@ const Tree = props => {
                 collapseIcon: CollapseIcon,
                 endIcon: EndIcon,
             }}
-            sx={{overflowX: 'hidden'}}>
+            sx={{overflowX: 'hidden'}}
+            defaultExpandedItems={expandedMenu}>
             {list && list.length > 0 && list.map(menu => menuList(menu))}
         </SimpleTreeView>
     );

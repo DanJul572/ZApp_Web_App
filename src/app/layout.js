@@ -7,6 +7,7 @@ import 'react-querybuilder/dist/query-builder.css';
 
 import {AlertProvider} from '@/context/AlertProvider';
 import {ComponentProvider} from '@/context/ComponentProvider';
+import {ExpandedMenuProvider} from '@/context/ExpandedMenuProvider';
 import {FileProvider} from '@/context/FileProvider';
 import {LoadingProvider} from '@/context/LoadingProvider';
 import {ToastProvider} from '@/context/ToastProvider';
@@ -34,7 +35,9 @@ export default function RootLayout({children}) {
                                 <ToastProvider>
                                     <VarsProvider>
                                         <FileProvider>
-                                            <ComponentProvider>{children}</ComponentProvider>
+                                            <ComponentProvider>
+                                                <ExpandedMenuProvider>{children}</ExpandedMenuProvider>
+                                            </ComponentProvider>
                                         </FileProvider>
                                     </VarsProvider>
                                 </ToastProvider>
