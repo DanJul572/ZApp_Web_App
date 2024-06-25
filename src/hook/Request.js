@@ -83,8 +83,8 @@ const Request = () => {
     };
 
     return {
-        get: get,
-        post: post,
+        get,
+        post,
     };
 };
 

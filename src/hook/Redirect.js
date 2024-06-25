@@ -19,7 +19,12 @@ const Redirect = () => {
         return back();
     };
 
-    return {internal, external, externalNewTab, prev};
+    return {
+        external,
+        externalNewTab,
+        internal,
+        prev,
+    };
 };
 
 export default Redirect;

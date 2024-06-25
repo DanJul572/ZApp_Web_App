@@ -36,10 +36,10 @@ const Toaster = () => {
     };
 
     return {
-        showSuccessToast,
         showErrorToast,
-        showWarningToast,
         showInfoToast,
+        showSuccessToast,
+        showWarningToast,
     };
 };
 

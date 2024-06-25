@@ -25,7 +25,13 @@ const Vars = () => {
         return vars;
     };
 
-    return {get, getAll, set, removeAll, setAll};
+    return {
+        get,
+        getAll,
+        removeAll,
+        set,
+        setAll,
+    };
 };
 
 export default Vars;

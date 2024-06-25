@@ -40,11 +40,11 @@ const Alert = () => {
     };
 
     return {
-        showSuccessAlert,
-        showErrorAlert,
-        showWarningAlert,
-        showInfoAlert,
         hideAlert,
+        showErrorAlert,
+        showInfoAlert,
+        showSuccessAlert,
+        showWarningAlert,
     };
 };
 

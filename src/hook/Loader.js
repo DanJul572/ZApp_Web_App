@@ -11,7 +11,10 @@ const Loader = () => {
         setLoading(false);
     };
 
-    return {showLoading, hideLoading};
+    return {
+        hideLoading,
+        showLoading,
+    };
 };
 
 export default Loader;

@@ -21,7 +21,12 @@ const Comp = () => {
         return comp ? comp[name] : null;
     };
 
-    return {get, set, removeAll, setAll};
+    return {
+        get,
+        removeAll,
+        set,
+        setAll,
+    };
 };
 
 export default Comp;
