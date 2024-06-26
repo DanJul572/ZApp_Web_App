@@ -84,7 +84,7 @@ const Tree = props => {
                 collapseIcon: CollapseIcon,
                 endIcon: EndIcon,
             }}
-            sx={{overflowX: 'hidden'}}
+            sx={{overflowX: 'hidden', padding: 1}}
             defaultExpandedItems={expandedMenu}>
             {list && list.length > 0 && list.map(menu => menuList(menu))}
         </SimpleTreeView>
