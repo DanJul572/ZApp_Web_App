@@ -95,7 +95,7 @@ const Sidebar = () => {
             <Box paddingX={1} marginBottom={1}>
                 <ShortText value={searchTerm} onChange={setSearchTerm} placeholder="Search..." />
             </Box>
-            {list.length > 0 && <Tree onChildClick={onClick} list={list} />}
+            {list.length > 0 && <Tree onChildClick={onClick} list={list} isSidebar={true} />}
             {list.length <= 0 && (
                 <Box paddingX={1} textAlign="center">
                     <Typography>Menu is not found.</Typography>

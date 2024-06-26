@@ -1,5 +1,6 @@
 import {useRouter} from 'next/navigation';
 
+import {useExpandedMenu} from '@/context/ExpandedMenuProvider';
 import {useLoading} from '@/context/LoadingProvider';
 import {useToast} from '@/context/ToastProvider';
 
@@ -22,6 +23,7 @@ const Topbar = () => {
     const {push} = useRouter();
     const {setToast} = useToast();
     const {setLoading} = useLoading();
+    const {setExpandedMenu} = useExpandedMenu();
 
     const logout = () => {
         setLoading(true);
@@ -29,6 +31,7 @@ const Topbar = () => {
         post(CApiUrl.auth.logout)
             .then(() => {
                 auth.logout();
+                setExpandedMenu([]);
                 push('/login');
             })
             .catch(err => {

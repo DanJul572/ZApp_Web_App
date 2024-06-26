@@ -4,6 +4,7 @@ import {setCookie} from 'cookies-next';
 import {useRouter} from 'next/navigation';
 import {useState} from 'react';
 
+import {useExpandedMenu} from '@/context/ExpandedMenuProvider';
 import {useLoading} from '@/context/LoadingProvider';
 import {useToast} from '@/context/ToastProvider';
 
@@ -30,6 +31,7 @@ const Page = () => {
     const {t} = Translator();
 
     const {push} = useRouter();
+    const {setExpandedMenu} = useExpandedMenu();
     const {setLoading} = useLoading();
     const {setToast} = useToast();
 
@@ -47,6 +49,7 @@ const Page = () => {
         post(CApiUrl.auth.login, body, false)
             .then(res => {
                 setCookie('token', res.accessToken);
+                setExpandedMenu([]);
                 push(res.afterLogin);
             })
             .catch(err => {

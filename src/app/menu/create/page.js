@@ -304,7 +304,7 @@ const Page = () => {
                     <Divider sx={{backgroundColor: grey[300]}} />
                     <Box padding={1} gap={2} display="flex">
                         <Box flex={1}>
-                            <Tree list={list} onParentClick={onClick} onChildClick={onClick} />
+                            <Tree list={list} onParentClick={onClick} onChildClick={onClick} isSidebar={false} />
                         </Box>
                         <Box display="flex" flexDirection="column" gap={2} flex={1}>
                             <ShortText

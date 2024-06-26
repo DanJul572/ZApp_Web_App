@@ -28,17 +28,19 @@ const StyledTreeItem = styled(CustomTreeItem)(({theme}) => ({
 }));
 
 const Tree = props => {
-    const {onChildClick, onParentClick, list} = props;
+    const {onChildClick, onParentClick, list, isSidebar} = props;
 
     const theme = useTheme();
     const {expandedMenu, setExpandedMenu} = useExpandedMenu();
 
     const clickParent = menu => {
-        if (!expandedMenu.includes(menu.id)) {
-            setExpandedMenu([...expandedMenu, menu.id]);
-        } else {
-            const expanded = [...expandedMenu].filter(item => item !== menu.id);
-            setExpandedMenu(expanded);
+        if (isSidebar) {
+            if (!expandedMenu.includes(menu.id)) {
+                setExpandedMenu([...expandedMenu, menu.id]);
+            } else {
+                const expanded = [...expandedMenu].filter(item => item !== menu.id);
+                setExpandedMenu(expanded);
+            }
         }
 
         if (onParentClick) {
@@ -85,7 +87,7 @@ const Tree = props => {
                 endIcon: EndIcon,
             }}
             sx={{overflowX: 'hidden', padding: 1}}
-            defaultExpandedItems={expandedMenu}>
+            defaultExpandedItems={isSidebar ? expandedMenu : []}>
             {list && list.length > 0 && list.map(menu => menuList(menu))}
         </SimpleTreeView>
     );
