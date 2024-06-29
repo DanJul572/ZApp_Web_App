@@ -26,7 +26,7 @@ const Runner = props => {
     };
 
     // eslint-disable-next-line no-unused-vars
-    const runFunction = (func, param) => {
+    const runFunction = (func, param = null) => {
         try {
             eval(func);
         } catch (error) {
