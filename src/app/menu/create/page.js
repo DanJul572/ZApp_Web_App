@@ -256,7 +256,7 @@ const Page = () => {
                     <ShortText value={afterLogin} label="After Login" onChange={setAfterLogin} />
                 </Box>
                 <Box border={CTheme.border.size.value} borderColor={grey[300]} borderRadius={1}>
-                    <Box>
+                    <Box padding={1}>
                         <Tooltip arrow title="Move To Up">
                             <IconButton
                                 size={CTheme.button.size.name}
@@ -302,9 +302,15 @@ const Page = () => {
                         </Tooltip>
                     </Box>
                     <Divider sx={{backgroundColor: grey[300]}} />
-                    <Box padding={1} gap={2} display="flex">
+                    <Box padding={2} gap={2} display="flex">
                         <Box flex={1}>
-                            <Tree list={list} onParentClick={onClick} onChildClick={onClick} isSidebar={false} />
+                            <Tree
+                                list={list}
+                                onParentClick={onClick}
+                                onChildClick={onClick}
+                                isSidebar={false}
+                                setList={setList}
+                            />
                         </Box>
                         <Box display="flex" flexDirection="column" gap={2} flex={1}>
                             <ShortText

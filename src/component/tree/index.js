@@ -1,6 +1,8 @@
-import {forwardRef} from 'react';
+import {getCookie} from 'cookies-next';
+import {forwardRef, useEffect, useState} from 'react';
 
 import {alpha, styled} from '@mui/material/styles';
+import Box from '@mui/material/Box';
 import useTheme from '@mui/material/styles/useTheme';
 
 import {SimpleTreeView} from '@mui/x-tree-view/SimpleTreeView';
@@ -11,6 +13,8 @@ import FolderOpen from '@mui/icons-material/FolderOpen';
 import InsertDriveFileOutlined from '@mui/icons-material/InsertDriveFileOutlined';
 
 import {useExpandedMenu} from '@/context/ExpandedMenuProvider';
+
+import ShortText from '../input/ShortText';
 
 const CustomTreeItem = forwardRef((props, ref) => <TreeItem {...props} ref={ref} />);
 CustomTreeItem.displayName = 'CustomTreeItem';
@@ -28,10 +32,42 @@ const StyledTreeItem = styled(CustomTreeItem)(({theme}) => ({
 }));
 
 const Tree = props => {
-    const {onChildClick, onParentClick, list, isSidebar} = props;
+    const {onChildClick, onParentClick, list, isSidebar, setList} = props;
 
     const theme = useTheme();
     const {expandedMenu, setExpandedMenu} = useExpandedMenu();
+
+    const [searchTerm, setSearchTerm] = useState('');
+    const [typingTimeout, setTypingTimeout] = useState(null);
+
+    const tree = getCookie('tree') ? JSON.parse(getCookie('tree')) : [];
+
+    const treeProps = {};
+    if (isSidebar) treeProps.expandedItems = expandedMenu;
+
+    const filterMenusByLabel = (arr, label) => {
+        const filterRecursive = (arr, label) => {
+            return arr.filter(obj => {
+                const menu = obj.label.toLowerCase();
+                const keyword = label.toLowerCase();
+                if (menu.includes(keyword)) {
+                    return true;
+                } else if (obj.child) {
+                    obj.child = filterRecursive(obj.child, label);
+                    return obj.child.length > 0;
+                }
+                return false;
+            });
+        };
+        return filterRecursive(arr, label);
+    };
+
+    const search = value => {
+        if (tree.length > 0) {
+            const newList = filterMenusByLabel(tree, value);
+            setList(newList);
+        }
+    };
 
     const clickParent = menu => {
         if (isSidebar) {
@@ -78,18 +114,36 @@ const Tree = props => {
         return <InsertDriveFileOutlined {...props} sx={{color: theme.palette.primary.main}} />;
     };
 
+    useEffect(() => {
+        if (typingTimeout) {
+            clearTimeout(typingTimeout);
+        }
+        setTypingTimeout(
+            setTimeout(() => {
+                search(searchTerm);
+            }, 1000),
+        );
+    }, [searchTerm]);
+
     return (
-        <SimpleTreeView
-            aria-label="customized"
-            slots={{
-                expandIcon: ExpandIcon,
-                collapseIcon: CollapseIcon,
-                endIcon: EndIcon,
-            }}
-            sx={{overflowX: 'hidden', padding: 1}}
-            defaultExpandedItems={isSidebar ? expandedMenu : []}>
-            {list && list.length > 0 && list.map(menu => menuList(menu))}
-        </SimpleTreeView>
+        <Box>
+            {isSidebar && (
+                <Box paddingX={1} marginBottom={1}>
+                    <ShortText value={searchTerm} onChange={setSearchTerm} placeholder="Search..." />
+                </Box>
+            )}
+            <SimpleTreeView
+                aria-label="customized"
+                slots={{
+                    expandIcon: ExpandIcon,
+                    collapseIcon: CollapseIcon,
+                    endIcon: EndIcon,
+                }}
+                sx={{overflowX: 'hidden', padding: 1}}
+                {...treeProps}>
+                {list && list.length > 0 && list.map(menu => menuList(menu))}
+            </SimpleTreeView>
+        </Box>
     );
 };
 
