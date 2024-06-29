@@ -30,10 +30,10 @@ const Number = props => {
                 size={CTheme.field.size.name}
                 fullWidth
                 rows={rows}
-                value={value || ''}
+                value={value || null}
                 error={error.status}
                 helperText={error.message}
-                onChange={e => onChange(e.target.value.replace(/[^0-9]/g, ''))}
+                onChange={e => onChange(e.target.valueAsNumber.replace(/[^0-9]/g, ''))}
                 disabled={disabled}
             />
         </Box>
