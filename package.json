@@ -29,7 +29,7 @@
         "jspdf": "^2.5.1",
         "jspdf-autotable": "^3.8.2",
         "material-react-table": "^2.13.0",
-        "mui-file-input": "^4.0.5",
+        "mui-file-input": "^4.0.6",
         "next": "^14.2.5",
         "react": "18.3.1",
         "react-dom": "18.3.1",
@@ -41,10 +41,10 @@
     },
     "devDependencies": {
         "eslint": "^8.57.0",
-        "eslint-config-next": "^14.2.4",
+        "eslint-config-next": "^14.2.5",
         "eslint-config-prettier": "^9.1.0",
         "husky": "^9.0.11",
-        "prettier": "^3.3.2"
+        "prettier": "^3.3.3"
     },
     "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

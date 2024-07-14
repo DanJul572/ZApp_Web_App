@@ -73,6 +73,10 @@ const CToggleCodeFormProperties = [
         name: 'multiple',
         label: 'Multiple',
     },
+    {
+        name: 'fullWidth',
+        label: 'Full Width',
+    },
 ];
 
 const CProperties = {

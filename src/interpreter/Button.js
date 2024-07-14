@@ -19,12 +19,15 @@ const Button = props => {
         return properties.display && properties.display[type] ? properties.display[type].value : 'flex-start';
     };
 
-    const color = properties.color ? properties.color.name : 'primary';
-    const disable = getValues(properties.disable);
-    const display = {display: 'flex', flexDirection: 'column', alignItems: displayValue('horizontal')};
-    const hidden = getValues(properties.hidden);
+    const disable = Boolean(getValues(properties.disable));
+    const fullWidth = Boolean(getValues(properties.fullWidth));
+    const hidden = Boolean(getValues(properties.hidden));
+
     const items = getValues(properties.items);
     const label = getValues(properties.label);
+
+    const color = properties.color ? properties.color.name : 'primary';
+    const display = {display: 'flex', flexDirection: 'column', alignItems: displayValue('horizontal')};
     const onClick = properties.onClick;
 
     const click = () => {
@@ -39,6 +42,7 @@ const Button = props => {
                 return (
                     <Box sx={display}>
                         <MuiButton
+                            fullWidth={fullWidth}
                             onClick={click}
                             size={CTheme.button.size.name}
                             variant="contained"

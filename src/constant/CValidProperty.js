@@ -65,6 +65,9 @@ const CValidProperty = {
     items: {
         [CComponentGroupType.button.value]: [CButtonType.group.value],
     },
+    fullWidth: {
+        [CComponentGroupType.button.value]: [CButtonType.button.value],
+    },
 };
 
 export default CValidProperty;
