@@ -30,7 +30,7 @@ const Number = props => {
                 size={CTheme.field.size.name}
                 fullWidth
                 rows={rows}
-                value={value || null}
+                value={value || ''}
                 error={error.status}
                 helperText={error.message}
                 onChange={e => onChange(e.target.valueAsNumber.replace(/[^0-9]/g, ''))}

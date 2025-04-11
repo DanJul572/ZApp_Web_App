@@ -60,8 +60,7 @@ const Container = props => {
                     {section &&
                         section.map((childs, index) => (
                             <Grid
-                                item
-                                xs={columnSize.length > 0 ? parseInt(columnSize[index]) : defaultSize}
+                                size={columnSize.length > 0 ? parseInt(columnSize[index]) : defaultSize}
                                 key={index}>
                                 {childs.map(renderComponent)}
                             </Grid>
