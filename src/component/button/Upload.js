@@ -1,5 +1,5 @@
+import {styled} from '@mui/material';
 import Button from '@mui/material/Button';
-import styled from '@mui/material/styles/styled';
 
 import CTheme from '@/constant/CTheme';
 

@@ -10,7 +10,7 @@ import {useToast} from '@/context/ToastProvider';
 
 import Link from 'next/link';
 
-import createTheme from '@mui/material/styles/createTheme';
+import {createTheme} from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -41,10 +41,7 @@ const Page = () => {
     const onLogin = () => {
         setLoading(true);
 
-        const body = {
-            email: email,
-            password: password,
-        };
+        const body = {email: email, password: password};
 
         post(CApiUrl.auth.login, body, false)
             .then(res => {
@@ -53,11 +50,7 @@ const Page = () => {
                 push(res.afterLogin);
             })
             .catch(err => {
-                setToast({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
+                setToast({status: true, type: 'error', message: err});
             })
             .finally(() => setLoading(false));
     };

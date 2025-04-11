@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import grey from '@mui/material/colors/grey';
+import {grey} from '@mui/material/colors';
 
 const Card = props => {
     const {color, flex, display, children, padding, border} = props;

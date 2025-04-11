@@ -2,11 +2,11 @@ import {useEffect, useState} from 'react';
 
 import {v4 as uuidv4} from 'uuid';
 
+import {grey} from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import grey from '@mui/material/colors/grey';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import Typography from '@mui/material/Typography';
@@ -60,10 +60,7 @@ const Component = props => {
         .map(key => CButtonType[key]);
 
     const handleCollapse = group => {
-        setOpen(prevState => ({
-            ...prevState,
-            [group]: !prevState[group],
-        }));
+        setOpen(prevState => ({...prevState, [group]: !prevState[group]}));
     };
 
     const handleSelected = (group, type) => {
@@ -156,10 +153,7 @@ const Component = props => {
                         <List key={index} disablePadding>
                             <ListItemButton
                                 onClick={() => handleCollapse(group.value)}
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                }}>
+                                sx={{display: 'flex', justifyContent: 'space-between'}}>
                                 <Box display="flex" gap={1} alignItems="center">
                                     {icon(group.value)}
                                     <Typography fontSize={CTheme.font.size.value} fontWeight="bold">

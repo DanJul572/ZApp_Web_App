@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react';
 
+import {useTheme} from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import useTheme from '@mui/material/styles/useTheme';
 
 import AlignHorizontalCenter from '@mui/icons-material/AlignHorizontalCenter';
 import AlignHorizontalLeft from '@mui/icons-material/AlignHorizontalLeft';
@@ -31,21 +31,9 @@ const Display = props => {
     });
 
     const horizontal = [
-        {
-            name: 'left',
-            value: 'flex-start',
-            type: 'horizontal',
-        },
-        {
-            name: 'horizontalCenter',
-            value: 'center',
-            type: 'horizontal',
-        },
-        {
-            name: 'right',
-            value: 'flex-end',
-            type: 'horizontal',
-        },
+        {name: 'left', value: 'flex-start', type: 'horizontal'},
+        {name: 'horizontalCenter', value: 'center', type: 'horizontal'},
+        {name: 'right', value: 'flex-end', type: 'horizontal'},
     ];
 
     /*
@@ -119,9 +107,7 @@ const Display = props => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                sx={{
-                    cursor: 'pointer',
-                }}
+                sx={{cursor: 'pointer'}}
                 onClick={() => onApply(display)}>
                 {icon(display)}
             </Box>

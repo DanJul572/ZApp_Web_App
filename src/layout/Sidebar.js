@@ -5,14 +5,13 @@ import {getCookie, setCookie} from 'cookies-next';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import grey from '@mui/material/colors/grey';
-
 import Request from '@/hook/Request';
 
 import Tree from '@/component/tree';
 
 import CApiUrl from '@/constant/CApiUrl';
 import CTheme from '@/constant/CTheme';
+import {grey} from '@mui/material/colors';
 
 const Sidebar = () => {
     const {push} = useRouter();

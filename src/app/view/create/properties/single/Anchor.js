@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react';
 
+import {useTheme} from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import useTheme from '@mui/material/styles/useTheme';
 
 import ArrowDropDown from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUp from '@mui/icons-material/ArrowDropUp';
@@ -12,6 +12,7 @@ import ArrowRight from '@mui/icons-material/ArrowRight';
 import CComponentGroupType from '@/constant/CComponentGroupType';
 import CContainerType from '@/constant/CContainerType';
 import CTheme from '@/constant/CTheme';
+
 
 const Anchor = props => {
     const {content, selected, editComponent, setContent} = props;

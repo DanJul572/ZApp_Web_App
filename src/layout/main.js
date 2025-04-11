@@ -7,8 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Toolbar from '@mui/material/Toolbar';
 
-import createTheme from '@mui/material/styles/createTheme';
-import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import {createTheme, ThemeProvider} from '@mui/material';
 
 import Loading from '@/component/loading';
 import Toast from '@/component/toast';

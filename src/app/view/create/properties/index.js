@@ -2,10 +2,10 @@ import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {v4 as uuidv4} from 'uuid';
 
+import {grey} from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import grey from '@mui/material/colors/grey';
 
 import Anchor from './single/Anchor';
 import Color from './single/Color';
@@ -50,10 +50,7 @@ CustomTabPanel.propTypes = {
 };
 
 function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
+    return {id: `simple-tab-${index}`, 'aria-controls': `simple-tabpanel-${index}`};
 }
 
 const Properties = props => {
@@ -158,12 +155,7 @@ const Properties = props => {
         return content;
     };
 
-    const compProps = {
-        content: content,
-        selected: selected,
-        editComponent: editComponent,
-        setContent: setContent,
-    };
+    const compProps = {content: content, selected: selected, editComponent: editComponent, setContent: setContent};
 
     return (
         <Box

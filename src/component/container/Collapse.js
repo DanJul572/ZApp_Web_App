@@ -1,10 +1,9 @@
 import {useState} from 'react';
 
+import {useTheme} from '@mui/material';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-
-import useTheme from '@mui/material/styles/useTheme';
 
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';

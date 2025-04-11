@@ -1,9 +1,9 @@
 import {getCookie} from 'cookies-next';
 import {forwardRef, useEffect, useState} from 'react';
 
+import {useTheme} from '@mui/material';
 import {alpha, styled} from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import useTheme from '@mui/material/styles/useTheme';
 
 import {SimpleTreeView} from '@mui/x-tree-view/SimpleTreeView';
 import {TreeItem, treeItemClasses} from '@mui/x-tree-view/TreeItem';
@@ -25,10 +25,7 @@ const StyledTreeItem = styled(CustomTreeItem)(({theme}) => ({
         paddingLeft: 10,
         borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
     },
-    [`& .${treeItemClasses.label}`]: {
-        fontSize: 15,
-        color: theme.palette.text.primary,
-    },
+    [`& .${treeItemClasses.label}`]: {fontSize: 15, color: theme.palette.text.primary},
 }));
 
 const Tree = props => {
@@ -80,11 +77,7 @@ const Tree = props => {
         }
 
         if (onParentClick) {
-            onParentClick({
-                id: menu.id,
-                label: menu.label,
-                url: menu.url,
-            });
+            onParentClick({id: menu.id, label: menu.label, url: menu.url});
         }
     };
 
@@ -134,11 +127,7 @@ const Tree = props => {
             )}
             <SimpleTreeView
                 aria-label="customized"
-                slots={{
-                    expandIcon: ExpandIcon,
-                    collapseIcon: CollapseIcon,
-                    endIcon: EndIcon,
-                }}
+                slots={{expandIcon: ExpandIcon, collapseIcon: CollapseIcon, endIcon: EndIcon}}
                 sx={{overflowX: 'hidden', padding: 1}}
                 {...treeProps}>
                 {list && list.length > 0 && list.map(menu => menuList(menu))}

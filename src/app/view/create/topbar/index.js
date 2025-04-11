@@ -4,13 +4,13 @@ import {useEffect, useState} from 'react';
 import {useLoading} from '@/context/LoadingProvider';
 import {useToast} from '@/context/ToastProvider';
 
+import {useTheme} from '@mui/material';
+import {grey} from '@mui/material/colors';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import grey from '@mui/material/colors/grey';
-import useTheme from '@mui/material/styles/useTheme';
 
 import {readJSONFile} from '@/helper/readFile';
 
@@ -68,9 +68,7 @@ const TopBar = props => {
     const getModule = type => {
         setLoading(true);
 
-        const param = {
-            moduleId: moduleId,
-        };
+        const param = {moduleId: moduleId};
 
         get(CApiUrl.module.detail, param)
             .then(res => {
@@ -78,11 +76,7 @@ const TopBar = props => {
                 setContent(content);
             })
             .catch(err => {
-                setToast({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
+                setToast({status: true, type: 'error', message: err});
             })
             .finally(() => setLoading(false));
     };
@@ -106,33 +100,20 @@ const TopBar = props => {
         const url = viewId ? CApiUrl.common.update : CApiUrl.common.create;
         const body = {
             moduleId: CModuleID.views,
-            data: {
-                moduleId: moduleId,
-                content: JSON.stringify(content),
-                label: label,
-                page: JSON.stringify(page),
-            },
+            data: {moduleId: moduleId, content: JSON.stringify(content), label: label, page: JSON.stringify(page)},
         };
 
         if (viewId) body.rowId = viewId;
 
         post(url, body)
             .then(res => {
-                setToast({
-                    status: true,
-                    type: 'success',
-                    message: res,
-                });
+                setToast({status: true, type: 'success', message: res});
                 if (!viewId) {
                     getViewOptions();
                 }
             })
             .catch(err => {
-                setToast({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
+                setToast({status: true, type: 'error', message: err});
             })
             .finally(() => setLoading(false));
     };
@@ -140,10 +121,7 @@ const TopBar = props => {
     const onLoad = () => {
         setLoading(true);
 
-        const param = {
-            moduleId: CModuleID.views,
-            rowId: viewId,
-        };
+        const param = {moduleId: CModuleID.views, rowId: viewId};
 
         get(CApiUrl.common.detail, param)
             .then(res => {
@@ -152,32 +130,21 @@ const TopBar = props => {
                 setPage(res.page);
             })
             .catch(err => {
-                setToast({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
+                setToast({status: true, type: 'error', message: err});
             })
             .finally(() => setLoading(false));
     };
 
     const onDelete = confirm => {
         if (confirm) {
-            const body = {
-                moduleId: CModuleID.views,
-                id: viewId,
-            };
+            const body = {moduleId: CModuleID.views, id: viewId};
             post(CApiUrl.common.delete, body)
                 .then(() => {
                     clearContent();
                     getViewOptions();
                 })
                 .catch(err => {
-                    setToast({
-                        status: true,
-                        type: 'error',
-                        message: err,
-                    });
+                    setToast({status: true, type: 'error', message: err});
                 })
                 .finally(() => setLoading(false));
         }

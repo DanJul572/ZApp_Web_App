@@ -1,9 +1,8 @@
 import {useEffect, useState} from 'react';
 
+import {grey} from '@mui/material/colors';
+import {useTheme} from '@mui/material';
 import Box from '@mui/material/Box';
-import useTheme from '@mui/material/styles/useTheme';
-
-import grey from '@mui/material/colors/grey';
 
 import CButtonType from '@/constant/CButtonType';
 import CComponentGroupType from '@/constant/CComponentGroupType';
@@ -18,36 +17,12 @@ const Color = props => {
     const [active, setActive] = useState(null);
 
     const colors = [
-        {
-            label: 'Error',
-            value: theme.palette.error.main,
-            name: 'error',
-        },
-        {
-            label: 'Success',
-            value: theme.palette.success.main,
-            name: 'success',
-        },
-        {
-            label: 'Warning',
-            value: theme.palette.warning.main,
-            name: 'warning',
-        },
-        {
-            label: 'Info',
-            value: theme.palette.info.main,
-            name: 'info',
-        },
-        {
-            label: 'Secondary',
-            value: theme.palette.secondary.main,
-            name: 'secondary',
-        },
-        {
-            label: 'Primary',
-            value: theme.palette.primary.main,
-            name: 'primary',
-        },
+        {label: 'Error', value: theme.palette.error.main, name: 'error'},
+        {label: 'Success', value: theme.palette.success.main, name: 'success'},
+        {label: 'Warning', value: theme.palette.warning.main, name: 'warning'},
+        {label: 'Info', value: theme.palette.info.main, name: 'info'},
+        {label: 'Secondary', value: theme.palette.secondary.main, name: 'secondary'},
+        {label: 'Primary', value: theme.palette.primary.main, name: 'primary'},
     ];
 
     const onApply = color => {

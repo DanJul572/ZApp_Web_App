@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 
+import {useTheme} from '@mui/material';
 import Box from '@mui/material/Box';
-import useTheme from '@mui/material/styles/useTheme';
 
 import FormatBold from '@mui/icons-material/FormatBold';
 import FormatItalic from '@mui/icons-material/FormatItalic';
@@ -18,20 +18,12 @@ const TextDecoration = props => {
     const fontColor = theme.palette.text.secondary;
     const primaryColor = theme.palette.primary.main;
 
-    const [decoration, setDecoration] = useState({
-        bold: false,
-        italic: false,
-        underline: false,
-    });
+    const [decoration, setDecoration] = useState({bold: false, italic: false, underline: false});
 
     const items = ['bold', 'italic', 'underline'];
 
     const onApply = param => {
-        const newDecoration = {
-            bold: decoration.bold,
-            italic: decoration.italic,
-            underline: decoration.underline,
-        };
+        const newDecoration = {bold: decoration.bold, italic: decoration.italic, underline: decoration.underline};
         newDecoration[param] = !newDecoration[param];
 
         const newContent = editComponent('textDecoration', newDecoration, content);
@@ -66,9 +58,7 @@ const TextDecoration = props => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                sx={{
-                    cursor: 'pointer',
-                }}
+                sx={{cursor: 'pointer'}}
                 onClick={() => onApply(decoration)}>
                 {icon(decoration)}
             </Box>
@@ -87,11 +77,7 @@ const TextDecoration = props => {
 
     useEffect(() => {
         if (selected) {
-            const emptyValue = {
-                bold: false,
-                italic: false,
-                underline: false,
-            };
+            const emptyValue = {bold: false, italic: false, underline: false};
             setDecoration(selected.properties.textDecoration || emptyValue);
         }
     }, [selected]);
