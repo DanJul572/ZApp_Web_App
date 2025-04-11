@@ -7,12 +7,12 @@ import {useEffect, useState} from 'react';
 
 import {v4 as uuidv4} from 'uuid';
 
+import {grey} from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import grey from '@mui/material/colors/grey';
 
 import CreateNewFolder from '@mui/icons-material/CreateNewFolder';
 import Delete from '@mui/icons-material/Delete';
@@ -54,20 +54,10 @@ const Page = () => {
     const [activeMenuUrl, setActiveMenuUrl] = useState(null);
 
     const id = searchParams.get('id');
-    const actionType = {
-        add: 1,
-        edit: 2,
-        delete: 3,
-        up: 4,
-        down: 5,
-    };
+    const actionType = {add: 1, edit: 2, delete: 3, up: 4, down: 5};
 
     const generateNewMenu = () => {
-        return {
-            id: uuidv4(),
-            label: 'New Item',
-            url: '',
-        };
+        return {id: uuidv4(), label: 'New Item', url: ''};
     };
 
     const changeMenuItem = (menu, type, itemParam = null) => {
@@ -75,11 +65,7 @@ const Page = () => {
             for (let x = 0; x < menu.length; x++) {
                 const item = menu[x];
                 if (item.id === activeMenuId) {
-                    const newItem = {
-                        id: activeMenuId,
-                        label: activeMenuLabel,
-                        url: activeMenuUrl,
-                    };
+                    const newItem = {id: activeMenuId, label: activeMenuLabel, url: activeMenuUrl};
                     if (item.child && item.child.length > 0) {
                         newItem.child = item.child;
                     }
@@ -114,10 +100,7 @@ const Page = () => {
     const onLoad = () => {
         setLoading(true);
 
-        const body = {
-            moduleId: CModuleID.menus,
-            rowId: id,
-        };
+        const body = {moduleId: CModuleID.menus, rowId: id};
 
         get(CApiUrl.common.detail, body)
             .then(res => {
@@ -127,11 +110,7 @@ const Page = () => {
                 setAfterLogin(res.afterLogin);
             })
             .catch(err => {
-                setAlert({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
+                setAlert({status: true, type: 'error', message: err});
             })
             .finally(() => setLoading(false));
     };
@@ -176,42 +155,24 @@ const Page = () => {
         const url = id ? CApiUrl.common.update : CApiUrl.common.create;
         const body = {
             moduleId: CModuleID.menus,
-            data: {
-                label: label,
-                tree: JSON.stringify(list),
-                roleId: roleId,
-                afterLogin: afterLogin,
-            },
+            data: {label: label, tree: JSON.stringify(list), roleId: roleId, afterLogin: afterLogin},
         };
 
         if (id) body.rowId = id;
 
         post(url, body)
             .then(res => {
-                setAlert({
-                    status: true,
-                    type: 'success',
-                    message: res,
-                });
+                setAlert({status: true, type: 'success', message: res});
                 push('/menu');
             })
             .catch(err => {
-                setAlert({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
+                setAlert({status: true, type: 'error', message: err});
             })
             .finally(() => setLoading(false));
     };
 
     const onDownload = () => {
-        const menu = {
-            label: label,
-            roleId: roleId,
-            afterLogin: afterLogin,
-            list: list,
-        };
+        const menu = {label: label, roleId: roleId, afterLogin: afterLogin, list: list};
         downloadJsonFile(menu, label);
     };
 

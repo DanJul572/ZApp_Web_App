@@ -1,9 +1,9 @@
 import {useState} from 'react';
 
+import {grey} from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
-import grey from '@mui/material/colors/grey';
 
 import CActionType from '@/constant/CActionType';
 import CDataType from '@/constant/CDataType';

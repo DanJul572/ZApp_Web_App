@@ -1,5 +1,5 @@
+import {grey} from '@mui/material/colors';
 import Box from '@mui/material/Box';
-import grey from '@mui/material/colors/grey';
 import Grid from '@mui/material/Grid';
 
 import LongText from '@/component/input/LongText';

@@ -8,11 +8,11 @@ import {useToast} from '@/context/ToastProvider';
 
 import Link from 'next/link';
 
-import createTheme from '@mui/material/styles/createTheme';
+import {createTheme} from '@mui/material';
+import {grey} from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import grey from '@mui/material/colors/grey';
 
 import Dropdown from '@/component/input/Dropdown';
 import Password from '@/component/input/Password';
@@ -43,28 +43,15 @@ const Page = () => {
     const onSignIn = () => {
         setLoading(true);
 
-        const body = {
-            name: name,
-            email: email,
-            password: password,
-            roleId: roleId,
-        };
+        const body = {name: name, email: email, password: password, roleId: roleId};
 
         post(CApiUrl.auth.register, body, false)
             .then(() => {
-                setToast({
-                    status: true,
-                    type: 'success',
-                    message: 'Success',
-                });
+                setToast({status: true, type: 'success', message: 'Success'});
                 push('/login');
             })
             .catch(err => {
-                setToast({
-                    status: true,
-                    type: 'error',
-                    message: err,
-                });
+                setToast({status: true, type: 'error', message: err});
             })
             .finally(() => setLoading(false));
     };

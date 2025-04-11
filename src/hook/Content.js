@@ -1,6 +1,7 @@
 'use client';
 
-import {use, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useParams} from 'next/navigation';
 
 import Request from './Request';
 import Translator from './Translator';
@@ -9,7 +10,8 @@ import CApiUrl from '@/constant/CApiUrl';
 import CModuleID from '@/constant/CModuleID';
 
 const Content = props => {
-    const {params, isBuilder} = props;
+    const {isBuilder} = props;
+    const params = useParams();
 
     const {get} = Request();
     const {t} = Translator();
@@ -17,10 +19,8 @@ const Content = props => {
     const [content, setContent] = useState(null);
     const [page, setPage] = useState(null);
 
-    const {id} = use(params);
-
     const getContent = () => {
-        const param = {moduleId: CModuleID.views, rowId: id};
+        const param = {moduleId: CModuleID.views, rowId: params.id};
         get(CApiUrl.common.detail, param)
             .then(res => {
                 if (res) {
@@ -38,10 +38,10 @@ const Content = props => {
     };
 
     useEffect(() => {
-        if (!isBuilder && id) {
+        if (!isBuilder && params.id) {
             getContent();
         }
-    }, [id]);
+    }, []);
 
     return {content: content, page: page};
 };
