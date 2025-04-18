@@ -33,7 +33,7 @@ const Number = props => {
                 value={value || ''}
                 error={error.status}
                 helperText={error.message}
-                onChange={e => onChange(e.target.valueAsNumber.replace(/[^0-9]/g, ''))}
+                onChange={e => onChange(e.target.value.replace(/[^0-9]/g, ''))}
                 disabled={disabled}
             />
         </Box>
