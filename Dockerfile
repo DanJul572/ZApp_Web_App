@@ -1,8 +1,8 @@
 FROM node:latest
 WORKDIR /app
 COPY package.json .
-RUN yarn
+RUN pnpm
 COPY . .
-RUN yarn build
+RUN pnpm build
 EXPOSE 8000
-CMD ["yarn", "start"]
+CMD ["pnpm", "start"]
